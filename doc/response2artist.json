@@ -1,0 +1,130 @@
+{
+  "artists": [
+    {
+      "id": 229249,
+      "image": {
+        "id": 13898305,
+        "uri": "https://geo-media.beatport.com/image_size/590x404/d8b57ea6-83b5-45c8-99d7-0717ad1094e6.jpg",
+        "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/d8b57ea6-83b5-45c8-99d7-0717ad1094e6.jpg"
+      },
+      "name": "Ben A",
+      "slug": "ben-a",
+      "url": "https://api.beatport.com/v4/catalog/artists/229249/"
+    },
+    {
+      "id": 308212,
+      "image": {
+        "id": 28122145,
+        "uri": "https://geo-media.beatport.com/image_size/590x404/926ab259-587f-485b-af01-daad73976649.jpg",
+        "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/926ab259-587f-485b-af01-daad73976649.jpg"
+      },
+      "name": "Alejandro PeÃ±aloza",
+      "slug": "alejandro-penaloza",
+      "url": "https://api.beatport.com/v4/catalog/artists/308212/"
+    }
+  ],
+  "audio_format": null,
+  "available_worldwide": true,
+  "bpm": 125,
+  "catalog_number": "RH2COMP1553",
+  "current_status": {
+    "id": 10,
+    "name": "General Content",
+    "url": "https://api.beatport.com/v4/auxiliary/current-status/10/"
+  },
+  "desc": null,
+  "enabled": true,
+  "encode_status": "CONVERTED",
+  "encoded_date": "2021-08-05T10:06:04-06:00",
+  "exclusive": false,
+  "exclusive_period": {
+    "days": 14,
+    "description": "Exclusive for 2 weeks (14 days)",
+    "id": 4,
+    "url": "https://api.beatport.com/v4/auxiliary/exclusive-period/4/"
+  },
+  "free_downloads": [],
+  "free_download_start_date": null,
+  "free_download_end_date": null,
+  "genre": {
+    "id": 89,
+    "name": "Afro House",
+    "slug": "afro-house",
+    "url": "https://api.beatport.com/v4/catalog/genres/89/"
+  },
+  "hidden": false,
+  "id": 15587588,
+  "image": {
+    "id": 29163532,
+    "uri": "https://geo-media.beatport.com/image_size/1500x250/297ecbfd-2c4e-4b11-895c-2b6c50f83b20.png",
+    "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/297ecbfd-2c4e-4b11-895c-2b6c50f83b20.png"
+  },
+  "is_available_for_streaming": true,
+  "is_classic": false,
+  "isrc": "DEW872104904",
+  "key": {
+    "camelot_number": 1,
+    "camelot_letter": "B",
+    "chord_type": {
+      "id": 2,
+      "name": "Major",
+      "url": "https://api.beatport.com/v4/catalog/chord-types/2/"
+    },
+    "id": 13,
+    "is_sharp": false,
+    "is_flat": false,
+    "letter": "B",
+    "name": "B Major",
+    "url": "https://api.beatport.com/v4/catalog/keys/13/"
+  },
+  "label_track_identifier": null,
+  "length": "6:10",
+  "length_ms": 370012,
+  "mix_name": "Extended Mix",
+  "name": "Yo Tengo Un Congo",
+  "new_release_date": "2021-08-14",
+  "number": 4,
+  "pre_order": false,
+  "pre_order_date": null,
+  "price": {
+    "code": "EUR",
+    "symbol": "â¬",
+    "value": 1.29,
+    "display": "â¬1.29"
+  },
+  "publish_date": "2021-08-14",
+  "publish_status": "published",
+  "release": {
+    "id": 3472809,
+    "name": "RH2 Gold Series Vol. 37",
+    "image": {
+      "id": 29163460,
+      "uri": "https://geo-media.beatport.com/image_size/1400x1400/1d8c4582-b15d-4043-aeb1-63f74137e79f.jpg",
+      "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/1d8c4582-b15d-4043-aeb1-63f74137e79f.jpg"
+    },
+    "label": {
+      "id": 15931,
+      "name": "RH2",
+      "image": {
+        "id": 14994403,
+        "uri": "https://geo-media.beatport.com/image_size/500x500/ee065d9f-4151-464e-baab-c554a5627d52.jpg",
+        "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/ee065d9f-4151-464e-baab-c554a5627d52.jpg"
+      },
+      "slug": "rh2"
+    },
+    "slug": "rh2-gold-series-vol-37"
+  },
+  "remixers": [],
+  "sale_type": {
+    "id": 1,
+    "name": "purchase",
+    "url": "https://api.beatport.com/v4/auxiliary/sale-types/1/"
+  },
+  "sample_url": "https://geo-samples.beatport.com/track/297ecbfd-2c4e-4b11-895c-2b6c50f83b20.LOFI.mp3",
+  "sample_start_ms": 148005,
+  "sample_end_ms": 268005,
+  "slug": "yo-tengo-un-congo",
+  "sub_genre": null,
+  "was_ever_exclusive": true,
+  "is_hype": false
+}

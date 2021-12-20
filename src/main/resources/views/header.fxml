@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane minWidth="-Infinity" prefWidth="1200.0" styleClass="header" stylesheets="@../styles/dark.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.jvegaf.musikbox.controllers.HeaderController">
+   <center>
+       <AnchorPane minWidth="-Infinity" prefWidth="1200.0">
+           <AnchorPane layoutX="450.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                       minWidth="-Infinity" prefHeight="70.0" prefWidth="300.0" styleClass="player"
+                       stylesheets="@../styles/dark.css">
+               <Label id="trackArtistLabel" fx:id="artistLabel" alignment="CENTER" layoutX="10.0" prefHeight="22.0"
+                      prefWidth="280.0" textAlignment="CENTER"/>
+               <Label id="trackTitleLabel" fx:id="titleLabel" alignment="CENTER" layoutX="10.0" layoutY="20.0"
+                      prefHeight="30.0" prefWidth="280.0" textAlignment="CENTER">
+                   <font>
+                       <Font size="18.0"/>
+                   </font>
+               </Label>
+               <Slider fx:id="progressBar" layoutX="10.0" layoutY="30.0" prefHeight="16.0" prefWidth="280.0"
+                       AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0"/>
+           </AnchorPane>
+       </AnchorPane>
+   </center>
+   <left>
+       <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+           <Button fx:id="prevBtn" layoutX="35.0" layoutY="23.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="24.0" styleClass="prev-btn" />
+           <Button fx:id="playBtn" layoutX="79.0" layoutY="18.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" styleClass="play-btn" />
+           <Button fx:id="pauseBtn" layoutX="79.0" layoutY="18.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" styleClass="pause-btn" />
+           <Button fx:id="nextBtn" layoutX="130.0" layoutY="23.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="24.0" styleClass="next-btn" />
+       </AnchorPane>
+   </left>
+   <right>
+        <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+            <Button fx:id="openFolderBtn" layoutX="202.0" layoutY="20.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="84.0" text="Open" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="55.0" AnchorPane.topAnchor="20.0" />
+        </AnchorPane>
+   </right>
+</BorderPane>
