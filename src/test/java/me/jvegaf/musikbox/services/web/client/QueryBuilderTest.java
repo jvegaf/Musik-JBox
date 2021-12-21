@@ -1,6 +1,5 @@
 package me.jvegaf.musikbox.services.web.client;
 
-import me.jvegaf.musikbox.services.webclient.QueryBuilder;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

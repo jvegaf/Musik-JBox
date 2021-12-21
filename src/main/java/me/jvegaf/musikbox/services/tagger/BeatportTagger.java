@@ -1,15 +1,13 @@
 package me.jvegaf.musikbox.services.tagger;
 
+import me.jvegaf.musikbox.services.web.client.*;
 import com.gargoylesoftware.htmlunit.*;
 import com.gargoylesoftware.htmlunit.html.DomNode;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import me.jvegaf.musikbox.services.webclient.Client;
-import me.jvegaf.musikbox.services.webclient.QueryBuilder;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,6 @@
 package me.jvegaf.musikbox.services.tagger;
 
-import me.jvegaf.musikbox.services.webclient.Client;
+import me.jvegaf.musikbox.services.web.client.Client;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

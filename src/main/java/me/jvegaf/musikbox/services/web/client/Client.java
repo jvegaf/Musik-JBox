@@ -1,4 +1,4 @@
-package me.jvegaf.musikbox.services.webclient;
+package me.jvegaf.musikbox.services.web.client;
 
 import com.gargoylesoftware.htmlunit.WebClient;
 

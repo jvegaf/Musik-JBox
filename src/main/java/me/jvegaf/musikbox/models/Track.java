@@ -1,15 +1,14 @@
 package me.jvegaf.musikbox.models;
 
-import java.time.Year;
 import java.util.UUID;
 
 public final class Track {
-  private String id;
+  private final String id;
   private String artist;
   private String title;
   private String album;
   private String genre;
-  private Year year;
+  private String year;
   private Integer bpm;
   private String path;
   private String name;
@@ -22,14 +21,14 @@ public final class Track {
     this.path = path;
   }
 
-  public Track(String id, String artist, String title, String album, String genre, Year year, Integer bpm, String path, String name, String key, String comments, byte[] artworkData) {
+  public Track(String id, String artist, String title, String album, String genre, String yearStr, String bpmStr, String path, String name, String key, String comments, byte[] artworkData) {
     this.id = id;
     this.artist = artist;
     this.title = title;
     this.album = album;
     this.genre = genre;
-    this.year = year;
-    this.bpm = bpm;
+    this.year = yearStr;
+    this.setBpm(bpmStr);
     this.path = path;
     this.name = name;
     this.key = key;
@@ -37,15 +36,16 @@ public final class Track {
     this.artworkData = artworkData;
   }
 
-  public static Track createTrack(String artist, String title, String album, String genre, Year year, Integer bpm, String path, String name, String key, String comments, byte[] artworkData) {
+  public static Track createTrack(String artist, String title, String album, String genre, String yearStr, String bpmStr, String path, String name, String key, String comments, byte[] artworkData) {
+
     return new Track(
             UUID.randomUUID().toString(),
             artist,
             title,
             album,
             genre,
-            year,
-            bpm,
+            yearStr,
+            bpmStr,
             path,
             name,
             key,
@@ -90,25 +90,21 @@ public final class Track {
     this.genre = genre;
   }
 
-  public Year getYear() {
-    return year;
-  }
+  public String getYear() { return year; }
 
-  public void setYear(String sYear) {
-    if (sYear.length() < 4) return;
-    this.year = Year.parse(sYear);
-  }
+  public void setYear(String sYear) { this.year = sYear; }
 
   public Integer getBpm() {
     return bpm;
   }
 
   public void setBpm(String sBpm) {
+    if (sBpm == null) return;
     if (sBpm.length() < 1) return;
     this.bpm = Integer.valueOf(sBpm);
   }
 
-  public String getPath() {
+  public String getPath () {
     return path;
   }
 

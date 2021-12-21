@@ -16,97 +16,52 @@ import org.jaudiotagger.tag.id3.AbstractID3v2Tag;
 
 import java.io.File;
 import java.io.IOException;
-import java.time.Year;
 import java.util.List;
 
 public class TagService {
 
-  private File file;
-  private AbstractID3v2Tag tag;
-  private MP3File f;
+  public static Track createTrackFromFile(File file) {
 
-  public TagService() {
-  }
+    MP3File f = null;
 
-  public Track createTrackFromFile(File file) {
-    this.file = file;
     try {
-      f = (MP3File) AudioFileIO.read(file);
+       f = (MP3File) AudioFileIO.read(file);
       System.out.printf("duration: %s%n", f.getMP3AudioHeader().getTrackLengthAsString());
-      tag = f.getID3v2Tag();
     } catch (CannotReadException | IOException | TagException | ReadOnlyFileException
             | InvalidAudioFrameException e) {
       e.printStackTrace();
     }
-    return generateTrack();
+    assert f != null;
+    return generateTrack(file, f);
   }
 
-  private Track generateTrack() {
-    if (!this.f.hasID3v2Tag()) return new Track(this.file.getAbsolutePath());
+  private static Track generateTrack(File file, MP3File f) {
+    if (!f.hasID3v2Tag()) return new Track(file.getAbsolutePath());
+    AbstractID3v2Tag tag = f.getID3v2Tag();
 
     return Track.createTrack(
-            this.getArtist(),
-            this.getTitle(),
-            this.getAlbum(),
-            this.getGenre(),
-            this.getYear(),
-            this.getBPM(),
-            this.file.getAbsolutePath(),
-            this.file.getName(),
-            this.getKey(),
-            this.getComments(),
-            this.getCoverData()
+            tag.getFirst(FieldKey.ARTIST),
+            tag.getFirst(FieldKey.TITLE),
+            tag.getFirst(FieldKey.ALBUM),
+            tag.getFirst(FieldKey.GENRE),
+            tag.getFirst(FieldKey.YEAR),
+            tag.getFirst(FieldKey.BPM),
+            file.getAbsolutePath(),
+            file.getName(),
+            tag.getFirst(FieldKey.KEY),
+            tag.getFirst(FieldKey.COMMENT),
+            getCoverData(tag)
             );
   }
 
-  private String getTitle() {
-    return this.tag.getFirst(FieldKey.TITLE);
-  }
-
-  private String getArtist() {
-    return this.tag.getFirst(FieldKey.ARTIST);
-  }
-
-  private String getAlbum() {
-    return this.tag.getFirst(FieldKey.ALBUM);
-  }
-
-  private String getGenre() {
-    return this.tag.getFirst(FieldKey.GENRE);
-  }
-
-  private Year getYear() {
-    String _year = this.tag.getFirst(FieldKey.YEAR);
-    if (_year != null && _year.length() == 4) {
-      return Year.parse(_year);
-    }
-    return null;
-  }
-
-  private Integer getBPM() {
-    String _bpm = this.tag.getFirst(FieldKey.BPM);
-    if (_bpm != null && !_bpm.equals("")) {
-      return Integer.parseInt(_bpm);
-    }
-    return null;
-  }
-
-  private byte[] getCoverData() {
-    List<Artwork> artworkList = this.tag.getArtworkList();
+  private static byte[] getCoverData(AbstractID3v2Tag tag) {
+    List<Artwork> artworkList = tag.getArtworkList();
     if (artworkList.isEmpty()) return new byte[0];
-    Artwork artwork = this.tag.getFirstArtwork();
+    Artwork artwork = tag.getFirstArtwork();
     return artwork.getBinaryData();
   }
 
-  private String getComments() {
-    return this.tag.getFirst(FieldKey.COMMENT);
-  }
-
-  private String getKey() {
-    return this.tag.getFirst(FieldKey.KEY);
-  }
-
-  public void saveTags(Track track) {
+  public static void saveTags(Track track) {
     try {
       AudioFile f = AudioFileIO.read(new File(track.getPath()));
       Tag tag = f.getTag();
@@ -114,7 +69,7 @@ public class TagService {
       if (track.getArtist() != null) tag.setField(FieldKey.ARTIST, track.getArtist());
       if (track.getAlbum() != null) tag.setField(FieldKey.ALBUM, track.getAlbum());
       if (track.getGenre() != null) tag.setField(FieldKey.GENRE, track.getGenre());
-      if (track.getYear() != null) tag.setField(FieldKey.YEAR, track.getYear().toString());
+      if (track.getYear() != null) tag.setField(FieldKey.YEAR, track.getYear());
       if (track.getBpm() != null) tag.setField(FieldKey.BPM, track.getBpm().toString());
       if (track.getKey() != null) tag.setField(FieldKey.KEY, track.getKey());
       if (track.getComments() != null) tag.setField(FieldKey.COMMENT, track.getComments());
@@ -127,7 +82,7 @@ public class TagService {
     }
   }
 
-  private Artwork generateArtwork(byte[] artworkData) {
+  private static Artwork generateArtwork(byte[] artworkData) {
     Artwork artwork = new Artwork();
     artwork.setBinaryData(artworkData);
     return artwork;
