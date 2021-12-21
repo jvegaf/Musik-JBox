@@ -1,5 +1,7 @@
 package me.jvegaf.musikbox.services.tagger;
 
+import me.jvegaf.musikbox.services.tagger.OAuthDTO;
+import me.jvegaf.musikbox.services.tagger.SearchResult;
 import me.jvegaf.musikbox.services.web.client.*;
 import com.gargoylesoftware.htmlunit.*;
 import com.gargoylesoftware.htmlunit.html.DomNode;
@@ -61,7 +63,7 @@ public class BeatportTagger {
         List<String> artists = div.querySelector(".buk-track-artists").querySelectorAll("a").stream().map(a -> a.getFirstChild().toString()).collect(Collectors.toList());
         String link = URI_BASE + div.querySelectorAll("a").get(0).getAttributes().getNamedItem("href").getNodeValue();
 
-        return SearchResult.create(id, title, remixed, artists, link);
+        return new SearchResult(id, title, remixed, artists, link);
     }
 
     private OAuthDTO updateToken() {
@@ -73,7 +75,7 @@ public class BeatportTagger {
                 String json = response.getContentAsString();
                 Map<String, String> map = new Gson().fromJson(json, new TypeToken<Map<String, String>>() {}.getType());
 
-                return this.token = OAuthDTO.create(map.get("access_token"), map.get("expires_in"));
+                return this.token = new OAuthDTO(map.get("access_token"), map.get("expires_in"));
             }
         } catch (IOException e) {
             e.printStackTrace();

@@ -4,7 +4,7 @@ import javafx.beans.property.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
-import me.jvegaf.musikbox.models.Track;
+import me.jvegaf.musikbox.tracks.Track;
 
 import java.io.File;
 

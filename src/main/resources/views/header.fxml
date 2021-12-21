@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane minWidth="-Infinity" prefWidth="1200.0" styleClass="header" stylesheets="@../styles/dark.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.jvegaf.musikbox.controllers.HeaderController">
+<BorderPane minWidth="-Infinity" prefWidth="1200.0" styleClass="header" stylesheets="@../styles/dark.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.jvegaf.musikbox.ui.views.HeaderController">
    <center>
        <AnchorPane minWidth="-Infinity" prefWidth="1200.0">
            <AnchorPane layoutX="450.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"

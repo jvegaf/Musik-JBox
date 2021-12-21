@@ -1,11 +1,10 @@
-package me.jvegaf.musikbox.components;
+package me.jvegaf.musikbox.ui.components;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.layout.AnchorPane;
-import me.jvegaf.musikbox.models.CellItem;
 
 import java.io.IOException;
 

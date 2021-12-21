@@ -1,4 +1,4 @@
-package me.jvegaf.musikbox.controllers;
+package me.jvegaf.musikbox.ui.views;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -7,7 +7,7 @@ import javafx.scene.control.TreeView;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class SidebarController implements Initializable {
+public class SideViewController implements Initializable {
 
     @FXML
     private TreeView playlistTree;

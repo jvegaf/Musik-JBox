@@ -1,30 +1,39 @@
-package me.jvegaf.musikbox.components;
+package me.jvegaf.musikbox.ui.components;
 
+import com.google.inject.Inject;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
-import me.jvegaf.musikbox.controllers.MainViewController;
-import me.jvegaf.musikbox.models.Track;
-import me.jvegaf.musikbox.services.LibraryService;
+import me.jvegaf.musikbox.ui.views.MainViewController;
+import me.jvegaf.musikbox.tracks.Track;
+import me.jvegaf.musikbox.tracks.TrackListRepository;
 
 import java.io.IOException;
 import java.net.URL;
 
 public class Tracklist extends AnchorPane {
 
-    @FXML TableView songsTableView;
-    @FXML TableColumn titleColumn;
-    @FXML TableColumn artistColumn;
-    @FXML TableColumn albumColumn;
-    @FXML TableColumn genreColumn;
-    @FXML TableColumn bpmColumn;
-    @FXML TableColumn yearColumn;
+    @FXML
+    private TableView songsTableView;
+    @FXML
+    private TableColumn titleColumn;
+    @FXML
+    private TableColumn artistColumn;
+    @FXML
+    private TableColumn albumColumn;
+    @FXML
+    private TableColumn genreColumn;
+    @FXML
+    private TableColumn bpmColumn;
+    @FXML
+    private TableColumn yearColumn;
 
+    @Inject
     private MainViewController mvController;
-    private LibraryService libraryService;
+    private TrackListRepository tracksRepository;
     private Track selectedTrack;
 
     public Tracklist() {
@@ -39,13 +48,9 @@ public class Tracklist extends AnchorPane {
         }
     }
 
-    public void injectDeeps(MainViewController mvController, LibraryService libService) {
-        this.mvController = mvController;
-        this.libraryService = libService;
-        this.songsTableView.setItems(this.libraryService.getTracks());
-    }
-
     public void initialize() {
+        this.songsTableView.setItems(this.tracksRepository.getAll());
+
         titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
         artistColumn.setCellValueFactory(new PropertyValueFactory<>("artist"));
         albumColumn.setCellValueFactory(new PropertyValueFactory<>("album"));

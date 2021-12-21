@@ -1,6 +1,6 @@
 package me.jvegaf.musikbox.services;
 
-import me.jvegaf.musikbox.models.Track;
+import me.jvegaf.musikbox.tracks.Track;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.audio.exceptions.CannotReadException;

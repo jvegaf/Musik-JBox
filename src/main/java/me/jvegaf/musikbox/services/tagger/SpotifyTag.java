@@ -1,11 +1,11 @@
-package me.jvegaf.musikbox.models;
+package me.jvegaf.musikbox.services.tagger;
 
 import se.michaelthelin.spotify.model_objects.specification.Image;
 
 import java.time.Year;
 import java.util.Arrays;
 
-public class TagDTO {
+public class SpotifyTag {
     private String artist;
     private String title;
     private String album;
@@ -15,7 +15,7 @@ public class TagDTO {
     private String key;
     private Image[] images;
 
-    public TagDTO() {
+    public SpotifyTag() {
     }
 
     public String getArtist() {
@@ -84,7 +84,7 @@ public class TagDTO {
 
     @Override
     public String toString() {
-        return "TagDTO{" +
+        return "SpotifyTag{" +
                 "artist='" + artist + '\'' +
                 ", title='" + title + '\'' +
                 ", album='" + album + '\'' +

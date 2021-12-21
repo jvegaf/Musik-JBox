@@ -1,4 +1,4 @@
-package me.jvegaf.musikbox.controllers;
+package me.jvegaf.musikbox.ui.views;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

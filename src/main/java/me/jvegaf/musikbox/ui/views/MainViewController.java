@@ -1,5 +1,7 @@
-package me.jvegaf.musikbox.controllers;
+package me.jvegaf.musikbox.ui.views;
 
+import com.google.inject.Inject;
+import io.github.cdimascio.dotenv.Dotenv;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,9 +11,11 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import me.jvegaf.musikbox.MainApp;
-import me.jvegaf.musikbox.components.SideBar;
-import me.jvegaf.musikbox.components.Tracklist;
-import me.jvegaf.musikbox.models.Track;
+import me.jvegaf.musikbox.services.MusicFileService;
+import me.jvegaf.musikbox.tracks.Track;
+import me.jvegaf.musikbox.tracks.TracksRepository;
+import me.jvegaf.musikbox.ui.components.SideBar;
+import me.jvegaf.musikbox.ui.components.Tracklist;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,19 +25,20 @@ public class MainViewController {
 
   private MainApp parent;
 
-  @FXML HeaderController headerController;
-  @FXML SideBar sidebar;
-  @FXML Tracklist tracklist;
-  @FXML Label leftStatusLabel;
+  @FXML
+  private HeaderController headerController;
+  @FXML
+  private SideBar sidebar;
+  @FXML
+  private Tracklist tracklist;
+  @FXML
+  private Label leftStatusLabel;
 
-  public MainViewController(MainApp app) {
-    this.parent = app;
-  }
+  @Inject
+  private TracksRepository repository;
 
+  @FXML
   public void initialize() {
-    this.tracklist.injectDeeps(this, this.parent.getLibraryService());
-    this.sidebar.injectDeeps(this, this.parent.getLibraryService());
-    this.headerController.injectDeeps(this, this.parent.getPlayerService());
     autoloadTracks();
   }
 
@@ -42,22 +47,15 @@ public class MainViewController {
     File selectedFolder = directoryChooser.showDialog(this.leftStatusLabel.getScene().getWindow());
     if (selectedFolder == null) return;
     System.out.println(selectedFolder.getAbsolutePath());
-    ArrayList<Track> tracks = this.parent.getMusicFileService().processMusicFilesOfPath(selectedFolder);
-    this.parent.getLibraryService().addTracks(tracks);
+    ArrayList<Track> tracks = MusicFileService.processMusicFilesOfPath(selectedFolder);
+    this.repository.addBatch(tracks);
   }
 
 
   private void autoloadTracks() {
-    String pathname = getPath();
-    this.parent.getLibraryService().addTracks(this.parent.getMusicFileService().processMusicFilesOfPath(new File(pathname)));
-  }
-
-  private String getPath() {
-
-    String osname = System.getProperty("os.name");
-    System.out.println(osname);
-    if(osname.toLowerCase().contains("win")) return "C:\\Users\\josev\\Desktop\\CANELITA-PA-COLOCAR";
-    return "/home/jose/Music/CANELITA-PA-COLOCAR";
+    Dotenv dotenv = Dotenv.load();
+    String devMusicPath = dotenv.get("DEV_MUSIC_PATH");
+    this.repository.addBatch(MusicFileService.processMusicFilesOfPath(new File(devMusicPath)));
   }
 
   public void playTrackAction(Track t) {

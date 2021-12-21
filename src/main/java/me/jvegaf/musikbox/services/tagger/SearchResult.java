@@ -5,20 +5,16 @@ import java.util.List;
 public class SearchResult {
     private final String id;
     private final String title;
-    private final String remixed;
+    private final String remixName;
     private final List<String> artists;
-    private final String url;
+    private final String linkURL;
 
-    private SearchResult(String id, String title, String remixed, List<String> artists, String url) {
+    public SearchResult(String id, String title, String remixName, List<String> artists, String linkURL) {
         this.id = id;
         this.title = title;
-        this.remixed = remixed;
+        this.remixName = remixName;
         this.artists = artists;
-        this.url = url;
-    }
-
-    public static SearchResult create(String id, String title, String remixed, List<String> artists, String url) {
-        return new SearchResult(id, title, remixed, artists, url);
+        this.linkURL = linkURL;
     }
 
     public String Id() { return this.id; }
@@ -27,13 +23,13 @@ public class SearchResult {
         return this.title;
     }
 
-    public String Remixed() {
-        return this.remixed;
+    public String RemixName() {
+        return this.remixName;
     }
 
     public List<String> Artists() {
         return this.artists;
     }
 
-    public String Url() { return this.url; }
+    public String Url() { return this.linkURL; }
 }

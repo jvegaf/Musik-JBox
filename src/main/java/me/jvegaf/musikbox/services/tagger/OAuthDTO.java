@@ -6,13 +6,9 @@ public final class OAuthDTO {
     private final String accessToken;
     private final Instant expiresInstant;
 
-    private OAuthDTO(String accessToken, String expiresIn) {
+    public OAuthDTO(String accessToken, String expiresIn) {
         this.accessToken = accessToken;
         this.expiresInstant = getExpiresInstant(expiresIn);
-    }
-
-    public static OAuthDTO create(String accessToken, String expiresIn) {
-        return new OAuthDTO(accessToken, expiresIn);
     }
 
     public String Value() {

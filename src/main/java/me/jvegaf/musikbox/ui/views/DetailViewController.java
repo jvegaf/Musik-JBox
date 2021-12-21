@@ -1,4 +1,4 @@
-package me.jvegaf.musikbox.controllers;
+package me.jvegaf.musikbox.ui.views;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -8,7 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import me.jvegaf.musikbox.MainApp;
-import me.jvegaf.musikbox.models.Track;
+import me.jvegaf.musikbox.tracks.Track;
 
 import java.io.ByteArrayInputStream;
 

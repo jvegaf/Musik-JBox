@@ -1,12 +1,11 @@
-package me.jvegaf.musikbox.components;
+package me.jvegaf.musikbox.ui.components;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
-import me.jvegaf.musikbox.controllers.MainViewController;
-import me.jvegaf.musikbox.models.CellItem;
-import me.jvegaf.musikbox.services.LibraryService;
+import me.jvegaf.musikbox.ui.views.MainViewController;
+import me.jvegaf.musikbox.tracks.TrackListRepository;
 
 import java.io.IOException;
 import java.net.URL;
@@ -14,12 +13,12 @@ import java.net.URL;
 public class SideBar extends VBox {
 
     @FXML
-    private ListView<CellItem> libraryListView;
+    private ListView libraryListView;
     @FXML
     private ListView playlistListView;
 
     private MainViewController mvController;
-    private LibraryService libraryService;
+    private TrackListRepository tracksRepository;
 
     public SideBar() {
         URL resource = getClass().getResource("/components/SideBar.fxml");
@@ -32,16 +31,6 @@ public class SideBar extends VBox {
             System.out.println("error en sidebar");
             e.printStackTrace();
         }
-    }
-
-    public void injectDeeps(MainViewController mvController, LibraryService libraryService) {
-        this.mvController = mvController;
-        this.libraryService = libraryService;
-    }
-
-    public void initialize() {
-        libraryListView.getItems().add(new CellItem("Music"));
-        libraryListView.setCellFactory(itemListView -> new SideBarItemCell());
     }
 
 

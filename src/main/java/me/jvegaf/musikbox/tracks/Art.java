@@ -1,4 +1,4 @@
-package me.jvegaf.musikbox.models;
+package me.jvegaf.musikbox.tracks;
 
 public final class Art {
   private final byte[] data;
