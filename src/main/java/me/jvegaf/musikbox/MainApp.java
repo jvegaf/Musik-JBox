@@ -1,42 +1,29 @@
 package me.jvegaf.musikbox;
 
-import fr.brouillard.oss.cssfx.CSSFX;
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-import me.jvegaf.musikbox.ui.views.MainViewController;
+import com.google.inject.AbstractModule;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+import me.jvegaf.musikbox.ui.GUI;
+import me.jvegaf.musikbox.ui.GUIConfig;
 
-import java.io.IOException;
+public class MainApp {
 
-public class MainApp extends Application {
+    public static void main(String[] args)
+    {
+        Injector injector = Guice.createInjector(new AbstractModule() {
+            @Override
+            protected void configure() {
+                install(new GUIConfig());
+            }
+        });
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+        GUI gui = injector.getInstance(GUI.class);
 
-
-    @Override
-    public void start(Stage primaryStage){
-        CSSFX.start();
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/views/MainView.fxml"));
-        loader.setController(new MainViewController());
-        Parent root = null;
         try {
-            root = loader.load();
-        } catch (IOException e) {
+            gui.run(args);
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        if (root == null) return;
-        Scene mainScene = new Scene(root, 1440, 800);
-        mainScene.getStylesheets().add("/styles/dark.css");
-        primaryStage.setMinWidth(1200);
-        primaryStage.setMinHeight(700);
-        primaryStage.setTitle("Musikbox");
-        primaryStage.setScene(mainScene);
-        primaryStage.show();
     }
 
 }

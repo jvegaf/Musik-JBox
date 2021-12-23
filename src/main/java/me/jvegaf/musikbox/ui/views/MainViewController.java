@@ -25,24 +25,32 @@ public class MainViewController {
 
   private MainApp parent;
 
-  @FXML
-  private HeaderController headerController;
+
   @FXML
   private SideBar sidebar;
   @FXML
   private Tracklist tracklist;
   @FXML
   private Label leftStatusLabel;
+  @FXML
+  private Label rightStatusLabel;
 
-  @Inject
+
   private TracksRepository repository;
 
-  @FXML
+  @Inject
+  private DetailViewController detailViewController;
+
+  @Inject
+  public MainViewController(TracksRepository repository) {
+    this.repository = repository;
+  }
+
   public void initialize() {
     autoloadTracks();
   }
 
-  public void onOpenFolder() {
+  public void openActionListener() {
     DirectoryChooser directoryChooser = new DirectoryChooser();
     File selectedFolder = directoryChooser.showDialog(this.leftStatusLabel.getScene().getWindow());
     if (selectedFolder == null) return;
@@ -58,15 +66,14 @@ public class MainViewController {
     this.repository.addBatch(MusicFileService.processMusicFilesOfPath(new File(devMusicPath)));
   }
 
-  public void playTrackAction(Track t) {
-    this.parent.getPlayerService().playTrack(t);
+  public void playActionListener(Track t) {
+//    this.header.playTrack(t);
   }
 
-  public void onViewDetailActionListener(Track t) {
-    DetailViewController detailViewController = new DetailViewController(this.parent);
+  public void detailActionListener(Track t) {
     Stage detailStage = new Stage();
     FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/DetailView.fxml"));
-    loader.setController(detailViewController);
+    loader.setController(this.detailViewController);
     Parent root = null;
     try {
       root = loader.load();
