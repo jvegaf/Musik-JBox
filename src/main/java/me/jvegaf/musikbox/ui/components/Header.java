@@ -11,10 +11,10 @@ import javafx.scene.layout.HBox;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.DirectoryChooser;
 import javafx.util.Duration;
+import me.jvegaf.musikbox.bus.CommandBus;
 import me.jvegaf.musikbox.services.MusicFileService;
 import me.jvegaf.musikbox.services.player.MusicPlayer;
 import me.jvegaf.musikbox.tracks.Track;
-import me.jvegaf.musikbox.tracks.TracksRepository;
 
 import java.io.File;
 import java.io.IOException;
@@ -43,13 +43,13 @@ public final class Header extends HBox implements Initializable {
     private Button openFolderBtn;
 
     private final MusicPlayer player;
-    private final TracksRepository repository;
+    private final CommandBus commandHandler;
     private Double duration;
 
     @Inject
-    public Header(MusicPlayer player, TracksRepository repository) {
+    public Header(MusicPlayer player, CommandBus commandHandler) {
         this.player = player;
-        this.repository = repository;
+        this.commandHandler = commandHandler;
         URL resource = getClass().getResource("/components/Header.fxml");
         FXMLLoader loader = new FXMLLoader(resource);
         loader.setRoot(this);
@@ -130,12 +130,12 @@ public final class Header extends HBox implements Initializable {
         if (selectedFolder == null) return;
         System.out.println(selectedFolder.getAbsolutePath());
         ArrayList<Track> tracks = MusicFileService.processMusicFilesOfPath(selectedFolder);
-        this.repository.addBatch(tracks);
+        this.commandHandler.addBatch(tracks);
     }
 
     private void autoLoad() {
         String path = "//home//jose//Documents//CANELITA-PA-COLOCAR";
         ArrayList<Track> tracks = MusicFileService.processMusicFilesOfPath(new File(path));
-        this.repository.addBatch(tracks);
+        this.commandHandler.addBatch(tracks);
     }
 }

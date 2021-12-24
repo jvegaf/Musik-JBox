@@ -9,7 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
-import me.jvegaf.musikbox.services.player.MusicPlayer;
+import me.jvegaf.musikbox.bus.CommandBus;
 import me.jvegaf.musikbox.tracks.Track;
 import me.jvegaf.musikbox.tracks.TracksRepository;
 
@@ -39,12 +39,12 @@ public class Tracklist extends AnchorPane implements Initializable {
     private Track selectedTrack;
 
     private final TracksRepository tracksRepository;
-    private final MusicPlayer player;
+    private final CommandBus commandHandler;
 
     @Inject
-    public Tracklist(TracksRepository repository, MusicPlayer player) {
+    public Tracklist(TracksRepository repository, CommandBus commandHandler) {
         this.tracksRepository = repository;
-        this.player = player;
+        this.commandHandler = commandHandler;
         URL resource = getClass().getResource("/components/Tracklist.fxml");
         FXMLLoader loader = new FXMLLoader(resource);
         loader.setRoot(this);
@@ -73,16 +73,16 @@ public class Tracklist extends AnchorPane implements Initializable {
             TableRow<Track> row = new TableRow<>();
             ContextMenu menu = new ContextMenu();
             MenuItem detailItem = new MenuItem("View Detail");
-//            detailItem.setOnAction(actionEvent -> this.mvController.detailActionListener(this.selectedTrack));
+            detailItem.setOnAction(actionEvent -> this.commandHandler.showTrackDetail(this.selectedTrack));
             MenuItem playItem = new MenuItem("Play Song");
-            playItem.setOnAction(actionEvent -> this.player.playTrack(this.selectedTrack));
+            playItem.setOnAction(actionEvent -> this.commandHandler.playTrack(this.selectedTrack));
             menu.getItems().addAll(detailItem, playItem);
             row.setContextMenu(menu);
             row.setOnMouseClicked(event -> {
                 if (row.isEmpty()) { return; }
                 this.selectedTrack = row.getItem();
                 if (event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2) {
-                    this.player.playTrack(this.selectedTrack);
+                    this.commandHandler.playTrack(this.selectedTrack);
                 }
             });
             return row;

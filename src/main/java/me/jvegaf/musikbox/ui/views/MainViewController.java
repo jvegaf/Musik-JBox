@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MainViewController implements Initializable {
+public class MainViewController implements Initializable, MainController {
 
   @FXML
   private VBox headerPane;
@@ -65,6 +65,7 @@ public class MainViewController implements Initializable {
   }
 
 
+  @Override
   public void detailActionListener(Track t) {
     Stage detailStage = new Stage();
     FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/DetailView.fxml"));
