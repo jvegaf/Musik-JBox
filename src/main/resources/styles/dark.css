@@ -136,21 +136,23 @@
 
 .prev-btn {
     -fx-background-color: -icon-paint;
-    -size: 24;
-    -fx-min-height: -size;
-    -fx-min-width: -size;
-    -fx-max-height: -size;
-    -fx-max-width: -size;
+    -h_size: 22;
+    -w_size: 30;
+    -fx-min-height: -h_size;
+    -fx-min-width: -w_size;
+    -fx-max-height: -h_size;
+    -fx-max-width: -w_size;
     -fx-shape: "M12 12l12-7v14l-12-7zm-12 0l12-7v14l-12-7z";
 }
 
 .next-btn {
     -fx-background-color: -icon-paint;
-    -size: 24;
-    -fx-min-height: -size;
-    -fx-min-width: -size;
-    -fx-max-height: -size;
-    -fx-max-width: -size;
+    -h_size: 22;
+    -w_size: 30;
+    -fx-min-height: -h_size;
+    -fx-min-width: -w_size;
+    -fx-max-height: -h_size;
+    -fx-max-width: -w_size;
     -fx-shape: "M0 19v-14l12 7-12 7zm12 0v-14l12 7-12 7z";
 }
 

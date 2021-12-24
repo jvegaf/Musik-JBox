@@ -26,7 +26,6 @@ public class TagService {
 
     try {
        f = (MP3File) AudioFileIO.read(file);
-      System.out.printf("duration: %s%n", f.getMP3AudioHeader().getTrackLengthAsString());
     } catch (CannotReadException | IOException | TagException | ReadOnlyFileException
             | InvalidAudioFrameException e) {
       e.printStackTrace();
@@ -46,6 +45,7 @@ public class TagService {
             tag.getFirst(FieldKey.GENRE),
             tag.getFirst(FieldKey.YEAR),
             tag.getFirst(FieldKey.BPM),
+            f.getMP3AudioHeader().getTrackLengthAsString(),
             file.getAbsolutePath(),
             file.getName(),
             tag.getFirst(FieldKey.KEY),

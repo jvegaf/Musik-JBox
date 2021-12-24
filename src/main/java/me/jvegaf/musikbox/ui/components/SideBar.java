@@ -5,7 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
 import me.jvegaf.musikbox.ui.views.MainViewController;
-import me.jvegaf.musikbox.tracks.TrackListRepository;
+import me.jvegaf.musikbox.tracks.TracksRepository;
 
 import java.io.IOException;
 import java.net.URL;
@@ -18,7 +18,7 @@ public class SideBar extends VBox {
     private ListView playlistListView;
 
     private MainViewController mvController;
-    private TrackListRepository tracksRepository;
+    private TracksRepository tracksRepository;
 
     public SideBar() {
         URL resource = getClass().getResource("/components/SideBar.fxml");

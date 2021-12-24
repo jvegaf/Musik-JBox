@@ -38,9 +38,13 @@ public class DetailViewController {
     @FXML
     private Button cancelBtn;
 
-    @Inject
+
     private TracksRepository tracksRepository;
 
+    @Inject
+    public DetailViewController(TracksRepository tracksRepository) {
+        this.tracksRepository = tracksRepository;
+    }
 
     private void closeActionListener() {
         Stage stage = (Stage) this.cancelBtn.getScene().getWindow();

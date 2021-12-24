@@ -5,22 +5,22 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<fx:root style="-fx-background-color: #33393b;" stylesheets="@../styles/dark.css" type="VBox"
+<fx:root stylesheets="@../styles/dark.css" type="VBox"
          xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-   <VBox prefHeight="90.0">
-      <Label text="Library">
+   <VBox prefHeight="90.0" VBox.vgrow="NEVER">
+      <Label text="Library" VBox.vgrow="NEVER">
          <font>
             <Font size="13.0"/>
          </font>
       </Label>
-      <ListView fx:id="libraryListView"/>
+      <ListView fx:id="libraryListView" VBox.vgrow="ALWAYS"/>
    </VBox>
-   <VBox layoutX="10.0" layoutY="10.0">
-      <Label text="Playlists">
+   <VBox layoutX="10.0" layoutY="10.0" VBox.vgrow="ALWAYS">
+      <Label text="Playlists" VBox.vgrow="NEVER">
          <font>
             <Font size="13.0"/>
          </font>
       </Label>
-      <ListView fx:id="playlistListView"/>
+      <ListView fx:id="playlistListView" VBox.vgrow="ALWAYS"/>
    </VBox>
 </fx:root>

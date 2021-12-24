@@ -1,74 +1,67 @@
 package me.jvegaf.musikbox.ui.views;
 
 import com.google.inject.Inject;
-import io.github.cdimascio.dotenv.Dotenv;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.stage.DirectoryChooser;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import me.jvegaf.musikbox.MainApp;
-import me.jvegaf.musikbox.services.MusicFileService;
 import me.jvegaf.musikbox.tracks.Track;
-import me.jvegaf.musikbox.tracks.TracksRepository;
+import me.jvegaf.musikbox.ui.components.Header;
 import me.jvegaf.musikbox.ui.components.SideBar;
 import me.jvegaf.musikbox.ui.components.Tracklist;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class MainViewController {
-
-  private MainApp parent;
-
+public class MainViewController implements Initializable {
 
   @FXML
-  private SideBar sidebar;
+  private AnchorPane headerPane;
   @FXML
-  private Tracklist tracklist;
+  private AnchorPane sidePane;
   @FXML
-  private Label leftStatusLabel;
-  @FXML
-  private Label rightStatusLabel;
+  private AnchorPane tracklistPane;
 
 
-  private TracksRepository repository;
+
+  private final DetailViewController detailViewController;
+  private final Header headerComponent;
+  private final SideBar sideBarComponent;
+  private final Tracklist tracklistComponent;
+
 
   @Inject
-  private DetailViewController detailViewController;
+  public MainViewController(
+          DetailViewController detailViewController,
+          Header header,
+          SideBar sideBar,
+          Tracklist tracklist
+  ) {
 
-  @Inject
-  public MainViewController(TracksRepository repository) {
-    this.repository = repository;
+    this.detailViewController = detailViewController;
+    this.headerComponent = header;
+    this.sideBarComponent = sideBar;
+    this.tracklistComponent = tracklist;
   }
 
-  public void initialize() {
-    autoloadTracks();
+  @Override
+  public void initialize(URL location, ResourceBundle resources) {
+    headerComponent.prefHeightProperty().bind(headerPane.heightProperty());
+    headerComponent.prefWidthProperty().bind(headerPane.widthProperty());
+    headerPane.getChildren().add(headerComponent);
+    sideBarComponent.prefHeightProperty().bind(sidePane.heightProperty());
+    sideBarComponent.prefWidthProperty().bind(sidePane.widthProperty());
+    sidePane.getChildren().add(sideBarComponent);
+    tracklistComponent.prefHeightProperty().bind(tracklistPane.heightProperty());
+    tracklistComponent.prefWidthProperty().bind(tracklistPane.widthProperty());
+    tracklistPane.getChildren().add(tracklistComponent);
   }
 
-  public void openActionListener() {
-    DirectoryChooser directoryChooser = new DirectoryChooser();
-    File selectedFolder = directoryChooser.showDialog(this.leftStatusLabel.getScene().getWindow());
-    if (selectedFolder == null) return;
-    System.out.println(selectedFolder.getAbsolutePath());
-    ArrayList<Track> tracks = MusicFileService.processMusicFilesOfPath(selectedFolder);
-    this.repository.addBatch(tracks);
-  }
-
-
-  private void autoloadTracks() {
-    Dotenv dotenv = Dotenv.load();
-    String devMusicPath = dotenv.get("DEV_MUSIC_PATH");
-    this.repository.addBatch(MusicFileService.processMusicFilesOfPath(new File(devMusicPath)));
-  }
-
-  public void playActionListener(Track t) {
-//    this.header.playTrack(t);
-  }
 
   public void detailActionListener(Track t) {
     Stage detailStage = new Stage();
@@ -86,7 +79,7 @@ public class MainViewController {
     detailViewController.setTrack(t);
     detailStage.setTitle("Song Detail");
     detailStage.setScene(detailScene);
-    detailStage.initOwner(this.leftStatusLabel.getScene().getWindow());
+    detailStage.initOwner(headerPane.getScene().getWindow());
     detailStage.initModality(Modality.APPLICATION_MODAL);
     detailStage.show();
   }

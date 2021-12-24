@@ -19,9 +19,9 @@ public final class GUI extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        CSSFX.start();
         guiceContext = new GuiceContext(this, () -> Arrays.asList(new GUIConfig()));
         guiceContext.init();
-        CSSFX.start();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/views/MainView.fxml"));
         loader.setController(guiceContext.getInstance(MainViewController.class));
