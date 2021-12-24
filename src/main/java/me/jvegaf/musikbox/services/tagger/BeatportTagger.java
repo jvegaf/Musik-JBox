@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 import static com.gargoylesoftware.htmlunit.HttpMethod.GET;
 
 
-public class BeatportTagger {
+public class BeatportTagger implements Tagger {
     public static final String URI_BASE = "https://www.beatport.com";
     private final WebClient client;
     private OAuthDTO token = null;
@@ -28,6 +28,7 @@ public class BeatportTagger {
         this.client = client.getWebClient();
     }
 
+    @Override
     public List<SearchResult> search(String[] reqArgs) {
         List<SearchResult> results = new ArrayList<>();
         StringBuilder sb = new StringBuilder(URI_BASE);
@@ -62,8 +63,8 @@ public class BeatportTagger {
         var remixed = div.querySelectorAll(".buk-track-remixed").get(0).getFirstChild().toString();
         List<String> artists = div.querySelector(".buk-track-artists").querySelectorAll("a").stream().map(a -> a.getFirstChild().toString()).collect(Collectors.toList());
         String link = URI_BASE + div.querySelectorAll("a").get(0).getAttributes().getNamedItem("href").getNodeValue();
-
-        return new SearchResult(id, title, remixed, artists, link);
+        String title_remixed = title + " - " + remixed;
+        return new SearchResult(id, title_remixed, artists, link);
     }
 
     private OAuthDTO updateToken() {

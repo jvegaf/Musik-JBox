@@ -6,18 +6,18 @@ import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.credentials.ClientCredentials;
+import se.michaelthelin.spotify.model_objects.specification.ArtistSimplified;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
 import se.michaelthelin.spotify.model_objects.specification.Track;
 import se.michaelthelin.spotify.requests.authorization.client_credentials.ClientCredentialsRequest;
 import se.michaelthelin.spotify.requests.data.search.simplified.SearchTracksRequest;
 
 import java.io.IOException;
-import java.time.Year;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class SpotifyTagger {
+public class SpotifyTagger implements Tagger {
 
     private final ClientCredentialsRequest clientCredentialsRequest;
     private final SpotifyApi spotifyApi;
@@ -49,8 +49,9 @@ public class SpotifyTagger {
         }
     }
 
-    public List<SpotifyTag> search(String[] reqArgs ) {
-        List<SpotifyTag> result = new ArrayList<>();
+    @Override
+    public List<SearchResult> search(String[] reqArgs) {
+        List<SearchResult> result = new ArrayList<>();
         SearchTracksRequest req = makeTrackSearchRequest(reqArgs);
         try {
             Paging<Track> trackPaging = req.execute();
@@ -60,7 +61,7 @@ public class SpotifyTagger {
         } catch (IOException | SpotifyWebApiException | ParseException e) {
             System.out.println("Error: " + e.getMessage());
         }
-        return null;
+        return result;
     }
 
     private SearchTracksRequest makeTrackSearchRequest(String[] reqArgs) {
@@ -69,17 +70,16 @@ public class SpotifyTagger {
         return this.spotifyApi.searchTracks(req).build();
     }
 
-    private List<SpotifyTag> makeTags(Track[] tracks) {
-        List<SpotifyTag> result = new ArrayList<>();
+    private List<SearchResult> makeTags(Track[] tracks) {
+        List<SearchResult> result = new ArrayList<>();
         for (Track t: tracks) {
-            SpotifyTag td = new SpotifyTag();
+            SearchResult td = new SearchResult();
+            td.setId(t.getId());
             td.setTitle(t.getName());
-            td.setArtist(Arrays.stream(t.getArtists()).iterator().next().getName());
-            td.setAlbum(t.getAlbum().getName());
-            td.setImages(t.getAlbum().getImages());
-            td.setYear(Year.parse(t.getAlbum().getReleaseDate().substring(0,4)));
+            td.setArtists(Arrays.stream(t.getArtists()).map(ArtistSimplified::getName).toList());
+            td.setLinkURL(t.getUri());
             result.add(td);
-//            System.out.println(td.toString());
+            System.out.println(td.toString());
         }
         return result;
     }
