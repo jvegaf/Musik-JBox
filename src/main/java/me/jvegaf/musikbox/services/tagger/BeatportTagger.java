@@ -29,7 +29,7 @@ public class BeatportTagger implements Tagger {
     }
 
     @Override
-    public List<SearchResult> search(String[] reqArgs) {
+    public List<SearchResult> search(List<String> reqArgs) {
         List<SearchResult> results = new ArrayList<>();
         StringBuilder sb = new StringBuilder(URI_BASE);
         sb.append("/search/tracks?q=");
@@ -84,7 +84,7 @@ public class BeatportTagger implements Tagger {
         return null;
     }
 
-    public void fetchTrackEmbed(String id) {
+    public void fetchTrack(String id) {
         OAuthDTO token = updateToken();
         String uri = String.format("https://api.beatport.com/v4/catalog/tracks/%s", id);
         WebRequest req;

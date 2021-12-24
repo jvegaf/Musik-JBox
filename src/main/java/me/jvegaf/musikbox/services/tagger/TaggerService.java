@@ -17,26 +17,32 @@ public final class TaggerService {
         this.spotifyTagger = spotifyTagger;
     }
 
-    public Track fetchTags(Track track) {
-        String[] args = retrieveArgs(track);
-        var beatSR = beatportTagger.search(args);
-        Track resultTrack = trackMatcher(track, beatSR);
-    }
-
-    private Track trackMatcher(Track track, List<SearchResult> beatSR) {
+    public void fetchTags(Track track) {
         var args = retrieveArgs(track);
-
+        var beatSR = beatportTagger.search(args);
+//        Track resultTrack = trackMatcher(track, beatSR);
     }
 
-    private String[] retrieveArgs(Track track) {
+
+    private List<String> retrieveArgs(Track track) {
         ArrayList<String> argsl = new ArrayList<>();
         if (track.getArtist() != null && track.getArtist().length() > 0) {
             argsl.add(track.getArtist());
         }
         argsl.add(track.getTitle());
-        var sanitized = Sanitizer.sanitize((String[]) argsl.toArray());
-        return (String[]) sanitized.toArray();
+        return Sanitizer.sanitize(argsl);
+
     }
 
+    private void trackMatcher(Track track, List<SearchResult> beatSR) {
+        List<String> args = retrieveArgs(track);
+//        beatSR.stream().forEach(searchResult -> {
+//            if (args.size() == 2) {
+//            if (searchResult.Artists().get(0).equals(args.get(0)) && searchResult.Title().equals(args.get(1))) {
+//                beatportTagger.fetchTrack(searchResult.Id());
+//            }
+//                     }
+//        });
+    }
 
 }

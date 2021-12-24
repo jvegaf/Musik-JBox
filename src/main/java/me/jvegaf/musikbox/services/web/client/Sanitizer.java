@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public final class Sanitizer {
-    public static List<String> sanitize(String[] qArgs) {
+    public static List<String> sanitize(List<String> qArgs) {
         var res = new ArrayList<String>();
 
         for (String qArg : qArgs) {

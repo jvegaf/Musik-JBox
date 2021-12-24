@@ -50,7 +50,7 @@ public class SpotifyTagger implements Tagger {
     }
 
     @Override
-    public List<SearchResult> search(String[] reqArgs) {
+    public List<SearchResult> search(List<String> reqArgs) {
         List<SearchResult> result = new ArrayList<>();
         SearchTracksRequest req = makeTrackSearchRequest(reqArgs);
         try {
@@ -64,7 +64,7 @@ public class SpotifyTagger implements Tagger {
         return result;
     }
 
-    private SearchTracksRequest makeTrackSearchRequest(String[] reqArgs) {
+    private SearchTracksRequest makeTrackSearchRequest(List<String> reqArgs) {
         String req = QueryBuilder.build(reqArgs, " ").Value();
 
         return this.spotifyApi.searchTracks(req).build();

@@ -1,10 +1,11 @@
 package me.jvegaf.musikbox.services.web.client;
 
+import java.util.List;
+
 public class QueryBuilder {
-    public static QueryDTO build(String[] strArgs, String delimiter) {
+    public static QueryDTO build(List<String> strArgs, String delimiter) {
         //        joeski+un+congo
-        var elements = Sanitizer.sanitize(strArgs);
-        return QueryDTO.create(elements, delimiter);
+        return QueryDTO.create(strArgs, delimiter);
     }
 
 }
