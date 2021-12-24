@@ -12,29 +12,27 @@ class SpotifyTaggerTest {
 
     @Test
     void findWithArtistAndTitle() {
-        String artist = "Edu Imbernon";
-        String title = "Indenait";
+        String[] args = {"Edu Imbernon", "Indenait"};
 
-        System.out.println("title: " + artist + " " + title);
-        List<SpotifyTag> result = finder.searchTracks_Sync(artist, title);
+        List<SpotifyTag> result = finder.search(args);
         assertNotNull(result);
     }
 
     @Test
     void findOnlyWithTitle() {
-        String title = "DJ Wady Sonarzims";
+        String[] args = {"DJ Wady Sonarzims"};
 
-        System.out.println("title: " + title);
-        List<SpotifyTag> result = finder.searchTracks_Sync(null, title);
+        System.out.println("title: " + args[0]);
+        List<SpotifyTag> result = finder.search(args);
         assertNotNull(result);
     }
 
     @Test
     void findWithWorstTitle() {
-        String title = "Harry_Romero_From_The_Root_Extended_Mix_";
+        String[] args = {"Harry_Romero_From_The_Root_Extended_Mix_"};
 
-        System.out.println("title: " + title);
-        List<SpotifyTag> result = finder.searchTracks_Sync(null, title);
+        System.out.println("title: " + args[0]);
+        List<SpotifyTag> result = finder.search(args);
         assertNotNull(result);
     }
 }

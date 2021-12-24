@@ -13,7 +13,7 @@ class QueryBuilderTest {
         String[] input = {"joeski_un_congo "};
 
 
-        var resVO = QueryBuilder.build(input);
+        var resVO = QueryBuilder.build(input, "+");
         assertEquals(resVO.Value(), "joeski+un+congo");
     }
 
@@ -22,7 +22,7 @@ class QueryBuilderTest {
         String[] input = {"joeski ", " un_congo " };
 
 
-        var resVO = QueryBuilder.build(input);
+        var resVO = QueryBuilder.build(input, "+");
         assertEquals(resVO.Value(), "joeski+un+congo");
     }
 
@@ -31,7 +31,7 @@ class QueryBuilderTest {
         String[] input = {"deadmau5_1981_Mike_Vale_vs_Jerome_Robins_Remix_" };
 
 
-        var resVO = QueryBuilder.build(input);
+        var resVO = QueryBuilder.build(input, "+");
         assertEquals(resVO.Value(), "deadmau5+1981+Mike+Vale+vs+Jerome+Robins+Remix");
     }
 }

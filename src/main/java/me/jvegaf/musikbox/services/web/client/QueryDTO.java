@@ -8,13 +8,13 @@ public class QueryDTO {
     private final List<String> elements;
     private final String value;
 
-    private QueryDTO(List<String> elements) {
+    private QueryDTO(List<String> elements, String delimiter) {
         this.elements = elements;
-        this.value = StringUtils.join(elements.toArray(), "+");
+        this.value = StringUtils.join(elements.toArray(), delimiter);
     }
 
-    public static QueryDTO create(List<String> elements) {
-        return new QueryDTO(elements);
+    public static QueryDTO create(List<String> elements, String delimiter) {
+        return new QueryDTO(elements, delimiter);
     }
 
     public List<String> Elements() {

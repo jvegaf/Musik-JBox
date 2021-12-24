@@ -1,6 +1,7 @@
 package me.jvegaf.musikbox.services.tagger;
 
 import io.github.cdimascio.dotenv.Dotenv;
+import me.jvegaf.musikbox.services.web.client.QueryBuilder;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -48,9 +49,9 @@ public class SpotifyTagger {
         }
     }
 
-    public List<SpotifyTag> searchTracks_Sync(String artist, String title ) {
+    public List<SpotifyTag> search(String[] reqArgs ) {
         List<SpotifyTag> result = new ArrayList<>();
-        SearchTracksRequest req = makeTrackSearchRequest(artist, title);
+        SearchTracksRequest req = makeTrackSearchRequest(reqArgs);
         try {
             Paging<Track> trackPaging = req.execute();
 
@@ -62,14 +63,10 @@ public class SpotifyTagger {
         return null;
     }
 
-    private SearchTracksRequest makeTrackSearchRequest(String artist, String title) {
-        StringBuilder strBldr = new StringBuilder();
-        if (artist != null && artist.length() > 0){
-            strBldr.append(artist).append(" - ");
-        }
-        strBldr.append(title);
+    private SearchTracksRequest makeTrackSearchRequest(String[] reqArgs) {
+        String req = QueryBuilder.build(reqArgs, " ").Value();
 
-        return this.spotifyApi.searchTracks(strBldr.toString()).build();
+        return this.spotifyApi.searchTracks(req).build();
     }
 
     private List<SpotifyTag> makeTags(Track[] tracks) {

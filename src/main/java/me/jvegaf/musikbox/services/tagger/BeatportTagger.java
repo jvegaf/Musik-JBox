@@ -1,13 +1,12 @@
 package me.jvegaf.musikbox.services.tagger;
 
-import me.jvegaf.musikbox.services.tagger.OAuthDTO;
-import me.jvegaf.musikbox.services.tagger.SearchResult;
-import me.jvegaf.musikbox.services.web.client.*;
 import com.gargoylesoftware.htmlunit.*;
 import com.gargoylesoftware.htmlunit.html.DomNode;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import me.jvegaf.musikbox.services.web.client.Client;
+import me.jvegaf.musikbox.services.web.client.QueryBuilder;
 
 import java.io.IOException;
 import java.net.URL;
@@ -33,7 +32,8 @@ public class BeatportTagger {
         List<SearchResult> results = new ArrayList<>();
         StringBuilder sb = new StringBuilder(URI_BASE);
         sb.append("/search/tracks?q=");
-        var query = QueryBuilder.build(reqArgs);
+        String delimiter = "+";
+        var query = QueryBuilder.build(reqArgs, delimiter);
         sb.append(query.Value());
         System.out.println("query url: " + sb);
         //
