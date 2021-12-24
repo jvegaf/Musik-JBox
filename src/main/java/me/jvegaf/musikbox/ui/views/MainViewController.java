@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import me.jvegaf.musikbox.tracks.Track;
@@ -21,7 +22,7 @@ import java.util.ResourceBundle;
 public class MainViewController implements Initializable {
 
   @FXML
-  private AnchorPane headerPane;
+  private VBox headerPane;
   @FXML
   private AnchorPane sidePane;
   @FXML
@@ -51,6 +52,7 @@ public class MainViewController implements Initializable {
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
+    headerPane.setFillWidth(true);
     headerComponent.prefHeightProperty().bind(headerPane.heightProperty());
     headerComponent.prefWidthProperty().bind(headerPane.widthProperty());
     headerPane.getChildren().add(headerComponent);

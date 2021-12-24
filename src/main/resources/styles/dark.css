@@ -186,9 +186,19 @@
 }
 
 #trackTitleLabel {
-    -fx-font-size: 22;
+    -fx-padding: 10 0 0 0;
+    -fx-font-size: 16;
 }
 
 #trackArtistLabel {
+    -fx-padding: 5 0 0 0;
     -fx-font-size: 12;
+}
+
+.progress-bar > .bar, .progress-bar > .track {
+    -fx-background-insets: 0;
+}
+
+.progress-bar > .track {
+    -fx-background-color: -scrollbar-thumb;
 }
