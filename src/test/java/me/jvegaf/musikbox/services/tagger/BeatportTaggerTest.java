@@ -12,8 +12,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class BeatportTaggerTest {
 
-    Client client = new Client();
-    BeatportTagger tagger = new BeatportTagger(client);
+    final Client client = new Client();
+    final BeatportTagger tagger = new BeatportTagger(client);
 
     @Test
     void getTagsFromBeatport() {
@@ -27,16 +27,6 @@ class BeatportTaggerTest {
         System.out.println("total results: " + results.size());
         assertTrue(results.size() > 19);
     }
-
-//    @Test
-//    void getTagsFromBeatportWithWorstRequestArgument() {
-//        String[] args = {"deadmau5_1981_Mike_Vale_vs_Jerome_Robins_Remix_"};
-//
-//        List<SearchResult> results = tagger.search(args);
-//
-//        System.out.println("total results: " + results.size());
-//        assertTrue(results.size() > 19);
-//    }
 
     @Test
     void tryFetchTrackEmbed() {

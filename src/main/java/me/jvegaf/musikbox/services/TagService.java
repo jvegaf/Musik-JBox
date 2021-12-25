@@ -65,7 +65,7 @@ public class TagService {
     try {
       AudioFile f = AudioFileIO.read(new File(track.getPath()));
       Tag tag = f.getTag();
-      if (track.getTitle() != null) tag.setField(FieldKey.TITLE, track.getTitle());
+      if (track.getName() != null) tag.setField(FieldKey.TITLE, track.getName());
       if (track.getArtist() != null) tag.setField(FieldKey.ARTIST, track.getArtist());
       if (track.getAlbum() != null) tag.setField(FieldKey.ALBUM, track.getAlbum());
       if (track.getGenre() != null) tag.setField(FieldKey.GENRE, track.getGenre());

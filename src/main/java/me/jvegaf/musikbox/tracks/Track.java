@@ -5,52 +5,57 @@ import java.util.UUID;
 public final class Track {
     private final String id;
     private String artist;
-    private String title;
+    private String name;
     private String album;
     private String genre;
     private String year;
     private Integer bpm;
     private String duration;
     private String path;
-    private String name;
+    private String fileName;
     private String key;
     private String comments;
     private byte[] artworkData;
+
+
+    public Track()  {
+        this.id = UUID.randomUUID().toString();
+    }
 
     public Track(String path) {
         this.id = UUID.randomUUID().toString();
         this.path = path;
     }
 
-    public Track(String id, String artist, String title, String album, String genre, String yearStr, String bpmStr, String duration, String path, String name, String key, String comments, byte[] artworkData) {
+    public Track(String id, String artist, String title, String album, String genre, String yearStr, String bpmStr, String duration, String path, String filename, String key, String comments, byte[] artworkData) {
         this.id = id;
         this.artist = artist;
-        this.title = title;
+        this.name = title;
         this.album = album;
         this.genre = genre;
         this.year = yearStr;
         this.setBpm(bpmStr);
         this.duration = duration;
         this.path = path;
-        this.name = name;
+        this.fileName = filename;
         this.key = key;
         this.comments = comments;
         this.artworkData = artworkData;
     }
 
-    public static Track createTrack(String artist, String title, String album, String genre, String yearStr, String bpmStr, String duration, String path, String name, String key, String comments, byte[] artworkData) {
+    public static Track createTrack(String artist, String name, String album, String genre, String yearStr, String bpmStr, String duration, String path, String filename, String key, String comments, byte[] artworkData) {
 
         return new Track(
                 UUID.randomUUID().toString(),
                 artist,
-                title,
+                name,
                 album,
                 genre,
                 yearStr,
                 bpmStr,
                 duration,
                 path,
-                name,
+                filename,
                 key,
                 comments,
                 artworkData
@@ -69,12 +74,12 @@ public final class Track {
         this.artist = artist;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return this.name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getAlbum() {
@@ -111,6 +116,10 @@ public final class Track {
         this.bpm = Integer.valueOf(sBpm);
     }
 
+    public void setBpm(int bpm) {
+        this.bpm = bpm;
+    }
+
     public String getPath() {
         return path;
     }
@@ -119,12 +128,12 @@ public final class Track {
         this.path = path;
     }
 
-    public String getName() {
-        return name;
+    public String Filename() {
+        return this.fileName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFilename(String filename) {
+        this.fileName = filename;
     }
 
     public String getKey() {

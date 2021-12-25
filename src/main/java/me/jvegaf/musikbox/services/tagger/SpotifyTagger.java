@@ -79,7 +79,7 @@ public class SpotifyTagger implements Tagger {
             td.setArtists(Arrays.stream(t.getArtists()).map(ArtistSimplified::getName).toList());
             td.setLinkURL(t.getUri());
             result.add(td);
-            System.out.println(td.toString());
+            System.out.println(td);
         }
         return result;
     }

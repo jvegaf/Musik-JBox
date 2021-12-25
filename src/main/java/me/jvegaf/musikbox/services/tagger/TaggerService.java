@@ -7,6 +7,7 @@ import me.jvegaf.musikbox.tracks.Track;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("FieldCanBeLocal")
 public final class TaggerService {
     private final BeatportTagger beatportTagger;
     private final SpotifyTagger spotifyTagger;
@@ -29,20 +30,13 @@ public final class TaggerService {
         if (track.getArtist() != null && track.getArtist().length() > 0) {
             argsl.add(track.getArtist());
         }
-        argsl.add(track.getTitle());
+        argsl.add(track.getName());
         return Sanitizer.sanitize(argsl);
 
     }
 
     private void trackMatcher(Track track, List<SearchResult> beatSR) {
         List<String> args = retrieveArgs(track);
-//        beatSR.stream().forEach(searchResult -> {
-//            if (args.size() == 2) {
-//            if (searchResult.Artists().get(0).equals(args.get(0)) && searchResult.Title().equals(args.get(1))) {
-//                beatportTagger.fetchTrack(searchResult.Id());
-//            }
-//                     }
-//        });
     }
 
 }

@@ -39,7 +39,7 @@ public class DetailViewController {
     private Button cancelBtn;
 
 
-    private TracksRepository tracksRepository;
+    private final TracksRepository tracksRepository;
 
     @Inject
     public DetailViewController(TracksRepository tracksRepository) {
@@ -53,8 +53,8 @@ public class DetailViewController {
 
     private void saveActionListener(Track t) {
 
-        t.setTitle(this.titleTextField.getText());
         t.setArtist(this.artistTextField.getText());
+        t.setName(this.titleTextField.getText());
         t.setAlbum(this.albumTextField.getText());
         t.setGenre(this.genreTextField.getText());
         t.setYear(this.yearTextField.getText());
@@ -69,7 +69,7 @@ public class DetailViewController {
     public void setTrack(Track track) {
         this.cancelBtn.setOnMouseClicked(event -> closeActionListener());
         this.saveBtn.setOnMouseClicked(event -> saveActionListener(track));
-        this.titleTextField.setText(track.getTitle());
+        this.titleTextField.setText(track.getName());
         this.artistTextField.setText(track.getArtist());
         this.albumTextField.setText(track.getAlbum());
         this.genreTextField.setText(track.getGenre());

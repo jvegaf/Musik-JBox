@@ -38,7 +38,7 @@ public class TracksRepository {
 
 
     public void remove(String trackId) {
-        this.tracks.remove(this.tracks.stream().filter(track -> track.getId().equals(trackId)).findFirst().get());
+        this.tracks.remove(this.tracks.stream().filter(track -> track.getId().equals(trackId)).findFirst().orElseThrow());
     }
 
     private ObservableList<Track> getTracksProperty() {

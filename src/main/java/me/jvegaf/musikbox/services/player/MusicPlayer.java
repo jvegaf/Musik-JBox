@@ -12,13 +12,13 @@ import me.jvegaf.musikbox.tracks.Track;
 import java.io.File;
 
 public final class MusicPlayer {
-    private Track currentTrack;
+    private final Track currentTrack;
     private MediaPlayer mPlayer;
-    public StringProperty titleProperty;
-    public StringProperty artistProperty;
-    public ObjectProperty<Duration> currentPlayTimeProperty;
-    public ObjectProperty<Duration> totalDurationProperty;
-    public ObjectProperty<MediaPlayer.Status> statusProperty;
+    public final StringProperty titleProperty;
+    public final StringProperty artistProperty;
+    public final ObjectProperty<Duration> currentPlayTimeProperty;
+    public final ObjectProperty<Duration> totalDurationProperty;
+    public final ObjectProperty<MediaPlayer.Status> statusProperty;
 
     public MusicPlayer() {
         this.currentTrack = null;
@@ -37,7 +37,7 @@ public final class MusicPlayer {
         this.mPlayer = new MediaPlayer(media);
         this.mPlayer.play();
         setStatusProp();
-        this.titleProperty.setValue(track.getTitle());
+        this.titleProperty.setValue(track.getName());
         this.artistProperty.setValue(track.getArtist());
         this.totalDurationProperty.setValue(this.mPlayer.getTotalDuration());
         setCurrentPlayTimeProp();

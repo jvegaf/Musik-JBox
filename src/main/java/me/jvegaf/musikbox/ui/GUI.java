@@ -10,17 +10,15 @@ import javafx.stage.Stage;
 import me.jvegaf.musikbox.ui.views.MainViewController;
 
 import java.io.IOException;
-import java.util.Arrays;
+import java.util.List;
 
 public final class GUI extends Application {
 
-    private GuiceContext guiceContext;
-
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) {
         CSSFX.start();
-        guiceContext = new GuiceContext(this, () -> Arrays.asList(new GUIConfig()));
+        GuiceContext guiceContext = new GuiceContext(this, () -> List.of(new GUIConfig()));
         guiceContext.init();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/views/MainView.fxml"));
