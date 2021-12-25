@@ -68,7 +68,7 @@ public class MainViewController implements Initializable, MainController {
   @Override
   public void detailActionListener(Track t) {
     Stage detailStage = new Stage();
-      FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/DetailViewOld.fxml"));
+      FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/DetailView.fxml"));
     loader.setController(this.detailViewController);
     Parent root = null;
     try {
@@ -77,10 +77,11 @@ public class MainViewController implements Initializable, MainController {
       e.printStackTrace();
     }
     if (root == null) return;
-    Scene detailScene = new Scene(root, 563, 512);
+    Scene detailScene = new Scene(root, 600, 800);
     detailScene.getStylesheets().add("/styles/dark.css");
     detailViewController.setTrack(t);
     detailStage.setTitle("Song Detail");
+    detailStage.setResizable(false);
     detailStage.setScene(detailScene);
     detailStage.initOwner(headerPane.getScene().getWindow());
     detailStage.initModality(Modality.APPLICATION_MODAL);

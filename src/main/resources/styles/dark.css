@@ -19,7 +19,7 @@
     -sidebar-bg: -header-bg;
     -sidebar-item-active-bg: -fx-base;
     -scrollbar-track: #1f252e;
-    -scrollbar-thumb: rgba(255, 255, 255, 0.2);
+    -scrollbar-thumb: #ffffff33;
     -slider-bg: #1f252c;
     -slider-thumb: #cccccc;
     -btn-bg: #1f252e;
@@ -208,4 +208,19 @@
     -fx-text-fill: -txt-color;
     -fx-wrap-text: true;
     -fx-font-size: 14;
+}
+
+.comments-label {
+    -fx-alignment: top-right;
+    -fx-text-fill: -txt-color;
+    -fx-wrap-text: true;
+    -fx-font-size: 14;
+}
+
+.title-label {
+    -fx-font-size: 26;
+}
+.subtitle-label {
+    -fx-font-size: 18;
+    -fx-text-fill: #8f8484;
 }
