@@ -1,6 +1,6 @@
 package me.jvegaf.musikbox.services.tagger;
 
-import me.jvegaf.musikbox.services.web.client.Client;
+import me.jvegaf.musikbox.services.web.client.ClientWeb;
 import me.jvegaf.musikbox.services.web.client.QueryBuilder;
 import org.junit.jupiter.api.Test;
 
@@ -12,8 +12,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class BeatportTaggerTest {
 
-    final Client client = new Client();
-    final BeatportTagger tagger = new BeatportTagger(client);
+    final ClientWeb clientWeb = new ClientWeb();
+    final BeatportTagger tagger = new BeatportTagger(clientWeb);
 
     @Test
     void getTagsFromBeatport() {

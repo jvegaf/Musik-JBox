@@ -1,5 +1,7 @@
 package me.jvegaf.musikbox.tracks;
 
+import java.time.Duration;
+import java.time.LocalTime;
 import java.util.UUID;
 
 public final class Track {
@@ -18,7 +20,7 @@ public final class Track {
     private byte[] artworkData;
 
 
-    public Track()  {
+    public Track() {
         this.id = UUID.randomUUID().toString();
     }
 
@@ -72,6 +74,7 @@ public final class Track {
         this.duration = track.getDuration();
         this.key = track.getKey();
         this.artworkData = track.getArtworkData();
+        System.out.println("Metadata Imported: " + this.toString() );
         return this;
     }
 
@@ -137,6 +140,7 @@ public final class Track {
         return path;
     }
 
+
     public void setPath(String path) {
         this.path = path;
     }
@@ -178,6 +182,39 @@ public final class Track {
     }
 
     public void setDuration(String duration) {
-        this.duration = duration;
+        this.duration = sanitizeTime(duration);
+    }
+
+    @Override
+    public String toString() {
+        return "Track{" +
+                "id='" + id + '\'' +
+                ", artist='" + artist + '\'' +
+                ", name='" + name + '\'' +
+                ", album='" + album + '\'' +
+                ", genre='" + genre + '\'' +
+                ", year='" + year + '\'' +
+                ", bpm=" + bpm +
+                ", duration='" + duration + '\'' +
+                ", path='" + path + '\'' +
+                ", fileName='" + fileName + '\'' +
+                ", key='" + key + '\'' +
+                ", comments='" + comments + '\'' +
+                '}';
+    }
+
+    public String DurationDifference(Track otherTrack) {
+        var durationSelf = parseHelper(this.getDuration());
+        var durationOtherTrack = parseHelper(otherTrack.getDuration());
+        return Long.toUnsignedString(Duration.between(durationSelf, durationOtherTrack).toSeconds());
+    }
+
+    private static LocalTime parseHelper(String str) {
+        return LocalTime.parse("00:" + str);
+    }
+
+    private static String sanitizeTime(String timeStr) {
+        if (timeStr.length() < 5) return "0" + timeStr;
+        return timeStr;
     }
 }

@@ -28,7 +28,7 @@ public class TagService {
        f = (MP3File) AudioFileIO.read(file);
     } catch (CannotReadException | IOException | TagException | ReadOnlyFileException
             | InvalidAudioFrameException e) {
-      e.printStackTrace();
+      e.notify();
     }
     assert f != null;
     return generateTrack(file, f);

@@ -6,6 +6,7 @@ import com.google.gson.JsonParser;
 import me.jvegaf.musikbox.services.picture.PictureFetcher;
 import me.jvegaf.musikbox.tracks.Track;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +35,13 @@ public final class Parser {
         t.setKey(camelotKey + camelotNum);
         t.setYear(rootObj.get("publish_date").getAsString().substring(0, 4));
         String artworkUrl = rootObj.get("release").getAsJsonObject().get("image").getAsJsonObject().get("uri").getAsString();
-        t.setArtworkData(PictureFetcher.getFromURL(artworkUrl));
+
+        try {
+            byte[] fromURL = PictureFetcher.getFromURL(artworkUrl);
+            t.setArtworkData(fromURL);
+        } catch (IOException e) {
+            System.out.println("Error fetching artwork: " + e.getMessage());
+        }
 
         return t;
     }

@@ -103,6 +103,11 @@
     -fx-font-size: 15.0;
 }
 
+.context-menu .menu-item {
+    -fx-padding: 10 20 10 20;
+    -fx-text-fill: -txt-color;
+  }
+
 .list-cell{
     -fx-selection-bar-non-focused: derive(-fx-base, 20%);
 }

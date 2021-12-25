@@ -1,6 +1,8 @@
 package me.jvegaf.musikbox.ui.components;
 
 import com.google.inject.Inject;
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +17,10 @@ import me.jvegaf.musikbox.tracks.TracksRepository;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class Tracklist extends AnchorPane implements Initializable {
 
@@ -36,13 +41,15 @@ public class Tracklist extends AnchorPane implements Initializable {
     @FXML
     private TableColumn<Track, String> yearColumn;
 
-    private Track selectedTrack;
 
+    private Track selectedTrack;
+    private List<Track> selectedTracks;
     private final TracksRepository tracksRepository;
     private final CommandBus commandHandler;
 
     @Inject
     public Tracklist(TracksRepository repository, CommandBus commandHandler) {
+        selectedTracks = new ArrayList<>();
         this.tracksRepository = repository;
         this.commandHandler = commandHandler;
         URL resource = getClass().getResource("/components/Tracklist.fxml");
@@ -59,7 +66,18 @@ public class Tracklist extends AnchorPane implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.songsTableView.setItems(this.tracksRepository.tracksObjectProperty().getValue());
-        this.tracksRepository.tracksObjectProperty().addListener((observable, oldValue, newValue) -> refreshData(newValue));
+        this.tracksRepository.tracksObjectProperty().addListener((observable, oldValue, newValue) -> songsTableView.setItems(newValue));
+
+        TableView.TableViewSelectionModel<Track> selectionModel = this.songsTableView.getSelectionModel();
+        selectionModel.setSelectionMode(SelectionMode.MULTIPLE);
+        ObservableList<Track> selectedItems = selectionModel.getSelectedItems();
+        selectedItems.addListener((ListChangeListener<Track>) change -> {
+            System.out.println("Selection changed: " + change.getList().size());
+            selectedTracks.clear(); // FIXME: this is a hack
+            selectedTracks.addAll(change.getList().stream().toList());
+        });
+
+
 
         titleColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         artistColumn.setCellValueFactory(new PropertyValueFactory<>("artist"));
@@ -71,15 +89,12 @@ public class Tracklist extends AnchorPane implements Initializable {
 
         songsTableView.setRowFactory(tv -> {
             TableRow<Track> row = new TableRow<>();
-            ContextMenu menu = new ContextMenu();
-            MenuItem detailItem = new MenuItem("View Detail");
-            detailItem.setOnAction(actionEvent -> this.commandHandler.showTrackDetail(this.selectedTrack));
-            MenuItem playItem = new MenuItem("Play Song");
-            playItem.setOnAction(actionEvent -> this.commandHandler.playTrack(this.selectedTrack));
-            menu.getItems().addAll(detailItem, playItem);
+            ContextMenu menu = getContextMenu();
             row.setContextMenu(menu);
             row.setOnMouseClicked(event -> {
-                if (row.isEmpty()) { return; }
+                if (row.isEmpty()) {
+                    return;
+                }
                 this.selectedTrack = row.getItem();
                 if (event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2) {
                     this.commandHandler.playTrack(this.selectedTrack);
@@ -89,9 +104,26 @@ public class Tracklist extends AnchorPane implements Initializable {
         });
     }
 
-    private void refreshData(ObservableList<Track> newValue) {
-        songsTableView.setItems(newValue);
-//        songsTableView.refresh();
+    private ContextMenu getContextMenu() {
+        ContextMenu menu = new ContextMenu();
+        MenuItem fixallItem = new MenuItem("Fix all Tracks");
+        fixallItem.setOnAction(actionEvent -> this.commandHandler.fixTags(this.selectedTrack));
+        MenuItem detailItem = new MenuItem("View Detail");
+        detailItem.setOnAction(actionEvent -> this.commandHandler.showTrackDetail(this.selectedTrack));
+        MenuItem playItem = new MenuItem("Play Song");
+        playItem.setOnAction(actionEvent -> this.commandHandler.playTrack(this.selectedTrack));
+
+        MenuItem taggerItem = new MenuItem("Fix Track Metadata");
+        taggerItem.setOnAction(actionEvent -> this.commandHandler.fixTags(this.selectedTrack));
+
+        menu.getItems().addAll(
+                fixallItem,
+                new SeparatorMenuItem(),
+                detailItem,
+                playItem,
+                new SeparatorMenuItem(),
+                taggerItem);
+        return menu;
     }
 
 

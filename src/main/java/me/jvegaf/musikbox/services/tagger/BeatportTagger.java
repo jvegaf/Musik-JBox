@@ -5,8 +5,9 @@ import com.gargoylesoftware.htmlunit.html.DomNode;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.google.inject.Inject;
 import me.jvegaf.musikbox.services.parser.Parser;
-import me.jvegaf.musikbox.services.web.client.Client;
+import me.jvegaf.musikbox.services.web.client.ClientWeb;
 import me.jvegaf.musikbox.services.web.client.QueryBuilder;
 import me.jvegaf.musikbox.tracks.Track;
 
@@ -26,8 +27,10 @@ public class BeatportTagger implements Tagger {
     private OAuthDTO token = null;
     private final HttpMethod GET_METHOD = GET;
 
-    public BeatportTagger(Client client) {
-        this.client = client.getWebClient();
+    @Inject
+    public BeatportTagger(ClientWeb clientWeb) {
+
+        this.client = clientWeb.Client();
     }
 
     @Override
@@ -66,7 +69,7 @@ public class BeatportTagger implements Tagger {
         List<String> artists = div.querySelector(".buk-track-artists").querySelectorAll("a").stream().map(a -> a.getFirstChild().toString()).collect(Collectors.toList());
         String link = URI_BASE + div.querySelectorAll("a").get(0).getAttributes().getNamedItem("href").getNodeValue();
         String title_remixed = title + " - " + remixed;
-        return new SearchResult(id, title_remixed, artists, link);
+        return new SearchResult(id, title_remixed, title, artists, link);
     }
 
     private OAuthDTO updateToken() {
