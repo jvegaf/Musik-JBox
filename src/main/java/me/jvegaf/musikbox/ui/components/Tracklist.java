@@ -61,7 +61,7 @@ public class Tracklist extends AnchorPane implements Initializable {
         this.songsTableView.setItems(this.tracksRepository.tracksObjectProperty().getValue());
         this.tracksRepository.tracksObjectProperty().addListener((observable, oldValue, newValue) -> refreshData(newValue));
 
-        titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
+        titleColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         artistColumn.setCellValueFactory(new PropertyValueFactory<>("artist"));
         albumColumn.setCellValueFactory(new PropertyValueFactory<>("album"));
         genreColumn.setCellValueFactory(new PropertyValueFactory<>("genre"));

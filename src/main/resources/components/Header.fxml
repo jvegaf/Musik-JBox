@@ -4,30 +4,22 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root alignment="CENTER" stylesheets="@../styles/dark.css" type="HBox" xmlns="http://javafx.com/javafx/11.0.2"
-         xmlns:fx="http://javafx.com/fxml/1">
+<fx:root alignment="CENTER" stylesheets="@../styles/dark.css" type="HBox" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
     <padding>
-        <Insets left="20.0" right="20.0"/>
+        <Insets left="20.0" right="20.0" />
     </padding>
     <AnchorPane HBox.hgrow="SOMETIMES">
-        <Button fx:id="prevBtn" layoutX="26.0" layoutY="23.0" mnemonicParsing="false" styleClass="prev-btn"/>
-        <Button fx:id="playBtn" layoutX="79.0" layoutY="18.0" mnemonicParsing="false" styleClass="play-btn"/>
-        <Button fx:id="pauseBtn" layoutX="79.0" layoutY="18.0" mnemonicParsing="false" styleClass="pause-btn"
-                visible="false"/>
-        <Button fx:id="nextBtn" layoutX="130.0" layoutY="23.0" mnemonicParsing="false" styleClass="next-btn"/>
+        <Button fx:id="prevBtn" layoutX="26.0" layoutY="23.0" mnemonicParsing="false" styleClass="prev-btn" />
+        <Button fx:id="playBtn" layoutX="79.0" layoutY="18.0" mnemonicParsing="false" styleClass="play-btn" />
+        <Button fx:id="pauseBtn" layoutX="75.0" layoutY="18.0" mnemonicParsing="false" styleClass="pause-btn" visible="false" />
+        <Button fx:id="nextBtn" layoutX="130.0" layoutY="23.0" mnemonicParsing="false" styleClass="next-btn" />
     </AnchorPane>
     <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefWidth="350.0" styleClass="player" HBox.hgrow="NEVER">
-        <Label id="trackArtistLabel" fx:id="artistLabel" alignment="CENTER" layoutX="10.0" textAlignment="CENTER"
-               AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"/>
-        <Label id="trackTitleLabel" fx:id="titleLabel" alignment="CENTER" layoutX="10.0" layoutY="20.0"
-               textAlignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"/>
-        <ProgressBar fx:id="progressBar" layoutX="10.0" layoutY="30.0" minHeight="-Infinity" minWidth="-Infinity"
-                     prefHeight="5.0" progress="0.0" stylesheets="@../styles/dark.css" AnchorPane.bottomAnchor="3.0"
-                     AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0"/>
+        <Label id="trackArtistLabel" fx:id="artistLabel" alignment="CENTER" layoutX="10.0" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+        <Label id="trackTitleLabel" fx:id="titleLabel" alignment="CENTER" layoutX="10.0" layoutY="20.0" maxHeight="-Infinity" prefHeight="35.0" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+        <ProgressBar fx:id="progressBar" layoutX="10.0" layoutY="30.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="5.0" progress="0.0" stylesheets="@../styles/dark.css" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
     </AnchorPane>
     <AnchorPane HBox.hgrow="SOMETIMES">
-        <Button fx:id="openFolderBtn" layoutX="202.0" layoutY="20.0" mnemonicParsing="false" prefHeight="30.0"
-                prefWidth="84.0" text="Open" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="55.0"
-                AnchorPane.topAnchor="20.0"/>
+        <Button fx:id="openFolderBtn" layoutX="202.0" layoutY="20.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="84.0" text="Open" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="55.0" AnchorPane.topAnchor="20.0" />
     </AnchorPane>
 </fx:root>

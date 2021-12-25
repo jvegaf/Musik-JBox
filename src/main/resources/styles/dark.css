@@ -46,6 +46,8 @@
 .text-field {
     -fx-prompt-text-fill: -txt-color;
     -fx-region-background-color: -input-bg;
+    -fx-font-size: 1.2em;
+
 }
 
 .titulo{
@@ -187,7 +189,8 @@
 
 #trackTitleLabel {
     -fx-padding: 10 0 0 0;
-    -fx-font-size: 16;
+    -fx-font-size: 1.7em;
+    -fx-wrap-text: true;
 }
 
 #trackArtistLabel {
@@ -207,14 +210,12 @@
     -fx-alignment: center-right;
     -fx-text-fill: -txt-color;
     -fx-wrap-text: true;
-    -fx-font-size: 14;
 }
 
 .comments-label {
     -fx-alignment: top-right;
     -fx-text-fill: -txt-color;
     -fx-wrap-text: true;
-    -fx-font-size: 14;
 }
 
 .title-label {

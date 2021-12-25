@@ -3,6 +3,7 @@ package me.jvegaf.musikbox.ui.views;
 import com.google.inject.Inject;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -33,6 +34,12 @@ public class DetailViewController {
     private TextArea commentsTextField;
     @FXML
     private TextField keyTextField;
+    @FXML
+    private Label titleLabel;
+    @FXML
+    private Label artistLabel;
+    @FXML
+    private Label albumLabel;
     @FXML
     private Button saveBtn;
     @FXML
@@ -78,6 +85,10 @@ public class DetailViewController {
             this.bpmTextField.setText(String.valueOf(track.getBpm()));
         this.keyTextField.setText(track.getKey());
         this.commentsTextField.setText(track.getComments());
+
+        this.titleLabel.textProperty().bind(this.titleTextField.textProperty());
+        this.artistLabel.textProperty().bind(this.artistTextField.textProperty());
+        this.albumLabel.textProperty().bind(this.albumTextField.textProperty());
 
         if (track.getArtworkData().length < 1) {
             return;

@@ -16,9 +16,9 @@
                 </ImageView>
                 <VBox alignment="CENTER" spacing="5.0" HBox.hgrow="ALWAYS">
                     <children>
-                        <Label layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" styleClass="title-label" text="Dilculpen La Interupcon" VBox.vgrow="SOMETIMES" />
-                        <Label maxWidth="1.7976931348623157E308" styleClass="subtitle-label" text="Andre Salmon feat. Mauro C.Dream; " VBox.vgrow="NEVER" />
-                        <Label layoutX="10.0" layoutY="25.0" maxWidth="1.7976931348623157E308" styleClass="subtitle-label" text="Dilculpen La Interupcon EP" VBox.vgrow="SOMETIMES" />
+                        <Label fx:id="titleLabel" layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" styleClass="title-label" VBox.vgrow="SOMETIMES" />
+                        <Label fx:id="artistLabel" maxWidth="1.7976931348623157E308" styleClass="subtitle-label" VBox.vgrow="NEVER" />
+                        <Label fx:id="albumLabel" layoutX="10.0" layoutY="25.0" maxWidth="1.7976931348623157E308" styleClass="subtitle-label" VBox.vgrow="SOMETIMES" />
                     </children>
                 </VBox>
             </children>
@@ -33,7 +33,7 @@
                         <Insets right="8.0" />
                     </padding>
                 </Label>
-                <TextField fx:id="titleTextField" HBox.hgrow="ALWAYS" />
+                <TextField fx:id="titleTextField" text="hello world" HBox.hgrow="ALWAYS" />
             </children>
         </HBox>
         <HBox alignment="CENTER" layoutX="30.0" layoutY="30.0">
