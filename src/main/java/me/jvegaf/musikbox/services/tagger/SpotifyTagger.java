@@ -64,6 +64,12 @@ public class SpotifyTagger implements Tagger {
         return result;
     }
 
+    @Override
+    public me.jvegaf.musikbox.tracks.Track fetchTrack(String id) {
+        // TODO: Implement this method
+        return null;
+    }
+
     private SearchTracksRequest makeTrackSearchRequest(List<String> reqArgs) {
         String req = QueryBuilder.build(reqArgs, " ").Value();
 
@@ -72,7 +78,7 @@ public class SpotifyTagger implements Tagger {
 
     private List<SearchResult> makeTags(Track[] tracks) {
         List<SearchResult> result = new ArrayList<>();
-        for (Track t: tracks) {
+        for (Track t : tracks) {
             SearchResult td = new SearchResult();
             td.setId(t.getId());
             td.setTitle(t.getName());

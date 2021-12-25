@@ -5,8 +5,10 @@ import com.gargoylesoftware.htmlunit.html.DomNode;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import me.jvegaf.musikbox.services.parser.Parser;
 import me.jvegaf.musikbox.services.web.client.Client;
 import me.jvegaf.musikbox.services.web.client.QueryBuilder;
+import me.jvegaf.musikbox.tracks.Track;
 
 import java.io.IOException;
 import java.net.URL;
@@ -84,7 +86,7 @@ public class BeatportTagger implements Tagger {
         return null;
     }
 
-    public void fetchTrack(String id) {
+    public Track fetchTrack(String id) {
         OAuthDTO token = updateToken();
         String uri = String.format("https://api.beatport.com/v4/catalog/tracks/%s", id);
         WebRequest req;
@@ -95,12 +97,13 @@ public class BeatportTagger implements Tagger {
             Page page = client.getPage(req);
             WebResponse response = page.getWebResponse();
             if (response.getContentType().equals("application/json")) {
-                String json = response.getContentAsString();
-                System.out.println(json);
+                String jsonStr = response.getContentAsString();
+                return Parser.parseTrack(jsonStr);
             }
 
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return null;
     }
 }

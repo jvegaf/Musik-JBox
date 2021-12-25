@@ -62,6 +62,19 @@ public final class Track {
         );
     }
 
+    public Track importMetadataOf(Track track) {
+        this.artist = track.getArtist();
+        this.name = track.getName();
+        this.album = track.getAlbum();
+        this.genre = track.getGenre();
+        this.year = track.getYear();
+        this.setBpm(track.getBpm());
+        this.duration = track.getDuration();
+        this.key = track.getKey();
+        this.artworkData = track.getArtworkData();
+        return this;
+    }
+
     public String getId() {
         return id;
     }

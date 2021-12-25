@@ -18,10 +18,11 @@ public final class TaggerService {
         this.spotifyTagger = spotifyTagger;
     }
 
-    public void fetchTags(Track track) {
+    public Track fetchTags(Track track) {
         var args = retrieveArgs(track);
         var beatSR = beatportTagger.search(args);
-//        Track resultTrack = trackMatcher(track, beatSR);
+        var resultTrack = beatportTagger.fetchTrack(beatSR.get(0).Id());
+        return track.importMetadataOf(resultTrack);
     }
 
 
@@ -35,8 +36,6 @@ public final class TaggerService {
 
     }
 
-    private void trackMatcher(Track track, List<SearchResult> beatSR) {
-        List<String> args = retrieveArgs(track);
-    }
+    // TODO: implement trackMatcher
 
 }
