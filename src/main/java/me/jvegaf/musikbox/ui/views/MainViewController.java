@@ -68,7 +68,7 @@ public class MainViewController implements Initializable, MainController {
   @Override
   public void detailActionListener(Track t) {
     Stage detailStage = new Stage();
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/DetailView.fxml"));
+      FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/DetailViewOld.fxml"));
     loader.setController(this.detailViewController);
     Parent root = null;
     try {
