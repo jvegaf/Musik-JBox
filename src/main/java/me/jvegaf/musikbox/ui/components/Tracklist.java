@@ -1,7 +1,6 @@
 package me.jvegaf.musikbox.ui.components;
 
 import com.google.inject.Inject;
-import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -20,7 +19,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 
 public class Tracklist extends AnchorPane implements Initializable {
 
@@ -107,7 +105,7 @@ public class Tracklist extends AnchorPane implements Initializable {
     private ContextMenu getContextMenu() {
         ContextMenu menu = new ContextMenu();
         MenuItem fixallItem = new MenuItem("Fix all Tracks");
-        fixallItem.setOnAction(actionEvent -> this.commandHandler.fixTags(this.selectedTrack));
+        fixallItem.setOnAction(actionEvent -> this.commandHandler.fixTags(this.selectedTracks));
         MenuItem detailItem = new MenuItem("View Detail");
         detailItem.setOnAction(actionEvent -> this.commandHandler.showTrackDetail(this.selectedTrack));
         MenuItem playItem = new MenuItem("Play Song");

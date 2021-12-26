@@ -5,9 +5,7 @@ import com.gargoylesoftware.htmlunit.html.DomNode;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.google.inject.Inject;
 import me.jvegaf.musikbox.services.parser.Parser;
-import me.jvegaf.musikbox.services.web.client.ClientWeb;
 import me.jvegaf.musikbox.services.web.client.QueryBuilder;
 import me.jvegaf.musikbox.tracks.Track;
 
@@ -16,6 +14,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static com.gargoylesoftware.htmlunit.HttpMethod.GET;
@@ -27,10 +26,10 @@ public class BeatportTagger implements Tagger {
     private OAuthDTO token = null;
     private final HttpMethod GET_METHOD = GET;
 
-    @Inject
-    public BeatportTagger(ClientWeb clientWeb) {
 
-        this.client = clientWeb.Client();
+    public BeatportTagger() {
+
+        this.client = new WebClient();
     }
 
     @Override
@@ -89,24 +88,23 @@ public class BeatportTagger implements Tagger {
         return null;
     }
 
-    public Track fetchTrack(String id) {
+    public Optional<Track> fetchTrack(String id) {
         OAuthDTO token = updateToken();
         String uri = String.format("https://api.beatport.com/v4/catalog/tracks/%s", id);
         WebRequest req;
         try {
             req = new WebRequest(new URL(uri), GET_METHOD);
-            assert token != null;
+            if (token == null) return Optional.empty();
             req.setAdditionalHeader("Authorization", "Bearer " + token.Value());
             Page page = client.getPage(req);
             WebResponse response = page.getWebResponse();
             if (response.getContentType().equals("application/json")) {
                 String jsonStr = response.getContentAsString();
-                return Parser.parseTrack(jsonStr);
+                return Optional.of(Parser.parseTrack(jsonStr));
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+        return Optional.empty();
     }
 }

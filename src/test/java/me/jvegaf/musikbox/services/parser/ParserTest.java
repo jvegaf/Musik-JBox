@@ -29,7 +29,7 @@ final class ParserTest {
         assertEquals("Un Congo (Extended Mix)", t.getName());
         assertEquals("A10", t.getKey());
         assertEquals("2020", t.getYear());
-        assertEquals("7:11", t.getDuration());
+        assertEquals("07:11", t.getDuration());
     }
 
     @Test
@@ -48,6 +48,6 @@ final class ParserTest {
         assertEquals("Yo Tengo Un Congo (Extended Mix)", t.getName());
         assertEquals("B1", t.getKey());
         assertEquals("2021", t.getYear());
-        assertEquals("6:10", t.getDuration());
+        assertEquals("06:10", t.getDuration());
     }
 }

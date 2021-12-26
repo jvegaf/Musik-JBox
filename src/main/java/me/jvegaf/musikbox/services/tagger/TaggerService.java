@@ -1,47 +1,41 @@
 package me.jvegaf.musikbox.services.tagger;
 
-import com.google.inject.Inject;
 import me.jvegaf.musikbox.services.web.client.Sanitizer;
 import me.jvegaf.musikbox.tracks.Track;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Collections;
 
 
 public final class TaggerService {
     private final BeatportTagger beatportTagger;
 
-    @Inject
-    public TaggerService(BeatportTagger beatportTagger) {
-        this.beatportTagger = beatportTagger;
+    public TaggerService() {
+        this.beatportTagger = new BeatportTagger();
     }
 
-    public Track fetchTags(Track track) throws RuntimeException {
+    public Track fetchTags(Track track) {
         var args = retrieveArgs(track);
         var beatSR = beatportTagger.search(args);
         System.out.println("total search results: " + beatSR.size());
         String no_results_found = "No results found";
         if (beatSR.size() < 1) {
             System.out.println(no_results_found);
-            throw new RuntimeException(no_results_found);
+            return track;
         }
-        var resultTrack = matchResultsWithTrack(track, beatSR);
-        if (resultTrack == null) {
-            System.out.println(no_results_found);
-            throw new RuntimeException(no_results_found);
-        }
-        return track.importMetadataOf(resultTrack);
+        var t = matchResultsWithTrack(track, beatSR);
+        return track.importMetadataOf(t);
     }
 
     private Track matchResultsWithTrack(Track track, List<SearchResult> beatSR) {
         List<Track> resultTracks = new ArrayList<>();
         for (SearchResult sr : beatSR) {
-            resultTracks.add(beatportTagger.fetchTrack(sr.Id()));
+            var o = beatportTagger.fetchTrack(sr.Id());
+            o.ifPresent(resultTracks::add);
         }
         resultTracks.sort(Comparator.comparing(t -> t.DurationDifference(track)));
-        return resultTracks.stream().findFirst().orElse(null);
+        return resultTracks.get(0);
     }
 
     private boolean matchTrack(SearchResult sr, Track track) {

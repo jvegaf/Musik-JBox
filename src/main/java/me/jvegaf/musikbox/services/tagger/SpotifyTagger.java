@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 public class SpotifyTagger implements Tagger {
 
@@ -65,7 +66,7 @@ public class SpotifyTagger implements Tagger {
     }
 
     @Override
-    public me.jvegaf.musikbox.tracks.Track fetchTrack(String id) {
+    public Optional<me.jvegaf.musikbox.tracks.Track> fetchTrack(String id) {
         // TODO: Implement this method
         return null;
     }
