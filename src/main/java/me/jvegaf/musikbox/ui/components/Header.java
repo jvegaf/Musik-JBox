@@ -134,8 +134,8 @@ public final class Header extends HBox implements Initializable {
     }
 
     private void autoLoad() {
-//        String path = "C:\\Users\\josev\\Documents\\CANELITA-PA-COLOCAR";
-        String path = "//home//jose//Documents//CANELITA-PA-COLOCAR";
+        String path = "C:\\Users\\josev\\Documents\\CANELITA-PA-COLOCAR";
+//        String path = "//home//jose//Documents//CANELITA-PA-COLOCAR";
         ArrayList<Track> tracks = MusicFileService.processMusicFilesOfPath(new File(path));
         this.commandHandler.addBatch(tracks);
     }

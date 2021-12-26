@@ -6,11 +6,13 @@ import me.jvegaf.musikbox.tracks.TracksRepository;
 
 public final class FetchTask implements Runnable {
 
+    private final int taskId;
     private TaggerService taggerService;
     private TracksRepository tracksRepository;
     private Track track;
 
-    public FetchTask(TracksRepository tracksRepository, Track track) {
+    public FetchTask(TracksRepository tracksRepository, Track track, int taskId) {
+        this.taskId = taskId;
         this.taggerService = new TaggerService();
         this.tracksRepository = tracksRepository;
         this.track = track;
@@ -18,7 +20,9 @@ public final class FetchTask implements Runnable {
 
     @Override
     public void run() {
+        System.out.println("Running task: " + taskId);
         var t = taggerService.fetchTags(track);
         tracksRepository.updateTrack(t);
+        System.out.println("Task: " + taskId + " finished");
     }
 }

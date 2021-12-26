@@ -14,6 +14,7 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 
+@SuppressWarnings("StatementWithEmptyBody")
 public final class CommandHandler implements CommandBus {
 
     private final TracksRepository tracksRepository;
@@ -75,17 +76,20 @@ public final class CommandHandler implements CommandBus {
         System.out.println(tracks.size() + " tracks to fix\n\n");
 
         List<FetchTask> tasks = new ArrayList<>();
-        for (Track track : tracks) {
-            tasks.add(new FetchTask(tracksRepository, track));
+        for (int i = 0; i < tracks.size(); i++) {
+            tasks.add(new FetchTask(tracksRepository, tracks.get(i), i));
         }
 
-        ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(4);
-        for (int i = 0; i < tasks.size(); i++) {
-            System.out.println("Adding task " + i + 1 + " of " + tasks.size());
-            executor.execute(tasks.get(i));
+        ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(5);
+        for (FetchTask task : tasks) {
+            executor.execute(task);
         }
 
         executor.shutdown();
+
+        while (!executor.isTerminated()) {
+        }
+        System.out.println("Finished all threads");
 
 
         System.out.println("All tracks updated");

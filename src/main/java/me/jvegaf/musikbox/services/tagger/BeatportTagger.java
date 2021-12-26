@@ -3,6 +3,7 @@ package me.jvegaf.musikbox.services.tagger;
 import com.gargoylesoftware.htmlunit.*;
 import com.gargoylesoftware.htmlunit.html.DomNode;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
+import com.gargoylesoftware.htmlunit.javascript.SilentJavaScriptErrorListener;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import me.jvegaf.musikbox.services.parser.Parser;
@@ -30,6 +31,8 @@ public class BeatportTagger implements Tagger {
     public BeatportTagger() {
 
         this.client = new WebClient();
+        this.client.setJavaScriptErrorListener(new SilentJavaScriptErrorListener());
+        this.client.setCssErrorHandler(new SilentCssErrorHandler());
     }
 
     @Override
