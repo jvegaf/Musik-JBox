@@ -80,9 +80,12 @@ public final class CommandHandler implements CommandBus {
             tasks.add(new FetchTask(tracksRepository, tracks.get(i), i));
         }
 
-        ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(5);
+        var executor = Executors.newCachedThreadPool();
+//        ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newCachedThreadPool();
+//        ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(1);
+
         for (FetchTask task : tasks) {
-            executor.execute(task);
+            executor.submit(task);
         }
 
         executor.shutdown();

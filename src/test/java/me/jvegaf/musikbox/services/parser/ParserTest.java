@@ -1,5 +1,6 @@
 package me.jvegaf.musikbox.services.parser;
 
+import me.jvegaf.musikbox.services.tagger.SearchResult;
 import me.jvegaf.musikbox.tracks.Track;
 import org.junit.jupiter.api.Test;
 
@@ -7,14 +8,15 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
 import java.util.Objects;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 final class ParserTest {
 
     @Test
-    void tryAGenerateTrackWithOneArtistFromJSONString() {
+    void tryAGenerateAListOfSearchResults() {
         File file = new File(Objects.requireNonNull(getClass().getClassLoader().getResource("response.json")).getFile());
         Path filePath = Path.of(file.getAbsolutePath());
         String responseStr = null;
@@ -24,17 +26,14 @@ final class ParserTest {
             e.printStackTrace();
         }
 
-        Track t = Parser.parseTrack(responseStr);
-        assertEquals("Joeski", t.getArtist());
-        assertEquals("Un Congo (Extended Mix)", t.getName());
-        assertEquals("A10", t.getKey());
-        assertEquals("2020", t.getYear());
-        assertEquals("07:11", t.getDuration());
+        List<SearchResult> result = Parser.getResultsFromResponse(responseStr);
+        assertNotNull(result);
+        assertTrue(result.size() > 0);
     }
 
     @Test
-    void tryAGenerateTrackWithTwoArtistsFromJSONString() {
-        File file = new File(Objects.requireNonNull(getClass().getClassLoader().getResource("response2artist.json")).getFile());
+    void tryGenerateSearchResult() {
+        File file = new File(Objects.requireNonNull(getClass().getClassLoader().getResource("track2artist.json")).getFile());
         Path filePath = Path.of(file.getAbsolutePath());
         String responseStr = null;
         try {
@@ -43,11 +42,14 @@ final class ParserTest {
             e.printStackTrace();
         }
 
-        Track t = Parser.parseTrack(responseStr);
-        assertEquals("Ben A, Alejandro Penaloza", t.getArtist());
-        assertEquals("Yo Tengo Un Congo (Extended Mix)", t.getName());
-        assertEquals("B1", t.getKey());
-        assertEquals("2021", t.getYear());
-        assertEquals("06:10", t.getDuration());
+        List<SearchResult> results = Parser.getResultsFromResponse(responseStr);
+        SearchResult result = results.get(0);
+        assertEquals("Ben A", result.Artists().get(0));
+        assertEquals("Alejandro Penaloza", result.Artists().get(1));
+        assertEquals("Yo Tengo Un Congo", result.Title());
+        assertEquals("Extended Mix", result.RemixName());
+        assertEquals("B1", result.Key());
+        assertEquals("2021", result.Year());
+        assertEquals("06:10", result.Duration());
     }
 }

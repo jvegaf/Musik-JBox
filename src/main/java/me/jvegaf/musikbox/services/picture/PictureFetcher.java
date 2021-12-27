@@ -7,28 +7,37 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public final class PictureFetcher {
-    public static byte[] getFromURL(final String imageUrl) throws IOException {
 
 
-        URL url = new URL(imageUrl);
+    public static byte[] getFromURL(String imageUrl) {
+
+
+        URL url = null;
+        try {
+            url = new URL(imageUrl);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
 
 
         ByteArrayOutputStream output = new ByteArrayOutputStream();
 
-            try (InputStream stream = url.openStream())
-            {
+        if (url != null) {
+            try (InputStream stream = url.openStream()) {
                 byte[] buffer = new byte[4096];
 
-                while (true)
-                {
+                while (true) {
                     int bytesRead = stream.read(buffer);
-                    if (bytesRead < 0) { break; }
+                    if (bytesRead < 0) {
+                        break;
+                    }
                     output.write(buffer, 0, bytesRead);
                 }
             } catch (IOException e) {
-                throw e;
+                e.printStackTrace();
             }
-
-        return output.toByteArray();
+            return output.toByteArray();
+        }
+        return new byte[0];
     }
 }

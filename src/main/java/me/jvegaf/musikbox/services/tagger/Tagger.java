@@ -8,5 +8,5 @@ import java.util.Optional;
 public interface Tagger {
     List<SearchResult> search(List<String> reqArgs);
 
-    Optional<Track> fetchTrack(String id);
+//    Optional<Track> fetchTrack(String id);
 }

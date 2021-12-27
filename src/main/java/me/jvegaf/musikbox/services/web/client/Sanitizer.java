@@ -9,7 +9,14 @@ public final class Sanitizer {
         var res = new ArrayList<String>();
 
         for (String qArg : qArgs) {
-            var strArr = qArg.replaceAll("_", " ").trim().split(" ");
+            var strArr = qArg
+                    .replaceAll("_", " ")
+                    .replaceAll("-", " ")
+                    .replaceAll("[(]", " ")
+                    .replaceAll("[)]", " ")
+                    .replaceAll(" {2}", " ")
+                    .trim()
+                    .split(" ");
             res.addAll(Arrays.asList(strArr));
         }
 

@@ -1,119 +1,2749 @@
 {
-  "artists": [
+  "tracks": [
     {
-      "id": 583,
-      "image": {
-        "id": 12097526,
-        "uri": "https://geo-media.beatport.com/image_size/590x404/e8183cf3-dcfd-49af-a980-87236a370fde.jpg",
-        "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/e8183cf3-dcfd-49af-a980-87236a370fde.jpg"
+      "artists": [
+        {
+          "id": 583,
+          "image": {
+            "id": 12097526,
+            "uri": "https://geo-media.beatport.com/image_size/590x404/e8183cf3-dcfd-49af-a980-87236a370fde.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/e8183cf3-dcfd-49af-a980-87236a370fde.jpg"
+          },
+          "name": "Joeski",
+          "slug": "joeski",
+          "url": "https://api.beatport.com/v4/catalog/artists/583/"
+        }
+      ],
+      "available_worldwide": true,
+      "bpm": 125,
+      "catalog_number": "SAVED21501Z",
+      "current_status": {
+        "id": 10,
+        "name": "General Content",
+        "url": "https://api.beatport.com/v4/auxiliary/current-status/10/"
       },
-      "name": "Joeski",
-      "slug": "joeski",
-      "url": "https://api.beatport.com/v4/catalog/artists/583/"
+      "encoded_date": "2020-06-04T14:22:45-06:00",
+      "exclusive": false,
+      "free_downloads": [],
+      "free_download_start_date": null,
+      "free_download_end_date": null,
+      "genre": {
+        "id": 11,
+        "name": "Tech House",
+        "slug": "tech-house",
+        "url": "https://api.beatport.com/v4/catalog/genres/11/"
+      },
+      "id": 13732823,
+      "image": {
+        "id": 25588766,
+        "uri": "https://geo-media.beatport.com/image_size/1500x250/611a2003-ef05-444c-b8b9-c7bda2025ec9.png",
+        "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/611a2003-ef05-444c-b8b9-c7bda2025ec9.png"
+      },
+      "is_available_for_streaming": true,
+      "isrc": "GBJAJ2001435",
+      "key": {
+        "camelot_number": 10,
+        "camelot_letter": "A",
+        "chord_type": {
+          "id": 1,
+          "name": "Minor",
+          "url": "https://api.beatport.com/v4/catalog/chord-types/1/"
+        },
+        "id": 10,
+        "is_sharp": false,
+        "is_flat": false,
+        "letter": "B",
+        "name": "B Minor",
+        "url": "https://api.beatport.com/v4/catalog/keys/10/"
+      },
+      "label_track_identifier": "2766979583",
+      "length": "7:11",
+      "length_ms": 431040,
+      "mix_name": "Extended Mix",
+      "name": "Un Congo",
+      "new_release_date": "2020-06-26",
+      "pre_order": false,
+      "pre_order_date": "2020-06-12",
+      "price": {
+        "code": "EUR",
+        "symbol": "€",
+        "value": 1.29,
+        "display": "€1.29"
+      },
+      "publish_date": "2020-06-26",
+      "release": {
+        "id": 2999267,
+        "name": "Un Congo EP",
+        "image": {
+          "id": 25588206,
+          "uri": "https://geo-media.beatport.com/image_size/1400x1400/f43546df-6888-4f67-97e9-4a84439d52c1.jpg",
+          "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/f43546df-6888-4f67-97e9-4a84439d52c1.jpg"
+        },
+        "label": {
+          "id": 1475,
+          "name": "Saved Records",
+          "image": {
+            "id": 11455645,
+            "uri": "https://geo-media.beatport.com/image_size/500x500/46f6defa-3106-4b65-99d1-682e5e819db8.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/46f6defa-3106-4b65-99d1-682e5e819db8.jpg"
+          },
+          "slug": "saved-records"
+        },
+        "slug": "un-congo-ep"
+      },
+      "remixers": [],
+      "sale_type": {
+        "id": 1,
+        "name": "purchase",
+        "url": "https://api.beatport.com/v4/auxiliary/sale-types/1/"
+      },
+      "sample_url": "https://geo-samples.beatport.com/track/e1a178e8-2104-49ef-8d5e-b5587b0420ae.LOFI.mp3",
+      "sample_start_ms": 172416,
+      "sample_end_ms": 292416,
+      "slug": "un-congo",
+      "sub_genre": null,
+      "url": "https://api.beatport.com/v4/catalog/tracks/13732823/",
+      "is_hype": false
+    },
+    {
+      "artists": [
+        {
+          "id": 583,
+          "image": {
+            "id": 12097526,
+            "uri": "https://geo-media.beatport.com/image_size/590x404/e8183cf3-dcfd-49af-a980-87236a370fde.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/e8183cf3-dcfd-49af-a980-87236a370fde.jpg"
+          },
+          "name": "Joeski",
+          "slug": "joeski",
+          "url": "https://api.beatport.com/v4/catalog/artists/583/"
+        }
+      ],
+      "available_worldwide": true,
+      "bpm": 125,
+      "catalog_number": "TOOL96601Z",
+      "current_status": {
+        "id": 10,
+        "name": "General Content",
+        "url": "https://api.beatport.com/v4/auxiliary/current-status/10/"
+      },
+      "encoded_date": "2020-09-07T15:39:35-06:00",
+      "exclusive": false,
+      "free_downloads": [],
+      "free_download_start_date": null,
+      "free_download_end_date": null,
+      "genre": {
+        "id": 11,
+        "name": "Tech House",
+        "slug": "tech-house",
+        "url": "https://api.beatport.com/v4/catalog/genres/11/"
+      },
+      "id": 14173050,
+      "image": {
+        "id": 27629162,
+        "uri": "https://geo-media.beatport.com/image_size/1500x250/2aa30ed0-581f-494f-a156-d26c69975de6.png",
+        "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/2aa30ed0-581f-494f-a156-d26c69975de6.png"
+      },
+      "is_available_for_streaming": true,
+      "isrc": "GBJAJ2001435",
+      "key": {
+        "camelot_number": 1,
+        "camelot_letter": "A",
+        "chord_type": {
+          "id": 1,
+          "name": "Minor",
+          "url": "https://api.beatport.com/v4/catalog/chord-types/1/"
+        },
+        "id": 1,
+        "is_sharp": false,
+        "is_flat": true,
+        "letter": "A",
+        "name": "Ab Minor",
+        "url": "https://api.beatport.com/v4/catalog/keys/1/"
+      },
+      "label_track_identifier": "2766979583",
+      "length": "7:11",
+      "length_ms": 431040,
+      "mix_name": "Extended Mix",
+      "name": "Un Congo",
+      "new_release_date": "2020-09-25",
+      "pre_order": false,
+      "pre_order_date": "2020-09-11",
+      "price": {
+        "code": "EUR",
+        "symbol": "€",
+        "value": 1.29,
+        "display": "€1.29"
+      },
+      "publish_date": "2020-09-25",
+      "release": {
+        "id": 3112710,
+        "name": "Toolroom House Party Vol. 3",
+        "image": {
+          "id": 27629084,
+          "uri": "https://geo-media.beatport.com/image_size/1400x1400/c0bf649c-38dd-43be-b31b-8d1ea0137b40.jpg",
+          "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/c0bf649c-38dd-43be-b31b-8d1ea0137b40.jpg"
+        },
+        "label": {
+          "id": 495,
+          "name": "Toolroom",
+          "image": {
+            "id": 11530700,
+            "uri": "https://geo-media.beatport.com/image_size/500x500/41217a0b-92e4-4fbd-9223-d513c62dd411.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/41217a0b-92e4-4fbd-9223-d513c62dd411.jpg"
+          },
+          "slug": "toolroom"
+        },
+        "slug": "toolroom-house-party-vol-3"
+      },
+      "remixers": [],
+      "sale_type": {
+        "id": 1,
+        "name": "purchase",
+        "url": "https://api.beatport.com/v4/auxiliary/sale-types/1/"
+      },
+      "sample_url": "https://geo-samples.beatport.com/track/2aa30ed0-581f-494f-a156-d26c69975de6.LOFI.mp3",
+      "sample_start_ms": 172448,
+      "sample_end_ms": 292448,
+      "slug": "un-congo",
+      "sub_genre": null,
+      "url": "https://api.beatport.com/v4/catalog/tracks/14173050/",
+      "is_hype": false
+    },
+    {
+      "artists": [
+        {
+          "id": 508129,
+          "image": {
+            "id": 5539565,
+            "uri": "https://geo-media.beatport.com/image_size/590x404/0dc61986-bccf-49d4-8fad-6b147ea8f327.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/0dc61986-bccf-49d4-8fad-6b147ea8f327.jpg"
+          },
+          "name": "Maykel Blanco Y Su Salsa Mayor",
+          "slug": "maykel-blanco-y-su-salsa-mayor",
+          "url": "https://api.beatport.com/v4/catalog/artists/508129/"
+        },
+        {
+          "id": 800518,
+          "image": {
+            "id": 5539565,
+            "uri": "https://geo-media.beatport.com/image_size/590x404/0dc61986-bccf-49d4-8fad-6b147ea8f327.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/0dc61986-bccf-49d4-8fad-6b147ea8f327.jpg"
+          },
+          "name": "Maykel Fonts",
+          "slug": "maykel-fonts",
+          "url": "https://api.beatport.com/v4/catalog/artists/800518/"
+        }
+      ],
+      "available_worldwide": true,
+      "bpm": 100,
+      "catalog_number": "PLT494USACD",
+      "current_status": {
+        "id": 10,
+        "name": "General Content",
+        "url": "https://api.beatport.com/v4/auxiliary/current-status/10/"
+      },
+      "encoded_date": "2019-10-18T14:53:19-06:00",
+      "exclusive": false,
+      "free_downloads": [],
+      "free_download_start_date": null,
+      "free_download_end_date": null,
+      "genre": {
+        "id": 5,
+        "name": "House",
+        "slug": "house",
+        "url": "https://api.beatport.com/v4/catalog/genres/5/"
+      },
+      "id": 12688284,
+      "image": {
+        "id": 23115135,
+        "uri": "https://geo-media.beatport.com/image_size/1500x250/e6d033ff-c9a4-4199-80be-6308464b53d5.png",
+        "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/e6d033ff-c9a4-4199-80be-6308464b53d5.png"
+      },
+      "is_available_for_streaming": true,
+      "isrc": "ITF251700126",
+      "key": {
+        "camelot_number": 6,
+        "camelot_letter": "A",
+        "chord_type": {
+          "id": 1,
+          "name": "Minor",
+          "url": "https://api.beatport.com/v4/catalog/chord-types/1/"
+        },
+        "id": 6,
+        "is_sharp": false,
+        "is_flat": false,
+        "letter": "G",
+        "name": "G Minor",
+        "url": "https://api.beatport.com/v4/catalog/keys/6/"
+      },
+      "label_track_identifier": "1337293929",
+      "length": "5:58",
+      "length_ms": 358666,
+      "mix_name": "Original Mix",
+      "name": "Hay Un Congo",
+      "new_release_date": "2019-10-18",
+      "pre_order": false,
+      "pre_order_date": null,
+      "price": {
+        "code": "EUR",
+        "symbol": "€",
+        "value": 1.29,
+        "display": "€1.29"
+      },
+      "publish_date": "2019-10-18",
+      "release": {
+        "id": 2748287,
+        "name": "Salsa 2018 - 18 Salsa Latin Hits (Salsa Romántica, Urbana, para Bailar)",
+        "image": {
+          "id": 23115011,
+          "uri": "https://geo-media.beatport.com/image_size/1400x1400/a28e60ca-5891-4978-a42d-494ca8e9334f.jpg",
+          "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/a28e60ca-5891-4978-a42d-494ca8e9334f.jpg"
+        },
+        "label": {
+          "id": 33504,
+          "name": "Planet Records",
+          "image": {
+            "id": 7651397,
+            "uri": "https://geo-media.beatport.com/image_size/500x500/437f9ed9-ae99-41da-94ab-62c238f90a42.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/437f9ed9-ae99-41da-94ab-62c238f90a42.jpg"
+          },
+          "slug": "planet-records"
+        },
+        "slug": "salsa-2018-18-salsa-latin-hits-salsa-romantica-urbana-para-bailar"
+      },
+      "remixers": [],
+      "sale_type": {
+        "id": 1,
+        "name": "purchase",
+        "url": "https://api.beatport.com/v4/auxiliary/sale-types/1/"
+      },
+      "sample_url": "https://geo-samples.beatport.com/track/c19aacb6-4901-44da-9011-2ab4ba8a63e3.LOFI.mp3",
+      "sample_start_ms": 143466,
+      "sample_end_ms": 263466,
+      "slug": "hay-un-congo",
+      "sub_genre": null,
+      "url": "https://api.beatport.com/v4/catalog/tracks/12688284/",
+      "is_hype": false
+    },
+    {
+      "artists": [
+        {
+          "id": 508129,
+          "image": {
+            "id": 5539565,
+            "uri": "https://geo-media.beatport.com/image_size/590x404/0dc61986-bccf-49d4-8fad-6b147ea8f327.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/0dc61986-bccf-49d4-8fad-6b147ea8f327.jpg"
+          },
+          "name": "Maykel Blanco Y Su Salsa Mayor",
+          "slug": "maykel-blanco-y-su-salsa-mayor",
+          "url": "https://api.beatport.com/v4/catalog/artists/508129/"
+        },
+        {
+          "id": 800518,
+          "image": {
+            "id": 5539565,
+            "uri": "https://geo-media.beatport.com/image_size/590x404/0dc61986-bccf-49d4-8fad-6b147ea8f327.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/0dc61986-bccf-49d4-8fad-6b147ea8f327.jpg"
+          },
+          "name": "Maykel Fonts",
+          "slug": "maykel-fonts",
+          "url": "https://api.beatport.com/v4/catalog/artists/800518/"
+        }
+      ],
+      "available_worldwide": true,
+      "bpm": 100,
+      "catalog_number": "PLT491USACD",
+      "current_status": {
+        "id": 10,
+        "name": "General Content",
+        "url": "https://api.beatport.com/v4/auxiliary/current-status/10/"
+      },
+      "encoded_date": "2019-09-11T14:38:19-06:00",
+      "exclusive": false,
+      "free_downloads": [],
+      "free_download_start_date": null,
+      "free_download_end_date": null,
+      "genre": {
+        "id": 5,
+        "name": "House",
+        "slug": "house",
+        "url": "https://api.beatport.com/v4/catalog/genres/5/"
+      },
+      "id": 12541649,
+      "image": {
+        "id": 22839274,
+        "uri": "https://geo-media.beatport.com/image_size/1500x250/df112fc6-590b-46e3-bd23-5c2bbb30247a.png",
+        "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/df112fc6-590b-46e3-bd23-5c2bbb30247a.png"
+      },
+      "is_available_for_streaming": true,
+      "isrc": "ITF251700126",
+      "key": {
+        "camelot_number": 6,
+        "camelot_letter": "A",
+        "chord_type": {
+          "id": 1,
+          "name": "Minor",
+          "url": "https://api.beatport.com/v4/catalog/chord-types/1/"
+        },
+        "id": 6,
+        "is_sharp": false,
+        "is_flat": false,
+        "letter": "G",
+        "name": "G Minor",
+        "url": "https://api.beatport.com/v4/catalog/keys/6/"
+      },
+      "label_track_identifier": "1337293929",
+      "length": "5:58",
+      "length_ms": 358666,
+      "mix_name": "Original Mix",
+      "name": "Hay Un Congo",
+      "new_release_date": "2019-08-30",
+      "pre_order": false,
+      "pre_order_date": null,
+      "price": {
+        "code": "EUR",
+        "symbol": "€",
+        "value": 1.29,
+        "display": "€1.29"
+      },
+      "publish_date": "2019-08-30",
+      "release": {
+        "id": 2713293,
+        "name": "LATIN HITS 2018 - Reggaeton, Salsa, Bachata, Pop Latino, Latin Fitness - 60 Super Exitos Latinos - Club Edition",
+        "image": {
+          "id": 22838797,
+          "uri": "https://geo-media.beatport.com/image_size/1400x1400/2f7165d4-bb92-4e4e-b8cf-147d16a7d41c.jpg",
+          "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/2f7165d4-bb92-4e4e-b8cf-147d16a7d41c.jpg"
+        },
+        "label": {
+          "id": 33504,
+          "name": "Planet Records",
+          "image": {
+            "id": 7651397,
+            "uri": "https://geo-media.beatport.com/image_size/500x500/437f9ed9-ae99-41da-94ab-62c238f90a42.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/437f9ed9-ae99-41da-94ab-62c238f90a42.jpg"
+          },
+          "slug": "planet-records"
+        },
+        "slug": "latin-hits-2018-reggaeton-salsa-bachata-pop-latino-latin-fitness-60-super-exitos-latinos-club-edition"
+      },
+      "remixers": [],
+      "sale_type": {
+        "id": 1,
+        "name": "purchase",
+        "url": "https://api.beatport.com/v4/auxiliary/sale-types/1/"
+      },
+      "sample_url": "https://geo-samples.beatport.com/track/84d681fe-ff20-4ab6-88f3-52587e0485c3.LOFI.mp3",
+      "sample_start_ms": 143466,
+      "sample_end_ms": 263466,
+      "slug": "hay-un-congo",
+      "sub_genre": null,
+      "url": "https://api.beatport.com/v4/catalog/tracks/12541649/",
+      "is_hype": false
+    },
+    {
+      "artists": [
+        {
+          "id": 508129,
+          "image": {
+            "id": 5539565,
+            "uri": "https://geo-media.beatport.com/image_size/590x404/0dc61986-bccf-49d4-8fad-6b147ea8f327.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/0dc61986-bccf-49d4-8fad-6b147ea8f327.jpg"
+          },
+          "name": "Maykel Blanco Y Su Salsa Mayor",
+          "slug": "maykel-blanco-y-su-salsa-mayor",
+          "url": "https://api.beatport.com/v4/catalog/artists/508129/"
+        },
+        {
+          "id": 800518,
+          "image": {
+            "id": 5539565,
+            "uri": "https://geo-media.beatport.com/image_size/590x404/0dc61986-bccf-49d4-8fad-6b147ea8f327.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/0dc61986-bccf-49d4-8fad-6b147ea8f327.jpg"
+          },
+          "name": "Maykel Fonts",
+          "slug": "maykel-fonts",
+          "url": "https://api.beatport.com/v4/catalog/artists/800518/"
+        }
+      ],
+      "available_worldwide": true,
+      "bpm": 100,
+      "catalog_number": "PLT483EUROCDS",
+      "current_status": {
+        "id": 10,
+        "name": "General Content",
+        "url": "https://api.beatport.com/v4/auxiliary/current-status/10/"
+      },
+      "encoded_date": "2019-09-11T14:43:17-06:00",
+      "exclusive": false,
+      "free_downloads": [],
+      "free_download_start_date": null,
+      "free_download_end_date": null,
+      "genre": {
+        "id": 5,
+        "name": "House",
+        "slug": "house",
+        "url": "https://api.beatport.com/v4/catalog/genres/5/"
+      },
+      "id": 12542035,
+      "image": {
+        "id": 22841011,
+        "uri": "https://geo-media.beatport.com/image_size/1500x250/17c59dbd-5f68-41f9-9818-31037a94565c.png",
+        "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/17c59dbd-5f68-41f9-9818-31037a94565c.png"
+      },
+      "is_available_for_streaming": true,
+      "isrc": "ITF251700126",
+      "key": {
+        "camelot_number": 6,
+        "camelot_letter": "A",
+        "chord_type": {
+          "id": 1,
+          "name": "Minor",
+          "url": "https://api.beatport.com/v4/catalog/chord-types/1/"
+        },
+        "id": 6,
+        "is_sharp": false,
+        "is_flat": false,
+        "letter": "G",
+        "name": "G Minor",
+        "url": "https://api.beatport.com/v4/catalog/keys/6/"
+      },
+      "label_track_identifier": "1337293929",
+      "length": "5:58",
+      "length_ms": 358666,
+      "mix_name": "Original Mix",
+      "name": "Hay Un Congo",
+      "new_release_date": "2019-08-31",
+      "pre_order": false,
+      "pre_order_date": null,
+      "price": {
+        "code": "EUR",
+        "symbol": "€",
+        "value": 1.29,
+        "display": "€1.29"
+      },
+      "publish_date": "2019-08-31",
+      "release": {
+        "id": 2713380,
+        "name": "Hay Un Congo",
+        "image": {
+          "id": 22839208,
+          "uri": "https://geo-media.beatport.com/image_size/1400x1400/d3a52473-818c-4d2e-b249-10d9aa0a653c.jpg",
+          "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/d3a52473-818c-4d2e-b249-10d9aa0a653c.jpg"
+        },
+        "label": {
+          "id": 33504,
+          "name": "Planet Records",
+          "image": {
+            "id": 7651397,
+            "uri": "https://geo-media.beatport.com/image_size/500x500/437f9ed9-ae99-41da-94ab-62c238f90a42.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/437f9ed9-ae99-41da-94ab-62c238f90a42.jpg"
+          },
+          "slug": "planet-records"
+        },
+        "slug": "hay-un-congo"
+      },
+      "remixers": [],
+      "sale_type": {
+        "id": 1,
+        "name": "purchase",
+        "url": "https://api.beatport.com/v4/auxiliary/sale-types/1/"
+      },
+      "sample_url": "https://geo-samples.beatport.com/track/49393ecd-cbe4-4cb1-93d8-4a3d2a1604d7.LOFI.mp3",
+      "sample_start_ms": 143466,
+      "sample_end_ms": 263466,
+      "slug": "hay-un-congo",
+      "sub_genre": null,
+      "url": "https://api.beatport.com/v4/catalog/tracks/12542035/",
+      "is_hype": false
+    },
+    {
+      "artists": [
+        {
+          "id": 631855,
+          "image": {
+            "id": 28719847,
+            "uri": "https://geo-media.beatport.com/image_size/590x404/b90912fe-d773-4632-ac98-0f0f0b13a138.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/b90912fe-d773-4632-ac98-0f0f0b13a138.jpg"
+          },
+          "name": "Shimza",
+          "slug": "shimza",
+          "url": "https://api.beatport.com/v4/catalog/artists/631855/"
+        }
+      ],
+      "available_worldwide": true,
+      "bpm": 125,
+      "catalog_number": "CADENZA115",
+      "current_status": {
+        "id": 10,
+        "name": "General Content",
+        "url": "https://api.beatport.com/v4/auxiliary/current-status/10/"
+      },
+      "encoded_date": "2017-10-30T16:04:24-06:00",
+      "exclusive": false,
+      "free_downloads": [],
+      "free_download_start_date": null,
+      "free_download_end_date": null,
+      "genre": {
+        "id": 89,
+        "name": "Afro House",
+        "slug": "afro-house",
+        "url": "https://api.beatport.com/v4/catalog/genres/89/"
+      },
+      "id": 9902801,
+      "image": {
+        "id": 18060716,
+        "uri": "https://geo-media.beatport.com/image_size/1500x250/8d4e8190-5c2d-484b-ae38-6742ad085c97.png",
+        "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/8d4e8190-5c2d-484b-ae38-6742ad085c97.png"
+      },
+      "is_available_for_streaming": true,
+      "isrc": "CH4481600043",
+      "key": {
+        "camelot_number": 12,
+        "camelot_letter": "B",
+        "chord_type": {
+          "id": 2,
+          "name": "Major",
+          "url": "https://api.beatport.com/v4/catalog/chord-types/2/"
+        },
+        "id": 24,
+        "is_sharp": false,
+        "is_flat": false,
+        "letter": "E",
+        "name": "E Major",
+        "url": "https://api.beatport.com/v4/catalog/keys/24/"
+      },
+      "label_track_identifier": "",
+      "length": "5:46",
+      "length_ms": 346114,
+      "mix_name": "Original Mix",
+      "name": "Congo Congo",
+      "new_release_date": "2017-11-17",
+      "pre_order": false,
+      "pre_order_date": null,
+      "price": {
+        "code": "EUR",
+        "symbol": "€",
+        "value": 1.29,
+        "display": "€1.29"
+      },
+      "publish_date": "2017-11-17",
+      "release": {
+        "id": 2146034,
+        "name": "Ascendent",
+        "image": {
+          "id": 18059275,
+          "uri": "https://geo-media.beatport.com/image_size/1400x1400/6896e32c-185c-4f01-ac99-39bd5d70de68.jpg",
+          "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/6896e32c-185c-4f01-ac99-39bd5d70de68.jpg"
+        },
+        "label": {
+          "id": 1696,
+          "name": "Cadenza",
+          "image": {
+            "id": 6359404,
+            "uri": "https://geo-media.beatport.com/image_size/500x500/1af22434-305a-4b9b-8f55-0f5a18229410.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/1af22434-305a-4b9b-8f55-0f5a18229410.jpg"
+          },
+          "slug": "cadenza"
+        },
+        "slug": "ascendent"
+      },
+      "remixers": [],
+      "sale_type": {
+        "id": 1,
+        "name": "purchase",
+        "url": "https://api.beatport.com/v4/auxiliary/sale-types/1/"
+      },
+      "sample_url": "https://geo-samples.beatport.com/track/c9987ae9-d96f-4aa6-b4a1-a3092378e0a6.LOFI.mp3",
+      "sample_start_ms": 138445,
+      "sample_end_ms": 258445,
+      "slug": "congo-congo",
+      "sub_genre": null,
+      "url": "https://api.beatport.com/v4/catalog/tracks/9902801/",
+      "is_hype": false
+    },
+    {
+      "artists": [
+        {
+          "id": 631855,
+          "image": {
+            "id": 28719847,
+            "uri": "https://geo-media.beatport.com/image_size/590x404/b90912fe-d773-4632-ac98-0f0f0b13a138.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/b90912fe-d773-4632-ac98-0f0f0b13a138.jpg"
+          },
+          "name": "Shimza",
+          "slug": "shimza",
+          "url": "https://api.beatport.com/v4/catalog/artists/631855/"
+        }
+      ],
+      "available_worldwide": true,
+      "bpm": 125,
+      "catalog_number": "CADENZA115",
+      "current_status": {
+        "id": 10,
+        "name": "General Content",
+        "url": "https://api.beatport.com/v4/auxiliary/current-status/10/"
+      },
+      "encoded_date": "2017-10-30T16:04:25-06:00",
+      "exclusive": false,
+      "free_downloads": [],
+      "free_download_start_date": null,
+      "free_download_end_date": null,
+      "genre": {
+        "id": 89,
+        "name": "Afro House",
+        "slug": "afro-house",
+        "url": "https://api.beatport.com/v4/catalog/genres/89/"
+      },
+      "id": 9902802,
+      "image": {
+        "id": 18060731,
+        "uri": "https://geo-media.beatport.com/image_size/1500x250/997fc7e3-5ab3-4407-a6bc-73c6526cff28.png",
+        "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/997fc7e3-5ab3-4407-a6bc-73c6526cff28.png"
+      },
+      "is_available_for_streaming": true,
+      "isrc": "CH4481600044",
+      "key": {
+        "camelot_number": 12,
+        "camelot_letter": "B",
+        "chord_type": {
+          "id": 2,
+          "name": "Major",
+          "url": "https://api.beatport.com/v4/catalog/chord-types/2/"
+        },
+        "id": 24,
+        "is_sharp": false,
+        "is_flat": false,
+        "letter": "E",
+        "name": "E Major",
+        "url": "https://api.beatport.com/v4/catalog/keys/24/"
+      },
+      "label_track_identifier": "",
+      "length": "4:13",
+      "length_ms": 253454,
+      "mix_name": "Dub Mix",
+      "name": "Congo Congo",
+      "new_release_date": "2017-11-17",
+      "pre_order": false,
+      "pre_order_date": null,
+      "price": {
+        "code": "EUR",
+        "symbol": "€",
+        "value": 1.29,
+        "display": "€1.29"
+      },
+      "publish_date": "2017-11-17",
+      "release": {
+        "id": 2146034,
+        "name": "Ascendent",
+        "image": {
+          "id": 18059275,
+          "uri": "https://geo-media.beatport.com/image_size/1400x1400/6896e32c-185c-4f01-ac99-39bd5d70de68.jpg",
+          "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/6896e32c-185c-4f01-ac99-39bd5d70de68.jpg"
+        },
+        "label": {
+          "id": 1696,
+          "name": "Cadenza",
+          "image": {
+            "id": 6359404,
+            "uri": "https://geo-media.beatport.com/image_size/500x500/1af22434-305a-4b9b-8f55-0f5a18229410.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/1af22434-305a-4b9b-8f55-0f5a18229410.jpg"
+          },
+          "slug": "cadenza"
+        },
+        "slug": "ascendent"
+      },
+      "remixers": [],
+      "sale_type": {
+        "id": 1,
+        "name": "purchase",
+        "url": "https://api.beatport.com/v4/auxiliary/sale-types/1/"
+      },
+      "sample_url": "https://geo-samples.beatport.com/track/cdb095a4-b88d-4879-8c85-87ca7e5d3c8e.LOFI.mp3",
+      "sample_start_ms": 101381,
+      "sample_end_ms": 221381,
+      "slug": "congo-congo",
+      "sub_genre": null,
+      "url": "https://api.beatport.com/v4/catalog/tracks/9902802/",
+      "is_hype": false
+    },
+    {
+      "artists": [
+        {
+          "id": 260924,
+          "image": {
+            "id": 5539565,
+            "uri": "https://geo-media.beatport.com/image_size/590x404/0dc61986-bccf-49d4-8fad-6b147ea8f327.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/0dc61986-bccf-49d4-8fad-6b147ea8f327.jpg"
+          },
+          "name": "DJ Shimza",
+          "slug": "dj-shimza",
+          "url": "https://api.beatport.com/v4/catalog/artists/260924/"
+        }
+      ],
+      "available_worldwide": false,
+      "bpm": 125,
+      "catalog_number": "00602557367010",
+      "current_status": {
+        "id": 10,
+        "name": "General Content",
+        "url": "https://api.beatport.com/v4/auxiliary/current-status/10/"
+      },
+      "encoded_date": "2021-09-17T21:54:25-06:00",
+      "exclusive": false,
+      "free_downloads": [],
+      "free_download_start_date": null,
+      "free_download_end_date": null,
+      "genre": {
+        "id": 39,
+        "name": "Dance / Electro Pop",
+        "slug": "dance-electro-pop",
+        "url": "https://api.beatport.com/v4/catalog/genres/39/"
+      },
+      "id": 15756181,
+      "image": {
+        "id": 29508931,
+        "uri": "https://geo-media.beatport.com/image_size/1500x250/b32ef717-68df-4db3-a869-c50a429a96cb.png",
+        "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/b32ef717-68df-4db3-a869-c50a429a96cb.png"
+      },
+      "is_available_for_streaming": true,
+      "isrc": "ZAI911600134",
+      "key": {
+        "camelot_number": 12,
+        "camelot_letter": "B",
+        "chord_type": {
+          "id": 2,
+          "name": "Major",
+          "url": "https://api.beatport.com/v4/catalog/chord-types/2/"
+        },
+        "id": 24,
+        "is_sharp": false,
+        "is_flat": false,
+        "letter": "E",
+        "name": "E Major",
+        "url": "https://api.beatport.com/v4/catalog/keys/24/"
+      },
+      "label_track_identifier": null,
+      "length": "5:47",
+      "length_ms": 347333,
+      "mix_name": "Original Mix",
+      "name": "Congo Congo",
+      "new_release_date": "2016-12-12",
+      "pre_order": false,
+      "pre_order_date": null,
+      "price": {
+        "code": "EUR",
+        "symbol": "€",
+        "value": 1.29,
+        "display": "€1.29"
+      },
+      "publish_date": "2016-12-12",
+      "release": {
+        "id": 3520322,
+        "name": "One Man Show",
+        "image": {
+          "id": 29507913,
+          "uri": "https://geo-media.beatport.com/image_size/1400x1400/ad82b7b7-4818-49a7-98e7-d15048f4bae1.jpg",
+          "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/ad82b7b7-4818-49a7-98e7-d15048f4bae1.jpg"
+        },
+        "label": {
+          "id": 70526,
+          "name": "Universal Music (Pty) Ltd.",
+          "image": {
+            "id": 5539566,
+            "uri": "https://geo-media.beatport.com/image_size/500x500/cda9862c-cf92-4d13-ac65-7e9277181f51.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/cda9862c-cf92-4d13-ac65-7e9277181f51.jpg"
+          },
+          "slug": "universal-music-pty-ltd"
+        },
+        "slug": "one-man-show"
+      },
+      "remixers": [],
+      "sale_type": {
+        "id": 1,
+        "name": "purchase",
+        "url": "https://api.beatport.com/v4/auxiliary/sale-types/1/"
+      },
+      "sample_url": "https://geo-samples.beatport.com/track/b32ef717-68df-4db3-a869-c50a429a96cb.LOFI.mp3",
+      "sample_start_ms": 138933,
+      "sample_end_ms": 258933,
+      "slug": "congo-congo",
+      "sub_genre": null,
+      "url": "https://api.beatport.com/v4/catalog/tracks/15756181/",
+      "is_hype": false
+    },
+    {
+      "artists": [
+        {
+          "id": 229249,
+          "image": {
+            "id": 13898305,
+            "uri": "https://geo-media.beatport.com/image_size/590x404/d8b57ea6-83b5-45c8-99d7-0717ad1094e6.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/d8b57ea6-83b5-45c8-99d7-0717ad1094e6.jpg"
+          },
+          "name": "Ben A",
+          "slug": "ben-a",
+          "url": "https://api.beatport.com/v4/catalog/artists/229249/"
+        },
+        {
+          "id": 308212,
+          "image": {
+            "id": 28122145,
+            "uri": "https://geo-media.beatport.com/image_size/590x404/926ab259-587f-485b-af01-daad73976649.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/926ab259-587f-485b-af01-daad73976649.jpg"
+          },
+          "name": "Alejandro Peñaloza",
+          "slug": "alejandro-penaloza",
+          "url": "https://api.beatport.com/v4/catalog/artists/308212/"
+        }
+      ],
+      "available_worldwide": true,
+      "bpm": 125,
+      "catalog_number": "VAM755",
+      "current_status": {
+        "id": 10,
+        "name": "General Content",
+        "url": "https://api.beatport.com/v4/auxiliary/current-status/10/"
+      },
+      "encoded_date": "2021-04-27T08:03:23-06:00",
+      "exclusive": false,
+      "free_downloads": [],
+      "free_download_start_date": null,
+      "free_download_end_date": null,
+      "genre": {
+        "id": 89,
+        "name": "Afro House",
+        "slug": "afro-house",
+        "url": "https://api.beatport.com/v4/catalog/genres/89/"
+      },
+      "id": 15247256,
+      "image": {
+        "id": 28476611,
+        "uri": "https://geo-media.beatport.com/image_size/1500x250/46b33e7f-2784-4dc8-b03c-c102cce03bef.png",
+        "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/46b33e7f-2784-4dc8-b03c-c102cce03bef.png"
+      },
+      "is_available_for_streaming": true,
+      "isrc": "DEW872104904",
+      "key": {
+        "camelot_number": 1,
+        "camelot_letter": "B",
+        "chord_type": {
+          "id": 2,
+          "name": "Major",
+          "url": "https://api.beatport.com/v4/catalog/chord-types/2/"
+        },
+        "id": 13,
+        "is_sharp": false,
+        "is_flat": false,
+        "letter": "B",
+        "name": "B Major",
+        "url": "https://api.beatport.com/v4/catalog/keys/13/"
+      },
+      "label_track_identifier": null,
+      "length": "6:10",
+      "length_ms": 370012,
+      "mix_name": "Extended Mix",
+      "name": "Yo Tengo Un Congo",
+      "new_release_date": "2021-05-28",
+      "pre_order": false,
+      "pre_order_date": "2021-05-19",
+      "price": {
+        "code": "EUR",
+        "symbol": "€",
+        "value": 1.29,
+        "display": "€1.29"
+      },
+      "publish_date": "2021-05-28",
+      "release": {
+        "id": 3377321,
+        "name": "Yo Tengo Un Congo",
+        "image": {
+          "id": 28476596,
+          "uri": "https://geo-media.beatport.com/image_size/1400x1400/79263db7-8067-4199-845f-79a6be6e24a2.jpg",
+          "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/79263db7-8067-4199-845f-79a6be6e24a2.jpg"
+        },
+        "label": {
+          "id": 24376,
+          "name": "Vamos Music",
+          "image": {
+            "id": 13140793,
+            "uri": "https://geo-media.beatport.com/image_size/500x500/ca910c67-196f-4b60-841c-87963a7c12e8.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/ca910c67-196f-4b60-841c-87963a7c12e8.jpg"
+          },
+          "slug": "vamos-music"
+        },
+        "slug": "yo-tengo-un-congo"
+      },
+      "remixers": [],
+      "sale_type": {
+        "id": 1,
+        "name": "purchase",
+        "url": "https://api.beatport.com/v4/auxiliary/sale-types/1/"
+      },
+      "sample_url": "https://geo-samples.beatport.com/track/46b33e7f-2784-4dc8-b03c-c102cce03bef.LOFI.mp3",
+      "sample_start_ms": 148005,
+      "sample_end_ms": 268005,
+      "slug": "yo-tengo-un-congo",
+      "sub_genre": null,
+      "url": "https://api.beatport.com/v4/catalog/tracks/15247256/",
+      "is_hype": false
+    },
+    {
+      "artists": [
+        {
+          "id": 289447,
+          "image": {
+            "id": 10829987,
+            "uri": "https://geo-media.beatport.com/image_size/590x404/df6ee276-1faf-4dca-aa16-ac1e2eaa8576.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/df6ee276-1faf-4dca-aa16-ac1e2eaa8576.jpg"
+          },
+          "name": "Carlos Torre",
+          "slug": "carlos-torre",
+          "url": "https://api.beatport.com/v4/catalog/artists/289447/"
+        }
+      ],
+      "available_worldwide": true,
+      "bpm": 122,
+      "catalog_number": "MIM109",
+      "current_status": {
+        "id": 10,
+        "name": "General Content",
+        "url": "https://api.beatport.com/v4/auxiliary/current-status/10/"
+      },
+      "encoded_date": "2020-10-20T17:39:31-06:00",
+      "exclusive": false,
+      "free_downloads": [],
+      "free_download_start_date": null,
+      "free_download_end_date": null,
+      "genre": {
+        "id": 5,
+        "name": "House",
+        "slug": "house",
+        "url": "https://api.beatport.com/v4/catalog/genres/5/"
+      },
+      "id": 14416749,
+      "image": {
+        "id": 26885779,
+        "uri": "https://geo-media.beatport.com/image_size/1500x250/de77a32f-59ea-4927-a39c-4f9dd1a91d89.png",
+        "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/de77a32f-59ea-4927-a39c-4f9dd1a91d89.png"
+      },
+      "is_available_for_streaming": true,
+      "isrc": "USNRS2040123",
+      "key": {
+        "camelot_number": 11,
+        "camelot_letter": "B",
+        "chord_type": {
+          "id": 2,
+          "name": "Major",
+          "url": "https://api.beatport.com/v4/catalog/chord-types/2/"
+        },
+        "id": 23,
+        "is_sharp": false,
+        "is_flat": false,
+        "letter": "A",
+        "name": "A Major",
+        "url": "https://api.beatport.com/v4/catalog/keys/23/"
+      },
+      "label_track_identifier": "",
+      "length": "8:00",
+      "length_ms": 480000,
+      "mix_name": "Original Mix",
+      "name": "Yo Tengo Un Congo",
+      "new_release_date": "2020-11-20",
+      "pre_order": false,
+      "pre_order_date": "2020-11-06",
+      "price": {
+        "code": "EUR",
+        "symbol": "€",
+        "value": 1.29,
+        "display": "€1.29"
+      },
+      "publish_date": "2020-11-20",
+      "release": {
+        "id": 3167380,
+        "name": "Yo Tengo Un Congo",
+        "image": {
+          "id": 26885773,
+          "uri": "https://geo-media.beatport.com/image_size/1400x1400/0ff0fa0e-6f73-4cd6-9d20-b9e39e71265e.jpg",
+          "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/0ff0fa0e-6f73-4cd6-9d20-b9e39e71265e.jpg"
+        },
+        "label": {
+          "id": 59502,
+          "name": "Made In Miami",
+          "image": {
+            "id": 14637267,
+            "uri": "https://geo-media.beatport.com/image_size/500x500/9e6a5328-b692-4c3f-9682-2659af6a6064.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/9e6a5328-b692-4c3f-9682-2659af6a6064.jpg"
+          },
+          "slug": "made-in-miami"
+        },
+        "slug": "yo-tengo-un-congo"
+      },
+      "remixers": [],
+      "sale_type": {
+        "id": 1,
+        "name": "purchase",
+        "url": "https://api.beatport.com/v4/auxiliary/sale-types/1/"
+      },
+      "sample_url": "https://geo-samples.beatport.com/track/1bd8e7ca-493e-404c-940d-dd78f76e27b3.LOFI.mp3",
+      "sample_start_ms": 192000,
+      "sample_end_ms": 312000,
+      "slug": "yo-tengo-un-congo",
+      "sub_genre": null,
+      "url": "https://api.beatport.com/v4/catalog/tracks/14416749/",
+      "is_hype": false
+    },
+    {
+      "artists": [
+        {
+          "id": 32545,
+          "image": {
+            "id": 5539565,
+            "uri": "https://geo-media.beatport.com/image_size/590x404/0dc61986-bccf-49d4-8fad-6b147ea8f327.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/0dc61986-bccf-49d4-8fad-6b147ea8f327.jpg"
+          },
+          "name": "The Boss",
+          "slug": "the-boss",
+          "url": "https://api.beatport.com/v4/catalog/artists/32545/"
+        }
+      ],
+      "available_worldwide": false,
+      "bpm": 124,
+      "catalog_number": "4050538286069",
+      "current_status": {
+        "id": 10,
+        "name": "General Content",
+        "url": "https://api.beatport.com/v4/auxiliary/current-status/10/"
+      },
+      "encoded_date": "2017-07-11T20:43:30-06:00",
+      "exclusive": false,
+      "free_downloads": [],
+      "free_download_start_date": null,
+      "free_download_end_date": null,
+      "genre": {
+        "id": 5,
+        "name": "House",
+        "slug": "house",
+        "url": "https://api.beatport.com/v4/catalog/genres/5/"
+      },
+      "id": 9535273,
+      "image": {
+        "id": 23469815,
+        "uri": "https://geo-media.beatport.com/image_size/1500x250/94a47766-7ebf-4006-b6ea-5f31f8cde358.png",
+        "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/94a47766-7ebf-4006-b6ea-5f31f8cde358.png"
+      },
+      "is_available_for_streaming": true,
+      "isrc": "USSR39426501",
+      "key": {
+        "camelot_number": 2,
+        "camelot_letter": "A",
+        "chord_type": {
+          "id": 1,
+          "name": "Minor",
+          "url": "https://api.beatport.com/v4/catalog/chord-types/1/"
+        },
+        "id": 30,
+        "is_sharp": true,
+        "is_flat": false,
+        "letter": "D",
+        "name": "D# Minor",
+        "url": "https://api.beatport.com/v4/catalog/keys/30/"
+      },
+      "label_track_identifier": null,
+      "length": "9:44",
+      "length_ms": 584133,
+      "mix_name": "D Max Mix",
+      "name": "Congo",
+      "new_release_date": "1994-01-01",
+      "pre_order": false,
+      "pre_order_date": null,
+      "price": {
+        "code": "EUR",
+        "symbol": "€",
+        "value": 1.29,
+        "display": "€1.29"
+      },
+      "publish_date": "2017-07-05",
+      "release": {
+        "id": 2068352,
+        "name": "Congo",
+        "image": {
+          "id": 23469810,
+          "uri": "https://geo-media.beatport.com/image_size/1400x1400/adc9a35a-3868-4c92-a5db-111a6c510ee0.jpg",
+          "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/adc9a35a-3868-4c92-a5db-111a6c510ee0.jpg"
+        },
+        "label": {
+          "id": 24446,
+          "name": "Strictly Rhythm",
+          "image": {
+            "id": 23346387,
+            "uri": "https://geo-media.beatport.com/image_size/500x500/ca1e3455-52c5-40de-a42a-ae4e07b3cb26.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/ca1e3455-52c5-40de-a42a-ae4e07b3cb26.jpg"
+          },
+          "slug": "strictly-rhythm"
+        },
+        "slug": "congo"
+      },
+      "remixers": [],
+      "sale_type": {
+        "id": 1,
+        "name": "purchase",
+        "url": "https://api.beatport.com/v4/auxiliary/sale-types/1/"
+      },
+      "sample_url": "https://geo-samples.beatport.com/track/666280d5-d303-444b-b02a-86976bdcb41a.LOFI.mp3",
+      "sample_start_ms": 233653,
+      "sample_end_ms": 353653,
+      "slug": "congo",
+      "sub_genre": null,
+      "url": "https://api.beatport.com/v4/catalog/tracks/9535273/",
+      "is_hype": false
+    },
+    {
+      "artists": [
+        {
+          "id": 229249,
+          "image": {
+            "id": 13898305,
+            "uri": "https://geo-media.beatport.com/image_size/590x404/d8b57ea6-83b5-45c8-99d7-0717ad1094e6.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/d8b57ea6-83b5-45c8-99d7-0717ad1094e6.jpg"
+          },
+          "name": "Ben A",
+          "slug": "ben-a",
+          "url": "https://api.beatport.com/v4/catalog/artists/229249/"
+        },
+        {
+          "id": 308212,
+          "image": {
+            "id": 28122145,
+            "uri": "https://geo-media.beatport.com/image_size/590x404/926ab259-587f-485b-af01-daad73976649.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/926ab259-587f-485b-af01-daad73976649.jpg"
+          },
+          "name": "Alejandro Peñaloza",
+          "slug": "alejandro-penaloza",
+          "url": "https://api.beatport.com/v4/catalog/artists/308212/"
+        }
+      ],
+      "available_worldwide": true,
+      "bpm": 125,
+      "catalog_number": "RH2COMP1553",
+      "current_status": {
+        "id": 10,
+        "name": "General Content",
+        "url": "https://api.beatport.com/v4/auxiliary/current-status/10/"
+      },
+      "encoded_date": "2021-08-05T10:06:04-06:00",
+      "exclusive": false,
+      "free_downloads": [],
+      "free_download_start_date": null,
+      "free_download_end_date": null,
+      "genre": {
+        "id": 89,
+        "name": "Afro House",
+        "slug": "afro-house",
+        "url": "https://api.beatport.com/v4/catalog/genres/89/"
+      },
+      "id": 15587588,
+      "image": {
+        "id": 29163532,
+        "uri": "https://geo-media.beatport.com/image_size/1500x250/297ecbfd-2c4e-4b11-895c-2b6c50f83b20.png",
+        "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/297ecbfd-2c4e-4b11-895c-2b6c50f83b20.png"
+      },
+      "is_available_for_streaming": true,
+      "isrc": "DEW872104904",
+      "key": {
+        "camelot_number": 1,
+        "camelot_letter": "B",
+        "chord_type": {
+          "id": 2,
+          "name": "Major",
+          "url": "https://api.beatport.com/v4/catalog/chord-types/2/"
+        },
+        "id": 13,
+        "is_sharp": false,
+        "is_flat": false,
+        "letter": "B",
+        "name": "B Major",
+        "url": "https://api.beatport.com/v4/catalog/keys/13/"
+      },
+      "label_track_identifier": null,
+      "length": "6:10",
+      "length_ms": 370012,
+      "mix_name": "Extended Mix",
+      "name": "Yo Tengo Un Congo",
+      "new_release_date": "2021-08-14",
+      "pre_order": false,
+      "pre_order_date": null,
+      "price": {
+        "code": "EUR",
+        "symbol": "€",
+        "value": 1.29,
+        "display": "€1.29"
+      },
+      "publish_date": "2021-08-14",
+      "release": {
+        "id": 3472809,
+        "name": "RH2 Gold Series Vol. 37",
+        "image": {
+          "id": 29163460,
+          "uri": "https://geo-media.beatport.com/image_size/1400x1400/1d8c4582-b15d-4043-aeb1-63f74137e79f.jpg",
+          "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/1d8c4582-b15d-4043-aeb1-63f74137e79f.jpg"
+        },
+        "label": {
+          "id": 15931,
+          "name": "RH2",
+          "image": {
+            "id": 14994403,
+            "uri": "https://geo-media.beatport.com/image_size/500x500/ee065d9f-4151-464e-baab-c554a5627d52.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/ee065d9f-4151-464e-baab-c554a5627d52.jpg"
+          },
+          "slug": "rh2"
+        },
+        "slug": "rh2-gold-series-vol-37"
+      },
+      "remixers": [],
+      "sale_type": {
+        "id": 1,
+        "name": "purchase",
+        "url": "https://api.beatport.com/v4/auxiliary/sale-types/1/"
+      },
+      "sample_url": "https://geo-samples.beatport.com/track/297ecbfd-2c4e-4b11-895c-2b6c50f83b20.LOFI.mp3",
+      "sample_start_ms": 148005,
+      "sample_end_ms": 268005,
+      "slug": "yo-tengo-un-congo",
+      "sub_genre": null,
+      "url": "https://api.beatport.com/v4/catalog/tracks/15587588/",
+      "is_hype": false
+    },
+    {
+      "artists": [
+        {
+          "id": 229249,
+          "image": {
+            "id": 13898305,
+            "uri": "https://geo-media.beatport.com/image_size/590x404/d8b57ea6-83b5-45c8-99d7-0717ad1094e6.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/d8b57ea6-83b5-45c8-99d7-0717ad1094e6.jpg"
+          },
+          "name": "Ben A",
+          "slug": "ben-a",
+          "url": "https://api.beatport.com/v4/catalog/artists/229249/"
+        },
+        {
+          "id": 308212,
+          "image": {
+            "id": 28122145,
+            "uri": "https://geo-media.beatport.com/image_size/590x404/926ab259-587f-485b-af01-daad73976649.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/926ab259-587f-485b-af01-daad73976649.jpg"
+          },
+          "name": "Alejandro Peñaloza",
+          "slug": "alejandro-penaloza",
+          "url": "https://api.beatport.com/v4/catalog/artists/308212/"
+        }
+      ],
+      "available_worldwide": true,
+      "bpm": 125,
+      "catalog_number": "CSCOMP2712",
+      "current_status": {
+        "id": 10,
+        "name": "General Content",
+        "url": "https://api.beatport.com/v4/auxiliary/current-status/10/"
+      },
+      "encoded_date": "2021-09-08T06:04:24-06:00",
+      "exclusive": false,
+      "free_downloads": [],
+      "free_download_start_date": null,
+      "free_download_end_date": null,
+      "genre": {
+        "id": 89,
+        "name": "Afro House",
+        "slug": "afro-house",
+        "url": "https://api.beatport.com/v4/catalog/genres/89/"
+      },
+      "id": 15689222,
+      "image": {
+        "id": 29384932,
+        "uri": "https://geo-media.beatport.com/image_size/1500x250/74137d7d-d2fa-4126-ba74-5340f1198609.png",
+        "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/74137d7d-d2fa-4126-ba74-5340f1198609.png"
+      },
+      "is_available_for_streaming": true,
+      "isrc": "DEW872104904",
+      "key": {
+        "camelot_number": 1,
+        "camelot_letter": "B",
+        "chord_type": {
+          "id": 2,
+          "name": "Major",
+          "url": "https://api.beatport.com/v4/catalog/chord-types/2/"
+        },
+        "id": 13,
+        "is_sharp": false,
+        "is_flat": false,
+        "letter": "B",
+        "name": "B Major",
+        "url": "https://api.beatport.com/v4/catalog/keys/13/"
+      },
+      "label_track_identifier": null,
+      "length": "6:10",
+      "length_ms": 370012,
+      "mix_name": "Extended Mix",
+      "name": "Yo Tengo Un Congo",
+      "new_release_date": "2021-09-18",
+      "pre_order": false,
+      "pre_order_date": null,
+      "price": {
+        "code": "EUR",
+        "symbol": "€",
+        "value": 1.29,
+        "display": "€1.29"
+      },
+      "publish_date": "2021-09-18",
+      "release": {
+        "id": 3502900,
+        "name": "Afromatic, Vol. 10",
+        "image": {
+          "id": 29384908,
+          "uri": "https://geo-media.beatport.com/image_size/1400x1400/4767dae1-0c21-400b-9338-8d0174d56809.jpg",
+          "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/4767dae1-0c21-400b-9338-8d0174d56809.jpg"
+        },
+        "label": {
+          "id": 22667,
+          "name": "Club Session",
+          "image": {
+            "id": 7165313,
+            "uri": "https://geo-media.beatport.com/image_size/500x500/cec3e80d-2905-4c99-83a5-d4fd8f8d532d.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/cec3e80d-2905-4c99-83a5-d4fd8f8d532d.jpg"
+          },
+          "slug": "club-session"
+        },
+        "slug": "afromatic-vol-10"
+      },
+      "remixers": [],
+      "sale_type": {
+        "id": 1,
+        "name": "purchase",
+        "url": "https://api.beatport.com/v4/auxiliary/sale-types/1/"
+      },
+      "sample_url": "https://geo-samples.beatport.com/track/74137d7d-d2fa-4126-ba74-5340f1198609.LOFI.mp3",
+      "sample_start_ms": 148005,
+      "sample_end_ms": 268005,
+      "slug": "yo-tengo-un-congo",
+      "sub_genre": null,
+      "url": "https://api.beatport.com/v4/catalog/tracks/15689222/",
+      "is_hype": false
+    },
+    {
+      "artists": [
+        {
+          "id": 48952,
+          "image": {
+            "id": 5539565,
+            "uri": "https://geo-media.beatport.com/image_size/590x404/0dc61986-bccf-49d4-8fad-6b147ea8f327.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/0dc61986-bccf-49d4-8fad-6b147ea8f327.jpg"
+          },
+          "name": "Geeneus",
+          "slug": "geeneus",
+          "url": "https://api.beatport.com/v4/catalog/artists/48952/"
+        }
+      ],
+      "available_worldwide": true,
+      "bpm": 138,
+      "catalog_number": "TEMPA012",
+      "current_status": {
+        "id": 5,
+        "name": "Classic",
+        "url": "https://api.beatport.com/v4/auxiliary/current-status/5/"
+      },
+      "encoded_date": "2009-04-08T08:25:16-06:00",
+      "exclusive": false,
+      "free_downloads": [],
+      "free_download_start_date": null,
+      "free_download_end_date": null,
+      "genre": {
+        "id": 86,
+        "name": "UK Garage / Bassline",
+        "slug": "uk-garage-bassline",
+        "url": "https://api.beatport.com/v4/catalog/genres/86/"
+      },
+      "id": 823388,
+      "image": {
+        "id": 1216074,
+        "uri": "https://geo-media.beatport.com/image_size/1500x250/28e0836d-7f0b-4ea4-893a-01a08f52c657.png",
+        "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/28e0836d-7f0b-4ea4-893a-01a08f52c657.png"
+      },
+      "is_available_for_streaming": true,
+      "isrc": "GBQGW0400027",
+      "key": {
+        "camelot_number": 7,
+        "camelot_letter": "A",
+        "chord_type": {
+          "id": 1,
+          "name": "Minor",
+          "url": "https://api.beatport.com/v4/catalog/chord-types/1/"
+        },
+        "id": 7,
+        "is_sharp": false,
+        "is_flat": false,
+        "letter": "D",
+        "name": "D Minor",
+        "url": "https://api.beatport.com/v4/catalog/keys/7/"
+      },
+      "label_track_identifier": "",
+      "length": "5:44",
+      "length_ms": 344453,
+      "mix_name": "Original Mix",
+      "name": "Congo",
+      "new_release_date": "2005-01-17",
+      "pre_order": false,
+      "pre_order_date": null,
+      "price": {
+        "code": "EUR",
+        "symbol": "€",
+        "value": 1.29,
+        "display": "€1.29"
+      },
+      "publish_date": "2009-04-08",
+      "release": {
+        "id": 165699,
+        "name": "Tempa Allstars Vol. 2",
+        "image": {
+          "id": 395499,
+          "uri": "https://geo-media.beatport.com/image_size/500x500/9541e260-3e12-421a-b628-417b13aba5e0.jpg",
+          "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/9541e260-3e12-421a-b628-417b13aba5e0.jpg"
+        },
+        "label": {
+          "id": 9179,
+          "name": "Tempa",
+          "image": {
+            "id": 204122,
+            "uri": "https://geo-media.beatport.com/image_size/60x60/fc52a3ef-9da5-4d48-b490-0c8862fce37e.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/fc52a3ef-9da5-4d48-b490-0c8862fce37e.jpg"
+          },
+          "slug": "tempa"
+        },
+        "slug": "tempa-allstars-vol-2"
+      },
+      "remixers": [],
+      "sale_type": {
+        "id": 1,
+        "name": "purchase",
+        "url": "https://api.beatport.com/v4/auxiliary/sale-types/1/"
+      },
+      "sample_url": "https://geo-samples.beatport.com/track/f28751d6-b93b-4323-b48c-973d562eba21.LOFI.mp3",
+      "sample_start_ms": 137781,
+      "sample_end_ms": 257781,
+      "slug": "congo",
+      "sub_genre": null,
+      "url": "https://api.beatport.com/v4/catalog/tracks/823388/",
+      "is_hype": false
+    },
+    {
+      "artists": [
+        {
+          "id": 32545,
+          "image": {
+            "id": 5539565,
+            "uri": "https://geo-media.beatport.com/image_size/590x404/0dc61986-bccf-49d4-8fad-6b147ea8f327.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/0dc61986-bccf-49d4-8fad-6b147ea8f327.jpg"
+          },
+          "name": "The Boss",
+          "slug": "the-boss",
+          "url": "https://api.beatport.com/v4/catalog/artists/32545/"
+        }
+      ],
+      "available_worldwide": false,
+      "bpm": 124,
+      "catalog_number": "4050538596519",
+      "current_status": {
+        "id": 10,
+        "name": "General Content",
+        "url": "https://api.beatport.com/v4/auxiliary/current-status/10/"
+      },
+      "encoded_date": "2020-10-01T10:35:03-06:00",
+      "exclusive": false,
+      "free_downloads": [],
+      "free_download_start_date": null,
+      "free_download_end_date": null,
+      "genre": {
+        "id": 5,
+        "name": "House",
+        "slug": "house",
+        "url": "https://api.beatport.com/v4/catalog/genres/5/"
+      },
+      "id": 12891078,
+      "image": {
+        "id": 29673872,
+        "uri": "https://geo-media.beatport.com/image_size/1500x250/1ee37f47-d664-4922-9ea3-889a84f509f6.png",
+        "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/1ee37f47-d664-4922-9ea3-889a84f509f6.png"
+      },
+      "is_available_for_streaming": true,
+      "isrc": "USSR39426501",
+      "key": {
+        "camelot_number": 5,
+        "camelot_letter": "B",
+        "chord_type": {
+          "id": 2,
+          "name": "Major",
+          "url": "https://api.beatport.com/v4/catalog/chord-types/2/"
+        },
+        "id": 17,
+        "is_sharp": false,
+        "is_flat": true,
+        "letter": "E",
+        "name": "Eb Major",
+        "url": "https://api.beatport.com/v4/catalog/keys/17/"
+      },
+      "label_track_identifier": null,
+      "length": "9:43",
+      "length_ms": 583163,
+      "mix_name": "D Max Mix",
+      "name": "Congo",
+      "new_release_date": "2019-12-13",
+      "pre_order": false,
+      "pre_order_date": null,
+      "price": {
+        "code": "EUR",
+        "symbol": "€",
+        "value": 1.29,
+        "display": "€1.29"
+      },
+      "publish_date": "2019-12-13",
+      "release": {
+        "id": 2792125,
+        "name": "Strictly Rhythm The Definitive 30",
+        "image": {
+          "id": 29673843,
+          "uri": "https://geo-media.beatport.com/image_size/1400x1400/c99e49ee-1a13-4b8c-be28-23b528222269.jpg",
+          "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/c99e49ee-1a13-4b8c-be28-23b528222269.jpg"
+        },
+        "label": {
+          "id": 24446,
+          "name": "Strictly Rhythm",
+          "image": {
+            "id": 23346387,
+            "uri": "https://geo-media.beatport.com/image_size/500x500/ca1e3455-52c5-40de-a42a-ae4e07b3cb26.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/ca1e3455-52c5-40de-a42a-ae4e07b3cb26.jpg"
+          },
+          "slug": "strictly-rhythm"
+        },
+        "slug": "strictly-rhythm-the-definitive-30"
+      },
+      "remixers": [],
+      "sale_type": {
+        "id": 1,
+        "name": "purchase",
+        "url": "https://api.beatport.com/v4/auxiliary/sale-types/1/"
+      },
+      "sample_url": "https://geo-samples.beatport.com/track/1ee37f47-d664-4922-9ea3-889a84f509f6.LOFI.mp3",
+      "sample_start_ms": 233265,
+      "sample_end_ms": 353265,
+      "slug": "congo",
+      "sub_genre": null,
+      "url": "https://api.beatport.com/v4/catalog/tracks/12891078/",
+      "is_hype": false
+    },
+    {
+      "artists": [
+        {
+          "id": 32545,
+          "image": {
+            "id": 5539565,
+            "uri": "https://geo-media.beatport.com/image_size/590x404/0dc61986-bccf-49d4-8fad-6b147ea8f327.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/0dc61986-bccf-49d4-8fad-6b147ea8f327.jpg"
+          },
+          "name": "The Boss",
+          "slug": "the-boss",
+          "url": "https://api.beatport.com/v4/catalog/artists/32545/"
+        }
+      ],
+      "available_worldwide": false,
+      "bpm": 124,
+      "catalog_number": "4050538286069",
+      "current_status": {
+        "id": 10,
+        "name": "General Content",
+        "url": "https://api.beatport.com/v4/auxiliary/current-status/10/"
+      },
+      "encoded_date": "2017-07-11T20:43:30-06:00",
+      "exclusive": false,
+      "free_downloads": [],
+      "free_download_start_date": null,
+      "free_download_end_date": null,
+      "genre": {
+        "id": 5,
+        "name": "House",
+        "slug": "house",
+        "url": "https://api.beatport.com/v4/catalog/genres/5/"
+      },
+      "id": 9535275,
+      "image": {
+        "id": 23469814,
+        "uri": "https://geo-media.beatport.com/image_size/1500x250/f5c20791-ea19-415d-b7cd-1cb9c783efab.png",
+        "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/f5c20791-ea19-415d-b7cd-1cb9c783efab.png"
+      },
+      "is_available_for_streaming": true,
+      "isrc": "USSR39426502",
+      "key": {
+        "camelot_number": 2,
+        "camelot_letter": "A",
+        "chord_type": {
+          "id": 1,
+          "name": "Minor",
+          "url": "https://api.beatport.com/v4/catalog/chord-types/1/"
+        },
+        "id": 30,
+        "is_sharp": true,
+        "is_flat": false,
+        "letter": "D",
+        "name": "D# Minor",
+        "url": "https://api.beatport.com/v4/catalog/keys/30/"
+      },
+      "label_track_identifier": null,
+      "length": "6:15",
+      "length_ms": 375040,
+      "mix_name": "Tunnel Mix",
+      "name": "Congo",
+      "new_release_date": "1994-01-01",
+      "pre_order": false,
+      "pre_order_date": null,
+      "price": {
+        "code": "EUR",
+        "symbol": "€",
+        "value": 1.29,
+        "display": "€1.29"
+      },
+      "publish_date": "2017-07-05",
+      "release": {
+        "id": 2068352,
+        "name": "Congo",
+        "image": {
+          "id": 23469810,
+          "uri": "https://geo-media.beatport.com/image_size/1400x1400/adc9a35a-3868-4c92-a5db-111a6c510ee0.jpg",
+          "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/adc9a35a-3868-4c92-a5db-111a6c510ee0.jpg"
+        },
+        "label": {
+          "id": 24446,
+          "name": "Strictly Rhythm",
+          "image": {
+            "id": 23346387,
+            "uri": "https://geo-media.beatport.com/image_size/500x500/ca1e3455-52c5-40de-a42a-ae4e07b3cb26.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/ca1e3455-52c5-40de-a42a-ae4e07b3cb26.jpg"
+          },
+          "slug": "strictly-rhythm"
+        },
+        "slug": "congo"
+      },
+      "remixers": [],
+      "sale_type": {
+        "id": 1,
+        "name": "purchase",
+        "url": "https://api.beatport.com/v4/auxiliary/sale-types/1/"
+      },
+      "sample_url": "https://geo-samples.beatport.com/track/511139a8-57a3-4905-8ff5-0aed3d39e3b1.LOFI.mp3",
+      "sample_start_ms": 150016,
+      "sample_end_ms": 270016,
+      "slug": "congo",
+      "sub_genre": null,
+      "url": "https://api.beatport.com/v4/catalog/tracks/9535275/",
+      "is_hype": false
+    },
+    {
+      "artists": [
+        {
+          "id": 100625,
+          "image": {
+            "id": 13064940,
+            "uri": "https://geo-media.beatport.com/image_size/590x404/706ea98c-3a05-42be-95b2-fcf1bc1cc523.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/706ea98c-3a05-42be-95b2-fcf1bc1cc523.jpg"
+          },
+          "name": "Roberto",
+          "slug": "roberto",
+          "url": "https://api.beatport.com/v4/catalog/artists/100625/"
+        }
+      ],
+      "available_worldwide": true,
+      "bpm": 129,
+      "catalog_number": "ARTSX004",
+      "current_status": {
+        "id": 10,
+        "name": "General Content",
+        "url": "https://api.beatport.com/v4/auxiliary/current-status/10/"
+      },
+      "encoded_date": "2019-05-13T13:59:26-06:00",
+      "exclusive": false,
+      "free_downloads": [],
+      "free_download_start_date": null,
+      "free_download_end_date": null,
+      "genre": {
+        "id": 92,
+        "name": "Techno (Raw / Deep / Hypnotic)",
+        "slug": "techno-raw-deep-hypnotic",
+        "url": "https://api.beatport.com/v4/catalog/genres/92/"
+      },
+      "id": 11945910,
+      "image": {
+        "id": 21826037,
+        "uri": "https://geo-media.beatport.com/image_size/1500x250/1ab609a7-e8d4-48e3-baca-307e053cafe8.png",
+        "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/1ab609a7-e8d4-48e3-baca-307e053cafe8.png"
+      },
+      "is_available_for_streaming": true,
+      "isrc": "NLCK41055588",
+      "key": {
+        "camelot_number": 11,
+        "camelot_letter": "A",
+        "chord_type": {
+          "id": 1,
+          "name": "Minor",
+          "url": "https://api.beatport.com/v4/catalog/chord-types/1/"
+        },
+        "id": 11,
+        "is_sharp": true,
+        "is_flat": false,
+        "letter": "F",
+        "name": "F# Minor",
+        "url": "https://api.beatport.com/v4/catalog/keys/11/"
+      },
+      "label_track_identifier": "1815586438",
+      "length": "6:30",
+      "length_ms": 390466,
+      "mix_name": "Original Mix",
+      "name": "Congo",
+      "new_release_date": "2019-05-20",
+      "pre_order": false,
+      "pre_order_date": null,
+      "price": {
+        "code": "EUR",
+        "symbol": "€",
+        "value": 1.29,
+        "display": "€1.29"
+      },
+      "publish_date": "2019-05-20",
+      "release": {
+        "id": 2586077,
+        "name": "System State",
+        "image": {
+          "id": 21800342,
+          "uri": "https://geo-media.beatport.com/image_size/1400x1400/150f7a77-28fd-4821-a17c-72c33b3f7057.jpg",
+          "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/150f7a77-28fd-4821-a17c-72c33b3f7057.jpg"
+        },
+        "label": {
+          "id": 34494,
+          "name": "Arts",
+          "image": {
+            "id": 7970187,
+            "uri": "https://geo-media.beatport.com/image_size/500x500/f495f059-06cc-4cb0-97ae-d8ac35f51965.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/f495f059-06cc-4cb0-97ae-d8ac35f51965.jpg"
+          },
+          "slug": "arts"
+        },
+        "slug": "system-state"
+      },
+      "remixers": [],
+      "sale_type": {
+        "id": 1,
+        "name": "purchase",
+        "url": "https://api.beatport.com/v4/auxiliary/sale-types/1/"
+      },
+      "sample_url": "https://geo-samples.beatport.com/track/7ac50754-c3fc-48b0-b9ab-5078b8c7c64d.LOFI.mp3",
+      "sample_start_ms": 156186,
+      "sample_end_ms": 276186,
+      "slug": "congo",
+      "sub_genre": null,
+      "url": "https://api.beatport.com/v4/catalog/tracks/11945910/",
+      "is_hype": false
+    },
+    {
+      "artists": [
+        {
+          "id": 48952,
+          "image": {
+            "id": 5539565,
+            "uri": "https://geo-media.beatport.com/image_size/590x404/0dc61986-bccf-49d4-8fad-6b147ea8f327.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/0dc61986-bccf-49d4-8fad-6b147ea8f327.jpg"
+          },
+          "name": "Geeneus",
+          "slug": "geeneus",
+          "url": "https://api.beatport.com/v4/catalog/artists/48952/"
+        }
+      ],
+      "available_worldwide": false,
+      "bpm": 138,
+      "catalog_number": "800071006167",
+      "current_status": {
+        "id": 10,
+        "name": "General Content",
+        "url": "https://api.beatport.com/v4/auxiliary/current-status/10/"
+      },
+      "encoded_date": "2018-07-31T05:12:41-06:00",
+      "exclusive": false,
+      "free_downloads": [],
+      "free_download_start_date": null,
+      "free_download_end_date": null,
+      "genre": {
+        "id": 95,
+        "name": "140 / Deep Dubstep / Grime",
+        "slug": "140-deep-dubstep-grime",
+        "url": "https://api.beatport.com/v4/catalog/genres/95/"
+      },
+      "id": 10888058,
+      "image": {
+        "id": 19897679,
+        "uri": "https://geo-media.beatport.com/image_size/1500x250/4b2fdced-6de0-4524-836e-6a27eb0e3fb6.png",
+        "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/4b2fdced-6de0-4524-836e-6a27eb0e3fb6.png"
+      },
+      "is_available_for_streaming": true,
+      "isrc": "GBQGW0400027",
+      "key": {
+        "camelot_number": 7,
+        "camelot_letter": "A",
+        "chord_type": {
+          "id": 1,
+          "name": "Minor",
+          "url": "https://api.beatport.com/v4/catalog/chord-types/1/"
+        },
+        "id": 7,
+        "is_sharp": false,
+        "is_flat": false,
+        "letter": "D",
+        "name": "D Minor",
+        "url": "https://api.beatport.com/v4/catalog/keys/7/"
+      },
+      "label_track_identifier": null,
+      "length": "5:44",
+      "length_ms": 344453,
+      "mix_name": "Original Mix",
+      "name": "Congo",
+      "new_release_date": "2005-01-17",
+      "pre_order": false,
+      "pre_order_date": null,
+      "price": {
+        "code": "EUR",
+        "symbol": "€",
+        "value": 1.29,
+        "display": "€1.29"
+      },
+      "publish_date": "2018-07-31",
+      "release": {
+        "id": 2356221,
+        "name": "Tempa Allstars Vol. 2",
+        "image": {
+          "id": 19897674,
+          "uri": "https://geo-media.beatport.com/image_size/1400x1400/725b7349-823a-4733-832f-53249d605db7.jpg",
+          "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/725b7349-823a-4733-832f-53249d605db7.jpg"
+        },
+        "label": {
+          "id": 72387,
+          "name": "Tempa",
+          "image": {
+            "id": 5539566,
+            "uri": "https://geo-media.beatport.com/image_size/500x500/cda9862c-cf92-4d13-ac65-7e9277181f51.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/cda9862c-cf92-4d13-ac65-7e9277181f51.jpg"
+          },
+          "slug": "tempa"
+        },
+        "slug": "tempa-allstars-vol-2"
+      },
+      "remixers": [],
+      "sale_type": {
+        "id": 1,
+        "name": "purchase",
+        "url": "https://api.beatport.com/v4/auxiliary/sale-types/1/"
+      },
+      "sample_url": "https://geo-samples.beatport.com/track/59c9489c-30bc-4311-95ef-ee06d4953921.LOFI.mp3",
+      "sample_start_ms": 137781,
+      "sample_end_ms": 257781,
+      "slug": "congo",
+      "sub_genre": null,
+      "url": "https://api.beatport.com/v4/catalog/tracks/10888058/",
+      "is_hype": false
+    },
+    {
+      "artists": [
+        {
+          "id": 98151,
+          "image": {
+            "id": 4850263,
+            "uri": "https://geo-media.beatport.com/image_size/590x404/640d5822-6a67-4c3c-9970-bde9f43766d5.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/640d5822-6a67-4c3c-9970-bde9f43766d5.jpg"
+          },
+          "name": "Jubei",
+          "slug": "jubei",
+          "url": "https://api.beatport.com/v4/catalog/artists/98151/"
+        }
+      ],
+      "available_worldwide": true,
+      "bpm": 87,
+      "catalog_number": "META028",
+      "current_status": {
+        "id": 10,
+        "name": "General Content",
+        "url": "https://api.beatport.com/v4/auxiliary/current-status/10/"
+      },
+      "encoded_date": "2015-05-18T15:28:50-06:00",
+      "exclusive": false,
+      "free_downloads": [],
+      "free_download_start_date": null,
+      "free_download_end_date": null,
+      "genre": {
+        "id": 1,
+        "name": "Drum & Bass",
+        "slug": "drum-bass",
+        "url": "https://api.beatport.com/v4/catalog/genres/1/"
+      },
+      "id": 6690852,
+      "image": {
+        "id": 11616158,
+        "uri": "https://geo-media.beatport.com/image_size/1500x250/3767fb9c-9beb-457e-9667-7564a6836b9c.png",
+        "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/3767fb9c-9beb-457e-9667-7564a6836b9c.png"
+      },
+      "is_available_for_streaming": true,
+      "isrc": "GBBHF1310150",
+      "key": {
+        "camelot_number": 8,
+        "camelot_letter": "B",
+        "chord_type": {
+          "id": 2,
+          "name": "Major",
+          "url": "https://api.beatport.com/v4/catalog/chord-types/2/"
+        },
+        "id": 20,
+        "is_sharp": false,
+        "is_flat": false,
+        "letter": "C",
+        "name": "C Major",
+        "url": "https://api.beatport.com/v4/catalog/keys/20/"
+      },
+      "label_track_identifier": "",
+      "length": "5:16",
+      "length_ms": 316960,
+      "mix_name": "Original Mix",
+      "name": "Congo",
+      "new_release_date": "2015-06-22",
+      "pre_order": false,
+      "pre_order_date": null,
+      "price": {
+        "code": "EUR",
+        "symbol": "€",
+        "value": 1.29,
+        "display": "€1.29"
+      },
+      "publish_date": "2015-06-22",
+      "release": {
+        "id": 1537394,
+        "name": "True Form",
+        "image": {
+          "id": 11616125,
+          "uri": "https://geo-media.beatport.com/image_size/1400x1400/0ea08186-0fbf-464b-8f5c-58a6f79c3a1e.jpg",
+          "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/0ea08186-0fbf-464b-8f5c-58a6f79c3a1e.jpg"
+        },
+        "label": {
+          "id": 6564,
+          "name": "Metalheadz",
+          "image": {
+            "id": 123905,
+            "uri": "https://geo-media.beatport.com/image_size/60x60/5b03af28-690f-43e9-abe7-832cf1056395.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/5b03af28-690f-43e9-abe7-832cf1056395.jpg"
+          },
+          "slug": "metalheadz"
+        },
+        "slug": "true-form"
+      },
+      "remixers": [],
+      "sale_type": {
+        "id": 1,
+        "name": "purchase",
+        "url": "https://api.beatport.com/v4/auxiliary/sale-types/1/"
+      },
+      "sample_url": "https://geo-samples.beatport.com/track/1b4118c6-db45-4503-bf6e-bf645c2e94d7.LOFI.mp3",
+      "sample_start_ms": 126784,
+      "sample_end_ms": 246784,
+      "slug": "congo",
+      "sub_genre": null,
+      "url": "https://api.beatport.com/v4/catalog/tracks/6690852/",
+      "is_hype": false
+    },
+    {
+      "artists": [
+        {
+          "id": 32545,
+          "image": {
+            "id": 5539565,
+            "uri": "https://geo-media.beatport.com/image_size/590x404/0dc61986-bccf-49d4-8fad-6b147ea8f327.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/0dc61986-bccf-49d4-8fad-6b147ea8f327.jpg"
+          },
+          "name": "The Boss",
+          "slug": "the-boss",
+          "url": "https://api.beatport.com/v4/catalog/artists/32545/"
+        }
+      ],
+      "available_worldwide": false,
+      "bpm": 122,
+      "catalog_number": "4050538286069",
+      "current_status": {
+        "id": 10,
+        "name": "General Content",
+        "url": "https://api.beatport.com/v4/auxiliary/current-status/10/"
+      },
+      "encoded_date": "2017-07-11T20:43:30-06:00",
+      "exclusive": false,
+      "free_downloads": [],
+      "free_download_start_date": null,
+      "free_download_end_date": null,
+      "genre": {
+        "id": 5,
+        "name": "House",
+        "slug": "house",
+        "url": "https://api.beatport.com/v4/catalog/genres/5/"
+      },
+      "id": 9535274,
+      "image": {
+        "id": 23469813,
+        "uri": "https://geo-media.beatport.com/image_size/1500x250/221ecc59-de26-40c7-9634-4f975f92652b.png",
+        "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/221ecc59-de26-40c7-9634-4f975f92652b.png"
+      },
+      "is_available_for_streaming": true,
+      "isrc": "USSR39426503",
+      "key": {
+        "camelot_number": 5,
+        "camelot_letter": "B",
+        "chord_type": {
+          "id": 2,
+          "name": "Major",
+          "url": "https://api.beatport.com/v4/catalog/chord-types/2/"
+        },
+        "id": 29,
+        "is_sharp": true,
+        "is_flat": false,
+        "letter": "D",
+        "name": "D# Major",
+        "url": "https://api.beatport.com/v4/catalog/keys/29/"
+      },
+      "label_track_identifier": null,
+      "length": "6:38",
+      "length_ms": 398720,
+      "mix_name": "Ministry Anthem",
+      "name": "Congo",
+      "new_release_date": "1994-01-01",
+      "pre_order": false,
+      "pre_order_date": null,
+      "price": {
+        "code": "EUR",
+        "symbol": "€",
+        "value": 1.29,
+        "display": "€1.29"
+      },
+      "publish_date": "2017-07-05",
+      "release": {
+        "id": 2068352,
+        "name": "Congo",
+        "image": {
+          "id": 23469810,
+          "uri": "https://geo-media.beatport.com/image_size/1400x1400/adc9a35a-3868-4c92-a5db-111a6c510ee0.jpg",
+          "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/adc9a35a-3868-4c92-a5db-111a6c510ee0.jpg"
+        },
+        "label": {
+          "id": 24446,
+          "name": "Strictly Rhythm",
+          "image": {
+            "id": 23346387,
+            "uri": "https://geo-media.beatport.com/image_size/500x500/ca1e3455-52c5-40de-a42a-ae4e07b3cb26.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/ca1e3455-52c5-40de-a42a-ae4e07b3cb26.jpg"
+          },
+          "slug": "strictly-rhythm"
+        },
+        "slug": "congo"
+      },
+      "remixers": [],
+      "sale_type": {
+        "id": 1,
+        "name": "purchase",
+        "url": "https://api.beatport.com/v4/auxiliary/sale-types/1/"
+      },
+      "sample_url": "https://geo-samples.beatport.com/track/798306e0-8ca3-4560-8094-3d22ba4385a0.LOFI.mp3",
+      "sample_start_ms": 159488,
+      "sample_end_ms": 279488,
+      "slug": "congo",
+      "sub_genre": null,
+      "url": "https://api.beatport.com/v4/catalog/tracks/9535274/",
+      "is_hype": false
+    },
+    {
+      "artists": [
+        {
+          "id": 616157,
+          "image": {
+            "id": 29785596,
+            "uri": "https://geo-media.beatport.com/image_size/590x404/761a3d83-ff43-4c54-a6e2-a2820bdb9c30.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/761a3d83-ff43-4c54-a6e2-a2820bdb9c30.jpg"
+          },
+          "name": "Franco BA",
+          "slug": "franco-ba",
+          "url": "https://api.beatport.com/v4/catalog/artists/616157/"
+        }
+      ],
+      "available_worldwide": true,
+      "bpm": 124,
+      "catalog_number": "DPE1589",
+      "current_status": {
+        "id": 10,
+        "name": "General Content",
+        "url": "https://api.beatport.com/v4/auxiliary/current-status/10/"
+      },
+      "encoded_date": "2019-03-18T13:45:05-06:00",
+      "exclusive": false,
+      "free_downloads": [],
+      "free_download_start_date": null,
+      "free_download_end_date": null,
+      "genre": {
+        "id": 14,
+        "name": "Minimal / Deep Tech",
+        "slug": "minimal-deep-tech",
+        "url": "https://api.beatport.com/v4/catalog/genres/14/"
+      },
+      "id": 11764446,
+      "image": {
+        "id": 21492505,
+        "uri": "https://geo-media.beatport.com/image_size/1500x250/729df9fc-919d-463e-9c96-75006b029fa9.png",
+        "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/729df9fc-919d-463e-9c96-75006b029fa9.png"
+      },
+      "is_available_for_streaming": true,
+      "isrc": "ITA061301729",
+      "key": {
+        "camelot_number": 5,
+        "camelot_letter": "A",
+        "chord_type": {
+          "id": 1,
+          "name": "Minor",
+          "url": "https://api.beatport.com/v4/catalog/chord-types/1/"
+        },
+        "id": 5,
+        "is_sharp": false,
+        "is_flat": false,
+        "letter": "C",
+        "name": "C Minor",
+        "url": "https://api.beatport.com/v4/catalog/keys/5/"
+      },
+      "label_track_identifier": "",
+      "length": "6:16",
+      "length_ms": 376500,
+      "mix_name": "Original Mix",
+      "name": "Congo",
+      "new_release_date": "2019-03-29",
+      "pre_order": false,
+      "pre_order_date": "2019-03-15",
+      "price": {
+        "code": "EUR",
+        "symbol": "€",
+        "value": 1.29,
+        "display": "€1.29"
+      },
+      "publish_date": "2019-03-29",
+      "release": {
+        "id": 2544438,
+        "name": "Stefano Noferini Presents Club Edition Annual '19 Vol.01",
+        "image": {
+          "id": 21497009,
+          "uri": "https://geo-media.beatport.com/image_size/1400x1400/98da7a3f-ef88-4d86-a072-9e60041fc3de.jpg",
+          "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/98da7a3f-ef88-4d86-a072-9e60041fc3de.jpg"
+        },
+        "label": {
+          "id": 2051,
+          "name": "Deeperfect Records",
+          "image": {
+            "id": 23982367,
+            "uri": "https://geo-media.beatport.com/image_size/500x500/88532549-f8ca-45d0-b073-90ed74238a65.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/88532549-f8ca-45d0-b073-90ed74238a65.jpg"
+          },
+          "slug": "deeperfect-records"
+        },
+        "slug": "stefano-noferini-presents-club-edition-annual-19-vol01"
+      },
+      "remixers": [],
+      "sale_type": {
+        "id": 1,
+        "name": "purchase",
+        "url": "https://api.beatport.com/v4/auxiliary/sale-types/1/"
+      },
+      "sample_url": "https://geo-samples.beatport.com/track/7a68236f-d715-4c32-8ada-8cde0302c883.LOFI.mp3",
+      "sample_start_ms": 150600,
+      "sample_end_ms": 270600,
+      "slug": "congo",
+      "sub_genre": null,
+      "url": "https://api.beatport.com/v4/catalog/tracks/11764446/",
+      "is_hype": false
+    },
+    {
+      "artists": [
+        {
+          "id": 810730,
+          "image": {
+            "id": 23335316,
+            "uri": "https://geo-media.beatport.com/image_size/590x404/0b041109-f179-4ead-ba0a-1f5cc4490914.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/0b041109-f179-4ead-ba0a-1f5cc4490914.jpg"
+          },
+          "name": "Ayala (IT)",
+          "slug": "ayala-it",
+          "url": "https://api.beatport.com/v4/catalog/artists/810730/"
+        }
+      ],
+      "available_worldwide": true,
+      "bpm": 112,
+      "catalog_number": "MBR389",
+      "current_status": {
+        "id": 10,
+        "name": "General Content",
+        "url": "https://api.beatport.com/v4/auxiliary/current-status/10/"
+      },
+      "encoded_date": "2020-06-11T17:09:58-06:00",
+      "exclusive": false,
+      "free_downloads": [],
+      "free_download_start_date": null,
+      "free_download_end_date": null,
+      "genre": {
+        "id": 89,
+        "name": "Afro House",
+        "slug": "afro-house",
+        "url": "https://api.beatport.com/v4/catalog/genres/89/"
+      },
+      "id": 13775041,
+      "image": {
+        "id": 25672195,
+        "uri": "https://geo-media.beatport.com/image_size/1500x250/1e6f000f-b4ea-4efa-81ca-d7173a41b32f.png",
+        "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/1e6f000f-b4ea-4efa-81ca-d7173a41b32f.png"
+      },
+      "is_available_for_streaming": true,
+      "isrc": "ITFGO2000034",
+      "key": {
+        "camelot_number": 6,
+        "camelot_letter": "A",
+        "chord_type": {
+          "id": 1,
+          "name": "Minor",
+          "url": "https://api.beatport.com/v4/catalog/chord-types/1/"
+        },
+        "id": 6,
+        "is_sharp": false,
+        "is_flat": false,
+        "letter": "G",
+        "name": "G Minor",
+        "url": "https://api.beatport.com/v4/catalog/keys/6/"
+      },
+      "label_track_identifier": "2784252047",
+      "length": "9:45",
+      "length_ms": 585267,
+      "mix_name": "Daniele Baldelli, Marco Dionigi Remix",
+      "name": "Congo",
+      "new_release_date": "2020-06-26",
+      "pre_order": false,
+      "pre_order_date": "2020-06-12",
+      "price": {
+        "code": "EUR",
+        "symbol": "€",
+        "value": 1.29,
+        "display": "€1.29"
+      },
+      "publish_date": "2020-06-26",
+      "release": {
+        "id": 3010667,
+        "name": "Congo",
+        "image": {
+          "id": 25669465,
+          "uri": "https://geo-media.beatport.com/image_size/1400x1400/214ff8a3-dfae-4879-a5bf-efde555d1e54.jpg",
+          "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/214ff8a3-dfae-4879-a5bf-efde555d1e54.jpg"
+        },
+        "label": {
+          "id": 37162,
+          "name": "MoBlack Records",
+          "image": {
+            "id": 23876594,
+            "uri": "https://geo-media.beatport.com/image_size/500x500/66f598d6-afa5-44f3-a6db-d902f4c89a55.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/66f598d6-afa5-44f3-a6db-d902f4c89a55.jpg"
+          },
+          "slug": "moblack-records"
+        },
+        "slug": "congo"
+      },
+      "remixers": [
+        {
+          "id": 64021,
+          "image": {
+            "id": 5539565,
+            "uri": "https://geo-media.beatport.com/image_size/590x404/0dc61986-bccf-49d4-8fad-6b147ea8f327.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/0dc61986-bccf-49d4-8fad-6b147ea8f327.jpg"
+          },
+          "name": "Daniele Baldelli",
+          "slug": "daniele-baldelli",
+          "url": "https://api.beatport.com/v4/catalog/artists/64021/"
+        },
+        {
+          "id": 101269,
+          "image": {
+            "id": 5539565,
+            "uri": "https://geo-media.beatport.com/image_size/590x404/0dc61986-bccf-49d4-8fad-6b147ea8f327.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/0dc61986-bccf-49d4-8fad-6b147ea8f327.jpg"
+          },
+          "name": "Marco Dionigi",
+          "slug": "marco-dionigi",
+          "url": "https://api.beatport.com/v4/catalog/artists/101269/"
+        }
+      ],
+      "sale_type": {
+        "id": 1,
+        "name": "purchase",
+        "url": "https://api.beatport.com/v4/auxiliary/sale-types/1/"
+      },
+      "sample_url": "https://geo-samples.beatport.com/track/9e21c255-a5f5-464b-b604-c23354e98adb.LOFI.mp3",
+      "sample_start_ms": 234106,
+      "sample_end_ms": 354106,
+      "slug": "congo",
+      "sub_genre": null,
+      "url": "https://api.beatport.com/v4/catalog/tracks/13775041/",
+      "is_hype": false
+    },
+    {
+      "artists": [
+        {
+          "id": 52252,
+          "image": {
+            "id": 5539565,
+            "uri": "https://geo-media.beatport.com/image_size/590x404/0dc61986-bccf-49d4-8fad-6b147ea8f327.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/0dc61986-bccf-49d4-8fad-6b147ea8f327.jpg"
+          },
+          "name": "T.Kolai",
+          "slug": "tkolai",
+          "url": "https://api.beatport.com/v4/catalog/artists/52252/"
+        }
+      ],
+      "available_worldwide": false,
+      "bpm": 87,
+      "catalog_number": "CFCD011",
+      "current_status": {
+        "id": 10,
+        "name": "General Content",
+        "url": "https://api.beatport.com/v4/auxiliary/current-status/10/"
+      },
+      "encoded_date": "2008-06-20T09:28:55-06:00",
+      "exclusive": false,
+      "free_downloads": [],
+      "free_download_start_date": null,
+      "free_download_end_date": null,
+      "genre": {
+        "id": 3,
+        "name": "Electronica",
+        "slug": "electronica",
+        "url": "https://api.beatport.com/v4/catalog/genres/3/"
+      },
+      "id": 607881,
+      "image": {
+        "id": 11825718,
+        "uri": "https://geo-media.beatport.com/image_size/1500x250/41b1857b-f899-4266-a27a-d725372ddf7c.png",
+        "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/41b1857b-f899-4266-a27a-d725372ddf7c.png"
+      },
+      "is_available_for_streaming": true,
+      "isrc": "GBEEK0400093",
+      "key": {
+        "camelot_number": 10,
+        "camelot_letter": "A",
+        "chord_type": {
+          "id": 1,
+          "name": "Minor",
+          "url": "https://api.beatport.com/v4/catalog/chord-types/1/"
+        },
+        "id": 10,
+        "is_sharp": false,
+        "is_flat": false,
+        "letter": "B",
+        "name": "B Minor",
+        "url": "https://api.beatport.com/v4/catalog/keys/10/"
+      },
+      "label_track_identifier": "1126019585851",
+      "length": "6:45",
+      "length_ms": 405920,
+      "mix_name": "Original Mix",
+      "name": "Congo",
+      "new_release_date": "2005-09-05",
+      "pre_order": false,
+      "pre_order_date": null,
+      "price": {
+        "code": "EUR",
+        "symbol": "€",
+        "value": 1.29,
+        "display": "€1.29"
+      },
+      "publish_date": "2005-09-05",
+      "release": {
+        "id": 120317,
+        "name": "Teak All Eye",
+        "image": {
+          "id": 11825691,
+          "uri": "https://geo-media.beatport.com/image_size/1400x1400/254bacdc-15fe-452f-aa52-efc009dc7415.jpg",
+          "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/254bacdc-15fe-452f-aa52-efc009dc7415.jpg"
+        },
+        "label": {
+          "id": 1410,
+          "name": "Chillifunk Records",
+          "image": {
+            "id": 1618,
+            "uri": "https://geo-media.beatport.com/image_size/60x60/2dcf89b5-4723-4844-8a6c-01ccfdd4c4fb.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/2dcf89b5-4723-4844-8a6c-01ccfdd4c4fb.jpg"
+          },
+          "slug": "chillifunk-records"
+        },
+        "slug": "teak-all-eye"
+      },
+      "remixers": [],
+      "sale_type": {
+        "id": 1,
+        "name": "purchase",
+        "url": "https://api.beatport.com/v4/auxiliary/sale-types/1/"
+      },
+      "sample_url": "https://geo-samples.beatport.com/track/ff746aad-9b15-4bac-a006-07e3e227386b.LOFI.mp3",
+      "sample_start_ms": 162368,
+      "sample_end_ms": 282368,
+      "slug": "congo",
+      "sub_genre": null,
+      "url": "https://api.beatport.com/v4/catalog/tracks/607881/",
+      "is_hype": false
+    },
+    {
+      "artists": [
+        {
+          "id": 104800,
+          "image": {
+            "id": 5539565,
+            "uri": "https://geo-media.beatport.com/image_size/590x404/0dc61986-bccf-49d4-8fad-6b147ea8f327.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/0dc61986-bccf-49d4-8fad-6b147ea8f327.jpg"
+          },
+          "name": "Thomas Heat",
+          "slug": "thomas-heat",
+          "url": "https://api.beatport.com/v4/catalog/artists/104800/"
+        },
+        {
+          "id": 115151,
+          "image": {
+            "id": 8482944,
+            "uri": "https://geo-media.beatport.com/image_size/590x404/125824f2-69f4-4485-93e9-1bf83a7d0518.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/125824f2-69f4-4485-93e9-1bf83a7d0518.jpg"
+          },
+          "name": "Martin Eigenberg",
+          "slug": "martin-eigenberg",
+          "url": "https://api.beatport.com/v4/catalog/artists/115151/"
+        }
+      ],
+      "available_worldwide": false,
+      "bpm": 128,
+      "catalog_number": "GUC001",
+      "current_status": {
+        "id": 10,
+        "name": "General Content",
+        "url": "https://api.beatport.com/v4/auxiliary/current-status/10/"
+      },
+      "encoded_date": "2010-03-22T07:24:53-06:00",
+      "exclusive": false,
+      "free_downloads": [],
+      "free_download_start_date": null,
+      "free_download_end_date": null,
+      "genre": {
+        "id": 15,
+        "name": "Progressive House",
+        "slug": "progressive-house",
+        "url": "https://api.beatport.com/v4/catalog/genres/15/"
+      },
+      "id": 1151044,
+      "image": {
+        "id": 1330848,
+        "uri": "https://geo-media.beatport.com/image_size/1500x250/f4a47552-7270-4c9e-b407-028eefac5ac3.png",
+        "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/f4a47552-7270-4c9e-b407-028eefac5ac3.png"
+      },
+      "is_available_for_streaming": true,
+      "isrc": "DEHF41000023",
+      "key": {
+        "camelot_number": 3,
+        "camelot_letter": "B",
+        "chord_type": {
+          "id": 2,
+          "name": "Major",
+          "url": "https://api.beatport.com/v4/catalog/chord-types/2/"
+        },
+        "id": 15,
+        "is_sharp": false,
+        "is_flat": true,
+        "letter": "D",
+        "name": "Db Major",
+        "url": "https://api.beatport.com/v4/catalog/keys/15/"
+      },
+      "label_track_identifier": null,
+      "length": "6:40",
+      "length_ms": 400546,
+      "mix_name": "Christian Fischer Remix",
+      "name": "Congo",
+      "new_release_date": "2010-03-19",
+      "pre_order": false,
+      "pre_order_date": null,
+      "price": {
+        "code": "EUR",
+        "symbol": "€",
+        "value": 1.29,
+        "display": "€1.29"
+      },
+      "publish_date": "2010-03-19",
+      "release": {
+        "id": 231849,
+        "name": "Groundunder Recordings Miami 2010",
+        "image": {
+          "id": 628317,
+          "uri": "https://geo-media.beatport.com/image_size/500x500/fcbdd484-35de-43a1-9653-6df36334fb5a.jpg",
+          "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/fcbdd484-35de-43a1-9653-6df36334fb5a.jpg"
+        },
+        "label": {
+          "id": 13892,
+          "name": "Groundunder Recordings",
+          "image": {
+            "id": 492586,
+            "uri": "https://geo-media.beatport.com/image_size/60x60/fa67e89d-71b0-497f-af36-efac024a3696.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/fa67e89d-71b0-497f-af36-efac024a3696.jpg"
+          },
+          "slug": "groundunder-recordings"
+        },
+        "slug": "groundunder-recordings-miami-2010"
+      },
+      "remixers": [
+        {
+          "id": 12443,
+          "image": {
+            "id": 405016,
+            "uri": "https://geo-media.beatport.com/image_size/590x405/4dabf452-0be5-4181-9576-daee8591c270.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/4dabf452-0be5-4181-9576-daee8591c270.jpg"
+          },
+          "name": "Christian Fischer",
+          "slug": "christian-fischer",
+          "url": "https://api.beatport.com/v4/catalog/artists/12443/"
+        }
+      ],
+      "sale_type": {
+        "id": 1,
+        "name": "purchase",
+        "url": "https://api.beatport.com/v4/auxiliary/sale-types/1/"
+      },
+      "sample_url": "https://geo-samples.beatport.com/track/8279da4f-42e5-4811-94fb-1059444d6415.LOFI.mp3",
+      "sample_start_ms": 160218,
+      "sample_end_ms": 280218,
+      "slug": "congo",
+      "sub_genre": null,
+      "url": "https://api.beatport.com/v4/catalog/tracks/1151044/",
+      "is_hype": false
+    },
+    {
+      "artists": [
+        {
+          "id": 263200,
+          "image": {
+            "id": 8439293,
+            "uri": "https://geo-media.beatport.com/image_size/590x404/7c1b758f-985f-460c-ae7f-ee3c8bec0a20.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/7c1b758f-985f-460c-ae7f-ee3c8bec0a20.jpg"
+          },
+          "name": "Kristofo",
+          "slug": "kristofo",
+          "url": "https://api.beatport.com/v4/catalog/artists/263200/"
+        }
+      ],
+      "available_worldwide": false,
+      "bpm": 127,
+      "catalog_number": "SWP06",
+      "current_status": {
+        "id": 10,
+        "name": "General Content",
+        "url": "https://api.beatport.com/v4/auxiliary/current-status/10/"
+      },
+      "encoded_date": "2013-03-15T14:50:51-06:00",
+      "exclusive": false,
+      "free_downloads": [],
+      "free_download_start_date": null,
+      "free_download_end_date": null,
+      "genre": {
+        "id": 6,
+        "name": "Techno (Peak Time / Driving)",
+        "slug": "techno-peak-time-driving",
+        "url": "https://api.beatport.com/v4/catalog/genres/6/"
+      },
+      "id": 4248078,
+      "image": {
+        "id": 7104544,
+        "uri": "https://geo-media.beatport.com/image_size/1500x250/a7b57283-050c-42af-8fe8-0331dd521244.png",
+        "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/a7b57283-050c-42af-8fe8-0331dd521244.png"
+      },
+      "is_available_for_streaming": true,
+      "isrc": "FR3R21377002",
+      "key": {
+        "camelot_number": 4,
+        "camelot_letter": "B",
+        "chord_type": {
+          "id": 2,
+          "name": "Major",
+          "url": "https://api.beatport.com/v4/catalog/chord-types/2/"
+        },
+        "id": 16,
+        "is_sharp": false,
+        "is_flat": true,
+        "letter": "A",
+        "name": "Ab Major",
+        "url": "https://api.beatport.com/v4/catalog/keys/16/"
+      },
+      "label_track_identifier": "",
+      "length": "7:37",
+      "length_ms": 457627,
+      "mix_name": "Original Mix",
+      "name": "Congo",
+      "new_release_date": "2013-03-26",
+      "pre_order": false,
+      "pre_order_date": null,
+      "price": {
+        "code": "EUR",
+        "symbol": "€",
+        "value": 1.29,
+        "display": "€1.29"
+      },
+      "publish_date": "2013-03-26",
+      "release": {
+        "id": 1060520,
+        "name": "Dancing Machine",
+        "image": {
+          "id": 14817831,
+          "uri": "https://geo-media.beatport.com/image_size/1400x1400/7fb0a603-f626-40b6-bb57-9025634b0484.jpg",
+          "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/7fb0a603-f626-40b6-bb57-9025634b0484.jpg"
+        },
+        "label": {
+          "id": 11878,
+          "name": "Sweetpeak (Audiogenic)",
+          "image": {
+            "id": 311494,
+            "uri": "https://geo-media.beatport.com/image_size/60x60/a38094e4-e8a7-447a-99b4-bfbd509f65d5.jpg",
+            "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/a38094e4-e8a7-447a-99b4-bfbd509f65d5.jpg"
+          },
+          "slug": "sweetpeak-audiogenic"
+        },
+        "slug": "dancing-machine"
+      },
+      "remixers": [],
+      "sale_type": {
+        "id": 1,
+        "name": "purchase",
+        "url": "https://api.beatport.com/v4/auxiliary/sale-types/1/"
+      },
+      "sample_url": "https://geo-samples.beatport.com/track/a5d75ac3-79bc-451b-9c62-6e6593849204.LOFI.mp3",
+      "sample_start_ms": 183050,
+      "sample_end_ms": 303050,
+      "slug": "congo",
+      "sub_genre": null,
+      "url": "https://api.beatport.com/v4/catalog/tracks/4248078/",
+      "is_hype": false
     }
   ],
-  "audio_format": null,
-  "available_worldwide": true,
-  "bpm": 125,
-  "catalog_number": "SAVED21501Z",
-  "current_status": {
-    "id": 10,
-    "name": "General Content",
-    "url": "https://api.beatport.com/v4/auxiliary/current-status/10/"
-  },
-  "desc": "",
-  "enabled": true,
-  "encode_status": "CONVERTED",
-  "encoded_date": "2020-06-04T14:22:45-06:00",
-  "exclusive": false,
-  "exclusive_period": {
-    "days": 14,
-    "description": "Exclusive for 2 weeks (14 days)",
-    "id": 4,
-    "url": "https://api.beatport.com/v4/auxiliary/exclusive-period/4/"
-  },
-  "free_downloads": [],
-  "free_download_start_date": null,
-  "free_download_end_date": null,
-  "genre": {
-    "id": 11,
-    "name": "Tech House",
-    "slug": "tech-house",
-    "url": "https://api.beatport.com/v4/catalog/genres/11/"
-  },
-  "hidden": false,
-  "id": 13732823,
-  "image": {
-    "id": 25588766,
-    "uri": "https://geo-media.beatport.com/image_size/1500x250/611a2003-ef05-444c-b8b9-c7bda2025ec9.png",
-    "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/611a2003-ef05-444c-b8b9-c7bda2025ec9.png"
-  },
-  "is_available_for_streaming": true,
-  "is_classic": false,
-  "isrc": "GBJAJ2001435",
-  "key": {
-    "camelot_number": 10,
-    "camelot_letter": "A",
-    "chord_type": {
-      "id": 1,
-      "name": "Minor",
-      "url": "https://api.beatport.com/v4/catalog/chord-types/1/"
-    },
-    "id": 10,
-    "is_sharp": false,
-    "is_flat": false,
-    "letter": "B",
-    "name": "B Minor",
-    "url": "https://api.beatport.com/v4/catalog/keys/10/"
-  },
-  "label_track_identifier": "2766979583",
-  "length": "7:11",
-  "length_ms": 431040,
-  "mix_name": "Extended Mix",
-  "name": "Un Congo",
-  "new_release_date": "2020-06-26",
-  "number": 1,
-  "pre_order": false,
-  "pre_order_date": "2020-06-12",
-  "price": {
-    "code": "EUR",
-    "symbol": "€",
-    "value": 1.29,
-    "display": "€1.29"
-  },
-  "publish_date": "2020-06-26",
-  "publish_status": "published",
-  "release": {
-    "id": 2999267,
-    "name": "Un Congo EP",
-    "image": {
-      "id": 25588206,
-      "uri": "https://geo-media.beatport.com/image_size/1400x1400/f43546df-6888-4f67-97e9-4a84439d52c1.jpg",
-      "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/f43546df-6888-4f67-97e9-4a84439d52c1.jpg"
-    },
-    "label": {
-      "id": 1475,
-      "name": "Saved Records",
-      "image": {
-        "id": 11455645,
-        "uri": "https://geo-media.beatport.com/image_size/500x500/46f6defa-3106-4b65-99d1-682e5e819db8.jpg",
-        "dynamic_uri": "https://geo-media.beatport.com/image_size/{w}x{h}/46f6defa-3106-4b65-99d1-682e5e819db8.jpg"
-      },
-      "slug": "saved-records"
-    },
-    "slug": "un-congo-ep"
-  },
-  "remixers": [],
-  "sale_type": {
-    "id": 1,
-    "name": "purchase",
-    "url": "https://api.beatport.com/v4/auxiliary/sale-types/1/"
-  },
-  "sample_url": "https://geo-samples.beatport.com/track/e1a178e8-2104-49ef-8d5e-b5587b0420ae.LOFI.mp3",
-  "sample_start_ms": 172416,
-  "sample_end_ms": 292416,
-  "slug": "un-congo",
-  "sub_genre": null,
-  "was_ever_exclusive": true,
-  "is_hype": false
+  "order": [
+    "tracks"
+  ],
+  "next": "api.beatport.com/v4/catalog/search/?q=joeski+un+congo&type=tracks&page=2",
+  "previous": null,
+  "count": 7228,
+  "page": "1/290",
+  "per_page": 25
 }

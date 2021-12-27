@@ -58,17 +58,11 @@ public class SpotifyTagger implements Tagger {
             Paging<Track> trackPaging = req.execute();
 
             System.out.println("Total tracks founded: " + trackPaging.getTotal());
-            return makeTags(trackPaging.getItems());
+//            return makeTags(trackPaging.getItems());
         } catch (IOException | SpotifyWebApiException | ParseException e) {
             System.out.println("Error: " + e.getMessage());
         }
         return result;
-    }
-
-    @Override
-    public Optional<me.jvegaf.musikbox.tracks.Track> fetchTrack(String id) {
-        // TODO: Implement this method
-        return null;
     }
 
     private SearchTracksRequest makeTrackSearchRequest(List<String> reqArgs) {
@@ -77,19 +71,19 @@ public class SpotifyTagger implements Tagger {
         return this.spotifyApi.searchTracks(req).build();
     }
 
-    private List<SearchResult> makeTags(Track[] tracks) {
-        List<SearchResult> result = new ArrayList<>();
-        for (Track t : tracks) {
-            SearchResult td = new SearchResult();
-            td.setId(t.getId());
-            td.setTitle(t.getName());
-            td.setArtists(Arrays.stream(t.getArtists()).map(ArtistSimplified::getName).toList());
-            td.setLinkURL(t.getUri());
-            result.add(td);
-            System.out.println(td);
-        }
-        return result;
-    }
+//    private List<SearchResult> makeTags(Track[] tracks) {
+//        List<SearchResult> result = new ArrayList<>();
+//        for (Track t : tracks) {
+//            SearchResult td = new SearchResult();
+//            td.setId(t.getId());
+//            td.setTitle(t.getName());
+//            td.setArtists(Arrays.stream(t.getArtists()).map(ArtistSimplified::getName).toList());
+//            td.setURL(t.getUri());
+//            result.add(td);
+//            System.out.println(td);
+//        }
+//        return result;
+//    }
 
 
 }

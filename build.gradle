@@ -21,7 +21,7 @@ javafx {
 
 dependencies {
     implementation 'io.github.cdimascio:dotenv-java:2.2.3'
-    implementation 'net.sourceforge.htmlunit:htmlunit:2.56.0'
+    implementation 'org.jsoup:jsoup:1.14.3'
     implementation 'org:jaudiotagger:2.0.3'
     implementation 'com.sachinhandiekar:jMusixMatch:1.1.4'
     implementation 'fr.brouillard.oss:cssfx:11.5.0'
