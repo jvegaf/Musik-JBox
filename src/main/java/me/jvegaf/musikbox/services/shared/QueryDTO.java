@@ -1,4 +1,4 @@
-package me.jvegaf.musikbox.services.web.client;
+package me.jvegaf.musikbox.services.shared;
 
 
 import java.util.List;

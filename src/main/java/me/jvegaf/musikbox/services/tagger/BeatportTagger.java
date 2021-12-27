@@ -3,7 +3,7 @@ package me.jvegaf.musikbox.services.tagger;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import me.jvegaf.musikbox.services.parser.Parser;
-import me.jvegaf.musikbox.services.web.client.QueryBuilder;
+import me.jvegaf.musikbox.services.shared.QueryBuilder;
 
 import java.net.URI;
 import java.net.http.HttpClient;

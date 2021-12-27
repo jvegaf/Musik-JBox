@@ -1,7 +1,7 @@
 package me.jvegaf.musikbox.services.tagger;
 
 import me.jvegaf.musikbox.services.picture.PictureFetcher;
-import me.jvegaf.musikbox.services.web.client.Sanitizer;
+import me.jvegaf.musikbox.services.shared.Sanitizer;
 import me.jvegaf.musikbox.tracks.Track;
 
 import java.util.ArrayList;

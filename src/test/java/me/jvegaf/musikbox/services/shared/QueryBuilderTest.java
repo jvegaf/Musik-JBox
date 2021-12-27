@@ -1,5 +1,7 @@
-package me.jvegaf.musikbox.services.web.client;
+package me.jvegaf.musikbox.services.shared;
 
+import me.jvegaf.musikbox.services.shared.QueryBuilder;
+import me.jvegaf.musikbox.services.shared.Sanitizer;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
