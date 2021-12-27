@@ -4,18 +4,14 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import me.jvegaf.musikbox.services.parser.Parser;
 import me.jvegaf.musikbox.services.web.client.QueryBuilder;
-import me.jvegaf.musikbox.tracks.Track;
 
-import java.io.IOException;
 import java.net.URI;
-import java.net.URL;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 
 public class BeatportTagger implements Tagger {

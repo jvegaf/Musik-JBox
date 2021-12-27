@@ -5,7 +5,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import me.jvegaf.musikbox.services.tagger.SearchResult;
-import me.jvegaf.musikbox.tracks.Track;
 
 import java.util.ArrayList;
 import java.util.List;

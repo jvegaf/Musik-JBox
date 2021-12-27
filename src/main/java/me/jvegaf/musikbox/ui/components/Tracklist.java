@@ -41,7 +41,7 @@ public class Tracklist extends AnchorPane implements Initializable {
 
 
     private Track selectedTrack;
-    private List<Track> selectedTracks;
+    private final List<Track> selectedTracks;
     private final TracksRepository tracksRepository;
     private final CommandBus commandHandler;
 
@@ -64,7 +64,8 @@ public class Tracklist extends AnchorPane implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.songsTableView.setItems(this.tracksRepository.tracksObjectProperty().getValue());
-        this.tracksRepository.tracksObjectProperty().addListener((observable, oldValue, newValue) -> songsTableView.setItems(newValue));
+        this.tracksRepository.tracksObjectProperty()
+                             .addListener((observable, oldValue, newValue) -> songsTableView.setItems(newValue));
 
         TableView.TableViewSelectionModel<Track> selectionModel = this.songsTableView.getSelectionModel();
         selectionModel.setSelectionMode(SelectionMode.MULTIPLE);
@@ -74,7 +75,6 @@ public class Tracklist extends AnchorPane implements Initializable {
             selectedTracks.clear(); // FIXME: this is a hack
             selectedTracks.addAll(change.getList().stream().toList());
         });
-
 
 
         titleColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -104,23 +104,20 @@ public class Tracklist extends AnchorPane implements Initializable {
 
     private ContextMenu getContextMenu() {
         ContextMenu menu = new ContextMenu();
-        MenuItem fixallItem = new MenuItem("Fix all Tracks");
+        MenuItem fixallItem = new MenuItem("Fix Metadata");
         fixallItem.setOnAction(actionEvent -> this.commandHandler.fixTags(this.selectedTracks));
         MenuItem detailItem = new MenuItem("View Detail");
         detailItem.setOnAction(actionEvent -> this.commandHandler.showTrackDetail(this.selectedTrack));
         MenuItem playItem = new MenuItem("Play Song");
         playItem.setOnAction(actionEvent -> this.commandHandler.playTrack(this.selectedTrack));
 
-        MenuItem taggerItem = new MenuItem("Fix Track Metadata");
-        taggerItem.setOnAction(actionEvent -> this.commandHandler.fixTags(this.selectedTrack));
 
         menu.getItems().addAll(
                 fixallItem,
                 new SeparatorMenuItem(),
                 detailItem,
-                playItem,
-                new SeparatorMenuItem(),
-                taggerItem);
+                playItem
+        );
         return menu;
     }
 
