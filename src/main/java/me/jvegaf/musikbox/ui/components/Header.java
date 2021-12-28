@@ -1,6 +1,7 @@
 package me.jvegaf.musikbox.ui.components;
 
 import com.google.inject.Inject;
+import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -29,6 +30,10 @@ public final class Header extends HBox implements Initializable {
     private Label artistLabel;
     @FXML
     private Label titleLabel;
+    @FXML
+    private Label currentTimeLabel;
+    @FXML
+    private Label remainTimeLabel;
     @FXML
     private ProgressBar progressBar;
     @FXML
@@ -84,6 +89,11 @@ public final class Header extends HBox implements Initializable {
     private void initDisplayControls() {
 
         initProgressBar();
+        currentTimeLabel.textProperty().bind(Bindings.createStringBinding(() -> String.format("%.0f:%02.0f", player.getMediaPlayer().getCurrentTime().toMinutes(), player.getMediaPlayer().getCurrentTime().toSeconds()%60), player.getMediaPlayer().currentTimeProperty()));
+
+        remainTimeLabel.textProperty().bind(Bindings.createStringBinding(() -> String.format("%.0f:%02.0f", player
+                .getMediaPlayer().getCurrentTime().toMinutes()-player.getMediaPlayer().getTotalDuration().toMinutes(),
+                                                                                         (player.getMediaPlayer().getTotalDuration().toSeconds()-player.getMediaPlayer().getCurrentTime().toSeconds())%60), player.getMediaPlayer().currentTimeProperty()));
     }
 
     private void initProgressBar() {

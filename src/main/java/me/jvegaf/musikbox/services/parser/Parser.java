@@ -27,16 +27,19 @@ public final class Parser {
                 album =
                 Optional.ofNullable(trackObj.get("release").getAsJsonObject().get("name").getAsString());
         album.ifPresent(sr::setAlbum);
-        Optional<String> duration = Optional.ofNullable(trackObj.get("length").getAsString());
-        duration.ifPresent(sr::setDuration);
+        JsonElement lengthEl = trackObj.get("length");
+        if (!lengthEl.isJsonNull()) sr.setDuration(lengthEl.getAsString());
         Optional<String> genre = Optional.ofNullable(trackObj.get("genre").getAsJsonObject().get("name").getAsString());
         genre.ifPresent(sr::setGenre);
-        Optional<Integer> bpm = Optional.of(trackObj.get("bpm").getAsNumber().intValue());
-        bpm.ifPresent(sr::setBpm);
-        int camelotNum = trackObj.get("key").getAsJsonObject().get("camelot_number").getAsNumber().intValue();
-        String camelotKey = trackObj.get("key").getAsJsonObject().get("camelot_letter").getAsString();
-        String key = String.format("%s%d", camelotKey, camelotNum);
-        sr.setKey(key);
+        JsonElement bpmEl = trackObj.get("bpm");
+        if (!bpmEl.isJsonNull()) sr.setBpm(bpmEl.getAsInt());
+        JsonElement keyEl = trackObj.get("key");
+        if (!keyEl.isJsonNull()) {
+            int camelotNum = keyEl.getAsJsonObject().get("camelot_number").getAsInt();
+            String camelotKey = keyEl.getAsJsonObject().get("camelot_letter").getAsString();
+            String key = String.format("%s%d", camelotKey, camelotNum);
+            sr.setKey(key);
+        }
         Optional<String> year = Optional.of(trackObj.get("publish_date").getAsString().substring(0, 4));
         year.ifPresent(sr::setYear);
 

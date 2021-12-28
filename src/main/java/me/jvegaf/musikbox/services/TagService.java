@@ -17,44 +17,53 @@ import org.jaudiotagger.tag.id3.AbstractID3v2Tag;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class TagService {
 
+    private static final org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(TagService.class);
+
+
   public static Track createTrackFromFile(File file) {
 
-    MP3File f = null;
 
-    try {
-       f = (MP3File) AudioFileIO.read(file);
+
+      Logger.getLogger("org.jaudiotagger").setLevel(Level.OFF);
+      Logger.getLogger("org.jaudiotagger.tag").setLevel(Level.OFF);
+      Logger.getLogger("org.jaudiotagger.audio.mp3.MP3File").setLevel(Level.OFF);
+      Logger.getLogger("org.jaudiotagger.tag.id3.ID3v23Tag").setLevel(Level.OFF);
+
+
+      try {
+          MP3File f = (MP3File) AudioFileIO.read(file);
+          AbstractID3v2Tag tag = f.getID3v2Tag();
+
+          logger.debug(f.getMP3AudioHeader().getTrackLengthAsString());
+
+        return Track.createTrack(
+                tag.getFirst(FieldKey.ARTIST),
+                tag.getFirst(FieldKey.TITLE),
+                tag.getFirst(FieldKey.ALBUM),
+                tag.getFirst(FieldKey.GENRE),
+                tag.getFirst(FieldKey.YEAR),
+                tag.getFirst(FieldKey.BPM),
+                f.getMP3AudioHeader().getTrackLengthAsString(),
+                file.getAbsolutePath(),
+                file.getName(),
+                tag.getFirst(FieldKey.KEY),
+                tag.getFirst(FieldKey.COMMENT),
+                getCoverData(tag)
+        );
     } catch (CannotReadException | IOException | TagException | ReadOnlyFileException
             | InvalidAudioFrameException e) {
-      e.notify();
+        System.out.println("Error reading file: " + file.getAbsolutePath());
     }
-    assert f != null;
-    return generateTrack(file, f);
+
+      return new Track(file.getAbsolutePath());
   }
 
-  private static Track generateTrack(File file, MP3File f) {
-    if (!f.hasID3v2Tag()) return new Track(file.getAbsolutePath());
-    AbstractID3v2Tag tag = f.getID3v2Tag();
-
-    return Track.createTrack(
-            tag.getFirst(FieldKey.ARTIST),
-            tag.getFirst(FieldKey.TITLE),
-            tag.getFirst(FieldKey.ALBUM),
-            tag.getFirst(FieldKey.GENRE),
-            tag.getFirst(FieldKey.YEAR),
-            tag.getFirst(FieldKey.BPM),
-            f.getMP3AudioHeader().getTrackLengthAsString(),
-            file.getAbsolutePath(),
-            file.getName(),
-            tag.getFirst(FieldKey.KEY),
-            tag.getFirst(FieldKey.COMMENT),
-            getCoverData(tag)
-            );
-  }
-
-  private static byte[] getCoverData(AbstractID3v2Tag tag) {
+    private static byte[] getCoverData(AbstractID3v2Tag tag) {
     List<Artwork> artworkList = tag.getArtworkList();
     if (artworkList.isEmpty()) return new byte[0];
     Artwork artwork = tag.getFirstArtwork();

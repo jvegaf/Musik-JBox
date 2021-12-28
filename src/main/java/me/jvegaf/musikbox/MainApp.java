@@ -10,6 +10,7 @@ public class MainApp {
 
     public static void main(String[] args)
     {
+
         Injector injector = Guice.createInjector(new AbstractModule() {
             @Override
             protected void configure() {
@@ -25,5 +26,4 @@ public class MainApp {
             e.printStackTrace();
         }
     }
-
 }

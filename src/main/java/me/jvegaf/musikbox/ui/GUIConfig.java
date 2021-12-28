@@ -4,6 +4,7 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Singleton;
 import me.jvegaf.musikbox.bus.CommandModule;
 import me.jvegaf.musikbox.services.player.MusicPlayer;
+import me.jvegaf.musikbox.services.reporter.ReporterModule;
 import me.jvegaf.musikbox.tracks.TrackModule;
 import me.jvegaf.musikbox.ui.components.Header;
 import me.jvegaf.musikbox.ui.components.SideBar;
@@ -18,6 +19,7 @@ public final class GUIConfig extends AbstractModule {
 
         install( new TrackModule() );
         install( new CommandModule());
+        install( new ReporterModule() );
         bind(MusicPlayer.class).in(Singleton.class);
         bind(Header.class);
         bind(SideBar.class);

@@ -34,8 +34,8 @@ public final class GUI extends Application {
         }
         Scene mainScene = new Scene(root, 1440, 800);
         mainScene.getStylesheets().add("/styles/dark.css");
-        primaryStage.setMinWidth(1200);
-        primaryStage.setMinHeight(700);
+        primaryStage.setMinWidth(1440);
+        primaryStage.setMinHeight(800);
         primaryStage.setTitle("Musikbox");
         primaryStage.setScene(mainScene);
         primaryStage.show();

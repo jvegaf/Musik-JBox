@@ -1,9 +1,8 @@
 package me.jvegaf.musikbox.services.tagger;
 
-import me.jvegaf.musikbox.tracks.Track;
+import me.jvegaf.musikbox.services.parser.TimeParser;
+import org.apache.log4j.Logger;
 
-import java.time.Duration;
-import java.time.LocalTime;
 import java.util.List;
 
 public class SearchResult {
@@ -14,11 +13,14 @@ public class SearchResult {
     private String genre;
     private String year;
     private Integer bpm;
-    private String duration;
+    private Integer duration;
     private String key;
     private String artworkURL;
 
+    private static final Logger LOG = Logger.getLogger(SearchResult.class);
+
     public SearchResult() {
+        this.duration = 0;
     }
 
 
@@ -39,7 +41,7 @@ public class SearchResult {
         this.genre = genre;
         this.year = year;
         this.bpm = bpm;
-        this.duration = duration;
+        this.duration = TimeParser.parseTime(duration);
         this.key = key;
         this.artworkURL = artworkURL;
     }
@@ -100,12 +102,12 @@ public class SearchResult {
         this.bpm = bpm;
     }
 
-    public String Duration() {
-        return duration;
+    public Integer Duration() {
+        return this.duration;
     }
 
     public void setDuration(String duration) {
-        this.duration = sanitizeTime(duration);
+        this.duration = TimeParser.parseTime(duration);
     }
 
     public String Key() {
@@ -122,20 +124,5 @@ public class SearchResult {
 
     public void setArtworkURL(String artworkURL) {
         this.artworkURL = artworkURL;
-    }
-
-    private static String sanitizeTime(String timeStr) {
-        if (timeStr.length() < 5) return "0" + timeStr;
-        return timeStr;
-    }
-
-    public String DurationDifference(Track otherTrack) {
-        var durationSelf = parseHelper(this.Duration());
-        var durationOtherTrack = parseHelper(otherTrack.getDuration());
-        return Long.toUnsignedString(Duration.between(durationSelf, durationOtherTrack).toSeconds());
-    }
-
-    private static LocalTime parseHelper(String str) {
-        return LocalTime.parse("00:" + str);
     }
 }

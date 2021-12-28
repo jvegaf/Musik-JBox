@@ -1,5 +1,8 @@
 package me.jvegaf.musikbox.tracks;
 
+import me.jvegaf.musikbox.services.parser.Parser;
+import me.jvegaf.musikbox.services.parser.TimeParser;
+
 import java.time.Duration;
 import java.time.LocalTime;
 import java.util.UUID;
@@ -12,7 +15,7 @@ public final class Track {
     private String genre;
     private String year;
     private Integer bpm;
-    private String duration;
+    private Integer duration;
     private String path;
     private String fileName;
     private String key;
@@ -27,9 +30,10 @@ public final class Track {
     public Track(String path) {
         this.id = UUID.randomUUID().toString();
         this.path = path;
+        this.duration = 0;
     }
 
-    public Track(String id, String artist, String title, String album, String genre, String yearStr, String bpmStr, String duration, String path, String filename, String key, String comments, byte[] artworkData) {
+    public Track(String id, String artist, String title, String album, String genre, String yearStr, String bpmStr, int duration, String path, String filename, String key, String comments, byte[] artworkData) {
         this.id = id;
         this.artist = artist;
         this.name = title;
@@ -55,7 +59,7 @@ public final class Track {
                 genre,
                 yearStr,
                 bpmStr,
-                duration,
+                TimeParser.parseTime(duration),
                 path,
                 filename,
                 key,
@@ -64,19 +68,6 @@ public final class Track {
         );
     }
 
-    public Track importMetadataOf(Track track) {
-        this.artist = track.getArtist();
-        this.name = track.getName();
-        this.album = track.getAlbum();
-        this.genre = track.getGenre();
-        this.year = track.getYear();
-        this.setBpm(track.getBpm());
-        this.duration = track.getDuration();
-        this.key = track.getKey();
-        this.artworkData = track.getArtworkData();
-        System.out.println("Metadata Imported: " + this.toString() );
-        return this;
-    }
 
     public String getId() {
         return id;
@@ -177,12 +168,16 @@ public final class Track {
         this.artworkData = artworkData;
     }
 
-    public String getDuration() {
+    public Integer getDuration() {
         return this.duration;
     }
 
     public void setDuration(String duration) {
-        this.duration = sanitizeTime(duration);
+        this.duration = TimeParser.parseTime(duration);
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
     }
 
     @Override
@@ -201,20 +196,5 @@ public final class Track {
                 ", key='" + key + '\'' +
                 ", comments='" + comments + '\'' +
                 '}';
-    }
-
-    public String DurationDifference(Track otherTrack) {
-        var durationSelf = parseHelper(this.getDuration());
-        var durationOtherTrack = parseHelper(otherTrack.getDuration());
-        return Long.toUnsignedString(Duration.between(durationSelf, durationOtherTrack).toSeconds());
-    }
-
-    private static LocalTime parseHelper(String str) {
-        return LocalTime.parse("00:" + str);
-    }
-
-    private static String sanitizeTime(String timeStr) {
-        if (timeStr.length() < 5) return "0" + timeStr;
-        return timeStr;
     }
 }

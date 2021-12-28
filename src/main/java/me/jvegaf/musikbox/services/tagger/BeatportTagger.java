@@ -32,7 +32,6 @@ public class BeatportTagger implements Tagger {
         urlElements.add(query.Value());
         urlElements.add("&type=tracks");
         String urlStr = String.join("", urlElements);
-        System.out.println("query url: " + urlStr);
 
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest
