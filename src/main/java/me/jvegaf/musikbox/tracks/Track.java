@@ -1,10 +1,7 @@
 package me.jvegaf.musikbox.tracks;
 
-import me.jvegaf.musikbox.services.parser.Parser;
 import me.jvegaf.musikbox.services.parser.TimeParser;
 
-import java.time.Duration;
-import java.time.LocalTime;
 import java.util.UUID;
 
 public final class Track {
@@ -51,13 +48,15 @@ public final class Track {
 
     public static Track createTrack(String artist, String name, String album, String genre, String yearStr, String bpmStr, String duration, String path, String filename, String key, String comments, byte[] artworkData) {
 
+        String yearSanitized = yearStr.length() > 4 ? yearStr.substring(0, 4) : yearStr;
+
         return new Track(
                 UUID.randomUUID().toString(),
                 artist,
                 name,
                 album,
                 genre,
-                yearStr,
+                yearSanitized,
                 bpmStr,
                 TimeParser.parseTime(duration),
                 path,

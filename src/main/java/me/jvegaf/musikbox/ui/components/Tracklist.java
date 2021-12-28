@@ -3,7 +3,6 @@ package me.jvegaf.musikbox.ui.components;
 import com.google.inject.Inject;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,8 +19,6 @@ import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class Tracklist extends AnchorPane implements Initializable {
@@ -73,7 +70,7 @@ public class Tracklist extends AnchorPane implements Initializable {
             logger.info("Width changed from " + oldWidth + " to " + newWidth);
             titleColumn.setPrefWidth(newWidth.doubleValue() * 0.25);
             artistColumn.setPrefWidth(newWidth.doubleValue() * 0.25);
-            albumColumn.setPrefWidth(newWidth.doubleValue() * 0.19);
+            albumColumn.setPrefWidth(newWidth.doubleValue() * 0.18);
             genreColumn.setPrefWidth(newWidth.doubleValue() * 0.15);
             durationColumn.setPrefWidth(newWidth.doubleValue() * 0.05);
             bpmColumn.setPrefWidth(newWidth.doubleValue() * 0.05);
