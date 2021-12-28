@@ -5,25 +5,25 @@
 .root {
     -fx-font-family: 'Roboto';
     -fx-accent: #1e74c6;
-    -fx-base: #0e1115;
+    -fx-base: #23292B;
     -alt-bg-col: #29303a;
     -txt-color: #cccccc;
     -txt-color-alt: #a7a6a6;
     -brd-color: #0a0a0a;
     -headr-bg: #161b22;
-    -even-color: #0e1115;
-    -odd-color: #14181f;
+    -even-color: #23292B;
+    -odd-color: #2E3436;
     -icon-paint: #efefef;
     -fx-focus-color: -fx-accent;
     -trklist-header-bg: -alt-bg-col;
     -trklist-header-col: -txt-color;
-    -sidebar-bg: -header-bg;
+    -sidebar-bg: #33393b;
     -sidebar-item-active-bg: -fx-base;
-    -scrollbar-track: #1f252e;
+    -scrollbar-track: #293032;
     -scrollbar-thumb: #ffffff33;
     -slider-bg: #1f252c;
     -slider-thumb: #cccccc;
-    -btn-bg: #1f252e;
+    -btn-bg: #33393b;
     -btn-col: -txt-color;
     -input-bg: #1f252e;
     -input-col: -txt-color;
@@ -71,14 +71,23 @@
 .table-view{
     -fx-selection-bar-non-focused: derive(-fx-base, 30%);
     -fx-background-color: transparent;
+    -fx-table-cell-border-color: transparent;
 }
 
 .table-view:focused{
     -fx-background-color: transparent;
 }
 
+.nested-column-header {
+    -fx-border-color: transparent;
+}
+
+.column-header-background {
+    -fx-border-color: transparent;
+}
+
 .column-header-background .nested-column-header .table-column {
-    -fx-background-color: -trklist-header-bg;
+    -fx-background-color: transparent;
 }
 
 .column-header-background .nested-column-header .table-column .label{
@@ -93,8 +102,18 @@
 
 
 .table-row-cell .cell{
-    -fx-padding: 4 0 4 10;
-    -fx-font-size: 1.2em;
+    -fx-padding: 4 0 6 10;
+    -fx-font-size: 1.05em;
+    -fx-text-fill: -txt-color;
+    -fx-table-cell-border-color: transparent;
+}
+
+.table-row-cell:odd{
+    -fx-background-color: -odd-color;
+}
+
+.table-row-cell:even{
+    -fx-background-color: -even-color;
 }
 
 .context-menu .menu-item {

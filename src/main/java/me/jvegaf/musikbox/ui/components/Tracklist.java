@@ -66,16 +66,7 @@ public class Tracklist extends AnchorPane implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.songsTableView.setItems(this.tracksRepository.tracksObjectProperty().getValue());
-        this.songsTableView.widthProperty().addListener((observableValue, oldWidth, newWidth) -> {
-            logger.info("Width changed from " + oldWidth + " to " + newWidth);
-            titleColumn.setPrefWidth(newWidth.doubleValue() * 0.25);
-            artistColumn.setPrefWidth(newWidth.doubleValue() * 0.25);
-            albumColumn.setPrefWidth(newWidth.doubleValue() * 0.18);
-            genreColumn.setPrefWidth(newWidth.doubleValue() * 0.15);
-            durationColumn.setPrefWidth(newWidth.doubleValue() * 0.05);
-            bpmColumn.setPrefWidth(newWidth.doubleValue() * 0.05);
-            yearColumn.setPrefWidth(newWidth.doubleValue() * 0.05);
-        });
+
         this.tracksRepository.tracksObjectProperty()
                              .addListener((observable, oldValue, newValue) -> songsTableView.setItems(newValue));
 
