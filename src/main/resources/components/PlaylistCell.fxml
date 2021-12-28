@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.*?>
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="29.0" prefWidth="177.0" stylesheets="@../styles/dark.css"
+            xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+    <HBox alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0"
+          AnchorPane.topAnchor="0.0">
+        <Pane fx:id="iconPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+              prefHeight="16.0" prefWidth="16.0"/>
+        <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
+            <Label fx:id="titleLbl" text="Label" HBox.hgrow="ALWAYS"/>
+            <HBox.margin>
+                <Insets left="8.0"/>
+            </HBox.margin>
+        </HBox>
+    </HBox>
+</AnchorPane>

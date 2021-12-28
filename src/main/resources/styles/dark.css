@@ -151,11 +151,6 @@
     -fx-shape: "M10 24h-6v-24h6v24zm10-24h-6v24h6v-24z";
 }
 
-.sidebar {
-    -fx-background-color: transparent;
-    -fx-border-style: none;
-}
-
 .header {
     -fx-background-color: -headr-bg;
     -fx-text-fill: -txt-color;
@@ -190,8 +185,18 @@
 }
 
 .list-view {
-    -fx-background-color: -list-bg;
     -fx-selection-bar-non-focused: derive(-fx-base, 30%);
+    -fx-background-color: transparent;
+}
+
+.list-cell {
+    /* -fx-padding: 0 0 0 10; */
+    -fx-text-fill: -txt-color;
+    -fx-background-color: transparent;
+}
+
+.list-cell:filled:hover {
+    -fx-background-color: -fx-accent;
 }
 
 .progress-bar > .bar, .progress-bar > .track {
@@ -217,7 +222,43 @@
 .title-label {
     -fx-font-size: 26;
 }
+
 .subtitle-label {
     -fx-font-size: 18;
     -fx-text-fill: #8f8484;
 }
+
+.add-playlist-btn {
+    -fx-background-color: -txt-color;
+    -size: 16;
+    -fx-min-height: -size;
+    -fx-min-width: -size;
+    -fx-max-height: -size;
+    -fx-max-width: -size;
+    -fx-shape: "M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256C397.4 512 512 397.4 512 256S397.4 0 256 0zM352 280H280V352c0 13.2-10.8 24-23.1 24C242.8 376 232 365.2 232 352V280H160C146.8 280 136 269.2 136 256c0-13.2 10.8-24 24-24H232V160c0-13.2 10.8-24 24-24C269.2 136 280 146.8 280 160v72h72C365.2 232 376 242.8 376 256C376 269.2 365.2 280 352 280z";
+}
+
+.icon-library {
+    -fx-background-color: -txt-color;
+    -size: 16;
+    -fx-min-height: -size;
+    -fx-min-width: -size;
+    -fx-max-height: -size;
+    -fx-max-width: -size;
+    -fx-shape: "M12,17 c 0,1.656854 -1.343146,3 -3,3 H 7 C 3.0000017,20 3.0000017,14 7,14 h 2 c 0.340566,-5.05e-4 0.678732,0.05698 1,0.17 V 1 l 6,-1 v 4 l -4,0.67 z";
+}
+
+
+.icon-playlist {
+    -fx-background-color: -txt-color;
+    -size: 16;
+    -fx-min-height: -size;
+    -fx-min-width: -size;
+    -fx-max-height: -size;
+    -fx-max-width: -size;
+    -fx-shape: "M16 17a3 3 0 0 1-3 3h-2a3 3 0 0 1 0-6h2a3 3 0 0 1 1 .17V1l6-1v4l-4 .67V17zM0 3h12v2H0V3zm0 4h12v2H0V7zm0 4h12v2H0v-2zm0 4h6v2H0v-2z";
+}
+
+
+
+
