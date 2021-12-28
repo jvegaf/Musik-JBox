@@ -1,6 +1,7 @@
 package me.jvegaf.musikbox.ui.components;
 
 import com.google.inject.Inject;
+import io.github.cdimascio.dotenv.Dotenv;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -165,8 +166,7 @@ public final class Header extends HBox implements Initializable {
     }
 
     private void autoLoad() {
-        String path = "C:\\Users\\josev\\Documents\\CANELITA-PA-COLOCAR";
-//        String path = "//home//jose//Documents//CANELITA-PA-COLOCAR";
+        String path = Dotenv.load().get("DEV_MUSIC_PATH");
         ArrayList<Track> tracks = MusicFileService.processMusicFilesOfPath(new File(path));
         this.commandHandler.addBatch(tracks);
     }
