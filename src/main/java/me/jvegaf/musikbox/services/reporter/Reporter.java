@@ -18,16 +18,17 @@ public class Reporter {
 
         this.processedItemsProperty.addListener((observable, oldValue, newValue) -> {
             if (newValue.intValue() > 0)
-                this.statusProperty.set("Processing " + newValue.intValue() + " of " + totalItemsProperty.get() + " items");
+                this.statusProperty.set("Processing " + newValue.intValue() + " of " + totalItemsProperty.get() + " " +
+                                                "items");
         });
 
     }
 
-    public void itemProcessed(int i) {
-        this.processedItemsProperty.set(this.processedItemsProperty.get() + i);
+    public void itemDispatched() {
+        this.processedItemsProperty.set(this.processedItemsProperty.get() + 1);
         if (this.processedItemsProperty.get() == totalItemsProperty.get())
             setTotalItems(0);
-            this.processedItemsProperty.set(0);
+        this.processedItemsProperty.set(0);
     }
 
     public void setTotalItems(int totalItems) {

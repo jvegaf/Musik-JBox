@@ -71,23 +71,14 @@
 .table-view{
     -fx-selection-bar-non-focused: derive(-fx-base, 30%);
     -fx-background-color: transparent;
-    -fx-table-cell-border-color: transparent;
 }
 
 .table-view:focused{
     -fx-background-color: transparent;
 }
 
-.nested-column-header {
-    -fx-border-color: transparent;
-}
-
-.column-header-background {
-    -fx-border-color: transparent;
-}
-
 .column-header-background .nested-column-header .table-column {
-    -fx-background-color: transparent;
+    -fx-background-color: -trklist-header-bg;
 }
 
 .column-header-background .nested-column-header .table-column .label{
@@ -105,15 +96,6 @@
     -fx-padding: 4 0 6 10;
     -fx-font-size: 1.05em;
     -fx-text-fill: -txt-color;
-    -fx-table-cell-border-color: transparent;
-}
-
-.table-row-cell:odd{
-    -fx-background-color: -odd-color;
-}
-
-.table-row-cell:even{
-    -fx-background-color: -even-color;
 }
 
 .context-menu .menu-item {
@@ -187,7 +169,7 @@
 #trackTitleLabel {
     -fx-text-alignment: center;
     -fx-font-size: 1.8em;
-    
+
     -fx-wrap-text: true;
 }
 

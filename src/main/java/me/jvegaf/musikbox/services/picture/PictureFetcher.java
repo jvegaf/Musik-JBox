@@ -1,5 +1,7 @@
 package me.jvegaf.musikbox.services.picture;
 
+import org.apache.log4j.Logger;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -8,6 +10,7 @@ import java.net.URL;
 
 public final class PictureFetcher {
 
+    private static final Logger LOG = Logger.getLogger(PictureFetcher.class);
 
     public static byte[] getFromURL(String imageUrl) {
 
@@ -16,7 +19,7 @@ public final class PictureFetcher {
         try {
             url = new URL(imageUrl);
         } catch (MalformedURLException e) {
-            e.printStackTrace();
+            LOG.error("Malformed URL: " + imageUrl);
         }
 
 
@@ -34,7 +37,7 @@ public final class PictureFetcher {
                     output.write(buffer, 0, bytesRead);
                 }
             } catch (IOException e) {
-                e.printStackTrace();
+                LOG.error("Error while fetching image from URL: " + imageUrl);
             }
             return output.toByteArray();
         }

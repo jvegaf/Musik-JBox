@@ -3,42 +3,39 @@ package me.jvegaf.musikbox.services.tagger;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import me.jvegaf.musikbox.services.parser.Parser;
-import me.jvegaf.musikbox.services.shared.QueryBuilder;
+import org.apache.log4j.Logger;
 
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 
 public class BeatportTagger implements Tagger {
     public static final String URI_BASE = "https://api.beatport.com/v4/catalog/search/?q=";
-    public static final String QUERY_ARG_DELIMITER = "+";
+    private final Logger LOG = Logger.getLogger(BeatportTagger.class);
+    private OAuthDTO token;
 
 
-    public BeatportTagger() { }
+    public BeatportTagger() {
+        this.token = getToken();
+    }
 
     @Override
-    public List<SearchResult> search(List<String> reqArgs) {
-        OAuthDTO token = getToken();
+    public List<SearchResult> search(SearchRequest searchRequest) {
+        if (!this.token.isValid())
+            this.token = getToken();
 
-        var query = QueryBuilder.build(reqArgs, QUERY_ARG_DELIMITER);
-
-        List<String>urlElements = new ArrayList<>();
-        urlElements.add(URI_BASE);
-        urlElements.add(query.Value());
-        urlElements.add("&type=tracks");
-        String urlStr = String.join("", urlElements);
+        String urlString = URI_BASE + searchRequest.RequestQuery();
 
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest
                 .newBuilder()
                 .setHeader("Accept", "application/json")
-                .setHeader("Authorization", "Bearer " + token.Value())
-                .uri(URI.create(urlStr))
+                .setHeader("Authorization", "Bearer " + this.token.Value())
+                .uri(URI.create(urlString))
                 .GET()
                 .build();
 
@@ -52,7 +49,6 @@ public class BeatportTagger implements Tagger {
     }
 
     private OAuthDTO getToken() {
-
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest
                 .newBuilder()
@@ -62,11 +58,12 @@ public class BeatportTagger implements Tagger {
                 .build();
 
         String response = client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
-                .thenApply(HttpResponse::body)
-                .join();// return the result so we could see the result on the console
+                                .thenApply(HttpResponse::body)
+                                .join();// return the result so we could see the result on the console
 
         Map<String, String> map = new Gson().fromJson(response, new TypeToken<Map<String, String>>() {}.getType());
 
+        LOG.info("Token created");
         return new OAuthDTO(map.get("access_token"), map.get("expires_in"));
     }
 }

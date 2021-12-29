@@ -9,17 +9,22 @@ public final class Sanitizer {
         var res = new ArrayList<String>();
 
         for (String qArg : qArgs) {
-            var strArr = qArg
-                    .replaceAll("_", " ")
-                    .replaceAll("-", " ")
-                    .replaceAll("[(]", " ")
-                    .replaceAll("[)]", " ")
-                    .replaceAll(" {2}", " ")
-                    .trim()
-                    .split(" ");
+            var strArr = sanitizeElement(qArg);
             res.addAll(Arrays.asList(strArr));
         }
 
         return res;
     }
+
+    private static String[] sanitizeElement(String element) {
+        return element
+                .replaceAll("_", " ")
+                .replaceAll("-", " ")
+                .replaceAll("[(]", " ")
+                .replaceAll("[)]", " ")
+                .replaceAll(" {2}", " ")
+                .trim()
+                .split(" ");
+    }
+
 }

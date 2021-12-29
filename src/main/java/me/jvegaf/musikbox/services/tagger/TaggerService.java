@@ -1,5 +1,6 @@
 package me.jvegaf.musikbox.services.tagger;
 
+import com.google.inject.Inject;
 import me.jvegaf.musikbox.services.picture.PictureFetcher;
 import me.jvegaf.musikbox.services.shared.Sanitizer;
 import me.jvegaf.musikbox.tracks.Track;
@@ -16,21 +17,21 @@ public final class TaggerService {
 
     private final Logger LOG = Logger.getLogger(TaggerService.class);
 
-    public TaggerService() {
-        this.beatportTagger = new BeatportTagger();
+    @Inject
+    public TaggerService(BeatportTagger beatportTagger) {
+        this.beatportTagger = beatportTagger;
     }
 
-    public Track fetchTags(Track track) {
+    public Optional<Track> fetchTags(Track track) {
         var args = retrieveArgs(track);
-        var beatSR = beatportTagger.search(args);
-//        LOG.debug("total search results: " + beatSR.size());
-        String no_results_found = "No results found";
+        SearchRequest request = SearchRequest.createCompleteRequest(track.getName(), track.getArtist());
+        var beatSR = beatportTagger.search(request);
         if (beatSR.size() < 1) {
-            LOG.info(no_results_found);
-            return track;
+            LOG.info("No results found");
+            return Optional.empty();
         }
 
-        return matchResultsWithTrack(track, beatSR);
+        return Optional.of(matchResultsWithTrack(track, beatSR));
     }
 
     private Track matchResultsWithTrack(Track track, List<SearchResult> results) {
@@ -43,7 +44,7 @@ public final class TaggerService {
         track.setArtist(result.Artists().stream().reduce((a, b) -> a + ", " + b ).orElse(result.Artists().get(0)));
         track.setAlbum(result.Album());
         track.setYear(result.Year());
-        track.setBpm(result.Bpm());
+        result.Bpm().ifPresent(track::setBpm);
         track.setGenre(result.Genre());
         track.setDuration(result.Duration());
         track.setKey(result.Key());

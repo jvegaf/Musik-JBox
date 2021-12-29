@@ -11,6 +11,7 @@ import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public final class CommandHandler implements CommandBus {
@@ -19,6 +20,7 @@ public final class CommandHandler implements CommandBus {
     private final MusicPlayer musicPlayer;
     private final MainController mainViewController;
     private final TaggerService taggerService;
+    @SuppressWarnings("FieldCanBeLocal")
     private final Reporter reporter;
 
     private final Logger LOG = Logger.getLogger(CommandHandler.class);
@@ -53,15 +55,23 @@ public final class CommandHandler implements CommandBus {
 
     @Override
     public void fixTags(List<Track> tracks) {
-        reporter.setTotalItems(tracks.size());
-
+//        reporter.setTotalItems(tracks.size());
+        LOG.info("Fixing tags for " + tracks.size() + " tracks");
+        AtomicInteger counter = new AtomicInteger(0);
 
         for (Track track : tracks) {
 
             Runnable task = () -> {
-                Track t = this.taggerService.fetchTags(track);
-                this.tracksRepository.updateTrack(t);
-                this.reporter.itemProcessed(1);
+                Optional<Track> t = taggerService.fetchTags(track);
+                if (t.isPresent()) {
+                    tracksRepository.updateTrack(t.get());
+                    LOG.info("Fixed tags for " + counter.incrementAndGet() + " tracks");
+                    if (counter.get() == tracks.size()) {
+                        LOG.info("Finished fixing tags");
+                    }
+                } else {
+                    LOG.info("Faulty track: " + track.getName());
+                }
             };
 
             Thread t = new Thread(task);

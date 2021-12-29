@@ -4,6 +4,7 @@ import me.jvegaf.musikbox.services.parser.TimeParser;
 import org.apache.log4j.Logger;
 
 import java.util.List;
+import java.util.Optional;
 
 public class SearchResult {
     private String title;
@@ -94,8 +95,8 @@ public class SearchResult {
         this.year = year;
     }
 
-    public Integer Bpm() {
-        return bpm;
+    public Optional<Integer> Bpm() {
+        return Optional.ofNullable(this.bpm);
     }
 
     public void setBpm(Integer bpm) {

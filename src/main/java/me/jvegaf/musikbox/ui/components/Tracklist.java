@@ -47,6 +47,7 @@ public class Tracklist extends AnchorPane implements Initializable {
 
     private final Logger logger = Logger.getLogger(Tracklist.class);
     private ObservableList<Track> seletedTracks;
+    private TableView.TableViewSelectionModel<Track> selectionModel;
 
     @Inject
     public Tracklist(TracksRepository repository, CommandBus commandHandler) {
@@ -70,7 +71,7 @@ public class Tracklist extends AnchorPane implements Initializable {
         this.tracksRepository.tracksObjectProperty()
                              .addListener((observable, oldValue, newValue) -> songsTableView.setItems(newValue));
 
-        TableView.TableViewSelectionModel<Track> selectionModel = this.songsTableView.getSelectionModel();
+        selectionModel = this.songsTableView.getSelectionModel();
         selectionModel.setSelectionMode(SelectionMode.MULTIPLE);
         seletedTracks = selectionModel.getSelectedItems();
         titleColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -105,11 +106,16 @@ public class Tracklist extends AnchorPane implements Initializable {
     private ContextMenu getContextMenu() {
         ContextMenu menu = new ContextMenu();
         MenuItem fixallItem = new MenuItem();
-        fixallItem.textProperty().bind(Bindings.createStringBinding(() -> "Fix " + seletedTracks.size() + " tracks", seletedTracks));
-        fixallItem.setOnAction(actionEvent -> this.commandHandler.fixTags(this.seletedTracks));
+        fixallItem.textProperty()
+                  .bind(Bindings.createStringBinding(() -> "Fix " + seletedTracks.size() + " tracks", seletedTracks));
+        fixallItem.setOnAction(actionEvent -> {
+            this.commandHandler.fixTags(this.seletedTracks);
+            selectionModel.clearSelection();
+        });
         MenuItem detailItem = new MenuItem("View Detail");
         detailItem.setOnAction(actionEvent -> this.commandHandler.showTrackDetail(this.selectedTrack));
-        detailItem.disableProperty().bind(Bindings.createBooleanBinding(() -> this.seletedTracks.size() != 1, seletedTracks));
+        detailItem.disableProperty()
+                  .bind(Bindings.createBooleanBinding(() -> this.seletedTracks.size() != 1, seletedTracks));
         MenuItem playItem = new MenuItem("Play Song");
         playItem.disableProperty().bind(Bindings.createBooleanBinding(() -> seletedTracks.size() != 1, seletedTracks));
         playItem.setOnAction(actionEvent -> this.commandHandler.playTrack(this.selectedTrack));
