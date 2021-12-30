@@ -1,6 +1,6 @@
 package me.jvegaf.musikbox.services;
 
-import me.jvegaf.musikbox.tracks.Track;
+import me.jvegaf.musikbox.context.tracks.domain.Track;
 
 import java.io.File;
 import java.util.ArrayList;

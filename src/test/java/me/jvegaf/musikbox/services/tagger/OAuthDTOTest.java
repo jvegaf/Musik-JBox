@@ -1,6 +1,7 @@
 package me.jvegaf.musikbox.services.tagger;
 
 
+import me.jvegaf.musikbox.context.tagger.OAuthDTO;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -10,7 +11,7 @@ final class OAuthDTOTest {
 
     @Test
     void checkResponseOfValidToken() {
-        OAuthDTO oAuthDTO = new OAuthDTO("Ft6g7cATZCDhbYVncycwMPUw7D8L9W","36000");
+        OAuthDTO oAuthDTO = new OAuthDTO("Ft6g7cATZCDhbYVncycwMPUw7D8L9W", "36000");
 
         assertTrue(oAuthDTO.isValid());
     }

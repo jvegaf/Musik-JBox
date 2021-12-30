@@ -1,12 +1,12 @@
 package me.jvegaf.musikbox.services.shared;
 
-import me.jvegaf.musikbox.services.shared.Sanitizer;
+import me.jvegaf.musikbox.shared.infrastructure.Sanitizer;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SanitizerTest {
 

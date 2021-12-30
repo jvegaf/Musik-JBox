@@ -1,5 +1,6 @@
 package me.jvegaf.musikbox.services.tagger;
 
+import me.jvegaf.musikbox.context.tagger.SearchRequest;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

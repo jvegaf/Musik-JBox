@@ -1,12 +1,12 @@
 package me.jvegaf.musikbox.bus;
 
 import com.google.inject.Inject;
-import me.jvegaf.musikbox.services.player.MusicPlayer;
+import me.jvegaf.musikbox.app.controller.MainController;
+import me.jvegaf.musikbox.app.player.MusicPlayer;
+import me.jvegaf.musikbox.context.tagger.TaggerService;
+import me.jvegaf.musikbox.context.tracks.OldTracksRepository;
+import me.jvegaf.musikbox.context.tracks.domain.Track;
 import me.jvegaf.musikbox.services.reporter.Reporter;
-import me.jvegaf.musikbox.services.tagger.TaggerService;
-import me.jvegaf.musikbox.tracks.Track;
-import me.jvegaf.musikbox.tracks.TracksRepository;
-import me.jvegaf.musikbox.ui.views.MainController;
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
@@ -16,26 +16,26 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public final class CommandHandler implements CommandBus {
 
-    private final TracksRepository tracksRepository;
-    private final MusicPlayer musicPlayer;
-    private final MainController mainViewController;
-    private final TaggerService taggerService;
+    private final OldTracksRepository oldTracksRepository;
+    private final MusicPlayer         musicPlayer;
+    private final MainController      mainViewController;
+    private final TaggerService       taggerService;
     @SuppressWarnings("FieldCanBeLocal")
-    private final Reporter reporter;
+    private final Reporter            reporter;
 
     private final Logger LOG = Logger.getLogger(CommandHandler.class);
 
     @Inject
-    public CommandHandler(TracksRepository tracksRepository,
+    public CommandHandler(OldTracksRepository oldTracksRepository,
                           MusicPlayer musicPlayer,
                           MainController mainViewController,
                           TaggerService taggerService,
                           Reporter reporter) {
-        this.taggerService = taggerService;
-        this.tracksRepository = tracksRepository;
-        this.musicPlayer = musicPlayer;
-        this.mainViewController = mainViewController;
-        this.reporter = reporter;
+        this.taggerService       = taggerService;
+        this.oldTracksRepository = oldTracksRepository;
+        this.musicPlayer         = musicPlayer;
+        this.mainViewController  = mainViewController;
+        this.reporter            = reporter;
     }
 
     @Override
@@ -50,7 +50,7 @@ public final class CommandHandler implements CommandBus {
 
     @Override
     public void addBatch(ArrayList<Track> tracks) {
-        this.tracksRepository.addBatch(tracks);
+        this.oldTracksRepository.addBatch(tracks);
     }
 
     @Override
@@ -64,7 +64,7 @@ public final class CommandHandler implements CommandBus {
             Runnable task = () -> {
                 Optional<Track> t = taggerService.fetchTags(track);
                 if (t.isPresent()) {
-                    tracksRepository.updateTrack(t.get());
+                    oldTracksRepository.updateTrack(t.get());
                     LOG.info("Fixed tags for " + counter.incrementAndGet() + " tracks");
                     if (counter.get() == tracks.size()) {
                         LOG.info("Finished fixing tags");

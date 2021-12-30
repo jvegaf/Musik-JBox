@@ -1,8 +1,8 @@
 package me.jvegaf.musikbox.bus;
 
 import com.google.inject.AbstractModule;
+import me.jvegaf.musikbox.context.tagger.TaggerModule;
 import me.jvegaf.musikbox.services.reporter.ReporterModule;
-import me.jvegaf.musikbox.services.tagger.TaggerModule;
 
 public final class CommandModule extends AbstractModule {
     @Override
