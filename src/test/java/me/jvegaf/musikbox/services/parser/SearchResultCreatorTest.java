@@ -1,6 +1,7 @@
 package me.jvegaf.musikbox.services.parser;
 
 import me.jvegaf.musikbox.context.tagger.SearchResult;
+import me.jvegaf.musikbox.context.tagger.SearchResultCreator;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;

@@ -2,7 +2,6 @@ package me.jvegaf.musikbox.context.tagger;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import me.jvegaf.musikbox.services.parser.SearchResultCreator;
 import org.apache.log4j.Logger;
 
 import java.net.URI;

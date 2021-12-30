@@ -1,10 +1,9 @@
-package me.jvegaf.musikbox.services.parser;
+package me.jvegaf.musikbox.context.tagger;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import me.jvegaf.musikbox.context.tagger.SearchResult;
 
 import java.util.ArrayList;
 import java.util.List;

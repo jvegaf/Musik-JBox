@@ -20,8 +20,9 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class TagService {
+public class FileTag {
 
+    private CommandB
 
     public static Track createTrackFromFile(File file) {
 

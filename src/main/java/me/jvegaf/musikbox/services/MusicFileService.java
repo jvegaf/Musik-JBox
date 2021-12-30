@@ -12,7 +12,7 @@ public class MusicFileService {
     if (fileList == null) return new ArrayList<>();
     ArrayList<Track> resultTracks = new ArrayList<>();
     for (File file : fileList) {
-      Track t = TagService.createTrackFromFile(file);
+      Track t = FileTag.createTrackFromFile(file);
       resultTracks.add(t);
     }
     return resultTracks;
