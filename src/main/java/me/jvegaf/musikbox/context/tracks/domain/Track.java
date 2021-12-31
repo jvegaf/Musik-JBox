@@ -55,8 +55,32 @@ public final class Track extends AggregateRoot {
         duration = null;
     }
 
-    public static Track create(TrackId id, TrackTitle title, TrackLocation location, TrackDuration duration) {
-        Track track = new Track(id, title, location, duration);
+    public static Track create(
+            TrackId id,
+            TrackTitle title,
+            TrackLocation location,
+            TrackDuration duration,
+            TrackArtist artist,
+            TrackAlbum album,
+            TrackGenre genre,
+            TrackYear year,
+            TrackBpm bpm,
+            TrackInitKey key,
+            TrackComments comments
+            ) {
+        Track track = new Track(
+                id,
+                title,
+                location,
+                duration,
+                artist,
+                album,
+                genre,
+                year,
+                bpm,
+                key,
+                comments
+                );
 
         track.record(new TrackCreatedDomainEvent(id.value(), title.value(), location.value()));
         return track;

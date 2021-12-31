@@ -32,13 +32,6 @@ public abstract class YearValueObject {
     }
 
     private String validate(String value) {
-        if (value.isEmpty()) {
-            throw new IllegalArgumentException("Year cannot be empty");
-        }
-        if (!value.matches("[0-9]+")) {
-            throw new IllegalArgumentException("Year must be a number");
-        }
-
         return value.length() > 4 ? value.substring(0, 4) : value;
     }
 }

@@ -15,8 +15,31 @@ public final class TrackCreator {
         this.eventBus   = eventBus;
     }
 
-    public void create(TrackId id, TrackTitle title, TrackLocation location, TrackDuration duration) {
-        Track track = Track.create(id, title, location, duration);
+    public void create(
+            TrackTitle title,
+            TrackLocation location,
+            TrackDuration duration,
+            TrackArtist artist,
+            TrackAlbum album,
+            TrackGenre genre,
+            TrackYear year,
+            TrackBpm bpm,
+            TrackInitKey initKey,
+            TrackComments comments
+            ) {
+        Track track = Track.create(
+                TrackId.create(),
+                title,
+                location,
+                duration,
+                artist,
+                album,
+                genre,
+                year,
+                bpm,
+                initKey,
+                comments
+                );
 
         repository.save(track);
         eventBus.publish(track.pullDomainEvents());

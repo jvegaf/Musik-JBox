@@ -2,6 +2,7 @@ package me.jvegaf.musikbox.context.playlists.domain;
 
 import me.jvegaf.musikbox.context.tracks.domain.Track;
 import me.jvegaf.musikbox.shared.domain.AggregateRoot;
+import me.jvegaf.musikbox.shared.domain.playlist.PlaylistCreatedDomainEvent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +29,12 @@ public final class Playlist extends AggregateRoot {
     public static Playlist create(PlaylistName name) {
         PlaylistId id = new PlaylistId(UUID.randomUUID().toString());
         List<Track> tracks = new ArrayList<>();
-        return new Playlist(id, name, tracks);
+
+        Playlist playlist = new Playlist(id, name, tracks);
+
+        playlist.record(new PlaylistCreatedDomainEvent(id.value(), name.value()));
+
+        return playlist;
     }
 
     public PlaylistId id() { return id; }

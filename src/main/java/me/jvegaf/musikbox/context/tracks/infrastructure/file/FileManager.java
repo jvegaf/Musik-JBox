@@ -25,10 +25,15 @@ public final class FileManager {
 
     private final CommandBus bus;
 
+
+
     public FileManager(CommandBus bus) {
         this.bus = bus;
+
         Logger.getLogger("org.jaudiotagger").setLevel(Level.OFF);
         Logger.getLogger("org.jaudiotagger.tag").setLevel(Level.OFF);
+        Logger.getLogger("org.jaudiotagger.tag.id3").setLevel(Level.OFF);
+        Logger.getLogger("org.jaudiotagger.tag.datatype").setLevel(Level.OFF);
         Logger.getLogger("org.jaudiotagger.audio.mp3.MP3File").setLevel(Level.OFF);
         Logger.getLogger("org.jaudiotagger.tag.id3.ID3v23Tag").setLevel(Level.OFF);
 
@@ -38,6 +43,9 @@ public final class FileManager {
         for (File file : files) {
 
             try {
+
+
+
                 MP3File f = (MP3File) AudioFileIO.read(file);
                 AbstractID3v2Tag tag = f.getID3v2Tag();
 
@@ -50,7 +58,8 @@ public final class FileManager {
                         tag.getFirst(FieldKey.GENRE),
                         tag.getFirst(FieldKey.YEAR),
                         tag.getFirst(FieldKey.COMMENT),
-                        tag.getFirst(FieldKey.BPM)
+                        tag.getFirst(FieldKey.BPM),
+                        tag.getFirst(FieldKey.KEY)
                 ));
 
             } catch (CannotReadException | TagException | IOException | ReadOnlyFileException | InvalidAudioFrameException e) {

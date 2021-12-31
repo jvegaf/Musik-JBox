@@ -13,6 +13,7 @@ public class CreateTrackCommand implements Command {
     private final String year;
     private final String comments;
     private final String bpm;
+    private final String key;
 
     public CreateTrackCommand(String title,
                               String location,
@@ -22,7 +23,8 @@ public class CreateTrackCommand implements Command {
                               String genre,
                               String year,
                               String comments,
-                              String bpm) {
+                              String bpm,
+                              String key) {
         this.title    = title;
         this.location = location;
         this.duration = duration;
@@ -32,6 +34,7 @@ public class CreateTrackCommand implements Command {
         this.year     = year;
         this.comments  = comments;
         this.bpm      = bpm;
+        this.key      = key;
     }
 
     public String title() { return title; }
@@ -51,4 +54,6 @@ public class CreateTrackCommand implements Command {
     public String comments() { return comments; }
 
     public String bpm() { return bpm; }
+
+    public String key() { return key; }
 }

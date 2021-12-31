@@ -3,19 +3,21 @@ package me.jvegaf.musikbox.context.tracks.application;
 import me.jvegaf.musikbox.context.tracks.domain.Track;
 import me.jvegaf.musikbox.shared.domain.bus.query.Response;
 
+import java.util.Optional;
+
 public final class TrackResponse implements Response {
 
-    private final String  id;
-    private final String  title;
-    private final String  location;
-    private final String  duration;
-    private final String  artist;
-    private final String  album;
-    private final String  genre;
-    private final String  year;
-    private final Integer bpm;
-    private final String  key;
-    private final String  comments;
+    private final String           id;
+    private final String           title;
+    private final String           location;
+    private final String           duration;
+    private String artist;
+    private String album;
+    private String genre;
+    private String year;
+    private Integer bpm;
+    private String  key;
+    private String  comments;
 
 
     public TrackResponse(String id,
@@ -56,25 +58,47 @@ public final class TrackResponse implements Response {
                                  track.comments().value());
     }
 
-    public String id() { return id; }
+    public String getId() {
+        return id;
+    }
 
-    public String title() { return title; }
+    public String getTitle() {
+        return title;
+    }
 
-    public String location() { return location; }
+    public String getLocation() {
+        return location;
+    }
 
-    public String duration() { return duration; }
+    public String getDuration() {
+        return duration;
+    }
 
-    public String artist() { return artist; }
+    public String getArtist() {
+        return artist;
+    }
 
-    public String album() { return album; }
+    public String getAlbum() {
+        return album;
+    }
 
-    public String genre() { return genre; }
+    public String getGenre() {
+        return genre;
+    }
 
-    public String year() { return year; }
+    public String getYear() {
+        return year;
+    }
 
-    public Integer bpm() { return bpm; }
+    public Integer getBpm() {
+        return bpm;
+    }
 
-    public String key() { return key; }
+    public String getKey() {
+        return key;
+    }
 
-    public String comments() { return comments; }
+    public String getComments() {
+        return comments;
+    }
 }

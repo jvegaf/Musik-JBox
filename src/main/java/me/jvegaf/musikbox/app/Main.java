@@ -6,6 +6,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.stereotype.Service;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 @SpringBootApplication
 @ComponentScan(includeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = Service.class),
                value = { "me.jvegaf.musikbox.context", "me.jvegaf.musikbox.app", "me.jvegaf.musikbox.shared" })
