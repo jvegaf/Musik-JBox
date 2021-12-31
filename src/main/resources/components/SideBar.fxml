@@ -4,8 +4,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<fx:root stylesheets="@../styles/dark.css" type="VBox" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
-   <Label styleClass="side-label" text="Library" VBox.vgrow="NEVER">
+<VBox stylesheets="@../styles/dark.css" xmlns="http://javafx.com/javafx/17" fx:controller="me.jvegaf.musikbox.app.components.SideBarController" xmlns:fx="http://javafx.com/fxml/1">
+   <Label styleClass="side-label" text="Library" VBox.vgrow="NEVER" >
       <font>
          <Font size="13.0" />
       </font>
@@ -24,4 +24,4 @@
         </HBox>
     </AnchorPane>
    <ListView fx:id="playlistListView" VBox.vgrow="ALWAYS" />
-</fx:root>
+</VBox>

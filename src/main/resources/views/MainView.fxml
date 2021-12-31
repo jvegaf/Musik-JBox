@@ -5,11 +5,11 @@
 <?import javafx.scene.layout.*?>
 <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1440.0" stylesheets="@../styles/dark.css"
       xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
-    <VBox fx:id="headerPane" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="70.0" VBox.vgrow="NEVER"/>
+    <fx:include fx:id="header" VBox.vgrow="NEVER" source="/components/Header.fxml"/>
     <HBox VBox.vgrow="ALWAYS">
-        <AnchorPane fx:id="sidePane" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="200.0"
-                    HBox.hgrow="NEVER"/>
-        <AnchorPane fx:id="tracklistPane" HBox.hgrow="ALWAYS"/>
+        <fx:include fx:id="sidebar"
+                    HBox.hgrow="NEVER" source="/components/SideBar.fxml"/>
+        <fx:include fx:id="tracklist" HBox.hgrow="ALWAYS" source="/components/Tracklist.fxml"/>
     </HBox>
 
     <HBox id="HBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER">

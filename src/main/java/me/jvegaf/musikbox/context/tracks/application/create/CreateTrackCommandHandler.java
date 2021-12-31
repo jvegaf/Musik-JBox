@@ -5,7 +5,9 @@ import me.jvegaf.musikbox.context.tracks.domain.TrackId;
 import me.jvegaf.musikbox.context.tracks.domain.TrackLocation;
 import me.jvegaf.musikbox.context.tracks.domain.TrackTitle;
 import me.jvegaf.musikbox.shared.domain.bus.command.CommandHandler;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CreateTrackCommandHandler implements CommandHandler<CreateTrackCommand> {
 
     private final TrackCreator creator;
@@ -14,7 +16,8 @@ public class CreateTrackCommandHandler implements CommandHandler<CreateTrackComm
         this.creator = creator;
     }
 
-    @Override public void handle(CreateTrackCommand command) {
+    @Override
+    public void handle(CreateTrackCommand command) {
         TrackId id = TrackId.create();
         TrackTitle title = new TrackTitle(command.title());
         TrackLocation location = new TrackLocation(command.location());

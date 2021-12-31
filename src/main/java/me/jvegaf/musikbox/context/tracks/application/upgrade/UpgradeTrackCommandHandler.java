@@ -1,7 +1,10 @@
 package me.jvegaf.musikbox.context.tracks.application.upgrade;
 
+import me.jvegaf.musikbox.context.tracks.domain.*;
 import me.jvegaf.musikbox.shared.domain.bus.command.CommandHandler;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UpgradeTrackCommandHandler implements CommandHandler<UpgradeTrackCommand> {
 
     private final TrackUpgrader upgrader;
@@ -12,6 +15,15 @@ public class UpgradeTrackCommandHandler implements CommandHandler<UpgradeTrackCo
 
     @Override public void handle(UpgradeTrackCommand command) {
 
-        upgrader.upgrade(command.track());
+        Track updatedTrack = command.track().improveMetadata(
+                new TrackTitle(command.title()),
+                new TrackArtist(command.artist()),
+                new TrackAlbum(command.album()),
+                new TrackGenre(command.genre()),
+                new TrackYear(command.year()),
+                new TrackBpm(command.bpm()),
+                new TrackInitKey(command.key())
+        );
+        upgrader.upgrade(updatedTrack);
     }
 }

@@ -41,7 +41,7 @@ public class SearchResult {
         this.genre = genre;
         this.year = year;
         this.bpm = bpm;
-        this.duration = TimeParser.parseTime(duration);
+        setDuration(duration);
         this.key = key;
         this.artworkURL = artworkURL;
     }
@@ -107,7 +107,7 @@ public class SearchResult {
     }
 
     public void setDuration(String duration) {
-        this.duration = TimeParser.parseTime(duration);
+        this.duration = fromStringValue(duration);
     }
 
     public String Key() {
@@ -124,5 +124,12 @@ public class SearchResult {
 
     public void setArtworkURL(String artworkURL) {
         this.artworkURL = artworkURL;
+    }
+
+    private int fromStringValue(String strValue) {
+        String[] timeParts = strValue.split(":");
+        int minutes = Integer.parseInt(timeParts[ 0 ]);
+        int seconds = Integer.parseInt(timeParts[ 1 ]);
+        return minutes * 60 + seconds;
     }
 }

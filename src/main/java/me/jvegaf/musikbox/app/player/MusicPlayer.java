@@ -8,9 +8,11 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 import me.jvegaf.musikbox.context.tracks.domain.Track;
+import org.springframework.stereotype.Service;
 
 import java.io.File;
 
+@Service
 public final class MusicPlayer {
     private final Track currentTrack;
     private MediaPlayer mPlayer;
@@ -32,13 +34,13 @@ public final class MusicPlayer {
     public void playTrack(Track track) {
         if (currentTrackChecker(track)) return;
         if (this.mPlayer != null) stopTrack();
-        var path = track.getPath();
+        var path = track.location().value();
         Media media = new Media(new File(path).toURI().toString());
         this.mPlayer = new MediaPlayer(media);
         this.mPlayer.play();
         setStatusProp();
-        this.titleProperty.setValue(track.getName());
-        this.artistProperty.setValue(track.getArtist());
+        this.titleProperty.setValue(track.title().value());
+        this.artistProperty.setValue(track.artist().value());
         this.totalDurationProperty.setValue(this.mPlayer.getTotalDuration());
         setCurrentPlayTimeProp();
     }
@@ -53,7 +55,7 @@ public final class MusicPlayer {
 
     private boolean currentTrackChecker(Track track) {
         if (this.currentTrack == null) return false;
-        return currentTrack.getPath().equals(track.getPath());
+        return currentTrack.location().value().equals(track.location().value());
     }
 
     public void pauseTrack() {

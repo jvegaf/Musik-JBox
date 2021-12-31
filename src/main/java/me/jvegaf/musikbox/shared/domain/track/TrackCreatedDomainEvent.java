@@ -9,41 +9,41 @@ import java.util.Objects;
 public final class TrackCreatedDomainEvent extends DomainEvent {
 
     private final String name;
-    private final String duration;
+    private final String location;
 
     public TrackCreatedDomainEvent() {
         super(null);
 
         this.name     = null;
-        this.duration = null;
+        this.location = null;
     }
 
-    public TrackCreatedDomainEvent(String aggregateId, String name, String duration) {
+    public TrackCreatedDomainEvent(String aggregateId, String name, String location) {
         super(aggregateId);
 
         this.name     = name;
-        this.duration = duration;
+        this.location = location;
     }
 
     public TrackCreatedDomainEvent(String aggregateId,
                                    String eventId,
                                    String occurredOn,
                                    String name,
-                                   String duration) {
+                                   String location) {
         super(aggregateId, eventId, occurredOn);
 
         this.name     = name;
-        this.duration = duration;
+        this.location = location;
     }
 
     @Override public String eventName() {
-        return "course.created";
+        return "track.created";
     }
 
     @Override public HashMap<String, Serializable> toPrimitives() {
         return new HashMap<String, Serializable>() {{
             put("name", name);
-            put("duration", duration);
+            put("location", location);
         }};
     }
 
@@ -56,19 +56,19 @@ public final class TrackCreatedDomainEvent extends DomainEvent {
                                            eventId,
                                            occurredOn,
                                            (String) body.get("name"),
-                                           (String) body.get("duration"));
+                                           (String) body.get("location"));
     }
 
     public String name() {
         return name;
     }
 
-    public String duration() {
-        return duration;
+    public String location() {
+        return location;
     }
 
     @Override public int hashCode() {
-        return Objects.hash(name, duration);
+        return Objects.hash(name, location);
     }
 
     @Override public boolean equals(Object o) {
@@ -79,6 +79,6 @@ public final class TrackCreatedDomainEvent extends DomainEvent {
             return false;
         }
         TrackCreatedDomainEvent that = (TrackCreatedDomainEvent) o;
-        return name.equals(that.name) && duration.equals(that.duration);
+        return name.equals(that.name) && location.equals(that.location);
     }
 }

@@ -6,7 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import me.jvegaf.musikbox.context.playlists.Playlist;
+import me.jvegaf.musikbox.context.playlists.domain.Playlist;
 
 import java.io.IOException;
 
@@ -45,8 +45,8 @@ public class PlaylistCell extends ListCell<Playlist> {
 
 
             //FIXME: hardcoded
-            titleLbl.setText(item.getName().equalsIgnoreCase("mainLibrary") ? "Tracks" : item.getName());
-            iconPane.getStyleClass().add(item.getName().equalsIgnoreCase("mainLibrary") ? "icon-library" : "icon-playlist");
+            titleLbl.setText(item.name().value().equalsIgnoreCase("mainLibrary") ? "Tracks" : item.name().value());
+            iconPane.getStyleClass().add(item.name().value().equalsIgnoreCase("mainLibrary") ? "icon-library" : "icon-playlist");
 
             setText(null);
             setGraphic(anchorPane);

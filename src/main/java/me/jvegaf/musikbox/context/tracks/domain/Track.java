@@ -17,18 +17,35 @@ public final class Track extends AggregateRoot {
     private       TrackInitKey  key;
     private       TrackComments comments;
 
-    public Track(TrackTitle title, TrackLocation location, TrackDuration duration) {
-        this.id       = TrackId.create();
-        this.title    = title;
-        this.location = location;
-        this.duration = duration;
-    }
-
     public Track(TrackId id, TrackTitle title, TrackLocation location, TrackDuration duration) {
         this.id       = id;
         this.title    = title;
         this.location = location;
         this.duration = duration;
+    }
+
+    public Track(TrackId id,
+                 TrackTitle title,
+                 TrackLocation location,
+                 TrackDuration duration,
+                 TrackArtist artist,
+                 TrackAlbum album,
+                 TrackGenre genre,
+                 TrackYear year,
+                 TrackBpm bpm,
+                 TrackInitKey key,
+                 TrackComments comments) {
+        this.id       = id;
+        this.title    = title;
+        this.location = location;
+        this.duration = duration;
+        this.artist   = artist;
+        this.album    = album;
+        this.genre    = genre;
+        this.year     = year;
+        this.bpm      = bpm;
+        this.key      = key;
+        this.comments = comments;
     }
 
     private Track() {
@@ -67,15 +84,37 @@ public final class Track extends AggregateRoot {
 
     public TrackComments comments() { return comments; }
 
-    @Override public int hashCode() {
+    @Override
+    public int hashCode() {
         return super.hashCode();
     }
 
-    @Override public boolean equals(Object obj) {
+    @Override
+    public boolean equals(Object obj) {
         if (this == obj) return true;
 
         if (obj == null || getClass() != obj.getClass()) return false;
         Track t = (Track) obj;
-        return id.equals(t.id) && title.equals(t.title) && location.equals(t.location) && duration.equals(t.duration);
+        return id.equals(t.id()) && title.equals(t.title()) && location.equals(t.location()) && duration.equals(t.duration());
+    }
+
+    public Track improveMetadata(TrackTitle title,
+                                 TrackArtist artist,
+                                 TrackAlbum album,
+                                 TrackGenre genre,
+                                 TrackYear year,
+                                 TrackBpm bpm,
+                                 TrackInitKey key) {
+        return new Track(this.id,
+                         title,
+                         this.location,
+                         this.duration,
+                         artist,
+                         album,
+                         genre,
+                         year,
+                         bpm,
+                         key,
+                         this.comments);
     }
 }

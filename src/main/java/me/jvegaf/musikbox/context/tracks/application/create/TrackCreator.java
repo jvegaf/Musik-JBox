@@ -2,7 +2,9 @@ package me.jvegaf.musikbox.context.tracks.application.create;
 
 import me.jvegaf.musikbox.context.tracks.domain.*;
 import me.jvegaf.musikbox.shared.domain.bus.event.EventBus;
+import org.springframework.stereotype.Service;
 
+@Service
 public final class TrackCreator {
 
     private final TrackRepository repository;
@@ -19,5 +21,4 @@ public final class TrackCreator {
         repository.save(track);
         eventBus.publish(track.pullDomainEvents());
     }
-}
 }

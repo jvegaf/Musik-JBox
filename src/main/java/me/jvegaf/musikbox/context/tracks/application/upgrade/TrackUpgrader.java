@@ -3,7 +3,9 @@ package me.jvegaf.musikbox.context.tracks.application.upgrade;
 import me.jvegaf.musikbox.context.tracks.domain.Track;
 import me.jvegaf.musikbox.context.tracks.domain.TrackRepository;
 import me.jvegaf.musikbox.shared.domain.bus.event.EventBus;
+import org.springframework.stereotype.Service;
 
+@Service
 public final class TrackUpgrader {
 
     private final TrackRepository repository;

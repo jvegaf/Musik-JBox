@@ -1,5 +1,7 @@
 package me.jvegaf.musikbox.shared.domain;
 
+
+
 import com.google.common.base.CaseFormat;
 
 import java.sql.Timestamp;
