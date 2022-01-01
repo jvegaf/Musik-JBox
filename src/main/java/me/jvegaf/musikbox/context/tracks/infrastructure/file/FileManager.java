@@ -48,9 +48,13 @@ public final class FileManager {
 
                 MP3File f = (MP3File) AudioFileIO.read(file);
                 AbstractID3v2Tag tag = f.getID3v2Tag();
+                String title = tag.getFirst(FieldKey.TITLE);
+                if (title == null || title.isEmpty()){
+                    title = file.getName().replaceAll(".mp3", "");
+                }
 
                 bus.dispatch(new CreateTrackCommand(
-                        tag.getFirst(FieldKey.TITLE),
+                        title,
                         file.getAbsolutePath(),
                         f.getAudioHeader().getTrackLength(),
                         tag.getFirst(FieldKey.ARTIST),
