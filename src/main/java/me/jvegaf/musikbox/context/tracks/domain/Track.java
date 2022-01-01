@@ -128,7 +128,9 @@ public final class Track extends AggregateRoot {
                                  TrackGenre genre,
                                  TrackYear year,
                                  TrackBpm bpm,
-                                 TrackInitKey key) {
+                                 TrackInitKey key,
+                                 TrackComments comments
+    ) {
         return new Track(this.id,
                          title,
                          this.location,
@@ -139,6 +141,6 @@ public final class Track extends AggregateRoot {
                          year,
                          bpm,
                          key,
-                         this.comments);
+                         comments);
     }
 }

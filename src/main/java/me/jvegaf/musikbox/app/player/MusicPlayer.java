@@ -40,7 +40,7 @@ public final class MusicPlayer {
         this.mPlayer = new MediaPlayer(media);
         this.mPlayer.play();
         setStatusProp();
-        track.title().ifPresent(this.titleProperty::setValue);
+        titleProperty.set(track.title());
         track.artist().ifPresent(this.artistProperty::setValue);
         this.totalDurationProperty.setValue(media.getDuration());
         setCurrentPlayTimeProp();

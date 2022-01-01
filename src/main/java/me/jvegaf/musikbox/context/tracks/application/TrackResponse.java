@@ -62,9 +62,7 @@ public final class TrackResponse implements Response {
         return id;
     }
 
-    public Optional<String> title() {
-        return Optional.ofNullable(title);
-    }
+    public String title() { return title; }
 
     public String location() {
         return location;

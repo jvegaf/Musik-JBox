@@ -21,6 +21,7 @@ import me.jvegaf.musikbox.shared.domain.bus.command.CommandBus;
 import me.jvegaf.musikbox.shared.domain.bus.event.DomainEventSubscriber;
 import me.jvegaf.musikbox.shared.domain.bus.query.QueryBus;
 import me.jvegaf.musikbox.shared.domain.track.TrackCreatedDomainEvent;
+import net.rgielen.fxweaver.core.FxWeaver;
 import net.rgielen.fxweaver.core.FxmlView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.EventListener;
@@ -34,6 +35,7 @@ public class TracklistController {
 
     private final QueryBus                                         queryBus;
     private final CommandBus                                       commandBus;
+    private final FxWeaver                                         fxWeaver;
     @FXML
     private       TableView<TrackResponse>                         songsTableView;
     @FXML
@@ -55,9 +57,10 @@ public class TracklistController {
     private       TableView.TableViewSelectionModel<TrackResponse> selectionModel;
 
     @Autowired
-    public TracklistController(QueryBus queryBus, CommandBus commandBus) {
-        this.queryBus               = queryBus;
-        this.commandBus             = commandBus;
+    public TracklistController(QueryBus queryBus, CommandBus commandBus, FxWeaver fxWeaver) {
+        this.queryBus   = queryBus;
+        this.commandBus = commandBus;
+        this.fxWeaver   = fxWeaver;
     }
 
     @EventListener
@@ -78,17 +81,26 @@ public class TracklistController {
 
         selectionModel = this.songsTableView.getSelectionModel();
         selectionModel.setSelectionMode(SelectionMode.MULTIPLE);
-        titleColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().title().isPresent() ? cellData.getValue().title().get() : ""));
-        artistColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().artist().isPresent() ? cellData.getValue().artist().get() : "" ));
-        albumColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().album().isPresent() ? cellData.getValue().album().get() : "" ));
-        genreColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().genre().isPresent() ? cellData.getValue().genre().get() : "" ));
+        titleColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().title()));
+        artistColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().artist().isPresent() ?
+                                                                              cellData.getValue().artist().get() :
+                                                                              ""));
+        albumColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().album().isPresent() ?
+                                                                             cellData.getValue().album().get() :
+                                                                             ""));
+        genreColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().genre().isPresent() ?
+                                                                             cellData.getValue().genre().get() :
+                                                                             ""));
         durationColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().duration()));
-        bpmColumn.setCellValueFactory(cellData -> {
-            return new SimpleStringProperty(cellData.getValue().bpm().isPresent() ?
-                                            String.valueOf(cellData.getValue().bpm().get()) : "");
-        });
-        yearColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().year().isPresent() ? cellData.getValue().year().get() : "" ));
-        keyColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().key().isPresent() ? cellData.getValue().key().get() : "" ));
+        bpmColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().bpm().isPresent() ?
+                                                                       String.valueOf(cellData.getValue().bpm().get()) :
+                                                                       ""));
+        yearColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().year().isPresent() ?
+                                                                            cellData.getValue().year().get() :
+                                                                            ""));
+        keyColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().key().isPresent() ?
+                                                                           cellData.getValue().key().get() :
+                                                                           ""));
 
         songsTableView.setRowFactory(tv -> {
             TableRow<TrackResponse> row = new TableRow<>();
@@ -122,11 +134,14 @@ public class TracklistController {
             selectionModel.clearSelection();
         });
         MenuItem detailItem = new MenuItem("View Detail");
-        //        detailItem.setOnAction(actionEvent -> this.commandHandler.showTrackDetail(this.selectionModel
-        //        .getSelectedItem()));
         detailItem.disableProperty()
                   .bind(Bindings.createBooleanBinding(() -> this.selectionModel.getSelectedItems().size() != 1,
                                                       selectionModel.getSelectedItems()));
+        detailItem.setOnAction(actionEvent -> {
+            DetailController detailController = fxWeaver.loadController(DetailController.class);
+            detailController.setDetails(selectionModel.getSelectedItem(), songsTableView.getScene().getWindow());
+            detailController.show();
+        });
         MenuItem playItem = new MenuItem("Play Song");
         playItem.disableProperty()
                 .bind(Bindings.createBooleanBinding(() -> this.selectionModel.getSelectedItems().size() != 1,
@@ -142,9 +157,8 @@ public class TracklistController {
         keyNode.addEventHandler(KeyEvent.KEY_PRESSED, event -> {
             if (event.getCode() == KeyCode.SPACE) {
                 if (selectionModel.getSelectedItems().size() == 1) return;
-                //                this.commandHandler.playTrack(selectionModel.getSelectedItem());
+                commandBus.dispatch(new PlaybackCommand(selectionModel.getSelectedItem().id()));
             }
         });
     }
-
 }

@@ -6,7 +6,6 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import me.jvegaf.musikbox.app.controller.DetailController;
 import me.jvegaf.musikbox.app.controller.MainController;
@@ -46,15 +45,5 @@ public final class MusikBoxApp extends Application {
     public void stop() {
         applicationContext.close();
         Platform.exit();
-    }
-
-    public void showDetailWindow(String trackId) {
-        Parent root = fxWeaver.loadView(DetailController.class);
-        Scene scene = new Scene(root, 600, 800);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.initOwner(mainScene.getWindow());
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.show();
     }
 }

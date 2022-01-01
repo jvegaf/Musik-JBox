@@ -1,11 +1,10 @@
 package me.jvegaf.musikbox.context.tracks.application.upgrade;
 
-import me.jvegaf.musikbox.context.tracks.domain.Track;
 import me.jvegaf.musikbox.shared.domain.bus.command.Command;
 
 public class UpgradeTrackCommand implements Command {
 
-    private final Track  track;
+    private final String trackId;
     private final String title;
     private final String artist;
     private final String album;
@@ -13,26 +12,29 @@ public class UpgradeTrackCommand implements Command {
     private final String year;
     private final String bpm;
     private final String key;
+    private final String comments;
 
-    public UpgradeTrackCommand(Track track,
+    public UpgradeTrackCommand(String trackId,
                                String title,
                                String artist,
                                String album,
                                String genre,
                                String year,
                                String bpm,
-                               String key) {
-        this.track  = track;
-        this.title  = title;
-        this.artist = artist;
-        this.album  = album;
-        this.genre  = genre;
-        this.year   = year;
-        this.bpm    = bpm;
-        this.key    = key;
+                               String key,
+                               String comments) {
+        this.trackId  = trackId;
+        this.title    = title;
+        this.artist   = artist;
+        this.album    = album;
+        this.genre    = genre;
+        this.year     = year;
+        this.bpm      = bpm;
+        this.key      = key;
+        this.comments = comments;
     }
 
-    public Track track() { return track; }
+    public String trackId() { return trackId; }
 
     public String title() { return title; }
 
@@ -47,4 +49,6 @@ public class UpgradeTrackCommand implements Command {
     public String genre() { return genre; }
 
     public String year() { return year; }
+
+    public String comments() { return comments; }
 }

@@ -13,17 +13,29 @@ public class UpgradeTrackCommandHandler implements CommandHandler<UpgradeTrackCo
         this.upgrader = upgrader;
     }
 
-    @Override public void handle(UpgradeTrackCommand command) {
+    @Override
+    public void handle(UpgradeTrackCommand command) {
 
-        Track updatedTrack = command.track().improveMetadata(
-                new TrackTitle(command.title()),
-                new TrackArtist(command.artist()),
-                new TrackAlbum(command.album()),
-                new TrackGenre(command.genre()),
-                new TrackYear(command.year()),
-                new TrackBpm(command.bpm()),
-                new TrackInitKey(command.key())
+        TrackId Id = new TrackId(command.trackId());
+        TrackTitle Title = new TrackTitle(command.title());
+        TrackArtist Artist = new TrackArtist(command.artist());
+        TrackAlbum Album = new TrackAlbum(command.album());
+        TrackGenre Genre = new TrackGenre(command.genre());
+        TrackYear Year = new TrackYear(command.year());
+        TrackBpm Bpm = new TrackBpm(command.bpm());
+        TrackInitKey InitKey = new TrackInitKey(command.key());
+        TrackComments Comments= new TrackComments(command.comments());
+
+        upgrader.upgrade(
+                Id,
+                Title,
+                Artist,
+                Album,
+                Genre,
+                Year,
+                Bpm,
+                InitKey,
+                Comments
         );
-        upgrader.upgrade(updatedTrack);
     }
 }
