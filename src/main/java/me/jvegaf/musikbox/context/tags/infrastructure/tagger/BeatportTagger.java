@@ -1,8 +1,11 @@
-package me.jvegaf.musikbox.context.tagger;
+package me.jvegaf.musikbox.context.tags.infrastructure.tagger;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import lombok.extern.log4j.Log4j2;
+import me.jvegaf.musikbox.context.tagger.SearchQu;
+import me.jvegaf.musikbox.context.tagger.SearchResult;
+import me.jvegaf.musikbox.context.tagger.SearchResultCreator;
 import org.springframework.stereotype.Service;
 
 import java.net.URI;
@@ -15,27 +18,28 @@ import java.util.Map;
 @Log4j2
 @Service
 public class BeatportTagger {
-    private final String URI_BASE = "https://api.beatport.com/v4/catalog/search/?q=";
-    private OAuthDTO token;
-    private SearchResultCreator creator;
+
+    private final String              URI_BASE = "https://api.beatport.com/v4/catalog/search/?q=";
+    private final SearchResultCreator creator;
+    private       OAuthDTO            token;
 
 
     public BeatportTagger() {
         this.creator = new SearchResultCreator();
-        this.token = getToken();
+        this.token   = getToken();
     }
 
-    public List<SearchResult> search(SearchRequest searchRequest) {
-        if (!this.token.isValid())
-            this.token = getToken();
+    public List<SearchResult> search(SearchQu searchRequest) {
+        if (!this.token.isValid()) this.token = getToken();
 
-        String urlString = URI_BASE + searchRequest.RequestQuery();
+        String urlString = URI_BASE + searchRequest.query();
 
         HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest
-                .newBuilder()
-                .setHeader("Accept", "application/json")
-                .setHeader("Authorization", "Bearer " + this.token.Value())
+        HttpRequest
+                request =
+                HttpRequest.newBuilder()
+                           .setHeader("Accept", "application/json")
+                           .setHeader("Authorization", "Bearer " + this.token.Value())
                 .uri(URI.create(urlString))
                 .GET()
                 .build();

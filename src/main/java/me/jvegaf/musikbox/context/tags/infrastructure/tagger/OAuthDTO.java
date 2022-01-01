@@ -1,4 +1,4 @@
-package me.jvegaf.musikbox.context.tagger;
+package me.jvegaf.musikbox.context.tags.infrastructure.tagger;
 
 import java.time.Instant;
 
