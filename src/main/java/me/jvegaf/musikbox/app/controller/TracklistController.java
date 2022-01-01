@@ -17,6 +17,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import lombok.extern.log4j.Log4j2;
+import me.jvegaf.musikbox.app.player.PlaybackCommand;
 import me.jvegaf.musikbox.context.tracks.application.TrackResponse;
 import me.jvegaf.musikbox.context.tracks.application.TracksResponse;
 import me.jvegaf.musikbox.context.tracks.application.find.FindTrackQuery;
@@ -108,7 +109,7 @@ public class TracklistController {
                     return;
                 }
                 if (event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2) {
-                    //                    bus.playTrack(this.selectionModel.getSelectedItem());
+                    commandBus.dispatch(new PlaybackCommand(selectionModel.getSelectedItem().id()));
                 }
             });
             return row;

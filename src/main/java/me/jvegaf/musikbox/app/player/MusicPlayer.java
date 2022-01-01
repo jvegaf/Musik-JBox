@@ -7,6 +7,7 @@ import javafx.beans.property.StringProperty;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
+import me.jvegaf.musikbox.context.tracks.application.TrackResponse;
 import me.jvegaf.musikbox.context.tracks.domain.Track;
 import org.springframework.stereotype.Service;
 
@@ -14,8 +15,8 @@ import java.io.File;
 
 @Service
 public final class MusicPlayer {
-    private final Track currentTrack;
-    private MediaPlayer mPlayer;
+    private final TrackResponse currentTrack;
+    private       MediaPlayer   mPlayer;
     public final StringProperty titleProperty;
     public final StringProperty artistProperty;
     public final ObjectProperty<Duration> currentPlayTimeProperty;
@@ -31,17 +32,17 @@ public final class MusicPlayer {
         this.statusProperty = new SimpleObjectProperty<>(MediaPlayer.Status.UNKNOWN);
     }
 
-    public void playTrack(Track track) {
+    public void playTrack(TrackResponse track) {
         if (currentTrackChecker(track)) return;
         if (this.mPlayer != null) stopTrack();
-        var path = track.location().value();
+        var path = track.location();
         Media media = new Media(new File(path).toURI().toString());
         this.mPlayer = new MediaPlayer(media);
         this.mPlayer.play();
         setStatusProp();
-        this.titleProperty.setValue(track.title().value());
-        this.artistProperty.setValue(track.artist().value());
-        this.totalDurationProperty.setValue(this.mPlayer.getTotalDuration());
+        track.title().ifPresent(this.titleProperty::setValue);
+        track.artist().ifPresent(this.artistProperty::setValue);
+        this.totalDurationProperty.setValue(Duration.valueOf(track.duration()));
         setCurrentPlayTimeProp();
     }
 
@@ -53,9 +54,9 @@ public final class MusicPlayer {
         this.mPlayer.currentTimeProperty().addListener((observable, oldValue, newValue) -> this.currentPlayTimeProperty.setValue(newValue));
     }
 
-    private boolean currentTrackChecker(Track track) {
+    private boolean currentTrackChecker(TrackResponse track) {
         if (this.currentTrack == null) return false;
-        return currentTrack.location().value().equals(track.location().value());
+        return currentTrack.location().equals(track.location());
     }
 
     public void pauseTrack() {
