@@ -23,8 +23,8 @@ import java.util.ResourceBundle;
 
 @Log4j2
 @Component
-@FxmlView("/components/Header.fxml")
-public final class HeaderController implements Initializable {
+@FxmlView()
+public final class HeaderController {
 
 
     @FXML
@@ -60,8 +60,8 @@ public final class HeaderController implements Initializable {
         this.bus    = bus;
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    @FXML
+    public void initialize() {
         disablePlayerControls(true);
         nextBtn.setOnMouseClicked(event -> System.out.println("next clicked !"));
         playBtn.setOnMouseClicked(event -> this.player.continuePlaying());

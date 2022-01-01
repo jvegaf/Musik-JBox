@@ -23,8 +23,8 @@ import java.util.ResourceBundle;
 
 @Log4j2
 @Component
-@FxmlView("views/MainView.fxml")
-public class MainController implements Initializable {
+@FxmlView()
+public class MainController {
 
     @FXML
     private final FxControllerAndView<HeaderController, HBox>          header;
@@ -34,12 +34,7 @@ public class MainController implements Initializable {
     private final FxControllerAndView<TracklistController, AnchorPane> tracklist;
 
     private final CommandBus bus;
-    @FXML
-    private       HBox       headerPane;
-    @FXML
-    private       VBox       sidebarPane;
-    @FXML
-    private       VBox       tracklistPane;
+
 
     @Autowired
     public MainController(FxControllerAndView<HeaderController, HBox> header,
@@ -58,14 +53,11 @@ public class MainController implements Initializable {
         this.bus.dispatch(new CollectFilesCommand(new File(path)));
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        header.getView().ifPresent(h -> headerPane.getChildren().add(h));
-        sidebar.getView().ifPresent(s -> sidebarPane.getChildren().add(s));
-        tracklist.getView().ifPresent(t -> {
-            tracklistPane.getChildren().add(t);
+    @FXML
+    public void initialize() {
+
             autoLoad();
-        });
+
     }
 }
 

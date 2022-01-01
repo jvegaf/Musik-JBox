@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1440.0" stylesheets="@../styles/dark.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.jvegaf.musikbox.app.controller.MainController">
+    <HBox fx:id="headerPane" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="70.0" VBox.vgrow="NEVER" />
+    <HBox VBox.vgrow="ALWAYS">
+        <VBox fx:id="sidebarPane" HBox.hgrow="NEVER" />
+        <VBox fx:id="tracklistPane" HBox.hgrow="ALWAYS" />
+    </HBox>
+
+    <HBox id="HBox" alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" spacing="5.0" VBox.vgrow="NEVER">
+        <padding>
+            <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+        </padding>
+        <Label fx:id="leftStatusLabel" text="Left status" HBox.hgrow="ALWAYS" />
+        <Pane HBox.hgrow="ALWAYS" />
+        <Label fx:id="rightStatusLabel" text="Right status" HBox.hgrow="NEVER" />
+    </HBox>
+</VBox>

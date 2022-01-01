@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 
 @Log4j2
 @Component
-@FxmlView("/components/Sidebar.fxml")
+@FxmlView()
 public class SideBarController {
 
     @FXML
@@ -36,7 +36,7 @@ public class SideBarController {
 
 
     @FXML
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize() {
 
         ObservableList<Playlist> playlists = FXCollections.observableArrayList(repository.searchAll());
 

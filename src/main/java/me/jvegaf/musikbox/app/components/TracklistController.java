@@ -36,9 +36,9 @@ import java.util.ResourceBundle;
 
 @Log4j2
 @Component
-@FxmlView("/components/Tracklist.fxml")
+@FxmlView()
 @DomainEventSubscriber({ TrackCreatedDomainEvent.class })
-public class TracklistController implements Initializable {
+public class TracklistController {
 
     private final QueryBus                                         queryBus;
     private final CommandBus                                       commandBus;
@@ -78,7 +78,7 @@ public class TracklistController implements Initializable {
 
 
     @FXML
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize() {
         TracksResponse response = (TracksResponse) queryBus.ask(new SearchAllTracksQuery());
         ObservableList<TrackResponse> list = FXCollections.observableArrayList();
         list.addAll(response.tracks());
