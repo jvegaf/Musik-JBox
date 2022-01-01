@@ -1,6 +1,7 @@
 package me.jvegaf.musikbox.app.controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -8,14 +9,17 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import me.jvegaf.musikbox.context.tracks.domain.Track;
-import me.jvegaf.musikbox.context.tracks.domain.TrackRepository;
+import me.jvegaf.musikbox.shared.domain.bus.command.CommandBus;
+import me.jvegaf.musikbox.shared.domain.bus.query.QueryBus;
+import net.rgielen.fxweaver.core.FxWeaver;
 import net.rgielen.fxweaver.core.FxmlView;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 @Component
-@FxmlView()
-public class DetailViewController {
+@FxmlView
+public class DetailController {
 
     @FXML
     private ImageView artworkImageView;
@@ -46,12 +50,21 @@ public class DetailViewController {
     @FXML
     private Button    cancelBtn;
 
-    private final TrackRepository repository;
+    private final CommandBus commandBus;
+    private final QueryBus   queryBus;
+    private Stage stage;
+
+    @FXML
+    public void initialize() {
+    }
 
     @Autowired
-    public DetailViewController(TrackRepository repository) {
-        this.repository = repository;
+    public DetailController(CommandBus commandBus, QueryBus queryBus) {
+        this.commandBus = commandBus;
+        this.queryBus   = queryBus;
     }
+
+
 
     private void closeActionListener() {
         Stage stage = (Stage) this.cancelBtn.getScene().getWindow();

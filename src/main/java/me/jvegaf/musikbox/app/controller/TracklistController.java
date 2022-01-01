@@ -1,28 +1,22 @@
 package me.jvegaf.musikbox.app.controller;
 
-import com.google.gson.JsonArray;
-import io.github.cdimascio.dotenv.Dotenv;
 import javafx.beans.binding.Bindings;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import lombok.extern.log4j.Log4j2;
-import me.jvegaf.musikbox.app.player.PlaybackCommand;
+import me.jvegaf.musikbox.app.command.player.PlaybackCommand;
 import me.jvegaf.musikbox.context.tracks.application.TrackResponse;
 import me.jvegaf.musikbox.context.tracks.application.TracksResponse;
 import me.jvegaf.musikbox.context.tracks.application.find.FindTrackQuery;
 import me.jvegaf.musikbox.context.tracks.application.search_all.SearchAllTracksQuery;
-import me.jvegaf.musikbox.context.tracks.infrastructure.file.CollectFilesCommand;
 import me.jvegaf.musikbox.shared.domain.bus.command.CommandBus;
 import me.jvegaf.musikbox.shared.domain.bus.event.DomainEventSubscriber;
 import me.jvegaf.musikbox.shared.domain.bus.query.QueryBus;
@@ -31,10 +25,6 @@ import net.rgielen.fxweaver.core.FxmlView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
-
-import java.io.File;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 @Log4j2
 @Component
@@ -141,9 +131,8 @@ public class TracklistController {
         playItem.disableProperty()
                 .bind(Bindings.createBooleanBinding(() -> this.selectionModel.getSelectedItems().size() != 1,
                                                     selectionModel.getSelectedItems()));
-        //        playItem.setOnAction(actionEvent -> this.commandHandler.playTrack(this.selectionModel
-        //        .getSelectedItem()));
 
+        playItem.setOnAction(actionEvent -> commandBus.dispatch(new PlaybackCommand(selectionModel.getSelectedItem().id())));
 
         menu.getItems().addAll(fixallItem, new SeparatorMenuItem(), detailItem, playItem);
         return menu;

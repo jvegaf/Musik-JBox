@@ -1,4 +1,4 @@
-package me.jvegaf.musikbox.app.player;
+package me.jvegaf.musikbox.app.command.player;
 
 import me.jvegaf.musikbox.shared.domain.bus.command.Command;
 

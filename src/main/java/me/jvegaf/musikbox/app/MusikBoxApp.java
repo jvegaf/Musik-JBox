@@ -6,7 +6,9 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import me.jvegaf.musikbox.app.controller.DetailController;
 import me.jvegaf.musikbox.app.controller.MainController;
 import me.jvegaf.musikbox.context.tracks.infrastructure.file.CollectFilesCommand;
 import net.rgielen.fxweaver.core.FxWeaver;
@@ -19,6 +21,8 @@ import java.io.File;
 public final class MusikBoxApp extends Application {
 
     private ConfigurableApplicationContext applicationContext;
+    private FxWeaver fxWeaver;
+    private Scene mainScene;
 
     @Override
     public void init(){
@@ -26,14 +30,14 @@ public final class MusikBoxApp extends Application {
                 .sources(Main.class)
                 .run(getParameters().getRaw().toArray(new String[0]));
 
+        fxWeaver = applicationContext.getBean(FxWeaver.class);
     }
 
     @Override
     public void start(Stage stage) throws Exception {
-        FxWeaver fxWeaver = applicationContext.getBean(FxWeaver.class);
         Parent root = fxWeaver.loadView(MainController.class);
-        Scene scene = new Scene(root, 1440, 800);
-        stage.setScene(scene);
+        mainScene = new Scene(root, 1440, 800);
+        stage.setScene(mainScene);
         stage.show();
 
     }
@@ -42,5 +46,15 @@ public final class MusikBoxApp extends Application {
     public void stop() {
         applicationContext.close();
         Platform.exit();
+    }
+
+    public void showDetailWindow(String trackId) {
+        Parent root = fxWeaver.loadView(DetailController.class);
+        Scene scene = new Scene(root, 600, 800);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.initOwner(mainScene.getWindow());
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
     }
 }
