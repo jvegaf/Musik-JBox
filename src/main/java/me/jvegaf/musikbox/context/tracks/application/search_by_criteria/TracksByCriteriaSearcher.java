@@ -6,10 +6,12 @@ import me.jvegaf.musikbox.context.tracks.domain.TrackRepository;
 import me.jvegaf.musikbox.shared.domain.criteria.Criteria;
 import me.jvegaf.musikbox.shared.domain.criteria.Filters;
 import me.jvegaf.musikbox.shared.domain.criteria.Order;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Service
 public final class TracksByCriteriaSearcher {
 
     private final TrackRepository repository;

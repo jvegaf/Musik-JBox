@@ -2,14 +2,11 @@ package me.jvegaf.musikbox.app.controller;
 
 import io.github.cdimascio.dotenv.Dotenv;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import lombok.extern.log4j.Log4j2;
-import me.jvegaf.musikbox.app.components.HeaderController;
-import me.jvegaf.musikbox.app.components.SideBarController;
-import me.jvegaf.musikbox.app.components.TracklistController;
 import me.jvegaf.musikbox.context.tracks.infrastructure.file.CollectFilesCommand;
 import me.jvegaf.musikbox.shared.domain.bus.command.CommandBus;
 import net.rgielen.fxweaver.core.FxControllerAndView;
@@ -18,33 +15,32 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 @Log4j2
 @Component
-@FxmlView()
+@FxmlView
 public class MainController {
 
+
+    private final CommandBus                                           bus;
     @FXML
     private final FxControllerAndView<HeaderController, HBox>          header;
     @FXML
     private final FxControllerAndView<SideBarController, VBox>         sidebar;
     @FXML
     private final FxControllerAndView<TracklistController, AnchorPane> tracklist;
-
-    private final CommandBus bus;
+    public Label leftStatusLabel;
 
 
     @Autowired
-    public MainController(FxControllerAndView<HeaderController, HBox> header,
+    public MainController(CommandBus bus,
+                          FxControllerAndView<HeaderController, HBox> header,
                           FxControllerAndView<SideBarController, VBox> sidebar,
-                          FxControllerAndView<TracklistController, AnchorPane> tracklist,
-                          CommandBus bus) {
+                          FxControllerAndView<TracklistController, AnchorPane> tracklist) {
+        this.bus       = bus;
         this.header    = header;
         this.sidebar   = sidebar;
         this.tracklist = tracklist;
-        this.bus       = bus;
     }
 
     private void autoLoad() {
@@ -55,9 +51,8 @@ public class MainController {
 
     @FXML
     public void initialize() {
-
-            autoLoad();
-
+        autoLoad();
     }
+
 }
 

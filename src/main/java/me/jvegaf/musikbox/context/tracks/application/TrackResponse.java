@@ -58,47 +58,48 @@ public final class TrackResponse implements Response {
                                  track.comments().value());
     }
 
-    public String getId() {
+    public String id() {
         return id;
     }
 
-    public String getTitle() {
-        return title;
+    public Optional<String> title() {
+        return Optional.ofNullable(title);
     }
 
-    public String getLocation() {
+    public String location() {
         return location;
     }
 
-    public String getDuration() {
+    public String duration() {
         return duration;
     }
 
-    public String getArtist() {
-        return artist;
+    public Optional<String> artist() {
+        return Optional.ofNullable(artist);
     }
 
-    public String getAlbum() {
-        return album;
+    public Optional<String> album() {
+        return Optional.ofNullable(album);
     }
 
-    public String getGenre() {
-        return genre;
+    public Optional<String> genre() {
+        return Optional.ofNullable(genre);
     }
 
-    public String getYear() {
-        return year;
+    public Optional<String> year() {
+        return Optional.ofNullable(year);
     }
 
-    public Integer getBpm() {
-        return bpm;
+    public Optional<Integer> bpm() {
+        return Optional.ofNullable(bpm);
     }
 
-    public String getKey() {
-        return key;
+    public Optional<String> key() {
+        return Optional.ofNullable(key);
     }
 
-    public String getComments() {
-        return comments;
+    public Optional<String> comments() {
+        return Optional.ofNullable(comments);
     }
+
 }

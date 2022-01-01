@@ -1,4 +1,4 @@
-package me.jvegaf.musikbox.app.components;
+package me.jvegaf.musikbox.app.controller;
 
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
@@ -23,7 +23,7 @@ import java.util.ResourceBundle;
 
 @Log4j2
 @Component
-@FxmlView()
+@FxmlView
 public final class HeaderController {
 
 

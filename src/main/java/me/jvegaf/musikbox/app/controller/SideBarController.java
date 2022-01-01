@@ -1,4 +1,4 @@
-package me.jvegaf.musikbox.app.components;
+package me.jvegaf.musikbox.app.controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,12 +11,9 @@ import net.rgielen.fxweaver.core.FxmlView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 @Log4j2
 @Component
-@FxmlView()
+@FxmlView
 public class SideBarController {
 
     @FXML

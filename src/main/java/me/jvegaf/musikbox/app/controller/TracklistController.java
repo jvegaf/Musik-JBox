@@ -1,8 +1,9 @@
-package me.jvegaf.musikbox.app.components;
+package me.jvegaf.musikbox.app.controller;
 
 import com.google.gson.JsonArray;
 import io.github.cdimascio.dotenv.Dotenv;
 import javafx.beans.binding.Bindings;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -36,7 +37,7 @@ import java.util.ResourceBundle;
 
 @Log4j2
 @Component
-@FxmlView()
+@FxmlView
 @DomainEventSubscriber({ TrackCreatedDomainEvent.class })
 public class TracklistController {
 
@@ -73,7 +74,7 @@ public class TracklistController {
         TrackResponse trackResponse = (TrackResponse) queryBus.ask(new FindTrackQuery(event.aggregateId()));
         songsTableView.getItems().add(trackResponse);
         songsTableView.refresh();
-        log.info("TrackResponse added: {}", trackResponse.getTitle());
+        log.info("TrackResponse added: {}", trackResponse.title());
     }
 
 
@@ -86,16 +87,17 @@ public class TracklistController {
 
         selectionModel = this.songsTableView.getSelectionModel();
         selectionModel.setSelectionMode(SelectionMode.MULTIPLE);
-        titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
-        artistColumn.setCellValueFactory(new PropertyValueFactory<>("artist"));
-        albumColumn.setCellValueFactory(new PropertyValueFactory<>("album"));
-        genreColumn.setCellValueFactory(new PropertyValueFactory<>("genre"));
-        durationColumn.setCellValueFactory(new PropertyValueFactory<>("duration"));
-        bpmColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue()
-                                                                                   .getBpm()
-                                                                                   .toString()));
-        yearColumn.setCellValueFactory(new PropertyValueFactory<>("year"));
-        keyColumn.setCellValueFactory(new PropertyValueFactory<>("key"));
+        titleColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().title().isPresent() ? cellData.getValue().title().get() : ""));
+        artistColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().artist().isPresent() ? cellData.getValue().artist().get() : "" ));
+        albumColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().album().isPresent() ? cellData.getValue().album().get() : "" ));
+        genreColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().genre().isPresent() ? cellData.getValue().genre().get() : "" ));
+        durationColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().duration()));
+        bpmColumn.setCellValueFactory(cellData -> {
+            return new SimpleStringProperty(cellData.getValue().bpm().isPresent() ?
+                                            String.valueOf(cellData.getValue().bpm().get()) : "");
+        });
+        yearColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().year().isPresent() ? cellData.getValue().year().get() : "" ));
+        keyColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().key().isPresent() ? cellData.getValue().key().get() : "" ));
 
         songsTableView.setRowFactory(tv -> {
             TableRow<TrackResponse> row = new TableRow<>();

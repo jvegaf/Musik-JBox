@@ -1,4 +1,4 @@
-package me.jvegaf.musikbox.app.components;
+package me.jvegaf.musikbox.app.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
