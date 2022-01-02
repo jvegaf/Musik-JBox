@@ -7,6 +7,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import lombok.extern.log4j.Log4j2;
+import me.jvegaf.musikbox.context.playlists.application.create.CreatePlaylistCommand;
 import me.jvegaf.musikbox.context.tracks.infrastructure.file.CollectFilesCommand;
 import me.jvegaf.musikbox.shared.domain.bus.command.CommandBus;
 import net.rgielen.fxweaver.core.FxControllerAndView;
@@ -47,6 +48,11 @@ public class MainController {
         String path = Dotenv.load().get("DEV_MUSIC_PATH");
         log.info("Loading tracks from: {}", path);
         this.bus.dispatch(new CollectFilesCommand(new File(path)));
+
+        this.bus.dispatch(new CreatePlaylistCommand("House"));
+        this.bus.dispatch(new CreatePlaylistCommand("Tech House"));
+        this.bus.dispatch(new CreatePlaylistCommand("Deep"));
+        this.bus.dispatch(new CreatePlaylistCommand("ElectroRodeo"));
     }
 
     @FXML

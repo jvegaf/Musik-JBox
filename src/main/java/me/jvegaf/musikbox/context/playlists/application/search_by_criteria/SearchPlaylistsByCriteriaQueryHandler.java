@@ -4,7 +4,9 @@ import me.jvegaf.musikbox.context.playlists.application.PlaylistsResponse;
 import me.jvegaf.musikbox.shared.domain.bus.query.QueryHandler;
 import me.jvegaf.musikbox.shared.domain.criteria.Filters;
 import me.jvegaf.musikbox.shared.domain.criteria.Order;
+import org.springframework.stereotype.Service;
 
+@Service
 public final class SearchPlaylistsByCriteriaQueryHandler implements QueryHandler<SearchPlaylistsByCriteriaQuery, PlaylistsResponse> {
 
     private final PlaylistsByCriteriaSearcher searcher;

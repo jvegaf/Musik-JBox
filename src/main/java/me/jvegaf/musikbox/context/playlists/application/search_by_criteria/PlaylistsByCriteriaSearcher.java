@@ -3,14 +3,15 @@ package me.jvegaf.musikbox.context.playlists.application.search_by_criteria;
 import me.jvegaf.musikbox.context.playlists.application.PlaylistResponse;
 import me.jvegaf.musikbox.context.playlists.application.PlaylistsResponse;
 import me.jvegaf.musikbox.context.playlists.domain.PlaylistRepository;
-import me.jvegaf.musikbox.context.tracks.domain.TrackRepository;
 import me.jvegaf.musikbox.shared.domain.criteria.Criteria;
 import me.jvegaf.musikbox.shared.domain.criteria.Filters;
 import me.jvegaf.musikbox.shared.domain.criteria.Order;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Service
 public final class PlaylistsByCriteriaSearcher {
 
     private final PlaylistRepository repository;
@@ -22,9 +23,6 @@ public final class PlaylistsByCriteriaSearcher {
 
         Criteria criteria = new Criteria(filters, order, limit, offset);
 
-        return new PlaylistsResponse(repository.matching(criteria)
-                                               .stream()
-                                               .map(PlaylistResponse::fromAggregate)
-                                               .collect(Collectors.toList()));
+        return new PlaylistsResponse(repository.matching(criteria).stream().map(PlaylistResponse::fromAggregate).collect(Collectors.toList()));
     }
 }

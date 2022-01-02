@@ -4,7 +4,9 @@ import me.jvegaf.musikbox.context.playlists.domain.Playlist;
 import me.jvegaf.musikbox.context.playlists.domain.PlaylistName;
 import me.jvegaf.musikbox.context.playlists.domain.PlaylistRepository;
 import me.jvegaf.musikbox.shared.domain.bus.event.EventBus;
+import org.springframework.stereotype.Service;
 
+@Service
 public final class PlaylistCreator {
 
     private final PlaylistRepository repository;
