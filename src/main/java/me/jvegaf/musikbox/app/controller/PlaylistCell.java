@@ -1,5 +1,6 @@
 package me.jvegaf.musikbox.app.controller;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -65,6 +66,13 @@ public class PlaylistCell extends ListCell<PlaylistResponse> {
         titleTF.setText(titleLbl.getText());
         titleTF.setVisible(true);
         titleLbl.setVisible(false);
+        Platform.runLater(new Runnable() {
+
+            @Override
+            public void run() {
+                titleTF.requestFocus();
+            }
+        });
         titleTF.setOnKeyReleased(event -> {
             if (event.getCode() == KeyCode.ENTER) commitEdit(new PlaylistResponse(getItem().id(), titleTF.getText()));
         });

@@ -3,10 +3,12 @@ package me.jvegaf.musikbox.app.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import lombok.extern.log4j.Log4j2;
 import me.jvegaf.musikbox.context.playlists.application.PlaylistResponse;
 import me.jvegaf.musikbox.context.playlists.application.PlaylistsResponse;
+import me.jvegaf.musikbox.context.playlists.application.create.CreatePlaylistCommand;
 import me.jvegaf.musikbox.context.playlists.application.find.FindPlaylistQuery;
 import me.jvegaf.musikbox.context.playlists.application.search_all.SearchAllPlaylistsQuery;
 import me.jvegaf.musikbox.context.playlists.application.update.UpdatePlaylistCommand;
@@ -25,12 +27,15 @@ import org.springframework.stereotype.Component;
 @DomainEventSubscriber({ PlaylistCreatedDomainEvent.class })
 public class SideBarController {
 
-    private final QueryBus                   queryBus;
-    private final CommandBus                 commandBus;
+    private final QueryBus   queryBus;
+    private final CommandBus commandBus;
+
     @FXML
-    private       ListView<PlaylistResponse> libraryListView;
+    private Button                     addBtn;
     @FXML
-    private       ListView<PlaylistResponse> playlistListView;
+    private ListView<PlaylistResponse> libraryListView;
+    @FXML
+    private ListView<PlaylistResponse> playlistListView;
 
 
     @Autowired
@@ -62,6 +67,8 @@ public class SideBarController {
             playlistListView.getItems().set(t.getIndex(), t.getNewValue());
             commandBus.dispatch(new UpdatePlaylistCommand(t.getNewValue().id(), t.getNewValue().name()));
         });
+
+        addBtn.setOnAction(event -> commandBus.dispatch(new CreatePlaylistCommand("New Playlist")));
 
     }
 }
