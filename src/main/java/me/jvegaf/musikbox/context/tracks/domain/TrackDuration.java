@@ -11,4 +11,6 @@ public final class TrackDuration extends DurationValueObject {
     public TrackDuration(String value) {
         super(value);
     }
+
+    public TrackDuration() { super(""); }
 }

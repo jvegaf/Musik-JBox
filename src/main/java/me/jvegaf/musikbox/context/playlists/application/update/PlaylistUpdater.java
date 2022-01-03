@@ -23,7 +23,7 @@ public final class PlaylistUpdater {
     public void update(PlaylistId id, PlaylistName name) {
         Playlist p = repository.search(id).orElseThrow();
         Playlist updated = p.update(name);
-        repository.save(p);
+        repository.save(updated);
         bus.publish(updated.pullDomainEvents());
         log.info("playlist " + p.name() + " updated to: " + updated.name());
     }

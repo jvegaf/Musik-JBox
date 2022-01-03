@@ -102,7 +102,7 @@ public final class HibernateConfigurationFactory {
 
     private Properties hibernateProperties() {
         Properties hibernateProperties = new Properties();
-        hibernateProperties.put(AvailableSettings.HBM2DDL_AUTO, "create-drop");
+        hibernateProperties.put(AvailableSettings.HBM2DDL_AUTO, "none");
         hibernateProperties.put(AvailableSettings.SHOW_SQL, "true");
         hibernateProperties.put(AvailableSettings.DIALECT, "me.jvegaf.musikbox.shared.infrastructure.persistence.hibernate.dialect.SQLiteDialect");
 

@@ -6,7 +6,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import lombok.extern.log4j.Log4j2;
 import me.jvegaf.musikbox.context.playlists.application.PlaylistResponse;
+import me.jvegaf.musikbox.context.playlists.application.PlaylistsResponse;
 import me.jvegaf.musikbox.context.playlists.application.create.CreatePlaylistCommand;
+import me.jvegaf.musikbox.context.playlists.application.find.FindPlaylistQuery;
+import me.jvegaf.musikbox.context.playlists.application.search_all.SearchAllPlaylistsQuery;
 import me.jvegaf.musikbox.context.playlists.application.update.UpdatePlaylistCommand;
 import me.jvegaf.musikbox.shared.domain.bus.command.CommandBus;
 import me.jvegaf.musikbox.shared.domain.bus.event.DomainEventSubscriber;
@@ -43,17 +46,17 @@ public class SideBarController {
 
     @EventListener
     public void OnPlaylistCreated(PlaylistCreatedDomainEvent event) {
-//        PlaylistResponse response = (PlaylistResponse) queryBus.ask(new FindPlaylistQuery(event.aggregateId()));
-//        playlistListView.getItems().add(response);
-//        log.info("Playlist created: " + response.name());
+        PlaylistResponse response = (PlaylistResponse) queryBus.ask(new FindPlaylistQuery(event.aggregateId()));
+        playlistListView.getItems().add(response);
+        log.info("Playlist created: " + response.name());
     }
 
 
     @FXML
     public void initialize() {
-//        PlaylistsResponse response = (PlaylistsResponse) queryBus.ask(new SearchAllPlaylistsQuery());
+        PlaylistsResponse response = (PlaylistsResponse) queryBus.ask(new SearchAllPlaylistsQuery());
         ObservableList<PlaylistResponse> playlists = FXCollections.observableArrayList();
-//        playlists.addAll(response.playlists());
+        playlists.addAll(response.playlists());
 
         playlistListView.setItems(playlists);
 

@@ -7,4 +7,6 @@ public class TrackComments extends StringValueObject {
     public TrackComments(String value) {
         super(value);
     }
+
+    public TrackComments() { super(""); }
 }

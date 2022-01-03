@@ -7,4 +7,6 @@ public class TrackTitle extends StringValueObject {
     public TrackTitle(String value) {
         super(value);
     }
+
+    public TrackTitle() { super(""); }
 }
