@@ -3,8 +3,7 @@ package me.jvegaf.musikbox.app.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import lombok.extern.log4j.Log4j2;
 import me.jvegaf.musikbox.context.playlists.application.PlaylistResponse;
 import me.jvegaf.musikbox.context.playlists.application.PlaylistsResponse;
@@ -36,6 +35,7 @@ public class SideBarController {
     private ListView<PlaylistResponse> libraryListView;
     @FXML
     private ListView<PlaylistResponse> playlistListView;
+    private MultipleSelectionModel<PlaylistResponse> selectionModel;
 
 
     @Autowired
@@ -61,7 +61,13 @@ public class SideBarController {
         playlistListView.setItems(playlists);
 
         //        this.libraryListView.setCellFactory(param -> new PlaylistCell());
-        playlistListView.setCellFactory(param -> new PlaylistCell());
+        playlistListView.setCellFactory(param -> {
+            ListCell<PlaylistResponse> cell = new PlaylistCell();
+            cell.setOnMouseClicked(event -> selectionModel.select(cell.getIndex()));
+            return cell;
+        });
+        selectionModel = playlistListView.getSelectionModel();
+        selectionModel.setSelectionMode(SelectionMode.SINGLE);
         playlistListView.setEditable(true);
         playlistListView.setOnEditCommit(t -> {
             playlistListView.getItems().set(t.getIndex(), t.getNewValue());
@@ -69,6 +75,7 @@ public class SideBarController {
         });
 
         addBtn.setOnAction(event -> commandBus.dispatch(new CreatePlaylistCommand("New Playlist")));
+
 
     }
 }

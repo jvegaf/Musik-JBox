@@ -91,7 +91,6 @@
     -fx-background-color: transparent;
 }
 
-
 .table-row-cell .cell{
     -fx-padding: 4 0 6 10;
     -fx-font-size: 1.05em;
@@ -103,8 +102,31 @@
     -fx-text-fill: -txt-color;
   }
 
-.list-cell{
-    -fx-selection-bar-non-focused: derive(-fx-base, 20%);
+/* When the list-cell is selected and focused */
+.list-view:focused .list-cell:filled:focused:selected {
+    -fx-background-color: -fx-focus-color, -fx-cell-focus-inner-border, -fx-selection-bar;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background: -fx-accent;
+    /* -fx-text-fill: -fx-selection-bar-text;  */
+    -fx-text-fill: red;
+}
+
+/* When the list-cell is selected and selected-hovered but not focused.
+    Applied when the multiple items are selected but not focused */
+.list-view:focused .list-cell:filled:selected, .list-view:focused .list-cell:filled:selected:hover {
+    -fx-background: -fx-accent;
+    -fx-background-color: -fx-selection-bar;
+    /* -fx-text-fill: -fx-selection-bar-text;  */
+    -fx-text-fill: green;
+}
+
+/* When the list-cell is selected, focused and mouse hovered */
+.list-view:focused .list-cell:filled:focused:selected:hover {
+    -fx-background: -fx-accent;
+    -fx-background-color: -fx-focus-color, -fx-cell-focus-inner-border, -fx-selection-bar;
+    -fx-background-insets: 0, 1, 2;
+    /* -fx-text-fill: -fx-selection-bar-text;  */
+    -fx-text-fill: yellow;
 }
 
 .play-btn {
