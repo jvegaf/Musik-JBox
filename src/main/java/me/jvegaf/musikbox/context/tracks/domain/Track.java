@@ -2,6 +2,7 @@ package me.jvegaf.musikbox.context.tracks.domain;
 
 import me.jvegaf.musikbox.shared.domain.AggregateRoot;
 import me.jvegaf.musikbox.shared.domain.track.TrackCreatedDomainEvent;
+import me.jvegaf.musikbox.shared.domain.track.TrackUpdatedDomainEvent;
 
 public final class Track extends AggregateRoot {
 
@@ -131,16 +132,10 @@ public final class Track extends AggregateRoot {
                                  TrackInitKey key,
                                  TrackComments comments
     ) {
-        return new Track(this.id,
-                         title,
-                         this.location,
-                         this.duration,
-                         artist,
-                         album,
-                         genre,
-                         year,
-                         bpm,
-                         key,
-                         comments);
+        Track
+                t =
+                new Track(this.id, title, this.location, this.duration, artist, album, genre, year, bpm, key, comments);
+        t.record(new TrackUpdatedDomainEvent(id.value(), title.value(), location.value()));
+        return t;
     }
 }

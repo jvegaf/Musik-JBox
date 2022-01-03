@@ -9,6 +9,7 @@ import me.jvegaf.musikbox.context.playlists.application.PlaylistResponse;
 import me.jvegaf.musikbox.context.playlists.application.PlaylistsResponse;
 import me.jvegaf.musikbox.context.playlists.application.find.FindPlaylistQuery;
 import me.jvegaf.musikbox.context.playlists.application.search_all.SearchAllPlaylistsQuery;
+import me.jvegaf.musikbox.context.playlists.application.update.UpdatePlaylistCommand;
 import me.jvegaf.musikbox.shared.domain.bus.command.CommandBus;
 import me.jvegaf.musikbox.shared.domain.bus.event.DomainEventSubscriber;
 import me.jvegaf.musikbox.shared.domain.bus.query.QueryBus;
@@ -55,7 +56,12 @@ public class SideBarController {
         playlistListView.setItems(playlists);
 
         //        this.libraryListView.setCellFactory(param -> new PlaylistCell());
-        this.playlistListView.setCellFactory(param -> new PlaylistCell());
+        playlistListView.setCellFactory(param -> new PlaylistCell());
+        playlistListView.setEditable(true);
+        playlistListView.setOnEditCommit(t -> {
+            playlistListView.getItems().set(t.getIndex(), t.getNewValue());
+            commandBus.dispatch(new UpdatePlaylistCommand(t.getNewValue().id(), t.getNewValue().name()));
+        });
 
     }
 }

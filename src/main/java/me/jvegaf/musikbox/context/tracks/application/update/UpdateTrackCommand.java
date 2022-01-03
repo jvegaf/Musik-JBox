@@ -1,8 +1,8 @@
-package me.jvegaf.musikbox.context.tracks.application.upgrade;
+package me.jvegaf.musikbox.context.tracks.application.update;
 
 import me.jvegaf.musikbox.shared.domain.bus.command.Command;
 
-public class UpgradeTrackCommand implements Command {
+public class UpdateTrackCommand implements Command {
 
     private final String trackId;
     private final String title;
@@ -14,15 +14,15 @@ public class UpgradeTrackCommand implements Command {
     private final String key;
     private final String comments;
 
-    public UpgradeTrackCommand(String trackId,
-                               String title,
-                               String artist,
-                               String album,
-                               String genre,
-                               String year,
-                               String bpm,
-                               String key,
-                               String comments) {
+    public UpdateTrackCommand(String trackId,
+                              String title,
+                              String artist,
+                              String album,
+                              String genre,
+                              String year,
+                              String bpm,
+                              String key,
+                              String comments) {
         this.trackId  = trackId;
         this.title    = title;
         this.artist   = artist;

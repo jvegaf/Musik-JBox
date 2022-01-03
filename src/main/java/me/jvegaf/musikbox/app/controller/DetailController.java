@@ -12,9 +12,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import me.jvegaf.musikbox.context.tracks.application.TrackResponse;
-import me.jvegaf.musikbox.context.tracks.application.upgrade.UpgradeTrackCommand;
+import me.jvegaf.musikbox.context.tracks.application.update.UpdateTrackCommand;
 import me.jvegaf.musikbox.shared.domain.bus.command.CommandBus;
-import me.jvegaf.musikbox.shared.domain.bus.query.QueryBus;
 import net.rgielen.fxweaver.core.FxmlView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -92,17 +91,7 @@ public class DetailController {
         String key = this.keyTextField.getText();
         String comments = this.commentsTextField.getText();
         //        // TODO: implement this.track.setArtworkData
-        commandBus.dispatch(new UpgradeTrackCommand(
-                t.id(),
-                title,
-                artist,
-                album,
-                genre,
-                year,
-                bpm,
-                key,
-                comments
-        ));
+        commandBus.dispatch(new UpdateTrackCommand(t.id(), title, artist, album, genre, year, bpm, key, comments));
         this.closeActionListener();
     }
 

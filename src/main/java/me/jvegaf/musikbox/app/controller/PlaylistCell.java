@@ -4,6 +4,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import me.jvegaf.musikbox.context.playlists.application.PlaylistResponse;
@@ -19,9 +21,13 @@ public class PlaylistCell extends ListCell<PlaylistResponse> {
     private Label titleLbl;
 
     @FXML
+    private TextField titleTF;
+
+    @FXML
     private AnchorPane anchorPane;
 
     private FXMLLoader loader;
+
 
     @Override
     protected void updateItem(PlaylistResponse item, boolean empty) {
@@ -43,12 +49,38 @@ public class PlaylistCell extends ListCell<PlaylistResponse> {
                 }
             }
 
-
+            titleTF.setVisible(false);
             titleLbl.setText(item.name());
             iconPane.getStyleClass().add("icon-playlist");
 
             setText(null);
             setGraphic(anchorPane);
         }
+    }
+
+
+    @Override
+    public void startEdit() {
+        super.startEdit();
+        titleTF.setText(titleLbl.getText());
+        titleTF.setVisible(true);
+        titleLbl.setVisible(false);
+        titleTF.setOnKeyReleased(event -> {
+            if (event.getCode() == KeyCode.ENTER) commitEdit(new PlaylistResponse(getItem().id(), titleTF.getText()));
+        });
+    }
+
+    @Override
+    public void commitEdit(PlaylistResponse newValue) {
+        super.commitEdit(newValue);
+        titleTF.setVisible(false);
+        titleLbl.setVisible(true);
+    }
+
+    @Override
+    public void cancelEdit() {
+        super.cancelEdit();
+        titleTF.setVisible(false);
+        titleLbl.setVisible(true);
     }
 }

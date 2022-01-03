@@ -3,6 +3,7 @@ package me.jvegaf.musikbox.context.playlists.domain;
 import me.jvegaf.musikbox.context.tracks.domain.Track;
 import me.jvegaf.musikbox.shared.domain.AggregateRoot;
 import me.jvegaf.musikbox.shared.domain.playlist.PlaylistCreatedDomainEvent;
+import me.jvegaf.musikbox.shared.domain.playlist.PlaylistUpdatedDomainEvent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,7 @@ public final class Playlist extends AggregateRoot {
 
     private final PlaylistId   id;
     private final PlaylistName name;
-    private       List<Track>  tracks;
+    private final List<Track>  tracks;
 
     public Playlist(PlaylistId id, PlaylistName name, List<Track> tracks) {
         this.id     = id;
@@ -55,5 +56,11 @@ public final class Playlist extends AggregateRoot {
         if (obj == null || getClass() != obj.getClass()) return false;
         Playlist p = (Playlist) obj;
         return id.equals(p.id()) && name.equals(p.name()) && tracks.equals(p.tracks());
+    }
+
+    public Playlist update(PlaylistName newName) {
+        Playlist p = new Playlist(this.id(), newName, this.tracks);
+        p.record(new PlaylistUpdatedDomainEvent(this.id.value(), newName.value()));
+        return p;
     }
 }
