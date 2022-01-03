@@ -7,12 +7,9 @@ import java.util.Optional;
 
 public interface PlaylistRepository {
 
-    void save(Playlist track);
+    void save(Playlist playlist);
 
-
-    List<Playlist> searchAll();
-
-    Optional<Playlist> find(PlaylistId id);
+    Optional<Playlist> search(PlaylistId id);
 
     List<Playlist> matching(Criteria criteria);
 }

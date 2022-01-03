@@ -1,11 +1,11 @@
 package me.jvegaf.musikbox.shared.infrastructure.bus.command;
 
 import lombok.extern.log4j.Log4j2;
+import me.jvegaf.musikbox.shared.domain.Service;
 import me.jvegaf.musikbox.shared.domain.bus.command.Command;
 import me.jvegaf.musikbox.shared.domain.bus.command.CommandHandler;
 import me.jvegaf.musikbox.shared.domain.bus.command.CommandNotRegisteredError;
 import org.reflections.Reflections;
-import org.springframework.stereotype.Service;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.HashMap;

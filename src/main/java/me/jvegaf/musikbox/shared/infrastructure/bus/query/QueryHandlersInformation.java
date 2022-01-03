@@ -1,11 +1,11 @@
 package me.jvegaf.musikbox.shared.infrastructure.bus.query;
 
 import lombok.extern.log4j.Log4j2;
+import me.jvegaf.musikbox.shared.domain.Service;
 import me.jvegaf.musikbox.shared.domain.bus.query.Query;
 import me.jvegaf.musikbox.shared.domain.bus.query.QueryHandler;
 import me.jvegaf.musikbox.shared.domain.bus.query.QueryNotRegisteredError;
 import org.reflections.Reflections;
-import org.springframework.stereotype.Service;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.HashMap;

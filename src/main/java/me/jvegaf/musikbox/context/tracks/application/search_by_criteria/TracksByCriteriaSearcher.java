@@ -3,10 +3,10 @@ package me.jvegaf.musikbox.context.tracks.application.search_by_criteria;
 import me.jvegaf.musikbox.context.tracks.application.TrackResponse;
 import me.jvegaf.musikbox.context.tracks.application.TracksResponse;
 import me.jvegaf.musikbox.context.tracks.domain.TrackRepository;
+import me.jvegaf.musikbox.shared.domain.Service;
 import me.jvegaf.musikbox.shared.domain.criteria.Criteria;
 import me.jvegaf.musikbox.shared.domain.criteria.Filters;
 import me.jvegaf.musikbox.shared.domain.criteria.Order;
-import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.stream.Collectors;

@@ -7,4 +7,6 @@ public class PlaylistName extends StringValueObject {
     public PlaylistName(String value) {
         super(value);
     }
+
+    public PlaylistName() { super("");}
 }

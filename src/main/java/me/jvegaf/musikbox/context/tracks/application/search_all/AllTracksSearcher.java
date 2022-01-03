@@ -3,7 +3,10 @@ package me.jvegaf.musikbox.context.tracks.application.search_all;
 import me.jvegaf.musikbox.context.tracks.application.TrackResponse;
 import me.jvegaf.musikbox.context.tracks.application.TracksResponse;
 import me.jvegaf.musikbox.context.tracks.domain.TrackRepository;
-import org.springframework.stereotype.Service;
+import me.jvegaf.musikbox.shared.domain.Service;
+import me.jvegaf.musikbox.shared.domain.criteria.Criteria;
+import me.jvegaf.musikbox.shared.domain.criteria.Filters;
+import me.jvegaf.musikbox.shared.domain.criteria.Order;
 
 import java.util.stream.Collectors;
 
@@ -16,7 +19,7 @@ public final class AllTracksSearcher {
     public AllTracksSearcher(TrackRepository repository) { this.repository = repository; }
 
     public TracksResponse search() {
-        return new TracksResponse(repository.searchAll()
+        return new TracksResponse(repository.matching(new Criteria(Filters.none(), Order.asc("title")))
                                             .stream()
                                             .map(TrackResponse::fromAggregate)
                                             .collect(Collectors.toList()));

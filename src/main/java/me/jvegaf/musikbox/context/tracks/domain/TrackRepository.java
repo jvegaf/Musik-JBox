@@ -9,11 +9,7 @@ public interface TrackRepository {
 
     void save(Track track);
 
-    void update(Track track);
-
-    List<Track> searchAll();
-
-    Optional<Track> find(TrackId id);
+    Optional<Track> search(TrackId id);
 
     List<Track> matching(Criteria criteria);
 }

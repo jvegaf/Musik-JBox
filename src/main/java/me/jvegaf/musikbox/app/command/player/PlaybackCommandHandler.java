@@ -3,9 +3,9 @@ package me.jvegaf.musikbox.app.command.player;
 import me.jvegaf.musikbox.app.player.MusicPlayer;
 import me.jvegaf.musikbox.context.tracks.application.TrackResponse;
 import me.jvegaf.musikbox.context.tracks.application.find.FindTrackQuery;
+import me.jvegaf.musikbox.shared.domain.Service;
 import me.jvegaf.musikbox.shared.domain.bus.command.CommandHandler;
 import me.jvegaf.musikbox.shared.domain.bus.query.QueryBus;
-import org.springframework.stereotype.Service;
 
 @Service
 public class PlaybackCommandHandler implements CommandHandler<PlaybackCommand> {

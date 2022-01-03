@@ -1,8 +1,8 @@
 package me.jvegaf.musikbox.shared.infrastructure.bus.event;
 
+import me.jvegaf.musikbox.shared.domain.Service;
 import me.jvegaf.musikbox.shared.domain.bus.event.DomainEventSubscriber;
 import org.reflections.Reflections;
-import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.Collection;

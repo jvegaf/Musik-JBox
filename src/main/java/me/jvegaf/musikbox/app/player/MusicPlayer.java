@@ -8,8 +8,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 import me.jvegaf.musikbox.context.tracks.application.TrackResponse;
-import me.jvegaf.musikbox.context.tracks.domain.Track;
-import org.springframework.stereotype.Service;
+import me.jvegaf.musikbox.shared.domain.Service;
 
 import java.io.File;
 

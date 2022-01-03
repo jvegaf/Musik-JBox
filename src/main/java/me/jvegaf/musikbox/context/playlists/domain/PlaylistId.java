@@ -10,6 +10,8 @@ public class PlaylistId extends Identifier {
         super(id);
     }
 
+    public PlaylistId() { }
+
 
     public static PlaylistId create() {
         // FIXME: This is a temporary solution

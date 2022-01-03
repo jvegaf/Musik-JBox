@@ -1,8 +1,8 @@
 package me.jvegaf.musikbox.context.tracks.application.create;
 
 import me.jvegaf.musikbox.context.tracks.domain.*;
+import me.jvegaf.musikbox.shared.domain.Service;
 import me.jvegaf.musikbox.shared.domain.bus.command.CommandHandler;
-import org.springframework.stereotype.Service;
 
 @Service
 public class CreateTrackCommandHandler implements CommandHandler<CreateTrackCommand> {

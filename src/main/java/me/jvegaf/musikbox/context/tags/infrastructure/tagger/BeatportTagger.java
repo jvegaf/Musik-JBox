@@ -6,7 +6,7 @@ import lombok.extern.log4j.Log4j2;
 import me.jvegaf.musikbox.context.tagger.SearchQu;
 import me.jvegaf.musikbox.context.tagger.SearchResult;
 import me.jvegaf.musikbox.context.tagger.SearchResultCreator;
-import org.springframework.stereotype.Service;
+import me.jvegaf.musikbox.shared.domain.Service;
 
 import java.net.URI;
 import java.net.http.HttpClient;

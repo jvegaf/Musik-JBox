@@ -14,9 +14,6 @@ import javafx.scene.input.MouseButton;
 import lombok.extern.log4j.Log4j2;
 import me.jvegaf.musikbox.app.command.player.PlaybackCommand;
 import me.jvegaf.musikbox.context.tracks.application.TrackResponse;
-import me.jvegaf.musikbox.context.tracks.application.TracksResponse;
-import me.jvegaf.musikbox.context.tracks.application.find.FindTrackQuery;
-import me.jvegaf.musikbox.context.tracks.application.search_all.SearchAllTracksQuery;
 import me.jvegaf.musikbox.shared.domain.bus.command.CommandBus;
 import me.jvegaf.musikbox.shared.domain.bus.event.DomainEventSubscriber;
 import me.jvegaf.musikbox.shared.domain.bus.query.QueryBus;
@@ -65,18 +62,18 @@ public class TracklistController {
 
     @EventListener
     public void onTrackCreated(TrackCreatedDomainEvent event) {
-        TrackResponse trackResponse = (TrackResponse) queryBus.ask(new FindTrackQuery(event.aggregateId()));
-        songsTableView.getItems().add(trackResponse);
-        songsTableView.refresh();
-        log.info("TrackResponse added: {}", trackResponse.title());
+//        TrackResponse trackResponse = (TrackResponse) queryBus.ask(new FindTrackQuery(event.aggregateId()));
+//        songsTableView.getItems().add(trackResponse);
+//        songsTableView.refresh();
+//        log.info("TrackResponse added: {}", trackResponse.title());
     }
 
 
     @FXML
     public void initialize() {
-        TracksResponse response = (TracksResponse) queryBus.ask(new SearchAllTracksQuery());
+//        TracksResponse response = (TracksResponse) queryBus.ask(new SearchAllTracksQuery());
         ObservableList<TrackResponse> list = FXCollections.observableArrayList();
-        list.addAll(response.tracks());
+//        list.addAll(response.tracks());
         songsTableView.setItems(list);
 
         selectionModel = this.songsTableView.getSelectionModel();

@@ -1,9 +1,9 @@
 package me.jvegaf.musikbox.shared.infrastructure.bus.event;
 
 
+import me.jvegaf.musikbox.shared.domain.Service;
 import me.jvegaf.musikbox.shared.domain.Utils;
 import me.jvegaf.musikbox.shared.domain.bus.event.DomainEvent;
-import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
@@ -35,11 +35,8 @@ public final class DomainEventJsonDeserializer {
         );
 
         Object domainEvent = fromPrimitivesMethod.invoke(
-            nullInstance,
-            (String) attributes.get("id"),
-            attributes,
-            (String) data.get("id"),
-            (String) data.get("occurred_on")
+                nullInstance, attributes.get("id"),
+                attributes, data.get("id"), data.get("occurred_on")
         );
 
         return (DomainEvent) domainEvent;

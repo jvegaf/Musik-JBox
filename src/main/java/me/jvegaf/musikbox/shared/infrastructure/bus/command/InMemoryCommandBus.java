@@ -1,11 +1,11 @@
 package me.jvegaf.musikbox.shared.infrastructure.bus.command;
 
+import me.jvegaf.musikbox.shared.domain.Service;
 import me.jvegaf.musikbox.shared.domain.bus.command.Command;
 import me.jvegaf.musikbox.shared.domain.bus.command.CommandBus;
 import me.jvegaf.musikbox.shared.domain.bus.command.CommandHandler;
 import me.jvegaf.musikbox.shared.domain.bus.command.CommandHandlerExecutionError;
 import org.springframework.context.ApplicationContext;
-import org.springframework.stereotype.Service;
 
 @Service
 public final class InMemoryCommandBus implements CommandBus {

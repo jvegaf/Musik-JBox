@@ -3,6 +3,7 @@ package me.jvegaf.musikbox.context.tracks.infrastructure.file;
 
 import lombok.extern.log4j.Log4j2;
 import me.jvegaf.musikbox.context.tracks.application.create.CreateTrackCommand;
+import me.jvegaf.musikbox.shared.domain.Service;
 import me.jvegaf.musikbox.shared.domain.bus.command.CommandBus;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.audio.exceptions.CannotReadException;
@@ -12,7 +13,6 @@ import org.jaudiotagger.audio.mp3.MP3File;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.TagException;
 import org.jaudiotagger.tag.id3.AbstractID3v2Tag;
-import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.IOException;

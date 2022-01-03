@@ -9,7 +9,7 @@ import com.gargoylesoftware.htmlunit.html.HtmlButton;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import me.jvegaf.musikbox.context.tagger.SearchQu;
 import me.jvegaf.musikbox.context.tags.domain.Tagger;
-import org.springframework.stereotype.Service;
+import me.jvegaf.musikbox.shared.domain.Service;
 
 import java.io.IOException;
 

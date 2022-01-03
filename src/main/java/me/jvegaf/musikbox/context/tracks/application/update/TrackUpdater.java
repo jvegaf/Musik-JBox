@@ -1,8 +1,8 @@
 package me.jvegaf.musikbox.context.tracks.application.update;
 
 import me.jvegaf.musikbox.context.tracks.domain.*;
+import me.jvegaf.musikbox.shared.domain.Service;
 import me.jvegaf.musikbox.shared.domain.bus.event.EventBus;
-import org.springframework.stereotype.Service;
 
 @Service
 public final class TrackUpdater {
@@ -25,7 +25,7 @@ public final class TrackUpdater {
                        TrackBpm bpm,
                        TrackInitKey initKey,
                        TrackComments comments) {
-        Track t = repository.find(id).orElseThrow();
+        Track t = repository.search(id).orElseThrow();
         var updatedTrack = t.improveMetadata(title, artist, album, genre, year, bpm, initKey,
                 comments
         );

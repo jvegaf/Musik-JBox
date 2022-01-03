@@ -1,8 +1,8 @@
 package me.jvegaf.musikbox.context.tracks.infrastructure.file;
 
 import lombok.extern.log4j.Log4j2;
+import me.jvegaf.musikbox.shared.domain.Service;
 import me.jvegaf.musikbox.shared.domain.bus.command.CommandHandler;
-import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.util.Optional;

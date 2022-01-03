@@ -1,10 +1,10 @@
 package me.jvegaf.musikbox.context.tracks.application.search_by_criteria;
 
 import me.jvegaf.musikbox.context.tracks.application.TracksResponse;
+import me.jvegaf.musikbox.shared.domain.Service;
 import me.jvegaf.musikbox.shared.domain.bus.query.QueryHandler;
 import me.jvegaf.musikbox.shared.domain.criteria.Filters;
 import me.jvegaf.musikbox.shared.domain.criteria.Order;
-import org.springframework.stereotype.Service;
 
 @Service
 public final class SearchTracksByCriteriaQueryHandler implements QueryHandler<SearchTracksByCriteriaQuery,

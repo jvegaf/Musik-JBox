@@ -2,8 +2,8 @@ package me.jvegaf.musikbox.context.playlists.application.update;
 
 import me.jvegaf.musikbox.context.playlists.domain.PlaylistId;
 import me.jvegaf.musikbox.context.playlists.domain.PlaylistName;
+import me.jvegaf.musikbox.shared.domain.Service;
 import me.jvegaf.musikbox.shared.domain.bus.command.CommandHandler;
-import org.springframework.stereotype.Service;
 
 @Service
 public final class UpdatePlaylistCommandHandler implements CommandHandler<UpdatePlaylistCommand> {

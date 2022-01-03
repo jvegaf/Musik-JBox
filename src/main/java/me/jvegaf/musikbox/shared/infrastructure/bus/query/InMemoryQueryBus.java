@@ -1,8 +1,8 @@
 package me.jvegaf.musikbox.shared.infrastructure.bus.query;
 
+import me.jvegaf.musikbox.shared.domain.Service;
 import me.jvegaf.musikbox.shared.domain.bus.query.*;
 import org.springframework.context.ApplicationContext;
-import org.springframework.stereotype.Service;
 
 
 @Service

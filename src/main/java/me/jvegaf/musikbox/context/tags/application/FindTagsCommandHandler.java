@@ -1,8 +1,8 @@
 package me.jvegaf.musikbox.context.tags.application;
 
 import me.jvegaf.musikbox.context.tags.domain.Tagger;
+import me.jvegaf.musikbox.shared.domain.Service;
 import me.jvegaf.musikbox.shared.domain.bus.command.CommandHandler;
-import org.springframework.stereotype.Service;
 
 @Service
 public class FindTagsCommandHandler implements CommandHandler<FindTagsCommand> {
