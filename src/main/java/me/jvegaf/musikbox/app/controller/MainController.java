@@ -1,11 +1,14 @@
 package me.jvegaf.musikbox.app.controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import lombok.extern.log4j.Log4j2;
+import me.jvegaf.musikbox.context.tracks.application.TrackResponse;
 import me.jvegaf.musikbox.shared.domain.bus.command.CommandBus;
 import net.rgielen.fxweaver.core.FxControllerAndView;
 import net.rgielen.fxweaver.core.FxmlView;
@@ -25,7 +28,8 @@ public class MainController {
     private final FxControllerAndView<SideBarController, VBox>         sidebar;
     @FXML
     private final FxControllerAndView<TracklistController, AnchorPane> tracklist;
-    public Label leftStatusLabel;
+    public        Label                                                leftStatusLabel;
+    private final ObservableList<TrackResponse>                        collection = FXCollections.observableArrayList();
 
 
     @Autowired
@@ -39,21 +43,7 @@ public class MainController {
         this.tracklist = tracklist;
     }
 
-    private void autoLoad() {
-        //        String path = Dotenv.load().get("DEV_MUSIC_PATH");
-        //        log.info("Loading tracks from: {}", path);
-        //        this.bus.dispatch(new CollectFilesCommand(new File(path)));
-
-//        this.bus.dispatch(new CreatePlaylistCommand("House"));
-//        this.bus.dispatch(new CreatePlaylistCommand("Tech House"));
-//        this.bus.dispatch(new CreatePlaylistCommand("Deep"));
-//        this.bus.dispatch(new CreatePlaylistCommand("ElectroRodeo"));
-    }
-
     @FXML
-    public void initialize() {
-        autoLoad();
-    }
-
+    public void initialize() { }
 }
 

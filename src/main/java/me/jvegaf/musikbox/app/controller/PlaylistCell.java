@@ -40,7 +40,7 @@ public class PlaylistCell extends ListCell<PlaylistResponse> {
 
         } else {
             if (loader == null) {
-                loader = new FXMLLoader(getClass().getResource("PlaylistCell.fxml"));
+                loader = new FXMLLoader(getClass().getResource("/fxml/PlaylistCell.fxml"));
                 loader.setController(this);
 
                 try {

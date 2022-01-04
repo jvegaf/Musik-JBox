@@ -1,16 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<VBox stylesheets="@../../../../../styles/dark.css" xmlns="http://javafx.com/javafx/11.0.2"
-      fx:controller="me.jvegaf.musikbox.app.controller.SideBarController" xmlns:fx="http://javafx.com/fxml/1">
-    <Label styleClass="side-label" text="Library" VBox.vgrow="NEVER">
-        <font>
-            <Font size="13.0"/>
-        </font>
-    </Label>
-    <ListView fx:id="libraryListView" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="90.0" VBox.vgrow="NEVER"/>
+<VBox xmlns:fx="http://javafx.com/fxml/1" stylesheets="@../../../../../styles/dark.css"
+      xmlns="http://javafx.com/javafx/11.0.2" fx:controller="me.jvegaf.musikbox.app.controller.SideBarController">
+    <AnchorPane layoutX="10.0" layoutY="126.0">
+        <children>
+            <Label styleClass="side-label" text="Library" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                   AnchorPane.topAnchor="0.0">
+                <font>
+                    <Font size="13.0"/>
+                </font>
+            </Label>
+        </children>
+    </AnchorPane>
+    <AnchorPane prefHeight="90.0">
+        <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" onMouseClicked="#onClickCollection" spacing="10.0"
+              styleClass="list-cell" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0"
+              AnchorPane.topAnchor="0.0">
+            <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                  prefHeight="16.0" prefWidth="16.0" styleClass="icon-library">
+                <HBox.margin>
+                    <Insets/>
+                </HBox.margin>
+            </Pane>
+            <Label maxHeight="-Infinity" minHeight="-Infinity" prefHeight="29.0" text="Collection"
+                   AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0"
+                   AnchorPane.topAnchor="0.0" HBox.hgrow="ALWAYS"/>
+        </HBox>
+    </AnchorPane>
     <AnchorPane VBox.vgrow="NEVER">
         <Label styleClass="side-label" text="Playlists" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
                AnchorPane.topAnchor="0.0">
@@ -18,10 +38,8 @@
                 <Font size="13.0"/>
             </font>
         </Label>
-        <HBox alignment="CENTER" layoutX="228.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="10.0"
-              AnchorPane.topAnchor="0.0">
-            <Button fx:id="addBtn" alignment="CENTER" mnemonicParsing="false" styleClass="add-playlist-btn"/>
-        </HBox>
+        <Button fx:id="addBtn" alignment="CENTER" mnemonicParsing="false" styleClass="add-playlist-btn"
+                AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0"/>
     </AnchorPane>
     <ListView fx:id="playlistListView" VBox.vgrow="ALWAYS"/>
 </VBox>

@@ -1,0 +1,25 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="me.jvegaf.musikbox.context.trackplaylist.domain.TrackPlaylist" table="track_playlists">
+        <composite-id name="id" class="me.jvegaf.musikbox.context.trackplaylist.domain.TrackPlaylistId" access="field">
+            <key-property column="id" name="value" length="36" access="field"/>
+        </composite-id>
+
+        <component name="playlistId" class="me.jvegaf.musikbox.context.playlists.domain.PlaylistId" access="field">
+            <property name="value" column="playlist_id" type="string" access="field"/>
+        </component>
+
+        <component name="trackId" class="me.jvegaf.musikbox.context.tracks.domain.TrackId" access="field">
+            <property name="value" column="track_id" type="string" access="field"/>
+        </component>
+
+        <component name="position" class="me.jvegaf.musikbox.context.trackplaylist.domain.TrackPlaylistPosition"
+                   access="field">
+            <property name="value" column="position" type="int" access="field"/>
+        </component>
+    </class>
+</hibernate-mapping>

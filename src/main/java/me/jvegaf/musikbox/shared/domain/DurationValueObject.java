@@ -2,7 +2,7 @@ package me.jvegaf.musikbox.shared.domain;
 
 public abstract class DurationValueObject {
 
-    private Integer value;
+    private final Integer value;
 
     public DurationValueObject(Integer value) {
         this.value = value;
@@ -10,6 +10,10 @@ public abstract class DurationValueObject {
 
     public DurationValueObject(String value) {
         this.value = fromStringValue(value);
+    }
+
+    public DurationValueObject() {
+        this.value = null;
     }
 
     public Integer value() { return value; }

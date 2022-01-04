@@ -15,22 +15,16 @@ import lombok.extern.log4j.Log4j2;
 import me.jvegaf.musikbox.app.command.player.PlaybackCommand;
 import me.jvegaf.musikbox.context.tracks.application.TrackResponse;
 import me.jvegaf.musikbox.shared.domain.bus.command.CommandBus;
-import me.jvegaf.musikbox.shared.domain.bus.event.DomainEventSubscriber;
-import me.jvegaf.musikbox.shared.domain.bus.query.QueryBus;
-import me.jvegaf.musikbox.shared.domain.track.TrackCreatedDomainEvent;
 import net.rgielen.fxweaver.core.FxWeaver;
 import net.rgielen.fxweaver.core.FxmlView;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
 @Log4j2
 @Component
 @FxmlView
-@DomainEventSubscriber({ TrackCreatedDomainEvent.class })
 public class TracklistController {
 
-    private final QueryBus                                         queryBus;
     private final CommandBus                                       commandBus;
     private final FxWeaver                                         fxWeaver;
     @FXML
@@ -54,20 +48,10 @@ public class TracklistController {
     private       TableView.TableViewSelectionModel<TrackResponse> selectionModel;
 
     @Autowired
-    public TracklistController(QueryBus queryBus, CommandBus commandBus, FxWeaver fxWeaver) {
-        this.queryBus   = queryBus;
+    public TracklistController(CommandBus commandBus, FxWeaver fxWeaver) {
         this.commandBus = commandBus;
         this.fxWeaver   = fxWeaver;
     }
-
-    @EventListener
-    public void onTrackCreated(TrackCreatedDomainEvent event) {
-//        TrackResponse trackResponse = (TrackResponse) queryBus.ask(new FindTrackQuery(event.aggregateId()));
-//        songsTableView.getItems().add(trackResponse);
-//        songsTableView.refresh();
-//        log.info("TrackResponse added: {}", trackResponse.title());
-    }
-
 
     @FXML
     public void initialize() {

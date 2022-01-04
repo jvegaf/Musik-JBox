@@ -4,7 +4,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import lombok.extern.log4j.Log4j2;
+import me.jvegaf.musikbox.app.collection.Collection;
+import me.jvegaf.musikbox.app.items.Category;
 import me.jvegaf.musikbox.context.playlists.application.PlaylistResponse;
 import me.jvegaf.musikbox.context.playlists.application.PlaylistsResponse;
 import me.jvegaf.musikbox.context.playlists.application.create.CreatePlaylistCommand;
@@ -28,20 +31,21 @@ public class SideBarController {
 
     private final QueryBus   queryBus;
     private final CommandBus commandBus;
+    private final Collection collection;
 
     @FXML
-    private Button                     addBtn;
+    private Button                                   addBtn;
     @FXML
-    private ListView<PlaylistResponse> libraryListView;
+    private ListView<String>                         libraryListView;
     @FXML
-    private ListView<PlaylistResponse> playlistListView;
+    private ListView<PlaylistResponse>               playlistListView;
     private MultipleSelectionModel<PlaylistResponse> selectionModel;
 
-
     @Autowired
-    public SideBarController(QueryBus queryBus, CommandBus commandBus) {
+    public SideBarController(QueryBus queryBus, CommandBus commandBus, Collection collection) {
         this.queryBus   = queryBus;
         this.commandBus = commandBus;
+        this.collection = collection;
     }
 
     @EventListener
@@ -63,9 +67,10 @@ public class SideBarController {
         //        this.libraryListView.setCellFactory(param -> new PlaylistCell());
         playlistListView.setCellFactory(param -> {
             ListCell<PlaylistResponse> cell = new PlaylistCell();
-            cell.setOnMouseClicked(event -> selectionModel.select(cell.getIndex()));
+            cell.setOnMouseClicked(event -> onSelectionChange(cell.getIndex()));
             return cell;
         });
+
         selectionModel = playlistListView.getSelectionModel();
         selectionModel.setSelectionMode(SelectionMode.SINGLE);
         playlistListView.setEditable(true);
@@ -77,5 +82,16 @@ public class SideBarController {
         addBtn.setOnAction(event -> commandBus.dispatch(new CreatePlaylistCommand("New Playlist")));
 
 
+    }
+
+    private void onSelectionChange(int index) {
+        selectionModel.select(index);
+        String id = playlistListView.getItems().get(index).id();
+        collection.onSelectionChange(Category.PLAYLIST, id);
+    }
+
+    public void onClickCollection(MouseEvent event) {
+        if (!selectionModel.isEmpty()) selectionModel.clearSelection();
+        // TODO: call parent
     }
 }

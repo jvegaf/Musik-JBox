@@ -1,4 +1,4 @@
-CREATE TABLE `tracks` (
+create TABLE IF NOT EXISTS `tracks` (
   `id` CHAR(36) NOT NULL,
   `title` VARCHAR(255)NOT NULL,
   `location` VARCHAR(255)NOT NULL,
@@ -11,10 +11,18 @@ CREATE TABLE `tracks` (
   `key` VARCHAR(10),
   `comments` VARCHAR(255),
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+);
 
-CREATE TABLE `playlists` (
+create TABLE IF NOT EXISTS `playlists` (
   `id` CHAR(36) NOT NULL,
   `name` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+);
+
+create TABLE IF NOT EXISTS `track_playlist`(
+    `id` CHAR(36) NOT NULL,
+  `playlist_id` VARCHAR(36) NOT NULL,
+  `track_id` VARCHAR(36) NOT NULL,
+  `position` INT NOT NULL,
+  PRIMARY KEY (`id`)
+);
