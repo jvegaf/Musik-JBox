@@ -12,6 +12,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import lombok.extern.log4j.Log4j2;
+import me.jvegaf.musikbox.app.collection.Collection;
 import me.jvegaf.musikbox.app.command.player.PlaybackCommand;
 import me.jvegaf.musikbox.context.tracks.application.TrackResponse;
 import me.jvegaf.musikbox.shared.domain.bus.command.CommandBus;
@@ -27,6 +28,8 @@ public class TracklistController {
 
     private final CommandBus                                       commandBus;
     private final FxWeaver                                         fxWeaver;
+    private final Collection                                       collection;
+    private final ObservableList<TrackResponse>                    list = FXCollections.observableArrayList();
     @FXML
     private       TableView<TrackResponse>                         songsTableView;
     @FXML
@@ -43,21 +46,25 @@ public class TracklistController {
     private       TableColumn<TrackResponse, String>               bpmColumn;
     @FXML
     private       TableColumn<TrackResponse, String>               yearColumn;
+    private       TableView.TableViewSelectionModel<TrackResponse> selectionModel;
     @FXML
     private       TableColumn<TrackResponse, String>               keyColumn;
-    private       TableView.TableViewSelectionModel<TrackResponse> selectionModel;
 
     @Autowired
-    public TracklistController(CommandBus commandBus, FxWeaver fxWeaver) {
+    public TracklistController(CommandBus commandBus, FxWeaver fxWeaver, Collection collection) {
         this.commandBus = commandBus;
         this.fxWeaver   = fxWeaver;
+        this.collection = collection;
     }
 
     @FXML
     public void initialize() {
-//        TracksResponse response = (TracksResponse) queryBus.ask(new SearchAllTracksQuery());
-        ObservableList<TrackResponse> list = FXCollections.observableArrayList();
-//        list.addAll(response.tracks());
+        collection.tracksProperty().addListener((observable, oldValue, newValue) -> {
+            list.clear();
+            list.addAll(collection.getTracks());
+            songsTableView.setItems(list);
+        });
+
         songsTableView.setItems(list);
 
         selectionModel = this.songsTableView.getSelectionModel();
@@ -74,8 +81,10 @@ public class TracklistController {
                                                                              ""));
         durationColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().duration()));
         bpmColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().bpm().isPresent() ?
-                                                                       String.valueOf(cellData.getValue().bpm().get()) :
-                                                                       ""));
+                                                                           String.valueOf(cellData.getValue()
+                                                                                                  .bpm()
+                                                                                                  .get()) :
+                                                                           ""));
         yearColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().year().isPresent() ?
                                                                             cellData.getValue().year().get() :
                                                                             ""));
@@ -128,7 +137,8 @@ public class TracklistController {
                 .bind(Bindings.createBooleanBinding(() -> this.selectionModel.getSelectedItems().size() != 1,
                                                     selectionModel.getSelectedItems()));
 
-        playItem.setOnAction(actionEvent -> commandBus.dispatch(new PlaybackCommand(selectionModel.getSelectedItem().id())));
+        playItem.setOnAction(actionEvent -> commandBus.dispatch(new PlaybackCommand(selectionModel.getSelectedItem()
+                                                                                                  .id())));
 
         menu.getItems().addAll(fixallItem, new SeparatorMenuItem(), detailItem, playItem);
         return menu;

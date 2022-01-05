@@ -1,4 +1,4 @@
-package me.jvegaf.musikbox.context.trackplaylist.infrastucture.persistence;
+package me.jvegaf.musikbox.context.trackplaylist.infrastructure.persistence;
 
 import me.jvegaf.musikbox.context.playlists.domain.PlaylistId;
 import me.jvegaf.musikbox.context.trackplaylist.domain.TrackPlaylist;

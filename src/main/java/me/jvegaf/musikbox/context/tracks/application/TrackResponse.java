@@ -7,55 +7,43 @@ import java.util.Optional;
 
 public final class TrackResponse implements Response {
 
-    private final String           id;
-    private final String           title;
-    private final String           location;
-    private final String           duration;
-    private String artist;
-    private String album;
-    private String genre;
-    private String year;
-    private Integer bpm;
-    private String  key;
-    private String  comments;
+    private final String  id;
+    private final String  title;
+    private final String  location;
+    private final String  duration;
+    private       String  artist;
+    private       String  album;
+    private       String  genre;
+    private       String  year;
+    private       Integer bpm;
+    private       String  key;
+    private       String  comments;
 
 
-    public TrackResponse(String id,
-                         String title,
-                         String location,
-                         String duration,
-                         String artist,
-                         String album,
-                         String genre,
-                         String year,
-                         Integer bpm,
-                         String key,
-                         String comments) {
+    public TrackResponse(String id, String title, String location, String duration) {
         this.id       = id;
         this.title    = title;
         this.location = location;
         this.duration = duration;
-        this.artist   = artist;
-        this.album    = album;
-        this.genre    = genre;
-        this.year     = year;
-        this.bpm      = bpm;
-        this.key      = key;
-        this.comments = comments;
     }
 
     public static TrackResponse fromAggregate(Track track) {
-        return new TrackResponse(track.id().value(),
-                                 track.title().value(),
-                                 track.location().value(),
-                                 track.duration().stringValue(),
-                                 track.artist().value(),
-                                 track.album().value(),
-                                 track.genre().value(),
-                                 track.year().value(),
-                                 track.bpm().value(),
-                                 track.key().value(),
-                                 track.comments().value());
+        var
+                r =
+                new TrackResponse(track.id().value(),
+                                  track.title().value(),
+                                  track.location().value(),
+                                  track.duration().stringValue());
+
+        track.artist().ifPresent(v -> r.setArtist(v.value()));
+        track.album().ifPresent(v -> r.setAlbum(v.value()));
+        track.genre().ifPresent(v -> r.setGenre(v.value()));
+        track.year().ifPresent(v -> r.setYear(v.value()));
+        track.bpm().ifPresent(v -> r.setBpm(v.value()));
+        track.key().ifPresent(v -> r.setKey(v.value()));
+        track.comments().ifPresent(v -> r.setComments(v.value()));
+
+        return r;
     }
 
     public String id() {
@@ -100,4 +88,31 @@ public final class TrackResponse implements Response {
         return Optional.ofNullable(comments);
     }
 
+    public void setArtist(String artist) {
+        this.artist = artist;
+    }
+
+    public void setAlbum(String album) {
+        this.album = album;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    public void setBpm(Integer bpm) {
+        this.bpm = bpm;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
 }

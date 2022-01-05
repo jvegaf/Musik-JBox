@@ -92,6 +92,6 @@ public class SideBarController {
 
     public void onClickCollection(MouseEvent event) {
         if (!selectionModel.isEmpty()) selectionModel.clearSelection();
-        // TODO: call parent
+        collection.onSelectionChange(Category.HEAD, null);
     }
 }

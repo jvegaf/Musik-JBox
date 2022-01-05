@@ -4,6 +4,8 @@ import me.jvegaf.musikbox.shared.domain.AggregateRoot;
 import me.jvegaf.musikbox.shared.domain.track.TrackCreatedDomainEvent;
 import me.jvegaf.musikbox.shared.domain.track.TrackUpdatedDomainEvent;
 
+import java.util.Optional;
+
 public final class Track extends AggregateRoot {
 
     private final TrackId       id;
@@ -95,19 +97,19 @@ public final class Track extends AggregateRoot {
 
     public TrackDuration duration() { return duration; }
 
-    public TrackArtist artist() { return artist; }
+    public Optional<TrackArtist> artist() { return Optional.ofNullable(artist); }
 
-    public TrackAlbum album() { return album; }
+    public Optional<TrackAlbum> album() { return Optional.ofNullable(album); }
 
-    public TrackGenre genre() { return genre; }
+    public Optional<TrackGenre> genre() { return Optional.ofNullable(genre); }
 
-    public TrackYear year() { return year; }
+    public Optional<TrackYear> year() { return Optional.ofNullable(year); }
 
-    public TrackBpm bpm() { return bpm; }
+    public Optional<TrackBpm> bpm() { return Optional.ofNullable(bpm); }
 
-    public TrackInitKey key() { return key; }
+    public Optional<TrackInitKey> key() { return Optional.ofNullable(key); }
 
-    public TrackComments comments() { return comments; }
+    public Optional<TrackComments> comments() { return Optional.ofNullable(comments); }
 
     @Override
     public int hashCode() {
