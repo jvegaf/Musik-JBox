@@ -31,7 +31,7 @@ public class SQLiteTrackPlaylistRepository extends HibernateRepository<TrackPlay
     @Override
     public List<TrackPlaylist> search(String playlistId) {
         Filter playlistFilter = Filter.create("playlistId", "contains", playlistId);
-        Criteria criteria = new Criteria(new Filters(Arrays.asList(playlistFilter)), Order.asc("id"));
+        Criteria criteria = new Criteria(new Filters(Arrays.asList(playlistFilter)), Order.asc("position"));
         var result = byCriteria(new Criteria(new Filters(List.of(playlistFilter)), Order.none()));
         System.out.println(result.toString());
         return result;

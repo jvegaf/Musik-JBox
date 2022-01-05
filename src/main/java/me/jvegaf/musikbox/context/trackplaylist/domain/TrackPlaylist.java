@@ -9,21 +9,24 @@ public final class TrackPlaylist extends AggregateRoot {
     private final TrackPlaylistId id;
     private final String          playlistId;
     private final String          trackId;
+    private final Integer         position;
 
     public TrackPlaylist() {
         this.id         = null;
         this.playlistId = null;
         this.trackId    = null;
+        this.position   = null;
     }
 
-    public TrackPlaylist(TrackPlaylistId id, String playlistId, String trackid) {
+    public TrackPlaylist(TrackPlaylistId id, String playlistId, String trackid, Integer position) {
         this.id         = id;
         this.playlistId = playlistId;
         this.trackId    = trackid;
+        this.position   = position;
     }
 
-    public static TrackPlaylist create(String playlistId, String trackId) {
-        TrackPlaylist t = new TrackPlaylist(TrackPlaylistId.create(), playlistId, trackId);
+    public static TrackPlaylist create(String playlistId, String trackId, Integer position) {
+        TrackPlaylist t = new TrackPlaylist(TrackPlaylistId.create(), playlistId, trackId, position);
         t.record(new TrackPlaylistCreatedDomainEvent());
         return t;
     }
@@ -33,6 +36,8 @@ public final class TrackPlaylist extends AggregateRoot {
     public String playlistId() { return playlistId; }
 
     public String trackId() { return trackId; }
+
+    public Integer position() { return position; }
 
     @Override
     public int hashCode() {
@@ -45,6 +50,7 @@ public final class TrackPlaylist extends AggregateRoot {
 
         if (obj == null || getClass() != obj.getClass()) return false;
         TrackPlaylist p = (TrackPlaylist) obj;
-        return id.equals(p.id()) && trackId.equals(p.trackId()) && playlistId.equals(p.playlistId());
+        return id.equals(p.id()) && trackId.equals(p.trackId()) && playlistId.equals(p.playlistId()) && position.equals(
+                p.position());
     }
 }

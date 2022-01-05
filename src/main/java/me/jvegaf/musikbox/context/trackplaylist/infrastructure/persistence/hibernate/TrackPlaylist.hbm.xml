@@ -13,5 +13,7 @@
 
         <property name="trackId" column="track_id" type="string" access="field"/>
 
+        <property name="position" column="position" type="integer" access="field"/>
+
     </class>
 </hibernate-mapping>
