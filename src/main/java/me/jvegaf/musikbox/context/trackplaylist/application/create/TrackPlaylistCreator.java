@@ -1,13 +1,12 @@
 package me.jvegaf.musikbox.context.trackplaylist.application.create;
 
-import me.jvegaf.musikbox.context.playlists.domain.PlaylistId;
+import lombok.extern.log4j.Log4j2;
 import me.jvegaf.musikbox.context.trackplaylist.domain.TrackPlaylist;
-import me.jvegaf.musikbox.context.trackplaylist.domain.TrackPlaylistPosition;
 import me.jvegaf.musikbox.context.trackplaylist.domain.TrackPlaylistRepository;
-import me.jvegaf.musikbox.context.tracks.domain.TrackId;
 import me.jvegaf.musikbox.shared.domain.Service;
 import me.jvegaf.musikbox.shared.domain.bus.event.EventBus;
 
+@Log4j2
 @Service
 public final class TrackPlaylistCreator {
 
@@ -19,10 +18,10 @@ public final class TrackPlaylistCreator {
         this.eventBus   = eventBus;
     }
 
-    public void create(PlaylistId playlistId, TrackId trackId) {
-        TrackPlaylistPosition position = new TrackPlaylistPosition(repository.freePosition(playlistId));
-        TrackPlaylist tp = TrackPlaylist.create(playlistId, trackId, position);
+    public void create(String playlistId, String trackId) {
+        TrackPlaylist tp = TrackPlaylist.create(playlistId, trackId);
         repository.save(tp);
         eventBus.publish(tp.pullDomainEvents());
+        log.info("Track: " + trackId + " added to: " + playlistId);
     }
 }

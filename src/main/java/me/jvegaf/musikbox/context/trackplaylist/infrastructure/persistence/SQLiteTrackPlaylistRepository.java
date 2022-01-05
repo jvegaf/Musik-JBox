@@ -1,6 +1,5 @@
 package me.jvegaf.musikbox.context.trackplaylist.infrastructure.persistence;
 
-import me.jvegaf.musikbox.context.playlists.domain.PlaylistId;
 import me.jvegaf.musikbox.context.trackplaylist.domain.TrackPlaylist;
 import me.jvegaf.musikbox.context.trackplaylist.domain.TrackPlaylistId;
 import me.jvegaf.musikbox.context.trackplaylist.domain.TrackPlaylistRepository;
@@ -14,6 +13,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,9 +29,12 @@ public class SQLiteTrackPlaylistRepository extends HibernateRepository<TrackPlay
     public void save(TrackPlaylist trackPlaylist) { persist(trackPlaylist); }
 
     @Override
-    public List<TrackPlaylist> search(PlaylistId id) {
-        Filter playlistFilter = Filter.create("playlistId", "contains", id.value());
-        return byCriteria(new Criteria(new Filters(List.of(playlistFilter)), Order.none()));
+    public List<TrackPlaylist> search(String playlistId) {
+        Filter playlistFilter = Filter.create("playlistId", "contains", playlistId);
+        Criteria criteria = new Criteria(new Filters(Arrays.asList(playlistFilter)), Order.asc("id"));
+        var result = byCriteria(new Criteria(new Filters(List.of(playlistFilter)), Order.none()));
+        System.out.println(result.toString());
+        return result;
     }
 
     @Override
@@ -45,14 +48,8 @@ public class SQLiteTrackPlaylistRepository extends HibernateRepository<TrackPlay
     }
 
     @Override
-    public int freePosition(PlaylistId playlistId) {
-        return search(playlistId).size();
-    }
-
-    @Override
-    public void deleteAll(PlaylistId id) {
-        List<TrackPlaylist> tracks = search(id);
+    public void deleteAll(String playlistId) {
+        List<TrackPlaylist> tracks = search(playlistId);
         tracks.forEach(this::delete);
     }
-
 }

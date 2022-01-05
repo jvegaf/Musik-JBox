@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.TransferMode;
 import lombok.extern.log4j.Log4j2;
 import me.jvegaf.musikbox.app.collection.Collection;
 import me.jvegaf.musikbox.app.items.Category;
@@ -14,6 +15,7 @@ import me.jvegaf.musikbox.context.playlists.application.create.CreatePlaylistCom
 import me.jvegaf.musikbox.context.playlists.application.find.FindPlaylistQuery;
 import me.jvegaf.musikbox.context.playlists.application.search_all.SearchAllPlaylistsQuery;
 import me.jvegaf.musikbox.context.playlists.application.update.UpdatePlaylistCommand;
+import me.jvegaf.musikbox.context.trackplaylist.application.create.CreateTrackPlaylistCommand;
 import me.jvegaf.musikbox.shared.domain.bus.command.CommandBus;
 import me.jvegaf.musikbox.shared.domain.bus.event.DomainEventSubscriber;
 import me.jvegaf.musikbox.shared.domain.bus.query.QueryBus;
@@ -22,6 +24,10 @@ import net.rgielen.fxweaver.core.FxmlView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+
+import static me.jvegaf.musikbox.app.controller.TracklistController.SERIALIZED_MIME_TYPE;
 
 @Log4j2
 @Component
@@ -56,6 +62,7 @@ public class SideBarController {
     }
 
 
+    @SuppressWarnings("unchecked")
     @FXML
     public void initialize() {
         PlaylistsResponse response = (PlaylistsResponse) queryBus.ask(new SearchAllPlaylistsQuery());
@@ -64,10 +71,30 @@ public class SideBarController {
 
         playlistListView.setItems(playlists);
 
-        //        this.libraryListView.setCellFactory(param -> new PlaylistCell());
         playlistListView.setCellFactory(param -> {
             ListCell<PlaylistResponse> cell = new PlaylistCell();
             cell.setOnMouseClicked(event -> onSelectionChange(cell.getIndex()));
+            cell.setOnDragOver(event -> {
+                if (!cell.isEmpty()) {
+                    event.acceptTransferModes(TransferMode.COPY);
+                    event.consume();
+                }
+            });
+
+            cell.setOnDragDropped(event -> {
+                if (!cell.isEmpty()) {
+                    event.acceptTransferModes(TransferMode.COPY);
+                    String playlistId = playlistListView.getItems().get(cell.getIndex()).id();
+                    ArrayList<String>
+                            trackIds =
+                            (ArrayList<String>) event.getDragboard().getContent(SERIALIZED_MIME_TYPE);
+                    //                    trackIds.forEach(trackId -> log.info("Track: " + trackId + " Playlist: " +
+                    //                    playlistId));
+                    trackIds.forEach(trackId -> commandBus.dispatch(new CreateTrackPlaylistCommand(playlistId,
+                                                                                                   trackId)));
+                    event.consume();
+                }
+            });
             return cell;
         });
 

@@ -7,7 +7,7 @@ public class CreateTrackPlaylistCommand implements Command {
     private final String playlistId;
     private final String trackId;
 
-    public CreateTrackPlaylistCommand(String name, String playlistId, String trackId) {
+    public CreateTrackPlaylistCommand(String playlistId, String trackId) {
         this.playlistId = playlistId;
         this.trackId    = trackId;
     }

@@ -1,7 +1,6 @@
 package me.jvegaf.musikbox.context.trackplaylist.application.search;
 
-import me.jvegaf.musikbox.context.playlists.domain.PlaylistId;
-import me.jvegaf.musikbox.context.trackplaylist.application.TracksResponse;
+import me.jvegaf.musikbox.context.tracks.application.TracksResponse;
 import me.jvegaf.musikbox.shared.domain.Service;
 import me.jvegaf.musikbox.shared.domain.bus.query.QueryHandler;
 
@@ -16,6 +15,6 @@ public final class SearchAllTracksInPlaylistQueryHandler implements QueryHandler
 
     @Override
     public TracksResponse handle(SearchAllTracksInPlaylistQuery query) {
-        return searcher.search(new PlaylistId(query.playlistId()));
+        return searcher.search(query.playlistId());
     }
 }

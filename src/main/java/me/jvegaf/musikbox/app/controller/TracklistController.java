@@ -8,9 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseButton;
+import javafx.scene.input.*;
 import lombok.extern.log4j.Log4j2;
 import me.jvegaf.musikbox.app.collection.Collection;
 import me.jvegaf.musikbox.app.command.player.PlaybackCommand;
@@ -21,25 +19,31 @@ import net.rgielen.fxweaver.core.FxmlView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.stream.Collectors;
+
 @Log4j2
 @Component
 @FxmlView
 public class TracklistController {
 
-    private final CommandBus                                       commandBus;
-    private final FxWeaver                                         fxWeaver;
-    private final Collection                                       collection;
-    private final ObservableList<TrackResponse>                    list = FXCollections.observableArrayList();
+    public static final DataFormat
+                                                                   SERIALIZED_MIME_TYPE =
+            new DataFormat("application/x-java-serialized-object");
+    private final       CommandBus                                 commandBus;
+    private final       FxWeaver                                   fxWeaver;
+    private final       Collection                                 collection;
+    private             ObservableList<TrackResponse>              list;
     @FXML
-    private       TableView<TrackResponse>                         songsTableView;
+    private             TableView<TrackResponse>                   songsTableView;
     @FXML
-    private       TableColumn<TrackResponse, String>               titleColumn;
+    private             TableColumn<TrackResponse, String>         titleColumn;
     @FXML
-    private       TableColumn<TrackResponse, String>               artistColumn;
+    private             TableColumn<TrackResponse, String>         artistColumn;
     @FXML
-    private       TableColumn<TrackResponse, String>               albumColumn;
+    private             TableColumn<TrackResponse, String>         albumColumn;
     @FXML
-    private       TableColumn<TrackResponse, String>               genreColumn;
+    private             TableColumn<TrackResponse, String>         genreColumn;
     @FXML
     private       TableColumn<TrackResponse, String>               durationColumn;
     @FXML
@@ -59,13 +63,16 @@ public class TracklistController {
 
     @FXML
     public void initialize() {
+        list = FXCollections.observableArrayList();
+        list.addAll(collection.getTracks());
+        songsTableView.setItems(list);
+
         collection.tracksProperty().addListener((observable, oldValue, newValue) -> {
-            list.clear();
-            list.addAll(collection.getTracks());
-            songsTableView.setItems(list);
+            songsTableView.getItems().clear();
+            songsTableView.getItems().addAll(collection.getTracks());
+            songsTableView.refresh();
         });
 
-        songsTableView.setItems(list);
 
         selectionModel = this.songsTableView.getSelectionModel();
         selectionModel.setSelectionMode(SelectionMode.MULTIPLE);
@@ -103,6 +110,23 @@ public class TracklistController {
                 if (event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2) {
                     commandBus.dispatch(new PlaybackCommand(selectionModel.getSelectedItem().id()));
                 }
+            });
+            row.setOnDragDetected(ev -> {
+                Dragboard db = row.startDragAndDrop(TransferMode.COPY);
+
+                ArrayList<String>
+                        tracksIds =
+                        (ArrayList<String>) songsTableView.getSelectionModel()
+                                                          .getSelectedItems()
+                                                          .stream()
+                                                          .map(TrackResponse::id)
+                                                          .collect(Collectors.toList());
+
+                ClipboardContent content = new ClipboardContent();
+                content.put(SERIALIZED_MIME_TYPE, tracksIds);
+                db.setContent(content);
+                log.info("Dragging: " + db.getContent(SERIALIZED_MIME_TYPE).toString());
+                ev.consume();
             });
             return row;
         });

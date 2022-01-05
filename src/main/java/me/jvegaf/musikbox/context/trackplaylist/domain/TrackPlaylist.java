@@ -1,58 +1,50 @@
 package me.jvegaf.musikbox.context.trackplaylist.domain;
 
-import me.jvegaf.musikbox.context.playlists.domain.PlaylistId;
-import me.jvegaf.musikbox.context.tracks.domain.TrackId;
+
 import me.jvegaf.musikbox.shared.domain.AggregateRoot;
 import me.jvegaf.musikbox.shared.domain.track_playlist.TrackPlaylistCreatedDomainEvent;
 
-import java.util.Objects;
-
 public final class TrackPlaylist extends AggregateRoot {
 
-    private final TrackPlaylistId       id;
-    private final PlaylistId            playlistId;
-    private final TrackId               trackId;
-    private final TrackPlaylistPosition position;
+    private final TrackPlaylistId id;
+    private final String          playlistId;
+    private final String          trackId;
 
     public TrackPlaylist() {
         this.id         = null;
         this.playlistId = null;
         this.trackId    = null;
-        this.position   = null;
     }
 
-    public TrackPlaylist(TrackPlaylistId id, PlaylistId playlistId, TrackId trackId, TrackPlaylistPosition position) {
+    public TrackPlaylist(TrackPlaylistId id, String playlistId, String trackid) {
         this.id         = id;
         this.playlistId = playlistId;
-        this.trackId    = trackId;
-        this.position   = position;
+        this.trackId    = trackid;
     }
 
-    public static TrackPlaylist create(PlaylistId playlistId, TrackId trackId, TrackPlaylistPosition position) {
-        TrackPlaylist t = new TrackPlaylist(TrackPlaylistId.create(), playlistId, trackId, position);
+    public static TrackPlaylist create(String playlistId, String trackId) {
+        TrackPlaylist t = new TrackPlaylist(TrackPlaylistId.create(), playlistId, trackId);
         t.record(new TrackPlaylistCreatedDomainEvent());
         return t;
     }
 
     public TrackPlaylistId id() { return id; }
 
-    public PlaylistId playlistId() { return playlistId; }
+    public String playlistId() { return playlistId; }
 
-    public TrackId trackId() { return trackId; }
-
-    public TrackPlaylistPosition position() { return position; }
+    public String trackId() { return trackId; }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, playlistId, trackId, position);
+        return super.hashCode();
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        TrackPlaylist that = (TrackPlaylist) o;
-        return id.equals(that.id) && playlistId.equals(that.playlistId) && trackId.equals(that.trackId) && position.equals(
-                that.position);
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+
+        if (obj == null || getClass() != obj.getClass()) return false;
+        TrackPlaylist p = (TrackPlaylist) obj;
+        return id.equals(p.id()) && trackId.equals(p.trackId()) && playlistId.equals(p.playlistId());
     }
 }

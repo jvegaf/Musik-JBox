@@ -21,20 +21,30 @@ public final class MusicCollection implements Collection {
 
     public MusicCollection(QueryBus bus) {
         this.bus            = bus;
-        this.tracksProperty = new SimpleObjectProperty<>();
+        this.tracksProperty = new SimpleObjectProperty<>(libraryTracksRequest().tracks());
     }
 
     @Override
     public void onSelectionChange(Category type, String selectedId) {
 
-        if (type == Category.HEAD) {
-            TracksResponse response = (TracksResponse) bus.ask(new SearchAllTracksQuery());
-            tracksProperty.set(response.tracks());
-            return;
-        }
+        TracksResponse response = null;
 
-        TracksResponse response = (TracksResponse) bus.ask(new SearchAllTracksInPlaylistQuery(selectedId));
+        switch (type) {
+            case HEAD:
+                response = libraryTracksRequest();
+                break;
+            case PLAYLIST:
+                response = tracksOfPlaylistRequest(selectedId);
+        }
         tracksProperty.set(response.tracks());
+    }
+
+    private TracksResponse libraryTracksRequest() {
+        return (TracksResponse) bus.ask(new SearchAllTracksQuery());
+    }
+
+    private TracksResponse tracksOfPlaylistRequest(String selectedId) {
+        return (TracksResponse) bus.ask(new SearchAllTracksInPlaylistQuery(selectedId));
     }
 
     @Override

@@ -9,17 +9,9 @@
             <key-property column="id" name="value" length="36" access="field"/>
         </composite-id>
 
-        <component name="playlistId" class="me.jvegaf.musikbox.context.playlists.domain.PlaylistId" access="field">
-            <property name="value" column="playlist_id" type="string" access="field"/>
-        </component>
+        <property name="playlistId" column="playlist_id" type="string" access="field"/>
 
-        <component name="trackId" class="me.jvegaf.musikbox.context.tracks.domain.TrackId" access="field">
-            <property name="value" column="track_id" type="string" access="field"/>
-        </component>
+        <property name="trackId" column="track_id" type="string" access="field"/>
 
-        <component name="position" class="me.jvegaf.musikbox.context.trackplaylist.domain.TrackPlaylistPosition"
-                   access="field">
-            <property name="value" column="position" type="int" access="field"/>
-        </component>
     </class>
 </hibernate-mapping>
