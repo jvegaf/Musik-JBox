@@ -28,13 +28,15 @@ public class MainController {
     @FXML
     private final FxControllerAndView<TracklistController, AnchorPane> tracklist;
     @FXML
-    private       VBox                                                 container;
+    private       Label                                                leftStatusLabel;
+    @FXML
+    private       Label                                                rightStatusLabel;
     @FXML
     private       Label                                                playlistNameLabel;
     @FXML
     private       Label                                                playlistDetailsLabel;
-
-    public Label leftStatusLabel;
+    @FXML
+    private       VBox                                                 container;
 
 
     @Autowired
