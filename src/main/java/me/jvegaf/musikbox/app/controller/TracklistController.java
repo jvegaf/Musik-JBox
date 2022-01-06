@@ -11,9 +11,8 @@ import javafx.scene.control.*;
 import javafx.scene.input.*;
 import lombok.extern.log4j.Log4j2;
 import me.jvegaf.musikbox.app.collection.Collection;
-import me.jvegaf.musikbox.app.command.player.PlaybackCommand;
+import me.jvegaf.musikbox.app.player.MusicPlayer;
 import me.jvegaf.musikbox.shared.domain.TrackResponse;
-import me.jvegaf.musikbox.shared.domain.bus.command.CommandBus;
 import net.rgielen.fxweaver.core.FxWeaver;
 import net.rgielen.fxweaver.core.FxmlView;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +29,7 @@ public class TracklistController {
     public static final DataFormat
                                                                    SERIALIZED_MIME_TYPE =
             new DataFormat("application/x-java-serialized-object");
-    private final       CommandBus                                 commandBus;
+    private final       MusicPlayer                                musicPlayer;
     private final       FxWeaver                                   fxWeaver;
     private final       Collection                                 collection;
     private             ObservableList<TrackResponse>              list;
@@ -55,10 +54,10 @@ public class TracklistController {
     private       TableColumn<TrackResponse, String>               keyColumn;
 
     @Autowired
-    public TracklistController(CommandBus commandBus, FxWeaver fxWeaver, Collection collection) {
-        this.commandBus = commandBus;
-        this.fxWeaver   = fxWeaver;
-        this.collection = collection;
+    public TracklistController(MusicPlayer musicPlayer, FxWeaver fxWeaver, Collection collection) {
+        this.musicPlayer = musicPlayer;
+        this.fxWeaver    = fxWeaver;
+        this.collection  = collection;
     }
 
     @FXML
@@ -108,7 +107,7 @@ public class TracklistController {
                     return;
                 }
                 if (event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2) {
-                    commandBus.dispatch(new PlaybackCommand(selectionModel.getSelectedItem().id()));
+                    musicPlayer.playTrack(selectionModel.getSelectedItem());
                 }
             });
             row.setOnDragDetected(ev -> {
@@ -161,8 +160,7 @@ public class TracklistController {
                 .bind(Bindings.createBooleanBinding(() -> this.selectionModel.getSelectedItems().size() != 1,
                                                     selectionModel.getSelectedItems()));
 
-        playItem.setOnAction(actionEvent -> commandBus.dispatch(new PlaybackCommand(selectionModel.getSelectedItem()
-                                                                                                  .id())));
+        playItem.setOnAction(actionEvent -> musicPlayer.playTrack(selectionModel.getSelectedItem()));
 
         menu.getItems().addAll(fixallItem, new SeparatorMenuItem(), detailItem, playItem);
         return menu;
@@ -172,7 +170,7 @@ public class TracklistController {
         keyNode.addEventHandler(KeyEvent.KEY_PRESSED, event -> {
             if (event.getCode() == KeyCode.SPACE) {
                 if (selectionModel.getSelectedItems().size() == 1) return;
-                commandBus.dispatch(new PlaybackCommand(selectionModel.getSelectedItem().id()));
+                musicPlayer.playTrack(selectionModel.getSelectedItem());
             }
         });
     }

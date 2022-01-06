@@ -7,15 +7,15 @@ import javafx.beans.property.StringProperty;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
-import me.jvegaf.musikbox.context.tracks.application.TrackLibraryResponse;
 import me.jvegaf.musikbox.shared.domain.Service;
+import me.jvegaf.musikbox.shared.domain.TrackResponse;
 
 import java.io.File;
 
 @Service
 public final class MusicPlayer {
 
-    private final TrackLibraryResponse               currentTrack;
+    private final TrackResponse                      currentTrack;
     private       MediaPlayer                        mPlayer;
     public final  StringProperty                     titleProperty;
     public final  StringProperty                     artistProperty;
@@ -32,7 +32,7 @@ public final class MusicPlayer {
         this.statusProperty = new SimpleObjectProperty<>(MediaPlayer.Status.UNKNOWN);
     }
 
-    public void playTrack(TrackLibraryResponse track) {
+    public void playTrack(TrackResponse track) {
         if (currentTrackChecker(track)) return;
         if (this.mPlayer != null) stopTrack();
         var path = track.location();
@@ -54,7 +54,7 @@ public final class MusicPlayer {
         this.mPlayer.currentTimeProperty().addListener((observable, oldValue, newValue) -> this.currentPlayTimeProperty.setValue(newValue));
     }
 
-    private boolean currentTrackChecker(TrackLibraryResponse track) {
+    private boolean currentTrackChecker(TrackResponse track) {
         if (this.currentTrack == null) return false;
         return currentTrack.location().equals(track.location());
     }
