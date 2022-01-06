@@ -300,4 +300,38 @@
     -fx-background-color: -fx-base;
 }
 
+#btn-close {
+    -fx-shape: "M 256,0 C 114.6,0 0,114.6 0,256 0,397.4 114.6,512 256,512 397.4,512 512,397.4 512,256 512,114.6 397.4,0 256,0 Z";
+    -fx-background-color: #d41324;
+    -size: 12;
+    -fx-min-height: -size;
+    -fx-min-width: -size;
+    -fx-max-height: -size;
+    -fx-max-width: -size;
+}
+
+#btn-maximize {
+    -fx-shape: "M 256,0 C 114.6,0 0,114.6 0,256 0,397.4 114.6,512 256,512 397.4,512 512,397.4 512,256 512,114.6 397.4,0 256,0 Z";
+    -fx-background-color: #13d43d;
+    -size: 12;
+    -fx-min-height: -size;
+    -fx-min-width: -size;
+    -fx-max-height: -size;
+    -fx-max-width: -size;
+}
+
+#btn-minimize {
+    -fx-shape: "M 256,0 C 114.6,0 0,114.6 0,256 0,397.4 114.6,512 256,512 397.4,512 512,397.4 512,256 512,114.6 397.4,0 256,0 Z";
+    -fx-background-color: #d4d113;
+    -size: 12;
+    -fx-min-height: -size;
+    -fx-min-width: -size;
+    -fx-max-height: -size;
+    -fx-max-width: -size;
+}
+
+.main-window {
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+}
 
