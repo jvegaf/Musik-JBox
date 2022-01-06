@@ -16,6 +16,10 @@ import org.jaudiotagger.tag.id3.AbstractID3v2Tag;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -26,30 +30,21 @@ public final class FileManager {
     private final CommandBus bus;
 
 
-
     public FileManager(CommandBus bus) {
         this.bus = bus;
-
-        Logger.getLogger("org.jaudiotagger").setLevel(Level.OFF);
-        Logger.getLogger("org.jaudiotagger.tag").setLevel(Level.OFF);
-        Logger.getLogger("org.jaudiotagger.tag.id3").setLevel(Level.OFF);
-        Logger.getLogger("org.jaudiotagger.tag.datatype").setLevel(Level.OFF);
-        Logger.getLogger("org.jaudiotagger.audio.mp3.MP3File").setLevel(Level.OFF);
-        Logger.getLogger("org.jaudiotagger.tag.id3.ID3v23Tag").setLevel(Level.OFF);
-
+        shutupLog();
     }
 
-    public void dispatchFiles(File[] files) {
+    public void dispatchFiles(File path) {
+
+        List<File> files = searchMusicFiles(path.getAbsoluteFile());
+
         for (File file : files) {
-
             try {
-
-
-
                 MP3File f = (MP3File) AudioFileIO.read(file);
                 AbstractID3v2Tag tag = f.getID3v2Tag();
                 String title = tag.getFirst(FieldKey.TITLE);
-                if (title == null || title.isEmpty()){
+                if (title == null || title.isEmpty()) {
                     title = file.getName().replaceAll(".mp3", "");
                 }
 
@@ -61,10 +56,7 @@ public final class FileManager {
                         tag.getFirst(FieldKey.ALBUM),
                         tag.getFirst(FieldKey.GENRE),
                         tag.getFirst(FieldKey.YEAR),
-                        tag.getFirst(FieldKey.COMMENT),
-                        tag.getFirst(FieldKey.BPM),
-                        tag.getFirst(FieldKey.KEY)
-                ));
+                        tag.getFirst(FieldKey.COMMENT), tag.getFirst(FieldKey.BPM), tag.getFirst(FieldKey.KEY)));
 
             } catch (CannotReadException | TagException | IOException | ReadOnlyFileException | InvalidAudioFrameException e) {
                 log.error("Error reading file: " + file.getName());
@@ -72,4 +64,43 @@ public final class FileManager {
         }
     }
 
+    private List<File> searchMusicFiles(File path) {
+        List<File> folders = subdirectoriesFor(path);
+
+        List<File> files = new ArrayList<>();
+        folders.forEach(folder -> files.addAll(mappingFilesIn(folder)));
+        files.addAll(mappingFilesIn(path));
+
+        return files;
+    }
+
+    private List<File> subdirectoriesFor(File file) {
+
+        var files = file.listFiles(File::isDirectory);
+
+        if (null == files) {
+            return Collections.emptyList();
+        }
+
+
+        return Arrays.asList(files);
+    }
+
+    private List<File> mappingFilesIn(File file) {
+        var files = file.listFiles(pathname -> pathname.getName().endsWith(".mp3"));
+
+        if (null == files) {
+            return Collections.emptyList();
+        }
+
+        return Arrays.asList(files);
+    }
+
+    private void shutupLog() {
+        Logger[] pin;
+        pin = new Logger[]{ Logger.getLogger("org.jaudiotagger") };
+
+        for (Logger l : pin)
+            l.setLevel(Level.OFF);
+    }
 }

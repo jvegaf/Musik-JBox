@@ -1,23 +1,25 @@
 package me.jvegaf.musikbox.context.tagger;
 
-import org.apache.log4j.Logger;
+
+import lombok.extern.log4j.Log4j2;
 
 import java.util.List;
 import java.util.Optional;
 
-public class SearchResult {
-    private String title;
-    private String remixName;
-    private List<String> artists;
-    private String album;
-    private String genre;
-    private String year;
-    private Integer bpm;
-    private Integer duration;
-    private String key;
-    private String artworkURL;
 
-    private static final Logger LOG = Logger.getLogger(SearchResult.class);
+@Log4j2
+public class SearchResult {
+
+    private String       title;
+    private String       remixName;
+    private List<String> artists;
+    private String       album;
+    private String       genre;
+    private String       year;
+    private Integer      bpm;
+    private Integer      duration;
+    private String       key;
+    private String       artworkURL;
 
     public SearchResult() {
         this.duration = 0;
@@ -34,15 +36,15 @@ public class SearchResult {
                         String duration,
                         String key,
                         String artworkURL) {
-        this.title = title;
+        this.title     = title;
         this.remixName = remixName;
-        this.artists = artists;
-        this.album = album;
-        this.genre = genre;
-        this.year = year;
-        this.bpm = bpm;
+        this.artists   = artists;
+        this.album     = album;
+        this.genre     = genre;
+        this.year      = year;
+        this.bpm       = bpm;
         setDuration(duration);
-        this.key = key;
+        this.key        = key;
         this.artworkURL = artworkURL;
     }
 

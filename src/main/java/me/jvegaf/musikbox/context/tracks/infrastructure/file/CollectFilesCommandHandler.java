@@ -4,9 +4,6 @@ import lombok.extern.log4j.Log4j2;
 import me.jvegaf.musikbox.shared.domain.Service;
 import me.jvegaf.musikbox.shared.domain.bus.command.CommandHandler;
 
-import java.io.File;
-import java.util.Optional;
-
 @Log4j2
 @Service
 public class CollectFilesCommandHandler implements CommandHandler<CollectFilesCommand> {
@@ -20,7 +17,6 @@ public class CollectFilesCommandHandler implements CommandHandler<CollectFilesCo
     @Override
     public void handle(CollectFilesCommand command) {
         log.info("Collecting files from {}", command.path().getAbsolutePath());
-        Optional<File[]> files = Optional.ofNullable(command.path().listFiles((dir, name) -> name.endsWith(".mp3")));
-        files.ifPresent(manager::dispatchFiles);
+        manager.dispatchFiles(command.path());
     }
 }
