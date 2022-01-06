@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.*?>
-
-<VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1440.0" stylesheets="@../../../../../styles/dark.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.jvegaf.musikbox.app.controller.MainController">
-    <fx:include fx:id="header" source="HeaderController.fxml" />
+<VBox xmlns:fx="http://javafx.com/fxml/1" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0"
+      prefWidth="1440.0" stylesheets="@../../../../../styles/dark.css" xmlns="http://javafx.com/javafx/17"
+      fx:controller="me.jvegaf.musikbox.app.controller.MainController">
+    <fx:include fx:id="header" source="HeaderController.fxml"/>
     <HBox VBox.vgrow="ALWAYS">
-        <fx:include fx:id="sidebar" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="200.0" source="SideBarController.fxml" />
-        <fx:include fx:id="tracklist" source="TracklistController.fxml" HBox.hgrow="ALWAYS" />
+        <fx:include fx:id="sidebar" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="200.0"
+                    source="SideBarController.fxml"/>
+        <VBox fx:id="container" HBox.hgrow="ALWAYS">
+            <AnchorPane prefHeight="100.0" styleClass=".playlist-detail" VBox.vgrow="NEVER">
+                <Label fx:id="playlistNameLabel" layoutX="41.0" layoutY="23.0" prefWidth="417.0"
+                       styleClass="title-label" text="Playlist Name" AnchorPane.bottomAnchor="41.0"
+                       AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="25.0"/>
+                <Label fx:id="playlistDetailsLabel" layoutX="41.0" layoutY="63.0" prefWidth="199.0"
+                       AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="60.0"/>
+            </AnchorPane>
+            <fx:include fx:id="tracklist" source="TracklistController.fxml" VBox.vgrow="ALWAYS"/>
+        </VBox>
     </HBox>
 
     <HBox id="HBox" alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" spacing="5.0" VBox.vgrow="NEVER">

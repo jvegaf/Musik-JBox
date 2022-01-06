@@ -4,8 +4,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<VBox xmlns:fx="http://javafx.com/fxml/1" stylesheets="@../../../../../styles/dark.css"
-      xmlns="http://javafx.com/javafx/11.0.2" fx:controller="me.jvegaf.musikbox.app.controller.SideBarController">
+<VBox xmlns:fx="http://javafx.com/fxml/1" id="sidebar" stylesheets="@../../../../../styles/dark.css"
+      xmlns="http://javafx.com/javafx/17" fx:controller="me.jvegaf.musikbox.app.controller.SideBarController">
     <AnchorPane layoutX="10.0" layoutY="126.0">
         <children>
             <Label styleClass="side-label" text="Library" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"

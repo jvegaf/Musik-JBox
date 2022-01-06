@@ -1,6 +1,6 @@
 package me.jvegaf.musikbox.context.tracks.application.search_all;
 
-import me.jvegaf.musikbox.context.tracks.application.TrackResponse;
+import me.jvegaf.musikbox.context.tracks.application.TrackLibraryResponse;
 import me.jvegaf.musikbox.context.tracks.application.TracksResponse;
 import me.jvegaf.musikbox.context.tracks.domain.TrackRepository;
 import me.jvegaf.musikbox.shared.domain.Service;
@@ -21,7 +21,7 @@ public final class AllTracksSearcher {
     public TracksResponse search() {
         return new TracksResponse(repository.matching(new Criteria(Filters.none(), Order.asc("title")))
                                             .stream()
-                                            .map(TrackResponse::fromAggregate)
+                                            .map(TrackLibraryResponse::fromAggregate)
                                             .collect(Collectors.toList()));
     }
 }

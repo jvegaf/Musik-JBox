@@ -1,5 +1,6 @@
 package me.jvegaf.musikbox.context.tracks.application;
 
+import me.jvegaf.musikbox.shared.domain.TrackResponse;
 import me.jvegaf.musikbox.shared.domain.bus.query.Response;
 
 import java.util.List;

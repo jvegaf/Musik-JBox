@@ -1,13 +1,13 @@
 package me.jvegaf.musikbox.context.trackplaylist.application.search;
 
+import me.jvegaf.musikbox.context.trackplaylist.application.TrackPlaylistResponse;
 import me.jvegaf.musikbox.context.trackplaylist.domain.TrackPlaylist;
 import me.jvegaf.musikbox.context.trackplaylist.domain.TrackPlaylistRepository;
-import me.jvegaf.musikbox.context.tracks.application.TrackResponse;
 import me.jvegaf.musikbox.context.tracks.application.TracksResponse;
-import me.jvegaf.musikbox.context.tracks.domain.Track;
 import me.jvegaf.musikbox.context.tracks.domain.TrackId;
 import me.jvegaf.musikbox.context.tracks.domain.TrackRepository;
 import me.jvegaf.musikbox.shared.domain.Service;
+import me.jvegaf.musikbox.shared.domain.TrackResponse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,13 +29,13 @@ public final class TrackPlaylistsSearcher {
 
         if (trackPlaylists.isEmpty()) return new TracksResponse(new ArrayList<>());
 
-        List<Track>
-                tracks =
+        List<TrackResponse>
+                trackResponses =
                 trackPlaylists.stream()
-                              .map(tp -> trackRepository.search(new TrackId(tp.trackId())).orElseThrow())
+                              .map(tp -> TrackPlaylistResponse.fromAggregate(trackRepository.search(new TrackId(tp.trackId()))
+                                                                                            .orElseThrow(),
+                                                                             tp.position()))
                               .toList();
-
-        List<TrackResponse> trackResponses = tracks.stream().map(TrackResponse::fromAggregate).toList();
 
         return new TracksResponse(trackResponses);
     }

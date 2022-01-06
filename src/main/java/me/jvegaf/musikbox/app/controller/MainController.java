@@ -1,14 +1,13 @@
 package me.jvegaf.musikbox.app.controller;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import lombok.extern.log4j.Log4j2;
-import me.jvegaf.musikbox.context.tracks.application.TrackResponse;
+import me.jvegaf.musikbox.app.collection.Collection;
+import me.jvegaf.musikbox.app.items.Category;
 import me.jvegaf.musikbox.shared.domain.bus.command.CommandBus;
 import net.rgielen.fxweaver.core.FxControllerAndView;
 import net.rgielen.fxweaver.core.FxmlView;
@@ -20,7 +19,7 @@ import org.springframework.stereotype.Component;
 @FxmlView
 public class MainController {
 
-
+    private final Collection                                           collection;
     private final CommandBus                                           bus;
     @FXML
     private final FxControllerAndView<HeaderController, HBox>          header;
@@ -28,22 +27,43 @@ public class MainController {
     private final FxControllerAndView<SideBarController, VBox>         sidebar;
     @FXML
     private final FxControllerAndView<TracklistController, AnchorPane> tracklist;
-    public        Label                                                leftStatusLabel;
-    private final ObservableList<TrackResponse>                        collection = FXCollections.observableArrayList();
+    @FXML
+    private       VBox                                                 container;
+    @FXML
+    private       Label                                                playlistNameLabel;
+    @FXML
+    private       Label                                                playlistDetailsLabel;
+
+    public Label leftStatusLabel;
 
 
     @Autowired
-    public MainController(CommandBus bus,
+    public MainController(Collection collection,
+                          CommandBus bus,
                           FxControllerAndView<HeaderController, HBox> header,
                           FxControllerAndView<SideBarController, VBox> sidebar,
                           FxControllerAndView<TracklistController, AnchorPane> tracklist) {
-        this.bus       = bus;
-        this.header    = header;
-        this.sidebar   = sidebar;
-        this.tracklist = tracklist;
+        this.collection = collection;
+        this.bus        = bus;
+        this.header     = header;
+        this.sidebar    = sidebar;
+        this.tracklist  = tracklist;
     }
 
     @FXML
-    public void initialize() { }
+    public void initialize() {
+        container.getChildren().get(0).setManaged(false);
+        collection.collectionCategoryProperty().addListener((observable, oldValue, newValue) -> {
+            container.getChildren().get(0).setManaged(shouldShow(newValue));
+        });
+        playlistNameLabel.textProperty().bind(collection.playListNameProperty());
+        collection.collectionTracksCountProperty().addListener((observable, oldValue, newValue) -> {
+            playlistDetailsLabel.setText("Total " + newValue.toString() + " tracks");
+        });
+    }
+
+    private boolean shouldShow(Category cat) {
+        return cat == Category.PLAYLIST;
+    }
 }
 

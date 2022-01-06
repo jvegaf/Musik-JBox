@@ -12,7 +12,7 @@ import javafx.scene.input.*;
 import lombok.extern.log4j.Log4j2;
 import me.jvegaf.musikbox.app.collection.Collection;
 import me.jvegaf.musikbox.app.command.player.PlaybackCommand;
-import me.jvegaf.musikbox.context.tracks.application.TrackResponse;
+import me.jvegaf.musikbox.shared.domain.TrackResponse;
 import me.jvegaf.musikbox.shared.domain.bus.command.CommandBus;
 import net.rgielen.fxweaver.core.FxWeaver;
 import net.rgielen.fxweaver.core.FxmlView;

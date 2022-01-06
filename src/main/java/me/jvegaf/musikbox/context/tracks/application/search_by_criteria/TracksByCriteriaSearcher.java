@@ -1,6 +1,6 @@
 package me.jvegaf.musikbox.context.tracks.application.search_by_criteria;
 
-import me.jvegaf.musikbox.context.tracks.application.TrackResponse;
+import me.jvegaf.musikbox.context.tracks.application.TrackLibraryResponse;
 import me.jvegaf.musikbox.context.tracks.application.TracksResponse;
 import me.jvegaf.musikbox.context.tracks.domain.TrackRepository;
 import me.jvegaf.musikbox.shared.domain.Service;
@@ -23,9 +23,7 @@ public final class TracksByCriteriaSearcher {
 
         Criteria criteria = new Criteria(filters, order, limit, offset);
 
-        return new TracksResponse(repository.matching(criteria)
-                                            .stream()
-                                            .map(TrackResponse::fromAggregate)
+        return new TracksResponse(repository.matching(criteria).stream().map(TrackLibraryResponse::fromAggregate)
                                             .collect(Collectors.toList()));
     }
 }
