@@ -71,7 +71,7 @@ public final class HeaderController {
                                                                               .getWindow()).setIconified(true));
         maximizeBtn.setOnAction(event -> ((Stage) ((Button) event.getSource()).getScene().getWindow()).setMaximized(
                 winMaximized()));
-        nextBtn.setOnMouseClicked(event -> System.out.println("next clicked !"));
+        nextBtn.setOnMouseClicked(event -> player.playNextTrack());
         playBtn.setOnMouseClicked(event -> this.player.continuePlaying());
         pauseBtn.setOnMouseClicked(event -> this.player.pauseTrack());
         prevBtn.setOnMouseClicked(event -> System.out.println("previous clicked !"));

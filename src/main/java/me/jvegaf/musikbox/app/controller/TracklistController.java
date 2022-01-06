@@ -108,6 +108,7 @@ public class TracklistController {
                 }
                 if (event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2) {
                     musicPlayer.playTrack(selectionModel.getSelectedItem());
+                    songsTableView.getSelectionModel().clearSelection();
                 }
             });
             row.setOnDragDetected(ev -> {

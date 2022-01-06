@@ -78,6 +78,15 @@ public final class MusicCollection implements Collection {
     @Override
     public IntegerProperty collectionTracksCountProperty() { return collectionTracksCount; }
 
+    @Override
+    public TrackResponse nextof(TrackResponse track) {
+        if (tracks.get().isEmpty()) {
+            return ((TracksResponse) (bus.ask(new SearchAllTracksQuery()))).tracks().get(0);
+        }
+        int index = tracks.get().indexOf(track);
+        return index == -1 ? tracks.get().get(0) : tracks.get().get(index + 1);
+    }
+
     private String playListName(String selectedId) {
         var response = (PlaylistResponse) bus.ask(new FindPlaylistQuery(selectedId));
         return response.name();

@@ -7,6 +7,7 @@ import javafx.beans.property.StringProperty;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
+import me.jvegaf.musikbox.app.collection.Collection;
 import me.jvegaf.musikbox.shared.domain.Service;
 import me.jvegaf.musikbox.shared.domain.TrackResponse;
 
@@ -15,6 +16,7 @@ import java.io.File;
 @Service
 public final class MusicPlayer {
 
+    private final Collection                         collection;
     private final TrackResponse                      currentTrack;
     private       MediaPlayer                        mPlayer;
     public final  StringProperty                     titleProperty;
@@ -23,13 +25,14 @@ public final class MusicPlayer {
     public final  ObjectProperty<Duration>           totalDurationProperty;
     public final  ObjectProperty<MediaPlayer.Status> statusProperty;
 
-    public MusicPlayer() {
+    public MusicPlayer(Collection collection) {
+        this.collection              = collection;
         this.currentTrack            = null;
         this.titleProperty           = new SimpleStringProperty("");
         this.artistProperty          = new SimpleStringProperty("");
         this.currentPlayTimeProperty = new SimpleObjectProperty<>();
-        this.totalDurationProperty = new SimpleObjectProperty<>(Duration.UNKNOWN);
-        this.statusProperty = new SimpleObjectProperty<>(MediaPlayer.Status.UNKNOWN);
+        this.totalDurationProperty   = new SimpleObjectProperty<>(Duration.UNKNOWN);
+        this.statusProperty          = new SimpleObjectProperty<>(MediaPlayer.Status.UNKNOWN);
     }
 
     public void playTrack(TrackResponse track) {
@@ -78,5 +81,9 @@ public final class MusicPlayer {
 
     public MediaPlayer getMediaPlayer() {
         return this.mPlayer;
+    }
+
+    public void playNextTrack() {
+        playTrack(collection.nextof(currentTrack));
     }
 }

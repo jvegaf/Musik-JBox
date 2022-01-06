@@ -21,4 +21,6 @@ public interface Collection {
     StringProperty playListNameProperty();
 
     IntegerProperty collectionTracksCountProperty();
+
+    TrackResponse nextof(TrackResponse track);
 }
