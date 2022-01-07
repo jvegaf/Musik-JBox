@@ -1,12 +1,12 @@
 package me.jvegaf.musikbox.app.controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import lombok.extern.log4j.Log4j2;
-import me.jvegaf.musikbox.app.collection.Collection;
+import me.jvegaf.musikbox.app.collection.MusicCollection;
 import me.jvegaf.musikbox.app.items.Category;
 import me.jvegaf.musikbox.shared.domain.bus.command.CommandBus;
 import net.rgielen.fxweaver.core.FxControllerAndView;
@@ -14,12 +14,14 @@ import net.rgielen.fxweaver.core.FxmlView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
+
 @Log4j2
 @Component
 @FxmlView
 public class MainController {
 
-    private final Collection                                           collection;
+    private final MusicCollection                                      collection;
     private final CommandBus                                           bus;
     @FXML
     private final FxControllerAndView<HeaderController, HBox>          header;
@@ -27,45 +29,43 @@ public class MainController {
     private final FxControllerAndView<SideBarController, VBox>         sidebar;
     @FXML
     private final FxControllerAndView<TracklistController, AnchorPane> tracklist;
+    private final FXMLLoader                                           fxmlLoader;
+
+    private final AnchorPane     playlistDetail;
+    private final PlaylistDetail playlistDetailController;
     @FXML
-    private       Label                                                leftStatusLabel;
-    @FXML
-    private       Label                                                rightStatusLabel;
-    @FXML
-    private       Label                                                playlistNameLabel;
-    @FXML
-    private       Label                                                playlistDetailsLabel;
-    @FXML
-    private       VBox                                                 container;
+    private       VBox           container;
 
 
     @Autowired
-    public MainController(Collection collection,
+    public MainController(MusicCollection collection,
                           CommandBus bus,
                           FxControllerAndView<HeaderController, HBox> header,
                           FxControllerAndView<SideBarController, VBox> sidebar,
-                          FxControllerAndView<TracklistController, AnchorPane> tracklist) {
-        this.collection = collection;
-        this.bus        = bus;
-        this.header     = header;
-        this.sidebar    = sidebar;
-        this.tracklist  = tracklist;
+                          FxControllerAndView<TracklistController, AnchorPane> tracklist) throws IOException {
+        this.collection               = collection;
+        this.bus                      = bus;
+        this.header                   = header;
+        this.sidebar                  = sidebar;
+        this.tracklist                = tracklist;
+        this.fxmlLoader               = new FXMLLoader(getClass().getResource("PlaylistDetail.fxml"));
+        this.playlistDetail           = fxmlLoader.load();
+        this.playlistDetailController = fxmlLoader.getController();
+        this.playlistDetailController.setCollection(this.collection);
+        this.playlistDetailController.initBindings();
     }
 
     @FXML
     public void initialize() {
-        container.getChildren().get(0).setManaged(false);
-        collection.collectionCategoryProperty().addListener((observable, oldValue, newValue) -> {
-            container.getChildren().get(0).setManaged(shouldShow(newValue));
-        });
-        playlistNameLabel.textProperty().bind(collection.playListNameProperty());
-        collection.collectionTracksCountProperty().addListener((observable, oldValue, newValue) -> {
-            playlistDetailsLabel.setText("Total " + newValue.toString() + " tracks");
-        });
-    }
+        log.info("container size: " + container.getChildren().size());
 
-    private boolean shouldShow(Category cat) {
-        return cat == Category.PLAYLIST;
+        collection.collectionCategoryProperty().addListener((observable, oldValue, newValue) -> {
+            log.info("container size: " + container.getChildren().size());
+            log.info("new value " + newValue.toString());
+            if (newValue == Category.PLAYLIST && container.getChildren().size() < 2) container.getChildren()
+                                                                                              .add(0, playlistDetail);
+            if (newValue == Category.HEAD && container.getChildren().size() > 1) container.getChildren().remove(0);
+        });
     }
 }
 

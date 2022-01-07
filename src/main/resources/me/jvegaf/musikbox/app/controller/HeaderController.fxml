@@ -3,7 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<HBox xmlns:fx="http://javafx.com/fxml/1" styleClass=".header" stylesheets="@../../../../../styles/dark.css"
+<HBox xmlns:fx="http://javafx.com/fxml/1" styleClass="header"
       xmlns="http://javafx.com/javafx/17" fx:controller="me.jvegaf.musikbox.app.controller.HeaderController">
     <padding>
         <Insets left="20.0" right="20.0"/>

@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<VBox xmlns:fx="http://javafx.com/fxml/1" id="sidebar" stylesheets="@../../../../../styles/dark.css"
+<VBox xmlns:fx="http://javafx.com/fxml/1" styleClass="sidebar"
       xmlns="http://javafx.com/javafx/17" fx:controller="me.jvegaf.musikbox.app.controller.SideBarController">
     <AnchorPane layoutX="10.0" layoutY="126.0">
         <children>

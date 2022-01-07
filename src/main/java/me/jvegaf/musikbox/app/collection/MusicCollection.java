@@ -14,7 +14,7 @@ import me.jvegaf.musikbox.shared.domain.bus.query.QueryBus;
 import java.util.List;
 
 @Service
-public final class MusicCollection implements Collection {
+public final class MusicCollection {
 
     private final ObjectProperty<List<TrackResponse>> tracks;
     private final QueryBus                            bus;
@@ -31,27 +31,26 @@ public final class MusicCollection implements Collection {
         this.collectionTracksCount = new SimpleIntegerProperty(tracks.get().size());
     }
 
-    @Override
     public void onSelectionChange(Category type, String selectedId) {
 
         TracksResponse response = null;
 
         switch (type) {
-            case HEAD:
+            case HEAD -> {
                 response = libraryTracksRequest();
                 collectionCategory.set(Category.HEAD);
                 playListName.set("");
-                break;
-            case PLAYLIST:
+            }
+            case PLAYLIST -> {
                 response = tracksOfPlaylistRequest(selectedId);
                 collectionCategory.set(Category.PLAYLIST);
                 playListName.set(playListName(selectedId));
+            }
         }
         tracks.set(response.tracks());
         collectionTracksCount.set(response.tracks().size());
     }
 
-    @Override
     public List<TrackResponse> getTracks() {
         return tracks.get();
     }
@@ -64,21 +63,16 @@ public final class MusicCollection implements Collection {
         return (TracksResponse) bus.ask(new SearchAllTracksInPlaylistQuery(selectedId));
     }
 
-    @Override
     public ObjectProperty<List<TrackResponse>> tracksProperty() {
         return tracks;
     }
 
-    @Override
     public ObjectProperty<Category> collectionCategoryProperty() { return collectionCategory; }
 
-    @Override
     public StringProperty playListNameProperty() { return playListName; }
 
-    @Override
     public IntegerProperty collectionTracksCountProperty() { return collectionTracksCount; }
 
-    @Override
     public TrackResponse nextof(TrackResponse track) {
         if (tracks.get().isEmpty()) {
             return ((TracksResponse) (bus.ask(new SearchAllTracksQuery()))).tracks().get(0);
@@ -87,8 +81,12 @@ public final class MusicCollection implements Collection {
         return index == -1 ? tracks.get().get(0) : tracks.get().get(index + 1);
     }
 
-    private String playListName(String selectedId) {
+    public String playListName(String selectedId) {
         var response = (PlaylistResponse) bus.ask(new FindPlaylistQuery(selectedId));
         return response.name();
+    }
+
+    public Category getCategory() {
+        return collectionCategory.get();
     }
 }

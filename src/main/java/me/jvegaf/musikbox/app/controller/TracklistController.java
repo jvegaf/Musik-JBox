@@ -10,8 +10,9 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.*;
 import lombok.extern.log4j.Log4j2;
-import me.jvegaf.musikbox.app.collection.Collection;
+import me.jvegaf.musikbox.app.collection.MusicCollection;
 import me.jvegaf.musikbox.app.player.MusicPlayer;
+import me.jvegaf.musikbox.context.trackplaylist.application.TrackPlaylistResponse;
 import me.jvegaf.musikbox.shared.domain.TrackResponse;
 import net.rgielen.fxweaver.core.FxWeaver;
 import net.rgielen.fxweaver.core.FxmlView;
@@ -27,34 +28,36 @@ import java.util.stream.Collectors;
 public class TracklistController {
 
     public static final DataFormat
-                                                                   SERIALIZED_MIME_TYPE =
+                                                                         SERIALIZED_MIME_TYPE =
             new DataFormat("application/x-java-serialized-object");
-    private final       MusicPlayer                                musicPlayer;
-    private final       FxWeaver                                   fxWeaver;
-    private final       Collection                                 collection;
-    private             ObservableList<TrackResponse>              list;
+    private final       MusicPlayer                                      musicPlayer;
+    private final       FxWeaver                                         fxWeaver;
+    private final       MusicCollection                                  collection;
+    private             ObservableList<TrackResponse>                    list;
     @FXML
-    private             TableView<TrackResponse>                   songsTableView;
+    private             TableView<TrackResponse>                         songsTableView;
     @FXML
-    private             TableColumn<TrackResponse, String>         titleColumn;
+    private             TableColumn<TrackResponse, String>               positionColumn;
     @FXML
-    private             TableColumn<TrackResponse, String>         artistColumn;
+    private             TableColumn<TrackResponse, String>               titleColumn;
     @FXML
-    private             TableColumn<TrackResponse, String>         albumColumn;
+    private             TableColumn<TrackResponse, String>               artistColumn;
     @FXML
-    private             TableColumn<TrackResponse, String>         genreColumn;
+    private             TableColumn<TrackResponse, String>               albumColumn;
     @FXML
-    private       TableColumn<TrackResponse, String>               durationColumn;
+    private             TableColumn<TrackResponse, String>               genreColumn;
     @FXML
-    private       TableColumn<TrackResponse, String>               bpmColumn;
+    private             TableColumn<TrackResponse, String>               durationColumn;
     @FXML
-    private       TableColumn<TrackResponse, String>               yearColumn;
-    private       TableView.TableViewSelectionModel<TrackResponse> selectionModel;
+    private             TableColumn<TrackResponse, String>               bpmColumn;
     @FXML
-    private       TableColumn<TrackResponse, String>               keyColumn;
+    private             TableColumn<TrackResponse, String>               yearColumn;
+    private             TableView.TableViewSelectionModel<TrackResponse> selectionModel;
+    @FXML
+    private             TableColumn<TrackResponse, String>               keyColumn;
 
     @Autowired
-    public TracklistController(MusicPlayer musicPlayer, FxWeaver fxWeaver, Collection collection) {
+    public TracklistController(MusicPlayer musicPlayer, FxWeaver fxWeaver, MusicCollection collection) {
         this.musicPlayer = musicPlayer;
         this.fxWeaver    = fxWeaver;
         this.collection  = collection;
@@ -75,6 +78,13 @@ public class TracklistController {
 
         selectionModel = this.songsTableView.getSelectionModel();
         selectionModel.setSelectionMode(SelectionMode.MULTIPLE);
+        positionColumn.setCellValueFactory(cellData -> {
+            if (cellData.getValue() instanceof TrackPlaylistResponse) {
+                TrackPlaylistResponse r = (TrackPlaylistResponse) cellData.getValue();
+                return new SimpleStringProperty(r.position().toString());
+            }
+            return new SimpleStringProperty("");
+        });
         titleColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().title()));
         artistColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().artist().isPresent() ?
                                                                               cellData.getValue().artist().get() :

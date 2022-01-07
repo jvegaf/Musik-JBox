@@ -6,8 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0"
-      prefWidth="600.0" spacing="9.0" fx:id="dialog" xmlns="http://javafx.com/javafx/11.0.2"
-      stylesheets="@../../../../../styles/dark.css"
+      prefWidth="600.0" spacing="9.0" fx:id="dialog" xmlns="http://javafx.com/javafx/17"
       xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.jvegaf.musikbox.app.controller.DetailController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>

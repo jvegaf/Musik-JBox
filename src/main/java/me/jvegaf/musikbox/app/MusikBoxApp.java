@@ -37,6 +37,7 @@ public final class MusikBoxApp extends Application {
     public void start(Stage stage) {
         Parent root = fxWeaver.loadView(MainController.class);
         mainScene = new Scene(root, 1440, 800);
+        mainScene.getStylesheets().add("/styles/light.css");
         mainScene.setFill(Color.TRANSPARENT);
         stage.setScene(mainScene);
         stage.initStyle(StageStyle.TRANSPARENT);

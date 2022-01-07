@@ -7,7 +7,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import lombok.extern.log4j.Log4j2;
-import me.jvegaf.musikbox.app.collection.Collection;
+import me.jvegaf.musikbox.app.collection.MusicCollection;
 import me.jvegaf.musikbox.app.items.Category;
 import me.jvegaf.musikbox.context.playlists.application.PlaylistResponse;
 import me.jvegaf.musikbox.context.playlists.application.PlaylistsResponse;
@@ -35,9 +35,9 @@ import static me.jvegaf.musikbox.app.controller.TracklistController.SERIALIZED_M
 @DomainEventSubscriber({ PlaylistCreatedDomainEvent.class })
 public class SideBarController {
 
-    private final QueryBus   queryBus;
-    private final CommandBus commandBus;
-    private final Collection collection;
+    private final QueryBus        queryBus;
+    private final CommandBus      commandBus;
+    private final MusicCollection collection;
 
     @FXML
     private Button                                   addBtn;
@@ -48,7 +48,7 @@ public class SideBarController {
     private MultipleSelectionModel<PlaylistResponse> selectionModel;
 
     @Autowired
-    public SideBarController(QueryBus queryBus, CommandBus commandBus, Collection collection) {
+    public SideBarController(QueryBus queryBus, CommandBus commandBus, MusicCollection collection) {
         this.queryBus   = queryBus;
         this.commandBus = commandBus;
         this.collection = collection;

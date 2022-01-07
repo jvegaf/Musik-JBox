@@ -1,33 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.*?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" minHeight="-Infinity" styleClass="main-window" minWidth="-Infinity"
-      prefHeight="800.0" prefWidth="1440.0" stylesheets="@../../../../../styles/dark.css"
+      prefHeight="800.0" prefWidth="1440.0"
       xmlns="http://javafx.com/javafx/17" fx:controller="me.jvegaf.musikbox.app.controller.MainController">
     <fx:include fx:id="header" source="HeaderController.fxml"/>
     <HBox VBox.vgrow="ALWAYS">
         <fx:include fx:id="sidebar" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="200.0"
                     source="SideBarController.fxml"/>
         <VBox fx:id="container" HBox.hgrow="ALWAYS">
-            <AnchorPane prefHeight="100.0" styleClass=".playlist-detail" VBox.vgrow="NEVER">
-                <Label fx:id="playlistNameLabel" layoutX="41.0" layoutY="23.0" prefWidth="417.0"
-                       styleClass="title-label" text="Playlist Name" AnchorPane.bottomAnchor="41.0"
-                       AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="25.0"/>
-                <Label fx:id="playlistDetailsLabel" layoutX="41.0" layoutY="63.0" prefWidth="199.0"
-                       AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="60.0"/>
-            </AnchorPane>
             <fx:include fx:id="tracklist" source="TracklistController.fxml" VBox.vgrow="ALWAYS"/>
         </VBox>
-    </HBox>
-
-    <HBox id="HBox" alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" spacing="5.0" VBox.vgrow="NEVER">
-        <padding>
-            <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
-        </padding>
-        <Label fx:id="leftStatusLabel" text="" HBox.hgrow="ALWAYS"/>
-        <Pane HBox.hgrow="ALWAYS" />
-        <Label fx:id="rightStatusLabel" text="" HBox.hgrow="NEVER"/>
     </HBox>
 </VBox>
