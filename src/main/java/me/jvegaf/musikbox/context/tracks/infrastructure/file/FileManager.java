@@ -5,6 +5,9 @@ import lombok.extern.log4j.Log4j2;
 import me.jvegaf.musikbox.context.tracks.application.create.CreateTrackCommand;
 import me.jvegaf.musikbox.shared.domain.Service;
 import me.jvegaf.musikbox.shared.domain.bus.command.CommandBus;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.filefilter.DirectoryFileFilter;
+import org.apache.commons.io.filefilter.RegexFileFilter;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.audio.exceptions.CannotReadException;
 import org.jaudiotagger.audio.exceptions.InvalidAudioFrameException;
@@ -16,9 +19,6 @@ import org.jaudiotagger.tag.id3.AbstractID3v2Tag;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,11 +32,10 @@ public final class FileManager {
 
     public FileManager(CommandBus bus) {
         this.bus = bus;
-        shutupLog();
     }
 
     public void dispatchFiles(File path) {
-
+        shutupLog();
         List<File> files = searchMusicFiles(path.getAbsoluteFile());
 
         for (File file : files) {
@@ -65,35 +64,11 @@ public final class FileManager {
     }
 
     private List<File> searchMusicFiles(File path) {
-        List<File> folders = subdirectoriesFor(path);
 
-        List<File> files = new ArrayList<>();
-        folders.forEach(folder -> files.addAll(mappingFilesIn(folder)));
-        files.addAll(mappingFilesIn(path));
-
-        return files;
-    }
-
-    private List<File> subdirectoriesFor(File file) {
-
-        var files = file.listFiles(File::isDirectory);
-
-        if (null == files) {
-            return Collections.emptyList();
-        }
-
-
-        return Arrays.asList(files);
-    }
-
-    private List<File> mappingFilesIn(File file) {
-        var files = file.listFiles(pathname -> pathname.getName().endsWith(".mp3"));
-
-        if (null == files) {
-            return Collections.emptyList();
-        }
-
-        return Arrays.asList(files);
+        return FileUtils.listFiles(path, new RegexFileFilter("^(.*?)"), DirectoryFileFilter.DIRECTORY)
+                .stream()
+                .filter(file -> file.getName().endsWith(".mp3"))
+                .toList();
     }
 
     private void shutupLog() {
