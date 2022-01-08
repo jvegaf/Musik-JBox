@@ -24,7 +24,7 @@
     -sidebar-item-text: #dfe0e0;
     -scrollbar-track: #3a3f41;
     -scrollbar-thumb: #707475;
-    -progress-bar-thumb: #BEBEBE; 
+    -progress-bar-thumb: #BEBEBE;
     -progress-bar-track: #37393A;
     -label-section-txt: #A2A4A5;
     -display-bg: #1d2022;
@@ -79,6 +79,8 @@
 .table-view{
     -fx-selection-bar-non-focused: -selected-focus-lost;
     -fx-background-color: -fx-base;
+    -fx-background-radius: 0 0 10 0;
+    -fx-border-radius: 0 0 10 0;
 }
 
 .table-view:focused{
@@ -185,6 +187,8 @@
 .header {
     -fx-background-color: -headr-bg;
     -fx-text-fill: -txt-color;
+    -fx-background-radius: 10 10 0 0;
+    -fx-border-radius: 10 10 0 0;
 }
 
 .player {
@@ -292,8 +296,10 @@
     -fx-shape: "M16 17a3 3 0 0 1-3 3h-2a3 3 0 0 1 0-6h2a3 3 0 0 1 1 .17V1l6-1v4l-4 .67V17zM0 3h12v2H0V3zm0 4h12v2H0V7zm0 4h12v2H0v-2zm0 4h6v2H0v-2z";
 }
 
-#sidebar {
+.sidebar {
     -fx-background-color: -sidebar-bg;
+    -fx-background-radius: 0 0 0 10;
+    -fx-border-radius: 0 0 0 10;
 }
 
 .playlist-detail {
