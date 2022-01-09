@@ -1,4 +1,4 @@
-package me.jvegaf.musikbox.context.tagger;
+package me.jvegaf.musikbox.context.tags.application;
 
 public final class SearchQu {
 

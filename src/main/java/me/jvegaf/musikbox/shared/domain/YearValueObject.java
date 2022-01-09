@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public abstract class YearValueObject {
 
-    private String value;
+    private final String value;
 
     public YearValueObject(String value) {
         this.value = validate(value);
@@ -17,13 +17,12 @@ public abstract class YearValueObject {
     }
 
     @Override public boolean equals(Object o) {
-        if (this == o) {
+        if (this==o) {
             return true;
         }
-        if (!(o instanceof YearValueObject)) {
+        if (!(o instanceof YearValueObject that)) {
             return false;
         }
-        YearValueObject that = (YearValueObject) o;
         return Objects.equals(value, that.value);
     }
 

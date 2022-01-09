@@ -37,7 +37,7 @@ public final class HibernateConfigurationFactory {
 
         List<Resource> mappingFiles = searchMappingFiles(contextName);
 
-        sessionFactory.setMappingLocations(mappingFiles.toArray(new Resource[mappingFiles.size()]));
+        sessionFactory.setMappingLocations(mappingFiles.toArray(new Resource[0]));
 
         return sessionFactory;
     }

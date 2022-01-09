@@ -21,8 +21,9 @@ public final class PlaylistDetail {
 
     public void initBindings() {
         playlistNameLabel.textProperty().bind(collection.playListNameProperty());
-        collection.collectionTracksCountProperty().addListener((observable, oldValue, newValue) -> {
-            playlistDetailsLabel.setText("Total " + newValue.toString() + " tracks");
-        });
+        collection.collectionTracksCountProperty()
+                  .addListener((observable, oldValue, newValue) -> playlistDetailsLabel.setText("Total " +
+                                                                                                newValue.toString() +
+                                                                                                " tracks"));
     }
 }

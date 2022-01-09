@@ -1,6 +1,8 @@
 package me.jvegaf.musikbox.context.tracks.application.update;
 
-import me.jvegaf.musikbox.context.tracks.domain.*;
+import me.jvegaf.musikbox.context.tracks.domain.Track;
+import me.jvegaf.musikbox.context.tracks.domain.TrackId;
+import me.jvegaf.musikbox.context.tracks.domain.TrackRepository;
 import me.jvegaf.musikbox.shared.domain.Service;
 import me.jvegaf.musikbox.shared.domain.bus.event.EventBus;
 
@@ -16,19 +18,16 @@ public final class TrackUpdater {
     }
 
 
-    public void update(TrackId id,
-                       TrackTitle title,
-                       TrackArtist artist,
-                       TrackAlbum album,
-                       TrackGenre genre,
-                       TrackYear year,
-                       TrackBpm bpm,
-                       TrackInitKey initKey,
-                       TrackComments comments) {
-        Track t = repository.search(id).orElseThrow();
-        var updatedTrack = t.improveMetadata(title, artist, album, genre, year, bpm, initKey,
-                comments
-        );
+    public void update(UpdateTrackCommand c) {
+        Track t = repository.search(new TrackId(c.trackId())).orElseThrow();
+        var updatedTrack = t.updateFromPrimitives(c.title(),
+                                                  c.artist(),
+                                                  c.album(),
+                                                  c.genre(),
+                                                  c.year(),
+                                                  c.bpm(),
+                                                  c.key(),
+                                                  c.comments());
         repository.save(updatedTrack);
         eventBus.publish(updatedTrack.pullDomainEvents());
     }

@@ -56,7 +56,7 @@ public class DetailController {
 
 
     private final CommandBus commandBus;
-    private Stage  stage;
+    private       Stage      stage;
 
     @Autowired
     public DetailController(CommandBus commandBus) {
@@ -82,16 +82,26 @@ public class DetailController {
 
     private void saveActionListener(TrackResponse t) {
 
-        String artist = this.artistTextField.getText();
-        String title = this.titleTextField.getText();
-        String album = this.albumTextField.getText();
-        String genre = this.genreTextField.getText();
-        String year = this.yearTextField.getText();
-        String bpm = this.bpmTextField.getText();
-        String key = this.keyTextField.getText();
+        String artist   = this.artistTextField.getText();
+        String title    = this.titleTextField.getText();
+        String album    = this.albumTextField.getText();
+        String genre    = this.genreTextField.getText();
+        String year     = this.yearTextField.getText();
+        String bpm      = this.bpmTextField.getText();
+        String key      = this.keyTextField.getText();
         String comments = this.commentsTextField.getText();
         //        // TODO: implement this.track.setArtworkData
-        commandBus.dispatch(new UpdateTrackCommand(t.id(), title, artist, album, genre, year, bpm, key, comments));
+        // TODO: Validate int value of bpmtextfield
+
+        commandBus.dispatch(new UpdateTrackCommand(t.id(),
+                                                   title,
+                                                   artist,
+                                                   album,
+                                                   genre,
+                                                   year,
+                                                   Integer.getInteger(bpm),
+                                                   key,
+                                                   comments));
         this.closeActionListener();
     }
 

@@ -8,7 +8,6 @@ import javax.persistence.criteria.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.function.BiFunction;
-import java.util.stream.Collectors;
 
 public final class HibernateCriteriaConverter<T> {
     private final CriteriaBuilder                                                 builder;
@@ -42,10 +41,7 @@ public final class HibernateCriteriaConverter<T> {
     }
 
     private Predicate[] formatPredicates(List<Filter> filters, Root<T> root) {
-        List<Predicate> predicates = filters.stream().map(filter -> formatPredicate(
-            filter,
-            root
-        )).collect(Collectors.toList());
+        List<Predicate> predicates = filters.stream().map(filter -> formatPredicate(filter, root)).toList();
 
         Predicate[] predicatesArray = new Predicate[predicates.size()];
         predicatesArray = predicates.toArray(predicatesArray);

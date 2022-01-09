@@ -1,10 +1,7 @@
 package me.jvegaf.musikbox.context.playlists.application;
 
 import me.jvegaf.musikbox.context.playlists.domain.Playlist;
-import me.jvegaf.musikbox.context.tracks.domain.Track;
 import me.jvegaf.musikbox.shared.domain.bus.query.Response;
-
-import java.util.List;
 
 public final class PlaylistResponse implements Response {
 

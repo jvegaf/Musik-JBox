@@ -15,22 +15,15 @@ public enum FilterOperator {
     }
 
     public static FilterOperator fromValue(String value) {
-        switch (value) {
-            case "=":
-                return FilterOperator.EQUAL;
-            case "!=":
-                return FilterOperator.NOT_EQUAL;
-            case ">":
-                return FilterOperator.GT;
-            case "<":
-                return FilterOperator.LT;
-            case "CONTAINS":
-                return FilterOperator.CONTAINS;
-            case "NOT_CONTAINS":
-                return FilterOperator.NOT_CONTAINS;
-            default:
-                return null;
-        }
+        return switch (value) {
+            case "=" -> FilterOperator.EQUAL;
+            case "!=" -> FilterOperator.NOT_EQUAL;
+            case ">" -> FilterOperator.GT;
+            case "<" -> FilterOperator.LT;
+            case "CONTAINS" -> FilterOperator.CONTAINS;
+            case "NOT_CONTAINS" -> FilterOperator.NOT_CONTAINS;
+            default -> null;
+        };
     }
 
     public boolean isPositive() {

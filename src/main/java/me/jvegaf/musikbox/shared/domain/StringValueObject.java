@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public abstract class StringValueObject {
 
-    private String value;
+    private final String value;
 
     public StringValueObject(String value) {
         this.value = value;
@@ -19,13 +19,12 @@ public abstract class StringValueObject {
     }
 
     @Override public boolean equals(Object o) {
-        if (this == o) {
+        if (this==o) {
             return true;
         }
-        if (!(o instanceof StringValueObject)) {
+        if (!(o instanceof StringValueObject that)) {
             return false;
         }
-        StringValueObject that = (StringValueObject) o;
         return Objects.equals(value, that.value);
     }
 

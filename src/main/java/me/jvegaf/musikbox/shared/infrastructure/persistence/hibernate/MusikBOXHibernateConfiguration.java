@@ -17,7 +17,6 @@ public class MusikBOXHibernateConfiguration {
 
     private final HibernateConfigurationFactory factory;
     private final Parameter                     config;
-    private final String                        CONTEXT_NAME = "musikbox";
 
     public MusikBOXHibernateConfiguration(HibernateConfigurationFactory factory, Parameter config) {
         this.factory = factory;
@@ -31,6 +30,7 @@ public class MusikBOXHibernateConfiguration {
 
     @Bean("musikbox-session_factory")
     public LocalSessionFactoryBean sessionFactory() throws IOException, ParameterNotExist {
+        String CONTEXT_NAME = "musikbox";
         return factory.sessionFactory(CONTEXT_NAME, dataSource());
     }
 

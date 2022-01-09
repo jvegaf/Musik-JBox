@@ -33,7 +33,6 @@ public class TracklistController {
     private final       MusicPlayer                                      musicPlayer;
     private final       FxWeaver                                         fxWeaver;
     private final       MusicCollection                                  collection;
-    private             ObservableList<TrackResponse>                    list;
     @FXML
     private             TableView<TrackResponse>                         songsTableView;
     @FXML
@@ -65,7 +64,7 @@ public class TracklistController {
 
     @FXML
     public void initialize() {
-        list = FXCollections.observableArrayList();
+        ObservableList<TrackResponse> list = FXCollections.observableArrayList();
         list.addAll(collection.getTracks());
         songsTableView.setItems(list);
 
@@ -79,8 +78,7 @@ public class TracklistController {
         selectionModel = this.songsTableView.getSelectionModel();
         selectionModel.setSelectionMode(SelectionMode.MULTIPLE);
         positionColumn.setCellValueFactory(cellData -> {
-            if (cellData.getValue() instanceof TrackPlaylistResponse) {
-                TrackPlaylistResponse r = (TrackPlaylistResponse) cellData.getValue();
+            if (cellData.getValue() instanceof TrackPlaylistResponse r) {
 
                 return new SimpleStringProperty(r.positionStr());
             }

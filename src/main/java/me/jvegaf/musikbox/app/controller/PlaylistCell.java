@@ -66,15 +66,9 @@ public class PlaylistCell extends ListCell<PlaylistResponse> {
         titleTF.setText(titleLbl.getText());
         titleTF.setVisible(true);
         titleLbl.setVisible(false);
-        Platform.runLater(new Runnable() {
-
-            @Override
-            public void run() {
-                titleTF.requestFocus();
-            }
-        });
+        Platform.runLater(() -> titleTF.requestFocus());
         titleTF.setOnKeyReleased(event -> {
-            if (event.getCode() == KeyCode.ENTER) commitEdit(new PlaylistResponse(getItem().id(), titleTF.getText()));
+            if (event.getCode()==KeyCode.ENTER) commitEdit(new PlaylistResponse(getItem().id(), titleTF.getText()));
         });
     }
 

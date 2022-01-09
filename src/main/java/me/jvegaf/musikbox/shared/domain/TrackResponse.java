@@ -14,6 +14,8 @@ public interface TrackResponse extends Response {
 
     String duration();
 
+    Integer durationInt();
+
     Optional<String> artist();
 
     Optional<String> album();

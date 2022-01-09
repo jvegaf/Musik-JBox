@@ -63,6 +63,11 @@ public class TrackLibraryResponse implements TrackResponse {
     }
 
     @Override
+    public Integer durationInt() {
+        return fromStringValue(duration);
+    }
+
+    @Override
     public Optional<String> artist() {
         return Optional.ofNullable(artist);
     }
@@ -130,5 +135,12 @@ public class TrackLibraryResponse implements TrackResponse {
     @Override
     public void setComments(String comments) {
         this.comments = comments;
+    }
+
+    protected int fromStringValue(String strValue) {
+        String[] timeParts = strValue.split(":");
+        int      minutes   = Integer.parseInt(timeParts[0]);
+        int      seconds   = Integer.parseInt(timeParts[1]);
+        return minutes * 60 + seconds;
     }
 }

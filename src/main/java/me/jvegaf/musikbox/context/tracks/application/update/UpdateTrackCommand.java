@@ -4,25 +4,27 @@ import me.jvegaf.musikbox.shared.domain.bus.command.Command;
 
 public class UpdateTrackCommand implements Command {
 
-    private final String trackId;
-    private final String title;
-    private final String artist;
-    private final String album;
-    private final String genre;
-    private final String year;
-    private final String bpm;
-    private final String key;
-    private final String comments;
+    private final String  trackId;
+    private final String  title;
+    private final String  artist;
+    private final String  album;
+    private final String  genre;
+    private final String  year;
+    private final Integer bpm;
+    private final String  key;
+    private final String  comments;
 
-    public UpdateTrackCommand(String trackId,
-                              String title,
-                              String artist,
-                              String album,
-                              String genre,
-                              String year,
-                              String bpm,
-                              String key,
-                              String comments) {
+    public UpdateTrackCommand(
+            String trackId,
+            String title,
+            String artist,
+            String album,
+            String genre,
+            String year,
+            Integer bpm,
+            String key,
+            String comments
+    ) {
         this.trackId  = trackId;
         this.title    = title;
         this.artist   = artist;
@@ -42,7 +44,7 @@ public class UpdateTrackCommand implements Command {
 
     public String album() { return album; }
 
-    public String bpm() { return bpm; }
+    public Integer bpm() {return bpm;}
 
     public String key() { return key; }
 
