@@ -74,6 +74,11 @@ public class SideBarController {
         playlistListView.setCellFactory(param -> {
             ListCell<PlaylistResponse> cell = new PlaylistCell();
             cell.setOnMouseClicked(event -> onSelectionChange(cell.getIndex()));
+
+            cell.setOnDragEntered(e -> cell.setStyle("-fx-background-color: -fx-accent"));
+
+            cell.setOnDragExited(e -> cell.setStyle(""));
+
             cell.setOnDragOver(event -> {
                 if (!cell.isEmpty()) {
                     event.acceptTransferModes(TransferMode.COPY);

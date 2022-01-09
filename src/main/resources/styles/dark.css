@@ -35,8 +35,7 @@
     -input-bg: -fx-base;
     -tcell-text: #d5d6d6;
     -input-col: -txt-color;
-    -fx-control-inner-background: -odd-color;
-    -fx-control-inner-background-alt: -even-color;
+    -pl-icon-color: -txt-color;
 }
 
 .label{
@@ -107,37 +106,18 @@
     -fx-text-fill: -tcell-text;
 }
 
+.table-view .table-row-cell:even {
+    -fx-background-color: -even-color;
+}
+
+.table-view .table-row-cell:odd {
+    -fx-background-color: -odd-color;
+}
+
 .context-menu .menu-item {
     -fx-padding: 10 20 10 20;
     -fx-text-fill: -txt-color;
   }
-
-/* When the list-cell is selected and focused */
-.list-view:focused .list-cell:filled:focused:selected {
-    -fx-background-color: -fx-focus-color, -fx-cell-focus-inner-border, -fx-selection-bar;
-    -fx-background-insets: 0, 1, 2;
-    -fx-background: -fx-accent;
-    /* -fx-text-fill: -fx-selection-bar-text;  */
-    -fx-text-fill: red;
-}
-
-/* When the list-cell is selected and selected-hovered but not focused.
-    Applied when the multiple items are selected but not focused */
-.list-view:focused .list-cell:filled:selected, .list-view:focused .list-cell:filled:selected:hover {
-    -fx-background: -fx-accent;
-    -fx-background-color: -fx-selection-bar;
-    /* -fx-text-fill: -fx-selection-bar-text;  */
-    -fx-text-fill: green;
-}
-
-/* When the list-cell is selected, focused and mouse hovered */
-.list-view:focused .list-cell:filled:focused:selected:hover {
-    -fx-background: -fx-accent;
-    -fx-background-color: -fx-focus-color, -fx-cell-focus-inner-border, -fx-selection-bar;
-    -fx-background-insets: 0, 1, 2;
-    /* -fx-text-fill: -fx-selection-bar-text;  */
-    -fx-text-fill: yellow;
-}
 
 .play-btn {
     -fx-content-display: graphic-only;
@@ -222,17 +202,31 @@
 }
 
 .list-view {
-    -fx-selection-bar-non-focused: derive(-fx-base, 30%);
-    -fx-background-color: transparent;
+    -fx-selection-bar-non-focused: derive(-fx-base, 50%);
+    -fx-background-color: -sidebar-bg;
+    -fx-background-radius: 0 0 0 10;
+    -fx-border-radius: 0 0 0 10;
 }
+
 
 .list-cell {
-    /* -fx-padding: 0 0 0 10; */
     -fx-text-fill: -txt-color;
-    -fx-background-color: transparent;
+    -fx-background-color: -sidebar-bg;
 }
 
-.list-cell:filled:hover {
+.list-cell:filled:hover .label {
+    -fx-text-fill: -fx-accent;
+}
+
+.list-cell:filled:hover .icon-playlist {
+    -fx-background-color: -fx-accent;
+}
+
+.list-cell:filled:selected .label {
+    -fx-text-fill: -fx-accent;
+}
+
+.list-cell:filled:selected .icon-playlist {
     -fx-background-color: -fx-accent;
 }
 
@@ -287,7 +281,7 @@
 
 
 .icon-playlist {
-    -fx-background-color: -txt-color;
+    -fx-background-color: -pl-icon-color;
     -size: 16;
     -fx-min-height: -size;
     -fx-min-width: -size;

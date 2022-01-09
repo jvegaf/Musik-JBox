@@ -46,6 +46,8 @@ public final class MusikBoxApp extends Application {
         BorderlessScene borderlessScene = stage.craftBorderlessScene(root);
         borderlessScene.setFill(Color.TRANSPARENT);
 
+        borderlessScene.removeDefaultCSS();
+
         borderlessScene.getStylesheets().add("/styles/dark.css");
 
         borderlessScene.setMoveControl(root);
