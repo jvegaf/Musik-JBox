@@ -81,7 +81,8 @@ public class TracklistController {
         positionColumn.setCellValueFactory(cellData -> {
             if (cellData.getValue() instanceof TrackPlaylistResponse) {
                 TrackPlaylistResponse r = (TrackPlaylistResponse) cellData.getValue();
-                return new SimpleStringProperty(r.position().toString());
+
+                return new SimpleStringProperty(r.positionStr());
             }
             return new SimpleStringProperty("");
         });

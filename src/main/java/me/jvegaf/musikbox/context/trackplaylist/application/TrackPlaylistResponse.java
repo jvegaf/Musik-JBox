@@ -34,4 +34,6 @@ public final class TrackPlaylistResponse extends TrackLibraryResponse {
     }
 
     public Integer position() { return position; }
+
+    public String positionStr() { return String.valueOf(position + 1); }
 }

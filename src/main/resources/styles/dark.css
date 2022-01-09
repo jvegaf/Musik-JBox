@@ -114,6 +114,10 @@
     -fx-background-color: -odd-color;
 }
 
+.table-view .table-row-cell:hover .cell {
+    -fx-text-fill: -fx-accent;
+}
+
 .context-menu .menu-item {
     -fx-padding: 10 20 10 20;
     -fx-text-fill: -txt-color;
