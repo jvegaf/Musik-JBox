@@ -30,7 +30,7 @@
         <Label fx:id="remainTimeLabel" layoutX="15.0" layoutY="55.0" AnchorPane.bottomAnchor="10.0"
                AnchorPane.rightAnchor="5.0"/>
     </AnchorPane>
-    <AnchorPane HBox.hgrow="SOMETIMES">
+    <AnchorPane HBox.hgrow="SOMETIMES" fx:id="rightPane">
         <Button fx:id="openFolderBtn" layoutX="202.0" layoutY="20.0" mnemonicParsing="false" prefHeight="25.0"
                 prefWidth="75.0" text="Open" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="108.0"
                 AnchorPane.topAnchor="20.0"/>

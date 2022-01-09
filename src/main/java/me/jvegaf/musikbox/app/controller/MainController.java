@@ -36,7 +36,6 @@ public class MainController {
     @FXML
     private       VBox           container;
 
-
     @Autowired
     public MainController(MusicCollection collection,
                           CommandBus bus,
@@ -57,7 +56,7 @@ public class MainController {
 
     @FXML
     public void initialize() {
-        log.info("container size: " + container.getChildren().size());
+
 
         collection.collectionCategoryProperty().addListener((observable, oldValue, newValue) -> {
             log.info("container size: " + container.getChildren().size());

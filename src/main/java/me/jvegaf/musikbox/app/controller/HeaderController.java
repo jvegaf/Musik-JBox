@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
@@ -27,25 +28,27 @@ public final class HeaderController {
 
 
     @FXML
-    private       Label       artistLabel;
+    private AnchorPane  rightPane;
     @FXML
-    private       Label       titleLabel;
+    private Label       artistLabel;
     @FXML
-    private       Label       currentTimeLabel;
+    private Label       titleLabel;
     @FXML
-    private       Label       remainTimeLabel;
+    private Label       currentTimeLabel;
     @FXML
-    private       ProgressBar progressBar;
+    private Label       remainTimeLabel;
     @FXML
-    private       Button      prevBtn;
+    private ProgressBar progressBar;
     @FXML
-    private       Button      playBtn;
+    private Button      prevBtn;
     @FXML
-    private       Button      pauseBtn;
+    private Button      playBtn;
     @FXML
-    private       Button      nextBtn;
+    private Button      pauseBtn;
     @FXML
-    public        Button      openFolderBtn;
+    private Button      nextBtn;
+    @FXML
+    public  Button      openFolderBtn;
     private final MusicPlayer player;
     private final CommandBus  bus;
     @FXML
@@ -110,24 +113,26 @@ public final class HeaderController {
                                                            player.getMediaPlayer().currentTimeProperty()));
 
         remainTimeLabel.textProperty()
-                       .bind(Bindings.createStringBinding(() -> String.format("%.0f:%02.0f", player.getMediaPlayer()
-                                                                                                   .getCurrentTime()
-                                                                                                   .toMinutes() - player.getMediaPlayer()
-                                                                                                                        .getTotalDuration()
-                                                                                                                        .toMinutes(), (player.getMediaPlayer()
-                                                                                                                                             .getTotalDuration()
-                                                                                                                                             .toSeconds() - player.getMediaPlayer()
-                                                                                                                                                                  .getCurrentTime()
-                                                                                                                                                                  .toSeconds()) % 60), player.getMediaPlayer().currentTimeProperty()));
+                       .bind(Bindings.createStringBinding(() -> String.format("%.0f:%02.0f",
+                                                                              player.getMediaPlayer()
+                                                                                    .getCurrentTime()
+                                                                                    .toMinutes() - player.getMediaPlayer()
+                                                                                                         .getTotalDuration()
+                                                                                                         .toMinutes(),
+                                                                              (player.getMediaPlayer()
+                                                                                     .getTotalDuration()
+                                                                                     .toSeconds() - player.getMediaPlayer()
+                                                                                                          .getCurrentTime()
+                                                                                                          .toSeconds()) % 60),
+                                                          player.getMediaPlayer().currentTimeProperty()));
     }
 
     private void initProgressBar() {
 
 
-        this.player.currentPlayTimeProperty
-                .addListener((observable, oldValue, newValue) -> progressBar
-                        .setProgress((newValue.toMillis() / this.player
-                                .getMediaPlayer().getTotalDuration().toMillis())));
+        this.player.currentPlayTimeProperty.addListener((observable, oldValue, newValue) -> progressBar.setProgress((newValue.toMillis() / this.player.getMediaPlayer()
+                                                                                                                                                      .getTotalDuration()
+                                                                                                                                                      .toMillis())));
 
         progressBar.setOnMouseClicked(evt -> {
             double dx = evt.getX();
