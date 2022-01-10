@@ -20,9 +20,9 @@ public final class SearchQu {
     }
 
     private String sanitize(String s) {
-        return s.replaceAll("_", " ").replaceAll("-", " ").replaceAll("[|]", " ").replaceAll("[(]", " ").replaceAll(
-                "[)]",
-                " ").replaceAll("\"", " ").replaceAll(" ", " ").trim().replaceAll("\\s+", "+");
+        return s.replaceAll("[^a-z0-9A-Z]g", " ")
+                .trim()
+                .replaceAll("\\s+", "+");
     }
 
     public String rawQuery() {
