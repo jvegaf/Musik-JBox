@@ -52,7 +52,11 @@ public final class MusicCollection {
         }
 
         if (event instanceof TrackUpdatedDomainEvent) {
-            if (tracks.removeIf(track -> track.id().equals(event.aggregateId()))) {
+            if (tracks.stream()
+                      .anyMatch(track -> track.id()
+                                              .equals(event.aggregateId()))) {
+                tracks.removeIf(track -> track.id()
+                                              .equals(event.aggregateId()));
                 tracks.add((TrackResponse) bus.ask(new FindTrackQuery(event.aggregateId())));
                 log.info("updated in collection: " + event.aggregateId());
             }
