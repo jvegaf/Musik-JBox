@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Objects;
 
-public final class TrackCreatedDomainEvent extends DomainEvent implements TrackDomainEvent {
+public final class TrackCreatedDomainEvent extends DomainEvent {
 
     private final String name;
     private final String location;

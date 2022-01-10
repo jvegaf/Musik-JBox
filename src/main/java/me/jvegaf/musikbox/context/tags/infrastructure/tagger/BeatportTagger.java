@@ -4,6 +4,7 @@ import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import lombok.extern.log4j.Log4j2;
 import me.jvegaf.musikbox.context.tags.application.SearchQu;
+import me.jvegaf.musikbox.context.tags.application.TagResponse;
 import me.jvegaf.musikbox.context.tags.domain.Tag;
 import me.jvegaf.musikbox.context.tags.domain.Tagger;
 import me.jvegaf.musikbox.shared.domain.Service;
@@ -27,7 +28,7 @@ public class BeatportTagger implements Tagger {
     }
 
     @Override
-    public Tag search(String title, String artist, Integer duration) {
+    public TagResponse search(String title, String artist, Integer duration) {
         if (!this.token.isValid()) this.token = getToken();
 
         SearchQu searchQu = new SearchQu(title, artist);
@@ -49,7 +50,9 @@ public class BeatportTagger implements Tagger {
 
         List<Tag> tags = createTagsFromResponse(response);
 
-        return matchTags(tags, duration);
+        if (tags.size() < 1) return new TagResponse();
+
+        return new TagResponse(matchTags(tags, duration));
 
     }
 

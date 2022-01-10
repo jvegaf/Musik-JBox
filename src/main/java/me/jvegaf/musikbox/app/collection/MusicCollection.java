@@ -1,34 +1,63 @@
 package me.jvegaf.musikbox.app.collection;
 
 import javafx.beans.property.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import lombok.extern.log4j.Log4j2;
 import me.jvegaf.musikbox.app.items.Category;
 import me.jvegaf.musikbox.context.playlists.application.PlaylistResponse;
 import me.jvegaf.musikbox.context.playlists.application.find.FindPlaylistQuery;
 import me.jvegaf.musikbox.context.trackplaylist.application.search.SearchAllTracksInPlaylistQuery;
 import me.jvegaf.musikbox.context.tracks.application.TracksResponse;
+import me.jvegaf.musikbox.context.tracks.application.find.FindTrackQuery;
 import me.jvegaf.musikbox.context.tracks.application.search_all.SearchAllTracksQuery;
 import me.jvegaf.musikbox.shared.domain.Service;
 import me.jvegaf.musikbox.shared.domain.TrackResponse;
+import me.jvegaf.musikbox.shared.domain.bus.event.DomainEvent;
+import me.jvegaf.musikbox.shared.domain.bus.event.DomainEventSubscriber;
 import me.jvegaf.musikbox.shared.domain.bus.query.QueryBus;
+import me.jvegaf.musikbox.shared.domain.track.TrackCreatedDomainEvent;
+import me.jvegaf.musikbox.shared.domain.track.TrackUpdatedDomainEvent;
+import org.springframework.context.event.EventListener;
 
-import java.util.List;
-
+@Log4j2
 @Service
+@DomainEventSubscriber({DomainEvent.class})
 public final class MusicCollection {
 
-    private final ObjectProperty<List<TrackResponse>> tracks;
-    private final QueryBus                            bus;
-    private final ObjectProperty<Category>            collectionCategory;
-    private final StringProperty                      playListName;
-    private final IntegerProperty                     collectionTracksCount;
+    private final ObservableList<TrackResponse> tracks;
+    private final QueryBus                      bus;
+    private final ObjectProperty<Category>      collectionCategory;
+    private final StringProperty                playListName;
+    private final IntegerProperty               collectionTracksCount;
 
 
     public MusicCollection(QueryBus bus) {
         this.bus                   = bus;
-        this.tracks                = new SimpleObjectProperty<>(libraryTracksRequest().tracks());
+        this.tracks                = FXCollections.observableArrayList(libraryTracksRequest().tracks());
         this.collectionCategory    = new SimpleObjectProperty<>(Category.HEAD);
         this.playListName          = new SimpleStringProperty("");
-        this.collectionTracksCount = new SimpleIntegerProperty(tracks.get().size());
+        this.collectionTracksCount = new SimpleIntegerProperty(tracks.size());
+    }
+
+    @EventListener
+    public void on(DomainEvent event) {
+        if (event instanceof TrackCreatedDomainEvent && collectionCategory.get()==Category.HEAD) {
+            getNewTrack(event.aggregateId());
+            log.info("added to collection: " + event.aggregateId());
+        }
+
+        if (event instanceof TrackUpdatedDomainEvent) {
+            if (tracks.removeIf(track -> track.id().equals(event.aggregateId()))) {
+                tracks.add((TrackResponse) bus.ask(new FindTrackQuery(event.aggregateId())));
+                log.info("updated in collection: " + event.aggregateId());
+            }
+        }
+    }
+
+    private void getNewTrack(String aggregateId) {
+        TrackResponse tr = (TrackResponse) bus.ask(new FindTrackQuery(aggregateId));
+        tracks.add(tr);
     }
 
     public void onSelectionChange(Category type, String selectedId) {
@@ -36,23 +65,27 @@ public final class MusicCollection {
         TracksResponse response = null;
 
         switch (type) {
-            case HEAD -> {
-                response = libraryTracksRequest();
-                collectionCategory.set(Category.HEAD);
-                playListName.set("");
-            }
-            case PLAYLIST -> {
-                response = tracksOfPlaylistRequest(selectedId);
-                collectionCategory.set(Category.PLAYLIST);
-                playListName.set(playListName(selectedId));
-            }
+            case HEAD -> requestTracksOnLibrary();
+            case PLAYLIST -> requestTracksOnPlaylist(selectedId);
         }
-        tracks.set(response.tracks());
+    }
+
+    private void requestTracksOnLibrary() {
+        var response = libraryTracksRequest();
+        collectionCategory.set(Category.HEAD);
+        playListName.set("");
+        tracks.clear();
+        tracks.addAll(response.tracks());
         collectionTracksCount.set(response.tracks().size());
     }
 
-    public List<TrackResponse> getTracks() {
-        return tracks.get();
+    private void requestTracksOnPlaylist(String playlistId) {
+        var response = tracksOfPlaylistRequest(playlistId);
+        collectionCategory.set(Category.PLAYLIST);
+        playListName.set(playListName(playlistId));
+        tracks.clear();
+        tracks.addAll(response.tracks());
+        collectionTracksCount.set(response.tracks().size());
     }
 
     private TracksResponse libraryTracksRequest() {
@@ -63,7 +96,7 @@ public final class MusicCollection {
         return (TracksResponse) bus.ask(new SearchAllTracksInPlaylistQuery(selectedId));
     }
 
-    public ObjectProperty<List<TrackResponse>> tracksProperty() {
+    public ObservableList<TrackResponse> tracksProperty() {
         return tracks;
     }
 
@@ -73,20 +106,8 @@ public final class MusicCollection {
 
     public IntegerProperty collectionTracksCountProperty() { return collectionTracksCount; }
 
-    public TrackResponse nextof(TrackResponse track) {
-        if (tracks.get().isEmpty()) {
-            return ((TracksResponse) (bus.ask(new SearchAllTracksQuery()))).tracks().get(0);
-        }
-        int index = tracks.get().indexOf(track);
-        return index == -1 ? tracks.get().get(0) : tracks.get().get(index + 1);
-    }
-
     public String playListName(String selectedId) {
         var response = (PlaylistResponse) bus.ask(new FindPlaylistQuery(selectedId));
         return response.name();
-    }
-
-    public Category getCategory() {
-        return collectionCategory.get();
     }
 }

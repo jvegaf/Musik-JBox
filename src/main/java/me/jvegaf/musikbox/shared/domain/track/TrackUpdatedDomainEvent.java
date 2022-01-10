@@ -20,7 +20,6 @@ public final class TrackUpdatedDomainEvent extends DomainEvent {
 
     public TrackUpdatedDomainEvent(String aggregateId, String name, String location) {
         super(aggregateId);
-
         this.name     = name;
         this.location = location;
     }

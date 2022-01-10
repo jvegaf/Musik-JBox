@@ -1,7 +1,7 @@
 package me.jvegaf.musikbox.context.shared.application;
 
+import me.jvegaf.musikbox.context.tags.application.TagResponse;
 import me.jvegaf.musikbox.context.tags.application.search.SearchTagsQuery;
-import me.jvegaf.musikbox.context.tags.domain.Tag;
 import me.jvegaf.musikbox.context.tracks.application.update.UpdateTrackCommand;
 import me.jvegaf.musikbox.shared.domain.Service;
 import me.jvegaf.musikbox.shared.domain.bus.command.CommandBus;
@@ -22,17 +22,20 @@ public class FixTagsCommandHandler implements CommandHandler<FixTagsCommand> {
 
     @Override
     public void handle(FixTagsCommand command) {
-        Tag t = (Tag) queryBus.ask(new SearchTagsQuery(command.track().title(),
-                                                       command.track().artist().orElse(""),
-                                                       command.track().durationInt()));
+        TagResponse r = (TagResponse) queryBus.ask(new SearchTagsQuery(command.track().title(),
+                                                                       command.track().artist().orElse(""),
+                                                                       command.track().durationInt()));
+
+        if (r.tag()==null) return;
+
         commmandBus.dispatch(new UpdateTrackCommand(command.track().id(),
-                                                    t.title(),
-                                                    t.artist(),
-                                                    t.album(),
-                                                    t.genre(),
-                                                    t.year(),
-                                                    t.bpm(),
-                                                    t.key(),
+                                                    r.tag().title(),
+                                                    r.tag().artist(),
+                                                    r.tag().album(),
+                                                    r.tag().genre(),
+                                                    r.tag().year(),
+                                                    r.tag().bpm(),
+                                                    r.tag().key(),
                                                     null
 
         ));

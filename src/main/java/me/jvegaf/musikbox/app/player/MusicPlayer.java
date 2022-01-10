@@ -12,6 +12,7 @@ import me.jvegaf.musikbox.shared.domain.Service;
 import me.jvegaf.musikbox.shared.domain.TrackResponse;
 
 import java.io.File;
+import java.util.Optional;
 
 @Service
 public final class MusicPlayer {
@@ -35,10 +36,21 @@ public final class MusicPlayer {
         this.statusProperty          = new SimpleObjectProperty<>(MediaPlayer.Status.UNKNOWN);
     }
 
+    public void playNextTrack() {
+        Optional<TrackResponse> t = Optional.ofNullable(collection.tracksProperty()
+                                                                  .get(collection.tracksProperty()
+                                                                                 .indexOf(currentTrack) + 1));
+        if (t.isPresent()) {
+            playTrack(t.get());
+            return;
+        }
+        playTrack(collection.tracksProperty().get(0));
+    }
+
     public void playTrack(TrackResponse track) {
         if (currentTrackChecker(track)) return;
-        if (this.mPlayer != null) stopTrack();
-        var path = track.location();
+        if (this.mPlayer!=null) stopTrack();
+        var   path  = track.location();
         Media media = new Media(new File(path).toURI().toString());
         this.mPlayer = new MediaPlayer(media);
         this.mPlayer.play();
@@ -49,17 +61,14 @@ public final class MusicPlayer {
         setCurrentPlayTimeProp();
     }
 
-    private void setStatusProp() {
-        this.mPlayer.statusProperty().addListener((observable, oldValue, newValue) -> this.statusProperty.setValue(newValue));
-    }
-
-    private void setCurrentPlayTimeProp(){
-        this.mPlayer.currentTimeProperty().addListener((observable, oldValue, newValue) -> this.currentPlayTimeProperty.setValue(newValue));
-    }
-
     private boolean currentTrackChecker(TrackResponse track) {
-        if (this.currentTrack == null) return false;
+        if (this.currentTrack==null) return false;
         return currentTrack.location().equals(track.location());
+    }
+
+    private void setStatusProp() {
+        this.mPlayer.statusProperty().addListener((observable, oldValue, newValue) -> this.statusProperty.setValue(
+                newValue));
     }
 
     public void pauseTrack() {
@@ -83,7 +92,8 @@ public final class MusicPlayer {
         return this.mPlayer;
     }
 
-    public void playNextTrack() {
-        playTrack(collection.nextof(currentTrack));
+    private void setCurrentPlayTimeProp() {
+        this.mPlayer.currentTimeProperty()
+                    .addListener((observable, oldValue, newValue) -> this.currentPlayTimeProperty.setValue(newValue));
     }
 }
