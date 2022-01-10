@@ -59,8 +59,6 @@ public class MainController {
 
 
         collection.collectionCategoryProperty().addListener((observable, oldValue, newValue) -> {
-            log.info("container size: " + container.getChildren().size());
-            log.info("new value " + newValue.toString());
             if (newValue == Category.PLAYLIST && container.getChildren().size() < 2) container.getChildren()
                                                                                               .add(0, playlistDetail);
             if (newValue == Category.HEAD && container.getChildren().size() > 1) container.getChildren().remove(0);

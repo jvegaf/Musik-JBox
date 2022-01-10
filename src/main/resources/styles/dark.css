@@ -118,6 +118,14 @@
     -fx-text-fill: -fx-accent;
 }
 
+.table-view .table-row-cell:selected .cell {
+    -fx-background-color: -fx-accent;
+}
+
+.table-view .table-row-cell:selected:hover .cell {
+    -fx-text-fill: -txt-color;
+}
+
 .context-menu .menu-item {
     -fx-padding: 10 20 10 20;
     -fx-text-fill: -txt-color;
