@@ -17,14 +17,14 @@ import java.util.Optional;
 @Service
 public final class MusicPlayer {
 
-    private final MusicCollection                    collection;
-    private final TrackResponse                      currentTrack;
-    private       MediaPlayer                        mPlayer;
     public final  StringProperty                     titleProperty;
     public final  StringProperty                     artistProperty;
     public final  ObjectProperty<Duration>           currentPlayTimeProperty;
     public final  ObjectProperty<Duration>           totalDurationProperty;
     public final  ObjectProperty<MediaPlayer.Status> statusProperty;
+    private final MusicCollection                    collection;
+    private final TrackResponse                      currentTrack;
+    private       MediaPlayer                        mPlayer;
 
     public MusicPlayer(MusicCollection collection) {
         this.collection              = collection;
@@ -66,9 +66,19 @@ public final class MusicPlayer {
         return currentTrack.location().equals(track.location());
     }
 
+    public void stopTrack() {
+        this.mPlayer.dispose();
+        this.mPlayer = null;
+    }
+
     private void setStatusProp() {
         this.mPlayer.statusProperty().addListener((observable, oldValue, newValue) -> this.statusProperty.setValue(
                 newValue));
+    }
+
+    private void setCurrentPlayTimeProp() {
+        this.mPlayer.currentTimeProperty()
+                    .addListener((observable, oldValue, newValue) -> this.currentPlayTimeProperty.setValue(newValue));
     }
 
     public void pauseTrack() {
@@ -83,17 +93,7 @@ public final class MusicPlayer {
         this.mPlayer.seek(value);
     }
 
-    public void stopTrack() {
-        this.mPlayer.dispose();
-        this.mPlayer = null;
-    }
-
     public MediaPlayer getMediaPlayer() {
         return this.mPlayer;
-    }
-
-    private void setCurrentPlayTimeProp() {
-        this.mPlayer.currentTimeProperty()
-                    .addListener((observable, oldValue, newValue) -> this.currentPlayTimeProperty.setValue(newValue));
     }
 }

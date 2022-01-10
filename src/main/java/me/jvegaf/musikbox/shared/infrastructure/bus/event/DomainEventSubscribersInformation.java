@@ -13,12 +13,12 @@ import java.util.Set;
 public final class DomainEventSubscribersInformation {
     HashMap<Class<?>, DomainEventSubscriberInformation> information;
 
-    public DomainEventSubscribersInformation(HashMap<Class<?>, DomainEventSubscriberInformation> information) {
-        this.information = information;
-    }
-
     public DomainEventSubscribersInformation() {
         this(scanDomainEventSubscribers());
+    }
+
+    public DomainEventSubscribersInformation(HashMap<Class<?>, DomainEventSubscriberInformation> information) {
+        this.information = information;
     }
 
     private static HashMap<Class<?>, DomainEventSubscriberInformation> scanDomainEventSubscribers() {
@@ -30,10 +30,9 @@ public final class DomainEventSubscribersInformation {
         for (Class<?> subscriberClass : subscribers) {
             DomainEventSubscriber annotation = subscriberClass.getAnnotation(DomainEventSubscriber.class);
 
-            subscribersInformation.put(
-                subscriberClass,
-                new DomainEventSubscriberInformation(subscriberClass, Arrays.asList(annotation.value()))
-            );
+            subscribersInformation.put(subscriberClass,
+                                       new DomainEventSubscriberInformation(subscriberClass,
+                                                                            Arrays.asList(annotation.value())));
         }
 
         return subscribersInformation;

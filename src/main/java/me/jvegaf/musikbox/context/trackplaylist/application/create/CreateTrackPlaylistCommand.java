@@ -12,7 +12,7 @@ public class CreateTrackPlaylistCommand implements Command {
         this.trackId    = trackId;
     }
 
-    public String playlistId() { return playlistId; }
+    public String playlistId() {return playlistId;}
 
-    public String trackId() { return trackId; }
+    public String trackId() {return trackId;}
 }

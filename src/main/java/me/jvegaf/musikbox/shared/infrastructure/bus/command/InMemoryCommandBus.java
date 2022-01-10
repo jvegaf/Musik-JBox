@@ -27,7 +27,8 @@ public final class InMemoryCommandBus implements CommandBus {
             CommandHandler handler = context.getBean(commandHandlerClass);
 
             handler.handle(command);
-        } catch (Throwable error) {
+        }
+        catch (Throwable error) {
             throw new CommandHandlerExecutionError(error);
         }
     }

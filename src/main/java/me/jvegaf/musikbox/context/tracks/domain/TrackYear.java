@@ -8,5 +8,5 @@ public class TrackYear extends YearValueObject {
         super(value);
     }
 
-    public TrackYear() { super(""); }
+    public TrackYear() {super("");}
 }

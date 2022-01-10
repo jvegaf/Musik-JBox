@@ -14,6 +14,10 @@ public abstract class Identifier implements Serializable {
         this.value = value;
     }
 
+    private void ensureValidUuid(String value) throws IllegalArgumentException {
+        UUID.fromString(value);
+    }
+
     protected Identifier() {
         this.value = null;
     }
@@ -22,22 +26,20 @@ public abstract class Identifier implements Serializable {
         return value;
     }
 
-    @Override public int hashCode() {
+    @Override
+    public int hashCode() {
         return Objects.hash(value);
     }
 
-    @Override public boolean equals(Object o) {
-        if (this == o) {
+    @Override
+    public boolean equals(Object o) {
+        if (this==o) {
             return true;
         }
-        if (o == null || getClass() != o.getClass()) {
+        if (o==null || getClass()!=o.getClass()) {
             return false;
         }
         Identifier that = (Identifier) o;
         return value.equals(that.value);
-    }
-
-    private void ensureValidUuid(String value) throws IllegalArgumentException {
-        UUID.fromString(value);
     }
 }

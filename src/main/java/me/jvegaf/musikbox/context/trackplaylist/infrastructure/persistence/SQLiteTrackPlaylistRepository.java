@@ -25,7 +25,7 @@ public class SQLiteTrackPlaylistRepository extends HibernateRepository<TrackPlay
     }
 
     @Override
-    public void save(TrackPlaylist trackPlaylist) { persist(trackPlaylist); }
+    public void save(TrackPlaylist trackPlaylist) {persist(trackPlaylist);}
 
     @Override
     public List<TrackPlaylist> search(String playlistId) {

@@ -12,23 +12,23 @@ public abstract class DurationValueObject {
         this.value = fromStringValue(value);
     }
 
+    private int fromStringValue(String strValue) {
+        String[] timeParts = strValue.split(":");
+        int      minutes   = Integer.parseInt(timeParts[0]);
+        int      seconds   = Integer.parseInt(timeParts[1]);
+        return minutes * 60 + seconds;
+    }
+
     public DurationValueObject() {
         this.value = null;
     }
 
-    public Integer value() { return value; }
+    public Integer value() {return value;}
 
     public String stringValue() {
         int minutes = this.value / 60;
         int seconds = this.value % 60;
         return String.format("%02d:%02d", minutes, seconds);
-    }
-
-    private int fromStringValue(String strValue) {
-        String[] timeParts = strValue.split(":");
-        int minutes = Integer.parseInt(timeParts[ 0 ]);
-        int seconds = Integer.parseInt(timeParts[ 1 ]);
-        return minutes * 60 + seconds;
     }
 
 

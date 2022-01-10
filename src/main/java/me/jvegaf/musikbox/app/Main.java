@@ -9,7 +9,7 @@ import org.springframework.context.annotation.FilterType;
 
 @SpringBootApplication(exclude = HibernateJpaAutoConfiguration.class)
 @ComponentScan(includeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = Service.class),
-               value = { "me.jvegaf.musikbox.context", "me.jvegaf.musikbox.app", "me.jvegaf.musikbox.shared" })
+               value = {"me.jvegaf.musikbox.context", "me.jvegaf.musikbox.app", "me.jvegaf.musikbox.shared"})
 public class Main {
 
     public static void main(String[] args) {

@@ -17,13 +17,15 @@ public final class TracksByCriteriaSearcher {
     private final TrackRepository repository;
 
 
-    public TracksByCriteriaSearcher(TrackRepository repository) { this.repository = repository; }
+    public TracksByCriteriaSearcher(TrackRepository repository) {this.repository = repository;}
 
     public TracksResponse search(Filters filters, Order order, Optional<Integer> limit, Optional<Integer> offset) {
 
         Criteria criteria = new Criteria(filters, order, limit, offset);
 
-        return new TracksResponse(repository.matching(criteria).stream().map(TrackLibraryResponse::fromAggregate)
+        return new TracksResponse(repository.matching(criteria)
+                                            .stream()
+                                            .map(TrackLibraryResponse::fromAggregate)
                                             .collect(Collectors.toList()));
     }
 }

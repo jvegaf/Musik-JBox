@@ -25,6 +25,23 @@ public final class TrackPlaylistCreatedDomainEvent extends DomainEvent {
     }
 
     @Override
+    public int hashCode() {
+        return Objects.hash(aggregateId(), eventId(), occurredOn());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this==o) {
+            return true;
+        }
+        if (o==null || getClass()!=o.getClass()) {
+            return false;
+        }
+        TrackPlaylistCreatedDomainEvent that = (TrackPlaylistCreatedDomainEvent) o;
+        return eventName().equals(that.eventId());
+    }
+
+    @Override
     public String eventName() {
         return "track.added.to.playlist";
     }
@@ -39,28 +56,9 @@ public final class TrackPlaylistCreatedDomainEvent extends DomainEvent {
     }
 
     @Override
-    public TrackPlaylistCreatedDomainEvent fromPrimitives(String aggregateId,
-                                                          HashMap<String, Serializable> body,
-                                                          String eventId,
-                                                          String occurredOn) {
+    public TrackPlaylistCreatedDomainEvent fromPrimitives(
+            String aggregateId, HashMap<String, Serializable> body, String eventId, String occurredOn
+    ) {
         return new TrackPlaylistCreatedDomainEvent(aggregateId, eventId, occurredOn);
-    }
-
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(aggregateId(), eventId(), occurredOn());
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        TrackPlaylistCreatedDomainEvent that = (TrackPlaylistCreatedDomainEvent) o;
-        return eventName().equals(that.eventId());
     }
 }

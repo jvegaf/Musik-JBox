@@ -12,13 +12,13 @@ public final class Playlist extends AggregateRoot {
     private final PlaylistName name;
 
     public Playlist(PlaylistId id, PlaylistName name) {
-        this.id     = id;
-        this.name   = name;
+        this.id   = id;
+        this.name = name;
     }
 
     public Playlist() {
-        this.id     = null;
-        this.name   = null;
+        this.id   = null;
+        this.name = null;
     }
 
     public static Playlist create(PlaylistName name) {
@@ -31,10 +31,6 @@ public final class Playlist extends AggregateRoot {
         return playlist;
     }
 
-    public PlaylistId id() { return id; }
-
-    public PlaylistName name() { return name; }
-
     @Override
     public int hashCode() {
         return super.hashCode();
@@ -42,12 +38,16 @@ public final class Playlist extends AggregateRoot {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
+        if (this==obj) return true;
 
-        if (obj == null || getClass() != obj.getClass()) return false;
+        if (obj==null || getClass()!=obj.getClass()) return false;
         Playlist p = (Playlist) obj;
         return id.equals(p.id()) && name.equals(p.name());
     }
+
+    public PlaylistId id() {return id;}
+
+    public PlaylistName name() {return name;}
 
     public Playlist update(PlaylistName newName) {
         Playlist p = new Playlist(this.id(), newName);

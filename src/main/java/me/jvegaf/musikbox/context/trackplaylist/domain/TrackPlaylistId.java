@@ -10,7 +10,7 @@ public class TrackPlaylistId extends Identifier {
         super(id);
     }
 
-    public TrackPlaylistId() { }
+    public TrackPlaylistId() {}
 
 
     public static TrackPlaylistId create() {

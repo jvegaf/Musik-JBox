@@ -8,5 +8,5 @@ public class TrackAlbum extends StringValueObject {
         super(value);
     }
 
-    public TrackAlbum() { super(""); }
+    public TrackAlbum() {super("");}
 }

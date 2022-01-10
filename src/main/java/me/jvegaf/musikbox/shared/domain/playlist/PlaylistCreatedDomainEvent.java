@@ -41,27 +41,25 @@ public final class PlaylistCreatedDomainEvent extends DomainEvent {
     }
 
     @Override
-    public DomainEvent fromPrimitives(String aggregateId,
-                                      HashMap<String, Serializable> body,
-                                      String eventId,
-                                      String occurredOn) {
-        return new PlaylistCreatedDomainEvent(aggregateId,
-                                              eventId,
-                                              occurredOn,
-                                              (String) body.get("name"));
+    public DomainEvent fromPrimitives(
+            String aggregateId, HashMap<String, Serializable> body, String eventId, String occurredOn
+    ) {
+        return new PlaylistCreatedDomainEvent(aggregateId, eventId, occurredOn, (String) body.get("name"));
     }
 
-    public String name() { return name; }
+    public String name() {return name;}
 
-    @Override public int hashCode() {
+    @Override
+    public int hashCode() {
         return Objects.hash(name);
     }
 
-    @Override public boolean equals(Object o) {
-        if (this == o) {
+    @Override
+    public boolean equals(Object o) {
+        if (this==o) {
             return true;
         }
-        if (o == null || getClass() != o.getClass()) {
+        if (o==null || getClass()!=o.getClass()) {
             return false;
         }
         PlaylistCreatedDomainEvent that = (PlaylistCreatedDomainEvent) o;

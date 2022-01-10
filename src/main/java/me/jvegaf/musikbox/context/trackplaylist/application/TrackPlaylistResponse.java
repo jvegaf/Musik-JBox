@@ -14,9 +14,7 @@ public final class TrackPlaylistResponse extends TrackLibraryResponse {
     }
 
     public static TrackResponse fromAggregate(Track track, Integer position) {
-        var
-                r =
-                new TrackPlaylistResponse(track.id().value(),
+        var r = new TrackPlaylistResponse(track.id().value(),
                                           track.title().value(),
                                           track.location().value(),
                                           track.duration().stringValue(),
@@ -33,7 +31,7 @@ public final class TrackPlaylistResponse extends TrackLibraryResponse {
         return r;
     }
 
-    public Integer position() { return position; }
+    public Integer position() {return position;}
 
-    public String positionStr() { return String.valueOf(position + 1); }
+    public String positionStr() {return String.valueOf(position + 1);}
 }

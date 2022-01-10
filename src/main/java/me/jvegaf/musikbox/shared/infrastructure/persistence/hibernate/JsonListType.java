@@ -46,51 +46,31 @@ public class JsonListType implements UserType, DynamicParameterizedType {
 
     @Override
     public Object nullSafeGet(
-        ResultSet rs,
-        String[] names,
-        SharedSessionContractImplementor session,
-        Object owner
+            ResultSet rs, String[] names, SharedSessionContractImplementor session, Object owner
     ) throws HibernateException, SQLException {
         return nullSafeGet(rs, names, owner);
     }
 
     @Override
     public void nullSafeSet(
-        PreparedStatement st,
-        Object value,
-        int index,
-        SharedSessionContractImplementor session
+            PreparedStatement st, Object value, int index, SharedSessionContractImplementor session
     ) throws HibernateException, SQLException {
         nullSafeSet(st, value, index);
-    }
-
-    public Object nullSafeGet(ResultSet rs, String[] names, Object owner) throws HibernateException, SQLException {
-        String value  = rs.getString(names[0]).replace("\"value\"", "").replace("{:", "").replace("}", "");
-        Object result = null;
-        if (valueType == null) {
-            throw new HibernateException("Value type not set.");
-        }
-        if (value != null && !value.equals("")) {
-            try {
-                result = OBJECT_MAPPER.readValue(value, valueType);
-            } catch (IOException e) {
-                throw new HibernateException("Exception deserializing value " + value, e);
-            }
-        }
-        return result;
     }
 
     public void nullSafeSet(PreparedStatement st, Object value, int index) throws HibernateException, SQLException {
         StringWriter sw = new StringWriter();
         OBJECT_MAPPER.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
 
-        if (value == null) {
+        if (value==null) {
             st.setNull(index, Types.VARCHAR);
-        } else {
+        }
+        else {
             try {
                 OBJECT_MAPPER.writeValue(sw, value);
                 st.setString(index, sw.toString());
-            } catch (IOException e) {
+            }
+            catch (IOException e) {
                 throw new HibernateException("Exception serializing value " + value, e);
             }
         }
@@ -98,9 +78,10 @@ public class JsonListType implements UserType, DynamicParameterizedType {
 
     @Override
     public Object deepCopy(Object value) throws HibernateException {
-        if (value == null) {
+        if (value==null) {
             return null;
-        } else if (valueType.isCollectionLikeType()) {
+        }
+        else if (valueType.isCollectionLikeType()) {
             Object     newValue           = new ArrayList<>();
             Collection newValueCollection = (Collection) newValue;
             newValueCollection.addAll((Collection) value);
@@ -130,6 +111,23 @@ public class JsonListType implements UserType, DynamicParameterizedType {
         return deepCopy(original);
     }
 
+    public Object nullSafeGet(ResultSet rs, String[] names, Object owner) throws HibernateException, SQLException {
+        String value  = rs.getString(names[0]).replace("\"value\"", "").replace("{:", "").replace("}", "");
+        Object result = null;
+        if (valueType==null) {
+            throw new HibernateException("Value type not set.");
+        }
+        if (value!=null && !value.equals("")) {
+            try {
+                result = OBJECT_MAPPER.readValue(value, valueType);
+            }
+            catch (IOException e) {
+                throw new HibernateException("Exception deserializing value " + value, e);
+            }
+        }
+        return result;
+    }
+
     @Override
     public void setParameterValues(Properties parameters) {
         try {
@@ -137,7 +135,8 @@ public class JsonListType implements UserType, DynamicParameterizedType {
 
             valueType = OBJECT_MAPPER.getTypeFactory().constructCollectionType(ArrayList.class, entityClass);
             classType = List.class;
-        } catch (ClassNotFoundException e) {
+        }
+        catch (ClassNotFoundException e) {
             throw new IllegalArgumentException(e);
         }
     }

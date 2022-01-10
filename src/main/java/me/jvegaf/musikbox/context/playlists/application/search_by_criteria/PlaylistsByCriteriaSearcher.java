@@ -17,12 +17,15 @@ public final class PlaylistsByCriteriaSearcher {
     private final PlaylistRepository repository;
 
 
-    public PlaylistsByCriteriaSearcher(PlaylistRepository repository) { this.repository = repository; }
+    public PlaylistsByCriteriaSearcher(PlaylistRepository repository) {this.repository = repository;}
 
     public PlaylistsResponse search(Filters filters, Order order, Optional<Integer> limit, Optional<Integer> offset) {
 
         Criteria criteria = new Criteria(filters, order, limit, offset);
 
-        return new PlaylistsResponse(repository.matching(criteria).stream().map(PlaylistResponse::fromAggregate).collect(Collectors.toList()));
+        return new PlaylistsResponse(repository.matching(criteria)
+                                               .stream()
+                                               .map(PlaylistResponse::fromAggregate)
+                                               .collect(Collectors.toList()));
     }
 }

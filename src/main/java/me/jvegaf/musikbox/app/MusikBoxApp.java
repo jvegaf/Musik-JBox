@@ -26,9 +26,8 @@ public final class MusikBoxApp extends Application {
 
     @Override
     public void init() {
-        applicationContext =
-                new SpringApplicationBuilder().sources(Main.class)
-                                              .run(getParameters().getRaw().toArray(new String[ 0 ]));
+        applicationContext = new SpringApplicationBuilder().sources(Main.class).run(getParameters().getRaw()
+                                                                                                   .toArray(new String[0]));
 
         fxWeaver = applicationContext.getBean(FxWeaver.class);
     }
@@ -42,7 +41,7 @@ public final class MusikBoxApp extends Application {
 
         MusikBoxApp.primaryStage = stage;
 
-        Parent root = fxWeaver.loadView(MainController.class);
+        Parent          root            = fxWeaver.loadView(MainController.class);
         BorderlessScene borderlessScene = stage.craftBorderlessScene(root);
         borderlessScene.setFill(Color.TRANSPARENT);
 

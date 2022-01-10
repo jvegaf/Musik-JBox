@@ -13,7 +13,8 @@ public class CreatePlaylistCommandHandler implements CommandHandler<CreatePlayli
         this.creator = creator;
     }
 
-    @Override public void handle(CreatePlaylistCommand command) {
+    @Override
+    public void handle(CreatePlaylistCommand command) {
         PlaylistName name = new PlaylistName(command.name());
 
         creator.create(name);

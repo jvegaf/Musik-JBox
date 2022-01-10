@@ -16,7 +16,7 @@ public final class AllTracksSearcher {
     private final TrackRepository repository;
 
 
-    public AllTracksSearcher(TrackRepository repository) { this.repository = repository; }
+    public AllTracksSearcher(TrackRepository repository) {this.repository = repository;}
 
     public TracksResponse search() {
         return new TracksResponse(repository.matching(new Criteria(Filters.none(), Order.asc("title")))

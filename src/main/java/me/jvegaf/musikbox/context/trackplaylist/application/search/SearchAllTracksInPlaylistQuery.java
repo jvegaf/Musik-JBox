@@ -6,7 +6,7 @@ public final class SearchAllTracksInPlaylistQuery implements Query {
 
     private final String playlistId;
 
-    public SearchAllTracksInPlaylistQuery(String playlistId) { this.playlistId = playlistId; }
+    public SearchAllTracksInPlaylistQuery(String playlistId) {this.playlistId = playlistId;}
 
-    public String playlistId() { return playlistId; }
+    public String playlistId() {return playlistId;}
 }

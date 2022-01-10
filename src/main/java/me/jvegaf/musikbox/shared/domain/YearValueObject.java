@@ -10,13 +10,17 @@ public abstract class YearValueObject {
         this.value = validate(value);
     }
 
-    public String value() { return value; }
+    private String validate(String value) {
+        return value.length() > 4 ? value.substring(0, 4):value;
+    }
 
-    @Override public int hashCode() {
+    @Override
+    public int hashCode() {
         return Objects.hash(value);
     }
 
-    @Override public boolean equals(Object o) {
+    @Override
+    public boolean equals(Object o) {
         if (this==o) {
             return true;
         }
@@ -26,11 +30,10 @@ public abstract class YearValueObject {
         return Objects.equals(value, that.value);
     }
 
-    @Override public String toString() {
+    @Override
+    public String toString() {
         return this.value();
     }
 
-    private String validate(String value) {
-        return value.length() > 4 ? value.substring(0, 4) : value;
-    }
+    public String value() {return value;}
 }

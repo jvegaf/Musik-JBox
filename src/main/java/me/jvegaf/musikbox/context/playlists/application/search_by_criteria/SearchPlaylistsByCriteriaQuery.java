@@ -14,11 +14,13 @@ public final class SearchPlaylistsByCriteriaQuery implements Query {
     private final Optional<Integer>             limit;
     private final Optional<Integer>             offset;
 
-    public SearchPlaylistsByCriteriaQuery(List<HashMap<String, String>> filters,
-                                          Optional<String> orderBy,
-                                          Optional<String> orderType,
-                                          Optional<Integer> limit,
-                                          Optional<Integer> offset) {
+    public SearchPlaylistsByCriteriaQuery(
+            List<HashMap<String, String>> filters,
+            Optional<String> orderBy,
+            Optional<String> orderType,
+            Optional<Integer> limit,
+            Optional<Integer> offset
+    ) {
         this.filters   = filters;
         this.orderBy   = orderBy;
         this.orderType = orderType;
@@ -26,13 +28,13 @@ public final class SearchPlaylistsByCriteriaQuery implements Query {
         this.offset    = offset;
     }
 
-    public List<HashMap<String, String>> filters() { return filters; }
+    public List<HashMap<String, String>> filters() {return filters;}
 
-    public Optional<String> orderBy() { return orderBy; }
+    public Optional<String> orderBy() {return orderBy;}
 
-    public Optional<String> orderType() { return orderType; }
+    public Optional<String> orderType() {return orderType;}
 
-    public Optional<Integer> limit() { return limit; }
+    public Optional<Integer> limit() {return limit;}
 
-    public Optional<Integer> offset() { return offset; }
+    public Optional<Integer> offset() {return offset;}
 }

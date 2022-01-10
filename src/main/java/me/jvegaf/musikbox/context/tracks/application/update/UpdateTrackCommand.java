@@ -36,21 +36,21 @@ public class UpdateTrackCommand implements Command {
         this.comments = comments;
     }
 
-    public String trackId() { return trackId; }
+    public String trackId() {return trackId;}
 
-    public String title() { return title; }
+    public String title() {return title;}
 
-    public String artist() { return artist; }
+    public String artist() {return artist;}
 
-    public String album() { return album; }
+    public String album() {return album;}
 
     public Integer bpm() {return bpm;}
 
-    public String key() { return key; }
+    public String key() {return key;}
 
-    public String genre() { return genre; }
+    public String genre() {return genre;}
 
-    public String year() { return year; }
+    public String year() {return year;}
 
-    public String comments() { return comments; }
+    public String comments() {return comments;}
 }

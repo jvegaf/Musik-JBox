@@ -9,12 +9,9 @@ public final class TrackCoverArt {
     private final String  mimeType;
     private final Integer pictureType;
 
-    public TrackCoverArt(byte[] data,
-                         String description,
-                         String imageUrl,
-                         boolean linked,
-                         String mimeType,
-                         Integer pictureType) {
+    public TrackCoverArt(
+            byte[] data, String description, String imageUrl, boolean linked, String mimeType, Integer pictureType
+    ) {
         this.data        = data;
         this.description = description;
         this.imageUrl    = imageUrl;
@@ -23,27 +20,27 @@ public final class TrackCoverArt {
         this.pictureType = pictureType;
     }
 
-  public byte[] getData() {
-    return this.data;
-  }
+    public byte[] getData() {
+        return this.data;
+    }
 
-  public String getDescription() {
-    return this.description;
-  }
+    public String getDescription() {
+        return this.description;
+    }
 
-  public String getImageUrl() {
-    return this.imageUrl;
-  }
+    public String getImageUrl() {
+        return this.imageUrl;
+    }
 
-  public boolean isLinked() {
-    return this.linked;
-  }
+    public boolean isLinked() {
+        return this.linked;
+    }
 
-  public String getMimeType() {
-    return this.mimeType;
-  }
+    public String getMimeType() {
+        return this.mimeType;
+    }
 
-  public Integer getPictureType() {
-    return this.pictureType;
-  }
+    public Integer getPictureType() {
+        return this.pictureType;
+    }
 }

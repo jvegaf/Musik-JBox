@@ -8,5 +8,5 @@ public class TrackArtist extends StringValueObject {
         super(value);
     }
 
-    public TrackArtist() { super(""); }
+    public TrackArtist() {super("");}
 }

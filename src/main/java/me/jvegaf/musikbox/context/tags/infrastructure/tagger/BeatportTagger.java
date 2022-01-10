@@ -27,6 +27,22 @@ public class BeatportTagger implements Tagger {
         this.token = getToken();
     }
 
+    private OAuthDTO getToken() {
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder().setHeader("Accept", "application/json").uri(URI.create(
+                "https://embed.beatport.com/token")).GET().build();
+
+        String response = client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
+                                .thenApply(HttpResponse::body)
+                                .join();// return the result so we could see the result on the console
+
+        Map<String, String> map = new Gson().fromJson(response, new TypeToken<Map<String, String>>() {
+        }.getType());
+
+        log.info("Token created");
+        return new OAuthDTO(map.get("access_token"), map.get("expires_in"));
+    }
+
     @Override
     public TagResponse search(String title, String artist, Integer duration) {
         if (!this.token.isValid()) this.token = getToken();
@@ -116,24 +132,5 @@ public class BeatportTagger implements Tagger {
         artworkUrl.ifPresent(tag::setArtworkURL);
 
         return tag;
-    }
-
-    private OAuthDTO getToken() {
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest
-                .newBuilder()
-                .setHeader("Accept", "application/json")
-                .uri(URI.create("https://embed.beatport.com/token"))
-                .GET()
-                .build();
-
-        String response = client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
-                                .thenApply(HttpResponse::body)
-                                .join();// return the result so we could see the result on the console
-
-        Map<String, String> map = new Gson().fromJson(response, new TypeToken<Map<String, String>>() {}.getType());
-
-        log.info("Token created");
-        return new OAuthDTO(map.get("access_token"), map.get("expires_in"));
     }
 }

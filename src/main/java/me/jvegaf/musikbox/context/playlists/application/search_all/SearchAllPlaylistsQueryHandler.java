@@ -9,7 +9,7 @@ public final class SearchAllPlaylistsQueryHandler implements QueryHandler<Search
 
     private final AllPlaylistsSearcher searcher;
 
-    public SearchAllPlaylistsQueryHandler(AllPlaylistsSearcher searcher) { this.searcher = searcher; }
+    public SearchAllPlaylistsQueryHandler(AllPlaylistsSearcher searcher) {this.searcher = searcher;}
 
 
     @Override

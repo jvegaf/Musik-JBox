@@ -8,5 +8,5 @@ public class TrackInitKey extends StringValueObject {
         super(value);
     }
 
-    public TrackInitKey() { super(""); }
+    public TrackInitKey() {super("");}
 }

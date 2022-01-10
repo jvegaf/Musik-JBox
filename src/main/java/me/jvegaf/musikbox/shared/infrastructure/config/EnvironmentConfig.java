@@ -18,10 +18,6 @@ public class EnvironmentConfig {
     public Dotenv dotenv() {
         Resource resource = resourceLoader.getResource("classpath:/.env.local");
 
-        return Dotenv
-            .configure()
-            .directory("/")
-            .filename(resource.exists() ? ".env.local" : ".env")
-            .load();
+        return Dotenv.configure().directory("/").filename(resource.exists() ? ".env.local":".env").load();
     }
 }

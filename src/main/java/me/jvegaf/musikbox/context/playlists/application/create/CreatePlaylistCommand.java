@@ -10,5 +10,5 @@ public class CreatePlaylistCommand implements Command {
         this.name = name;
     }
 
-    public String name() { return name; }
+    public String name() {return name;}
 }

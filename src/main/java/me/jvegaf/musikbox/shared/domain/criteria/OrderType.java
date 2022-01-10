@@ -11,11 +11,11 @@ public enum OrderType {
     }
 
     public boolean isNone() {
-        return this == NONE;
+        return this==NONE;
     }
 
     public boolean isAsc() {
-        return this == ASC;
+        return this==ASC;
     }
 
     public String value() {

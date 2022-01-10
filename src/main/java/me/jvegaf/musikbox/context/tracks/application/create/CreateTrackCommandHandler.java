@@ -15,28 +15,17 @@ public class CreateTrackCommandHandler implements CommandHandler<CreateTrackComm
 
     @Override
     public void handle(CreateTrackCommand command) {
-        TrackTitle title = new TrackTitle(command.title());
+        TrackTitle    title    = new TrackTitle(command.title());
         TrackLocation location = new TrackLocation(command.location());
         TrackDuration duration = new TrackDuration(command.duration());
-        TrackArtist artist = new TrackArtist(command.artist());
-        TrackAlbum album = new TrackAlbum(command.album());
-        TrackGenre genre = new TrackGenre(command.genre());
-        TrackYear year = new TrackYear(command.year());
+        TrackArtist   artist   = new TrackArtist(command.artist());
+        TrackAlbum    album    = new TrackAlbum(command.album());
+        TrackGenre    genre    = new TrackGenre(command.genre());
+        TrackYear     year     = new TrackYear(command.year());
         TrackComments comments = new TrackComments(command.comments());
-        TrackBpm bpm = new TrackBpm(command.bpm());
-        TrackInitKey key = new TrackInitKey(command.key());
+        TrackBpm      bpm      = new TrackBpm(command.bpm());
+        TrackInitKey  key      = new TrackInitKey(command.key());
 
-        creator.create(
-                title,
-                location,
-                duration,
-                artist,
-                album,
-                genre,
-                year,
-                bpm,
-                key,
-                comments
-        );
+        creator.create(title, location, duration, artist, album, genre, year, bpm, key, comments);
     }
 }

@@ -10,11 +10,11 @@ public final class UpdatePlaylistCommandHandler implements CommandHandler<Update
 
     private final PlaylistUpdater updater;
 
-    public UpdatePlaylistCommandHandler(PlaylistUpdater updater) { this.updater = updater; }
+    public UpdatePlaylistCommandHandler(PlaylistUpdater updater) {this.updater = updater;}
 
     @Override
     public void handle(UpdatePlaylistCommand command) {
-        PlaylistId id = new PlaylistId(command.id());
+        PlaylistId   id   = new PlaylistId(command.id());
         PlaylistName name = new PlaylistName(command.name());
         updater.update(id, name);
     }

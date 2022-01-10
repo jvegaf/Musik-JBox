@@ -32,7 +32,7 @@ import static me.jvegaf.musikbox.app.controller.TracklistController.SERIALIZED_M
 @Log4j2
 @Component
 @FxmlView
-@DomainEventSubscriber({ PlaylistCreatedDomainEvent.class })
+@DomainEventSubscriber({PlaylistCreatedDomainEvent.class})
 public class SideBarController {
 
     private final QueryBus        queryBus;
@@ -65,7 +65,7 @@ public class SideBarController {
     @SuppressWarnings("unchecked")
     @FXML
     public void initialize() {
-        PlaylistsResponse response = (PlaylistsResponse) queryBus.ask(new SearchAllPlaylistsQuery());
+        PlaylistsResponse                response  = (PlaylistsResponse) queryBus.ask(new SearchAllPlaylistsQuery());
         ObservableList<PlaylistResponse> playlists = FXCollections.observableArrayList();
         playlists.addAll(response.playlists());
 
@@ -90,9 +90,8 @@ public class SideBarController {
                 if (!cell.isEmpty()) {
                     event.acceptTransferModes(TransferMode.COPY);
                     String playlistId = playlistListView.getItems().get(cell.getIndex()).id();
-                    ArrayList<String>
-                            trackIds =
-                            (ArrayList<String>) event.getDragboard().getContent(SERIALIZED_MIME_TYPE);
+                    ArrayList<String> trackIds = (ArrayList<String>) event.getDragboard().getContent(
+                            SERIALIZED_MIME_TYPE);
                     //                    trackIds.forEach(trackId -> log.info("Track: " + trackId + " Playlist: " +
                     //                    playlistId));
                     trackIds.forEach(trackId -> commandBus.dispatch(new CreateTrackPlaylistCommand(playlistId,

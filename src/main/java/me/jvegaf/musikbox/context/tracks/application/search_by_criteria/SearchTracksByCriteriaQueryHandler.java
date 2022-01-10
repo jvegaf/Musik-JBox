@@ -12,13 +12,14 @@ public final class SearchTracksByCriteriaQueryHandler implements QueryHandler<Se
 
     private final TracksByCriteriaSearcher searcher;
 
-    public SearchTracksByCriteriaQueryHandler(TracksByCriteriaSearcher searcher) { this.searcher = searcher; }
+    public SearchTracksByCriteriaQueryHandler(TracksByCriteriaSearcher searcher) {this.searcher = searcher;}
 
 
-    @Override public TracksResponse handle(SearchTracksByCriteriaQuery query) {
+    @Override
+    public TracksResponse handle(SearchTracksByCriteriaQuery query) {
 
         Filters filters = Filters.fromValues(query.filters());
-        Order order = Order.fromValues(query.orderBy(), query.orderType());
+        Order   order   = Order.fromValues(query.orderBy(), query.orderType());
 
         return searcher.search(filters, order, query.limit(), query.offset());
     }

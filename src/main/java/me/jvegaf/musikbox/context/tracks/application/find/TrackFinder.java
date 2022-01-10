@@ -16,7 +16,6 @@ public final class TrackFinder {
     }
 
     public TrackResponse find(TrackId id) throws TrackNotExist {
-        return repository.search(id).map(TrackLibraryResponse::fromAggregate)
-                         .orElseThrow(() -> new TrackNotExist(id));
+        return repository.search(id).map(TrackLibraryResponse::fromAggregate).orElseThrow(() -> new TrackNotExist(id));
     }
 }

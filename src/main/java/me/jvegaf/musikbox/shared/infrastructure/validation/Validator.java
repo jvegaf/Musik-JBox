@@ -17,8 +17,9 @@ public final class Validator {
         put("uuid", new UuidValidator());
     }};
 
-    public static ValidationResponse validate(HashMap<String, Serializable> input,
-                                              HashMap<String, String> combinedRules) throws ValidatorNotExist {
+    public static ValidationResponse validate(
+            HashMap<String, Serializable> input, HashMap<String, String> combinedRules
+    ) throws ValidatorNotExist {
         HashMap<String, List<String>> validationErrors = new HashMap<>();
 
         for (Map.Entry<String, String> entry : combinedRules.entrySet()) {
@@ -27,7 +28,7 @@ public final class Validator {
             for (String rule : rules) {
                 FieldValidator validator = validators.get(rule);
 
-                if (null == validator) {
+                if (null==validator) {
                     throw new ValidatorNotExist(rule);
                 }
 

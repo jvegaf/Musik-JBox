@@ -42,23 +42,15 @@ public final class HibernateConfigurationFactory {
         return sessionFactory;
     }
 
-    public DataSource dataSource(
-        String databaseName,
-        String username,
-        String password
-    ) {
-        final DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("org.sqlite.JDBC");
-        dataSource.setUrl(
-            String.format(
-                "jdbc:sqlite:db/musikbox.db?",
-                databaseName
-            )
-        );
-        dataSource.setUsername(username);
-        dataSource.setPassword(password);
+    private Properties hibernateProperties() {
+        Properties hibernateProperties = new Properties();
+        hibernateProperties.put(AvailableSettings.HBM2DDL_AUTO, hbm2ddlOption());
 
-        return dataSource;
+        hibernateProperties.put(AvailableSettings.SHOW_SQL, "true");
+        hibernateProperties.put(AvailableSettings.DIALECT,
+                                "me.jvegaf.musikbox.shared.infrastructure.persistence.hibernate.dialect.SQLiteDialect");
+
+        return hibernateProperties;
     }
 
     private List<Resource> searchMappingFiles(String contextName) {
@@ -76,12 +68,17 @@ public final class HibernateConfigurationFactory {
         return goodPaths.stream().map(FileSystemResource::new).collect(Collectors.toList());
     }
 
+    private String hbm2ddlOption() {
+        File dbFile = new File("./db/musikbox.db");
+        return dbFile.exists() ? "none":"create";
+    }
+
     private List<String> subdirectoriesFor(String contextName) {
         String path = "./src/main/java/me/jvegaf/" + contextName + "/context/";
 
         String[] files = new File(path).list((current, name) -> new File(current, name).isDirectory());
 
-        if (null == files) {
+        if (null==files) {
             return Collections.emptyList();
         }
 
@@ -93,26 +90,22 @@ public final class HibernateConfigurationFactory {
     private String[] mappingFilesIn(String path) {
         String[] files = new File(path).list((current, name) -> new File(current, name).getName().contains(".hbm.xml"));
 
-        if (null == files) {
+        if (null==files) {
             return new String[0];
         }
 
         return files;
     }
 
-    private Properties hibernateProperties() {
-        Properties hibernateProperties = new Properties();
-        hibernateProperties.put(AvailableSettings.HBM2DDL_AUTO, hbm2ddlOption());
+    public DataSource dataSource(
+            String databaseName, String username, String password
+    ) {
+        final DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setDriverClassName("org.sqlite.JDBC");
+        dataSource.setUrl(String.format("jdbc:sqlite:db/musikbox.db?", databaseName));
+        dataSource.setUsername(username);
+        dataSource.setPassword(password);
 
-        hibernateProperties.put(AvailableSettings.SHOW_SQL, "true");
-        hibernateProperties.put(AvailableSettings.DIALECT,
-                                "me.jvegaf.musikbox.shared.infrastructure.persistence.hibernate.dialect.SQLiteDialect");
-
-        return hibernateProperties;
-    }
-
-    private String hbm2ddlOption() {
-        File dbFile = new File("./db/musikbox.db");
-        return dbFile.exists() ? "none" : "create";
+        return dataSource;
     }
 }

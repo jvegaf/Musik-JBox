@@ -12,5 +12,5 @@ public final class TrackDuration extends DurationValueObject {
         super(value);
     }
 
-    public TrackDuration() { }
+    public TrackDuration() {}
 }

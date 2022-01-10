@@ -34,18 +34,20 @@ public class PlaylistCell extends ListCell<PlaylistResponse> {
     protected void updateItem(PlaylistResponse item, boolean empty) {
         super.updateItem(item, empty);
 
-        if (empty || item == null) {
+        if (empty || item==null) {
             setText(null);
             setGraphic(null);
 
-        } else {
-            if (loader == null) {
+        }
+        else {
+            if (loader==null) {
                 loader = new FXMLLoader(getClass().getResource("/fxml/PlaylistCell.fxml"));
                 loader.setController(this);
 
                 try {
                     loader.load();
-                } catch (IOException e) {
+                }
+                catch (IOException e) {
                     e.printStackTrace();
                 }
             }

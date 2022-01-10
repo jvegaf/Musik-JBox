@@ -7,17 +7,19 @@ import me.jvegaf.musikbox.shared.domain.criteria.Filters;
 import me.jvegaf.musikbox.shared.domain.criteria.Order;
 
 @Service
-public final class SearchPlaylistsByCriteriaQueryHandler implements QueryHandler<SearchPlaylistsByCriteriaQuery, PlaylistsResponse> {
+public final class SearchPlaylistsByCriteriaQueryHandler implements QueryHandler<SearchPlaylistsByCriteriaQuery,
+        PlaylistsResponse> {
 
     private final PlaylistsByCriteriaSearcher searcher;
 
-    public SearchPlaylistsByCriteriaQueryHandler(PlaylistsByCriteriaSearcher searcher) { this.searcher = searcher; }
+    public SearchPlaylistsByCriteriaQueryHandler(PlaylistsByCriteriaSearcher searcher) {this.searcher = searcher;}
 
 
-    @Override public PlaylistsResponse handle(SearchPlaylistsByCriteriaQuery query) {
+    @Override
+    public PlaylistsResponse handle(SearchPlaylistsByCriteriaQuery query) {
 
         Filters filters = Filters.fromValues(query.filters());
-        Order order = Order.fromValues(query.orderBy(), query.orderType());
+        Order   order   = Order.fromValues(query.orderBy(), query.orderType());
 
         return searcher.search(filters, order, query.limit(), query.offset());
     }

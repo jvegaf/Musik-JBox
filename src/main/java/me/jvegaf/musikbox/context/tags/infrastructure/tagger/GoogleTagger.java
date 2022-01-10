@@ -26,9 +26,8 @@ public final class GoogleTagger {
             HtmlButton button     = page.getFirstByXPath("//*[@id=\"L2AGLb\"]");
             HtmlPage   page2      = button.click();
             String     pageAsText = page2.getPage().getWebResponse().getContentAsString();
-            HtmlAnchor element = page2.getAnchors()
-                                      .stream()
-                                      .filter(anchor -> containsPattern("discogs", anchor.getHrefAttribute()))
+            HtmlAnchor element = page2.getAnchors().stream().filter(anchor -> containsPattern("discogs",
+                                                                                              anchor.getHrefAttribute()))
                                       .findFirst()
                                       .get();
             String url = element.getHrefAttribute();
@@ -42,7 +41,8 @@ public final class GoogleTagger {
             String      responseAsText = response.getContentAsString();
             System.out.println(responseAsText);
 
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
     }

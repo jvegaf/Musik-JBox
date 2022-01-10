@@ -27,38 +27,37 @@ import java.io.File;
 public final class HeaderController {
 
 
-    @FXML
-    private AnchorPane  rightPane;
-    @FXML
-    private Label       artistLabel;
-    @FXML
-    private Label       titleLabel;
-    @FXML
-    private Label       currentTimeLabel;
-    @FXML
-    private Label       remainTimeLabel;
-    @FXML
-    private ProgressBar progressBar;
-    @FXML
-    private Button      prevBtn;
-    @FXML
-    private Button      playBtn;
-    @FXML
-    private Button      pauseBtn;
-    @FXML
-    private Button      nextBtn;
-    @FXML
-    public  Button      openFolderBtn;
     private final MusicPlayer player;
     private final CommandBus  bus;
     @FXML
+    public        Button      openFolderBtn;
+    @FXML
     public        Button      closeBtn;
-
-    private Double duration;
     @FXML
-    public  Button minimizeBtn;
+    public        Button      minimizeBtn;
     @FXML
-    public  Button maximizeBtn;
+    public        Button      maximizeBtn;
+    @FXML
+    private       AnchorPane  rightPane;
+    @FXML
+    private       Label       artistLabel;
+    @FXML
+    private       Label       titleLabel;
+    @FXML
+    private       Label       currentTimeLabel;
+    @FXML
+    private       Label       remainTimeLabel;
+    @FXML
+    private       ProgressBar progressBar;
+    @FXML
+    private       Button      prevBtn;
+    @FXML
+    private       Button      playBtn;
+    @FXML
+    private       Button      pauseBtn;
+    @FXML
+    private       Button      nextBtn;
+    private       Double      duration;
 
     @Autowired
     public HeaderController(MusicPlayer player, CommandBus bus) {
@@ -84,64 +83,14 @@ public final class HeaderController {
         openFolderBtn.setOnAction(event -> openActionListener());
     }
 
-    private boolean winMaximized() {
-        return !((Stage) (maximizeBtn.getScene().getWindow())).isMaximized();
-    }
-
-
     private void disablePlayerControls(boolean value) {
         playBtn.setDisable(value);
         prevBtn.setDisable(value);
         nextBtn.setDisable(value);
     }
 
-    private void initDisplayControls() {
-
-        initProgressBar();
-        initDisplayLabels();
-    }
-
-    private void initDisplayLabels() {
-        currentTimeLabel.textProperty()
-                        .bind(Bindings.createStringBinding(() -> String.format("%.0f:%02.0f",
-                                                                               player.getMediaPlayer()
-                                                                                     .getCurrentTime()
-                                                                                     .toMinutes(),
-                                                                               player.getMediaPlayer()
-                                                                                     .getCurrentTime()
-                                                                                     .toSeconds() % 60),
-                                                           player.getMediaPlayer().currentTimeProperty()));
-
-        remainTimeLabel.textProperty()
-                       .bind(Bindings.createStringBinding(() -> String.format("%.0f:%02.0f",
-                                                                              player.getMediaPlayer()
-                                                                                    .getCurrentTime()
-                                                                                    .toMinutes() - player.getMediaPlayer()
-                                                                                                         .getTotalDuration()
-                                                                                                         .toMinutes(),
-                                                                              (player.getMediaPlayer()
-                                                                                     .getTotalDuration()
-                                                                                     .toSeconds() - player.getMediaPlayer()
-                                                                                                          .getCurrentTime()
-                                                                                                          .toSeconds()) % 60),
-                                                          player.getMediaPlayer().currentTimeProperty()));
-    }
-
-    private void initProgressBar() {
-
-
-        this.player.currentPlayTimeProperty.addListener((observable, oldValue, newValue) -> progressBar.setProgress((newValue.toMillis() / this.player.getMediaPlayer()
-                                                                                                                                                      .getTotalDuration()
-                                                                                                                                                      .toMillis())));
-
-        progressBar.setOnMouseClicked(evt -> {
-            double dx = evt.getX();
-            double dwidth = progressBar.getWidth();
-            double progression = (dx / dwidth);
-            var milliseconds = (progression * this.player.getMediaPlayer().getTotalDuration().toMillis());
-            Duration duration = new Duration(milliseconds);
-            player.seekTo(duration);
-        });
+    private boolean winMaximized() {
+        return !((Stage) (maximizeBtn.getScene().getWindow())).isMaximized();
     }
 
     private void playerStatusHandler(MediaPlayer.Status status) {
@@ -170,8 +119,60 @@ public final class HeaderController {
     private void openActionListener() {
         log.info("Open folder action");
         DirectoryChooser directoryChooser = new DirectoryChooser();
-        File selectedFolder = directoryChooser.showDialog(openFolderBtn.getScene().getWindow());
-        if (selectedFolder == null) return;
+        File             selectedFolder   = directoryChooser.showDialog(openFolderBtn.getScene().getWindow());
+        if (selectedFolder==null) return;
         this.bus.dispatch(new CollectFilesCommand(selectedFolder));
+    }
+
+    private void initDisplayControls() {
+
+        initProgressBar();
+        initDisplayLabels();
+    }
+
+    private void initProgressBar() {
+
+
+        this.player.currentPlayTimeProperty.addListener((observable, oldValue, newValue) -> progressBar.setProgress((newValue.toMillis() /
+                                                                                                                     this.player.getMediaPlayer()
+                                                                                                                                .getTotalDuration()
+                                                                                                                                .toMillis())));
+
+        progressBar.setOnMouseClicked(evt -> {
+            double   dx           = evt.getX();
+            double   dwidth       = progressBar.getWidth();
+            double   progression  = (dx / dwidth);
+            var      milliseconds = (progression * this.player.getMediaPlayer().getTotalDuration().toMillis());
+            Duration duration     = new Duration(milliseconds);
+            player.seekTo(duration);
+        });
+    }
+
+    private void initDisplayLabels() {
+        currentTimeLabel.textProperty().bind(Bindings.createStringBinding(() -> String.format("%.0f:%02.0f",
+                                                                                              player.getMediaPlayer()
+                                                                                                    .getCurrentTime()
+                                                                                                    .toMinutes(),
+                                                                                              player.getMediaPlayer()
+                                                                                                    .getCurrentTime()
+                                                                                                    .toSeconds() % 60),
+                                                                          player.getMediaPlayer()
+                                                                                .currentTimeProperty()));
+
+        remainTimeLabel.textProperty().bind(Bindings.createStringBinding(() -> String.format("%.0f:%02.0f",
+                                                                                             player.getMediaPlayer()
+                                                                                                   .getCurrentTime()
+                                                                                                   .toMinutes() -
+                                                                                             player.getMediaPlayer()
+                                                                                                   .getTotalDuration()
+                                                                                                   .toMinutes(),
+                                                                                             (player.getMediaPlayer()
+                                                                                                    .getTotalDuration()
+                                                                                                    .toSeconds() -
+                                                                                              player.getMediaPlayer()
+                                                                                                    .getCurrentTime()
+                                                                                                    .toSeconds()) % 60),
+                                                                         player.getMediaPlayer()
+                                                                               .currentTimeProperty()));
     }
 }

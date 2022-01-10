@@ -26,20 +26,18 @@ public final class TrackCreator {
             TrackBpm bpm,
             TrackInitKey initKey,
             TrackComments comments
-            ) {
-        Track track = Track.create(
-                TrackId.create(),
-                title,
-                location,
-                duration,
-                artist,
-                album,
-                genre,
-                year,
-                bpm,
-                initKey,
-                comments
-                );
+    ) {
+        Track track = Track.create(TrackId.create(),
+                                   title,
+                                   location,
+                                   duration,
+                                   artist,
+                                   album,
+                                   genre,
+                                   year,
+                                   bpm,
+                                   initKey,
+                                   comments);
 
         repository.save(track);
         eventBus.publish(track.pullDomainEvents());

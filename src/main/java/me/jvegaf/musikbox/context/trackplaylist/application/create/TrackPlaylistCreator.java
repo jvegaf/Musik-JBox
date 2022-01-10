@@ -19,8 +19,8 @@ public final class TrackPlaylistCreator {
     }
 
     public void create(String playlistId, String trackId) {
-        Integer position = repository.search(playlistId).size();
-        TrackPlaylist tp = TrackPlaylist.create(playlistId, trackId, position);
+        Integer       position = repository.search(playlistId).size();
+        TrackPlaylist tp       = TrackPlaylist.create(playlistId, trackId, position);
         repository.save(tp);
         eventBus.publish(tp.pullDomainEvents());
         log.info("Track: " + trackId + " added to: " + playlistId);

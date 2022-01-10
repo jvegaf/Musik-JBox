@@ -17,14 +17,13 @@ public final class Sanitizer {
     }
 
     private static String[] sanitizeElement(String element) {
-        return element
-                .replaceAll("_", " ")
-                .replaceAll("-", " ")
-                .replaceAll("[(]", " ")
-                .replaceAll("[)]", " ")
-                .replaceAll(" {2}", " ")
-                .trim()
-                .split(" ");
+        return element.replaceAll("_", " ")
+                      .replaceAll("-", " ")
+                      .replaceAll("[(]", " ")
+                      .replaceAll("[)]", " ")
+                      .replaceAll(" {2}", " ")
+                      .trim()
+                      .split(" ");
     }
 
 }

@@ -9,10 +9,11 @@ public final class SearchAllTracksQueryHandler implements QueryHandler<SearchAll
 
     private final AllTracksSearcher searcher;
 
-    public SearchAllTracksQueryHandler(AllTracksSearcher searcher) { this.searcher = searcher; }
+    public SearchAllTracksQueryHandler(AllTracksSearcher searcher) {this.searcher = searcher;}
 
 
-    @Override public TracksResponse handle(SearchAllTracksQuery query) {
+    @Override
+    public TracksResponse handle(SearchAllTracksQuery query) {
         return searcher.search();
     }
 }

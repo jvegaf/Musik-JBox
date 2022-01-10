@@ -24,11 +24,9 @@ public final class TrackUpdatedDomainEvent extends DomainEvent {
         this.location = location;
     }
 
-    public TrackUpdatedDomainEvent(String aggregateId,
-                                   String eventId,
-                                   String occurredOn,
-                                   String name,
-                                   String location) {
+    public TrackUpdatedDomainEvent(
+            String aggregateId, String eventId, String occurredOn, String name, String location
+    ) {
         super(aggregateId, eventId, occurredOn);
 
         this.name     = name;
@@ -49,10 +47,9 @@ public final class TrackUpdatedDomainEvent extends DomainEvent {
     }
 
     @Override
-    public TrackUpdatedDomainEvent fromPrimitives(String aggregateId,
-                                                  HashMap<String, Serializable> body,
-                                                  String eventId,
-                                                  String occurredOn) {
+    public TrackUpdatedDomainEvent fromPrimitives(
+            String aggregateId, HashMap<String, Serializable> body, String eventId, String occurredOn
+    ) {
         return new TrackUpdatedDomainEvent(aggregateId,
                                            eventId,
                                            occurredOn,
@@ -75,10 +72,10 @@ public final class TrackUpdatedDomainEvent extends DomainEvent {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
+        if (this==o) {
             return true;
         }
-        if (o == null || getClass() != o.getClass()) {
+        if (o==null || getClass()!=o.getClass()) {
             return false;
         }
         TrackUpdatedDomainEvent that = (TrackUpdatedDomainEvent) o;

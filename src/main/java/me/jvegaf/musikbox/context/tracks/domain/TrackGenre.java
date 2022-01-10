@@ -8,5 +8,5 @@ public class TrackGenre extends StringValueObject {
         super(value);
     }
 
-    public TrackGenre() { super(""); }
+    public TrackGenre() {super("");}
 }

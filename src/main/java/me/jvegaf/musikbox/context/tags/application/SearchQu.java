@@ -13,28 +13,22 @@ public final class SearchQu {
 
     public String query() {
         String SEARCH_TYPE = "&type=tracks";
-        String query = sanitize(title) + SEARCH_TYPE;
+        String query       = sanitize(title) + SEARCH_TYPE;
         String ARTIST_FLAG = "&artist_name=";
-        if (artist != null && !artist.isEmpty()) query += ARTIST_FLAG + sanitize(artist);
-        return query;
-    }
-
-    public String rawQuery() {
-        String query = sanitize(title);
-        if (artist != null && !artist.isEmpty()) query += " " + sanitize(artist);
+        if (artist!=null && !artist.isEmpty()) query += ARTIST_FLAG + sanitize(artist);
         return query;
     }
 
     private String sanitize(String s) {
-        return s.replaceAll("_", " ")
-                .replaceAll("-", " ")
-                .replaceAll("[|]", " ")
-                .replaceAll("[(]", " ")
-                .replaceAll("[)]", " ")
-                .replaceAll("\"", " ")
-                .replaceAll(" ", " ")
-                .trim()
-                .replaceAll("\\s+", "+");
+        return s.replaceAll("_", " ").replaceAll("-", " ").replaceAll("[|]", " ").replaceAll("[(]", " ").replaceAll(
+                "[)]",
+                " ").replaceAll("\"", " ").replaceAll(" ", " ").trim().replaceAll("\\s+", "+");
+    }
+
+    public String rawQuery() {
+        String query = sanitize(title);
+        if (artist!=null && !artist.isEmpty()) query += " " + sanitize(artist);
+        return query;
     }
 
 }

@@ -12,5 +12,5 @@ public class TrackBpm extends IntValueObject {
         super(Integer.getInteger(strValue));
     }
 
-    public TrackBpm() { super(null); }
+    public TrackBpm() {super(null);}
 }

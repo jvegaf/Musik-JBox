@@ -37,6 +37,14 @@ public class SQLiteDialect extends Dialect {
         return new SQLiteIdentityColumnSupport();
     }
 
+    public String getForUpdateString() {
+        return "";
+    }
+
+    public boolean supportsOuterJoinForUpdate() {
+        return false;
+    }
+
     public boolean hasAlterTable() {
         return false;
     }
@@ -45,28 +53,26 @@ public class SQLiteDialect extends Dialect {
         return false;
     }
 
+    public String getAddColumnString() {
+        return "add column";
+    }
+
     public String getDropForeignKeyString() {
         return "";
     }
 
-    public String getAddForeignKeyConstraintString(String constraintName, String[] foreignKey, String referencedTable, String[] primaryKey, boolean referencesPrimaryKey) {
+    public String getAddForeignKeyConstraintString(
+            String constraintName,
+            String[] foreignKey,
+            String referencedTable,
+            String[] primaryKey,
+            boolean referencesPrimaryKey
+    ) {
         return "";
     }
 
     public String getAddPrimaryKeyConstraintString(String constraintName) {
         return "";
-    }
-
-    public String getForUpdateString() {
-        return "";
-    }
-
-    public String getAddColumnString() {
-        return "add column";
-    }
-
-    public boolean supportsOuterJoinForUpdate() {
-        return false;
     }
 
     public boolean supportsIfExistsBeforeTableName() {

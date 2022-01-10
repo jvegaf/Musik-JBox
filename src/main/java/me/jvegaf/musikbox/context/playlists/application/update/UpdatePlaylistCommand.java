@@ -12,7 +12,7 @@ public final class UpdatePlaylistCommand implements Command {
         this.name = name;
     }
 
-    public String id() { return id; }
+    public String id() {return id;}
 
-    public String name() { return name; }
+    public String name() {return name;}
 }

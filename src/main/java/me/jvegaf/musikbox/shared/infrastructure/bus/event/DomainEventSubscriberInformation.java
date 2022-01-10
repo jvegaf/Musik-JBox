@@ -11,8 +11,7 @@ public final class DomainEventSubscriberInformation {
     private final List<Class<? extends DomainEvent>> subscribedEvents;
 
     public DomainEventSubscriberInformation(
-        Class<?> subscriberClass,
-        List<Class<? extends DomainEvent>> subscribedEvents
+            Class<?> subscriberClass, List<Class<? extends DomainEvent>> subscribedEvents
     ) {
         this.subscriberClass  = subscriberClass;
         this.subscribedEvents = subscribedEvents;
@@ -20,6 +19,14 @@ public final class DomainEventSubscriberInformation {
 
     public Class<?> subscriberClass() {
         return subscriberClass;
+    }
+
+    public List<Class<? extends DomainEvent>> subscribedEvents() {
+        return subscribedEvents;
+    }
+
+    public String formatRabbitMqQueueName() {
+        return String.format("codelytv.%s.%s.%s", contextName(), moduleName(), Utils.toSnake(className()));
     }
 
     public String contextName() {
@@ -38,13 +45,5 @@ public final class DomainEventSubscriberInformation {
         String[] nameParts = subscriberClass.getName().split("\\.");
 
         return nameParts[nameParts.length - 1];
-    }
-
-    public List<Class<? extends DomainEvent>> subscribedEvents() {
-        return subscribedEvents;
-    }
-
-    public String formatRabbitMqQueueName() {
-        return String.format("codelytv.%s.%s.%s", contextName(), moduleName(), Utils.toSnake(className()));
     }
 }

@@ -10,7 +10,7 @@ public class TrackId extends Identifier {
         super(id);
     }
 
-    public TrackId() { }
+    public TrackId() {}
 
 
     public static TrackId create() {

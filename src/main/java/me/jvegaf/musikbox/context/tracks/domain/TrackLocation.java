@@ -9,7 +9,7 @@ public class TrackLocation {
         this.value = location;
     }
 
-    public TrackLocation() { }
+    public TrackLocation() {}
 
     public String value() {
         return value;

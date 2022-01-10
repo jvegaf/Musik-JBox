@@ -28,9 +28,7 @@ public class TrackLibraryResponse implements TrackResponse {
     }
 
     public static TrackResponse fromAggregate(Track track) {
-        var
-                r =
-                new TrackLibraryResponse(track.id().value(),
+        var r = new TrackLibraryResponse(track.id().value(),
                                          track.title().value(),
                                          track.location().value(),
                                          track.duration().stringValue());
@@ -47,10 +45,10 @@ public class TrackLibraryResponse implements TrackResponse {
     }
 
     @Override
-    public String id() { return id; }
+    public String id() {return id;}
 
     @Override
-    public String title() { return title; }
+    public String title() {return title;}
 
     @Override
     public String location() {

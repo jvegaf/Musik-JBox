@@ -8,7 +8,7 @@ public final class PlaylistsResponse implements Response {
 
     private final List<PlaylistResponse> playlists;
 
-    public PlaylistsResponse(List<PlaylistResponse> playlists) { this.playlists = playlists; }
+    public PlaylistsResponse(List<PlaylistResponse> playlists) {this.playlists = playlists;}
 
-    public List<PlaylistResponse> playlists() { return playlists; }
+    public List<PlaylistResponse> playlists() {return playlists;}
 }

@@ -40,42 +40,42 @@ public final class FileManager {
 
         for (File file : files) {
             try {
-                MP3File f = (MP3File) AudioFileIO.read(file);
-                AbstractID3v2Tag tag = f.getID3v2Tag();
-                String title = tag.getFirst(FieldKey.TITLE);
-                if (title == null || title.isEmpty()) {
+                MP3File          f     = (MP3File) AudioFileIO.read(file);
+                AbstractID3v2Tag tag   = f.getID3v2Tag();
+                String           title = tag.getFirst(FieldKey.TITLE);
+                if (title==null || title.isEmpty()) {
                     title = file.getName().replaceAll(".mp3", "");
                 }
 
-                bus.dispatch(new CreateTrackCommand(
-                        title,
-                        file.getAbsolutePath(),
-                        f.getAudioHeader().getTrackLength(),
-                        tag.getFirst(FieldKey.ARTIST),
-                        tag.getFirst(FieldKey.ALBUM),
-                        tag.getFirst(FieldKey.GENRE),
-                        tag.getFirst(FieldKey.YEAR),
-                        tag.getFirst(FieldKey.COMMENT), tag.getFirst(FieldKey.BPM), tag.getFirst(FieldKey.KEY)));
+                bus.dispatch(new CreateTrackCommand(title,
+                                                    file.getAbsolutePath(),
+                                                    f.getAudioHeader().getTrackLength(),
+                                                    tag.getFirst(FieldKey.ARTIST),
+                                                    tag.getFirst(FieldKey.ALBUM),
+                                                    tag.getFirst(FieldKey.GENRE),
+                                                    tag.getFirst(FieldKey.YEAR),
+                                                    tag.getFirst(FieldKey.COMMENT),
+                                                    tag.getFirst(FieldKey.BPM),
+                                                    tag.getFirst(FieldKey.KEY)));
 
-            } catch (CannotReadException | TagException | IOException | ReadOnlyFileException | InvalidAudioFrameException e) {
+            }
+            catch (CannotReadException | TagException | IOException | ReadOnlyFileException | InvalidAudioFrameException e) {
                 log.error("Error reading file: " + file.getName());
             }
         }
     }
 
-    private List<File> searchMusicFiles(File path) {
-
-        return FileUtils.listFiles(path, new RegexFileFilter("^(.*?)"), DirectoryFileFilter.DIRECTORY)
-                .stream()
-                .filter(file -> file.getName().endsWith(".mp3"))
-                .toList();
-    }
-
     private void shutupLog() {
         Logger[] pin;
-        pin = new Logger[]{ Logger.getLogger("org.jaudiotagger") };
+        pin = new Logger[]{Logger.getLogger("org.jaudiotagger")};
 
         for (Logger l : pin)
             l.setLevel(Level.OFF);
+    }
+
+    private List<File> searchMusicFiles(File path) {
+
+        return FileUtils.listFiles(path, new RegexFileFilter("^(.*?)"), DirectoryFileFilter.DIRECTORY).stream().filter(
+                file -> file.getName().endsWith(".mp3")).toList();
     }
 }

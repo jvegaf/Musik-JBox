@@ -23,18 +23,19 @@ import org.springframework.stereotype.Component;
 public class DetailController {
 
 
+    private final CommandBus commandBus;
     @FXML
-    private VBox      dialog;
+    private       VBox       dialog;
     @FXML
-    private ImageView artworkImageView;
+    private       ImageView  artworkImageView;
     @FXML
-    private TextField titleTextField;
+    private       TextField  titleTextField;
     @FXML
-    private TextField artistTextField;
+    private       TextField  artistTextField;
     @FXML
-    private TextField albumTextField;
+    private       TextField  albumTextField;
     @FXML
-    private TextField genreTextField;
+    private       TextField  genreTextField;
     @FXML
     private TextField yearTextField;
     @FXML
@@ -52,10 +53,7 @@ public class DetailController {
     @FXML
     private Button    saveBtn;
     @FXML
-    private Button    cancelBtn;
-
-
-    private final CommandBus commandBus;
+    private       Button     cancelBtn;
     private       Stage      stage;
 
     @Autowired
@@ -73,6 +71,31 @@ public class DetailController {
 
     public void show() {
         stage.show();
+    }
+
+    public void setDetails(TrackResponse track, Window owner) {
+        stage.initOwner(owner);
+        stage.initModality(Modality.WINDOW_MODAL);
+        this.cancelBtn.setOnMouseClicked(event -> closeActionListener());
+        this.saveBtn.setOnMouseClicked(event -> saveActionListener(track));
+        this.titleTextField.setText(track.title());
+        track.artist().ifPresent(artistTextField::setText);
+        track.album().ifPresent(albumTextField::setText);
+        track.genre().ifPresent(genreTextField::setText);
+        track.year().ifPresent(yearTextField::setText);
+        track.bpm().ifPresent(value -> bpmTextField.setText(String.valueOf(value)));
+        track.comments().ifPresent(commentsTextField::setText);
+        track.key().ifPresent(keyTextField::setText);
+
+        this.titleLabel.textProperty().bind(this.titleTextField.textProperty());
+        this.artistLabel.textProperty().bind(this.artistTextField.textProperty());
+        this.albumLabel.textProperty().bind(this.albumTextField.textProperty());
+        //
+        //        if (track.getArtworkData().length < 1) {
+        //            return;
+        //        }
+
+        //        this.artworkImageView.setImage(new Image(new ByteArrayInputStream(track.getArtworkData())));
     }
 
     private void closeActionListener() {
@@ -103,31 +126,6 @@ public class DetailController {
                                                    key,
                                                    comments));
         this.closeActionListener();
-    }
-
-    public void setDetails(TrackResponse track, Window owner) {
-        stage.initOwner(owner);
-        stage.initModality(Modality.WINDOW_MODAL);
-        this.cancelBtn.setOnMouseClicked(event -> closeActionListener());
-        this.saveBtn.setOnMouseClicked(event -> saveActionListener(track));
-        this.titleTextField.setText(track.title());
-        track.artist().ifPresent(artistTextField::setText);
-        track.album().ifPresent(albumTextField::setText);
-        track.genre().ifPresent(genreTextField::setText);
-        track.year().ifPresent(yearTextField::setText);
-        track.bpm().ifPresent(value -> bpmTextField.setText(String.valueOf(value)));
-        track.comments().ifPresent(commentsTextField::setText);
-        track.key().ifPresent(keyTextField::setText);
-
-        this.titleLabel.textProperty().bind(this.titleTextField.textProperty());
-        this.artistLabel.textProperty().bind(this.artistTextField.textProperty());
-        this.albumLabel.textProperty().bind(this.albumTextField.textProperty());
-        //
-        //        if (track.getArtworkData().length < 1) {
-        //            return;
-        //        }
-
-        //        this.artworkImageView.setImage(new Image(new ByteArrayInputStream(track.getArtworkData())));
     }
 
 

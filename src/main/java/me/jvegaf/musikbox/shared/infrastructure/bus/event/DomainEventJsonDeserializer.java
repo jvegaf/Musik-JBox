@@ -18,7 +18,11 @@ public final class DomainEventJsonDeserializer {
         this.information = information;
     }
 
-    public DomainEvent deserialize(String body) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException, InstantiationException {
+    public DomainEvent deserialize(String body) throws
+                                                InvocationTargetException,
+                                                IllegalAccessException,
+                                                NoSuchMethodException,
+                                                InstantiationException {
         HashMap<String, Serializable> eventData        = Utils.jsonDecode(body);
         HashMap<String, Serializable> data             = (HashMap<String, Serializable>) eventData.get("data");
         HashMap<String, Serializable> attributes       = (HashMap<String, Serializable>) data.get("attributes");
@@ -26,18 +30,17 @@ public final class DomainEventJsonDeserializer {
 
         DomainEvent nullInstance = domainEventClass.getConstructor().newInstance();
 
-        Method fromPrimitivesMethod = domainEventClass.getMethod(
-            "fromPrimitives",
-            String.class,
-            HashMap.class,
-            String.class,
-            String.class
-        );
+        Method fromPrimitivesMethod = domainEventClass.getMethod("fromPrimitives",
+                                                                 String.class,
+                                                                 HashMap.class,
+                                                                 String.class,
+                                                                 String.class);
 
-        Object domainEvent = fromPrimitivesMethod.invoke(
-                nullInstance, attributes.get("id"),
-                attributes, data.get("id"), data.get("occurred_on")
-        );
+        Object domainEvent = fromPrimitivesMethod.invoke(nullInstance,
+                                                         attributes.get("id"),
+                                                         attributes,
+                                                         data.get("id"),
+                                                         data.get("occurred_on"));
 
         return (DomainEvent) domainEvent;
     }

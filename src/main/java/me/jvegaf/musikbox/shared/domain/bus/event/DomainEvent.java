@@ -32,10 +32,9 @@ public abstract class DomainEvent {
 
     public abstract HashMap<String, Serializable> toPrimitives();
 
-    public abstract DomainEvent fromPrimitives(String aggregateId,
-                                               HashMap<String, Serializable> body,
-                                               String eventId,
-                                               String occurredOn);
+    public abstract DomainEvent fromPrimitives(
+            String aggregateId, HashMap<String, Serializable> body, String eventId, String occurredOn
+    );
 
     public String aggregateId() {
         return aggregateId;

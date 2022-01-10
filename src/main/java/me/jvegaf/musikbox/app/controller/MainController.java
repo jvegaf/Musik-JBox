@@ -37,11 +37,13 @@ public class MainController {
     private       VBox           container;
 
     @Autowired
-    public MainController(MusicCollection collection,
-                          CommandBus bus,
-                          FxControllerAndView<HeaderController, HBox> header,
-                          FxControllerAndView<SideBarController, VBox> sidebar,
-                          FxControllerAndView<TracklistController, AnchorPane> tracklist) throws IOException {
+    public MainController(
+            MusicCollection collection,
+            CommandBus bus,
+            FxControllerAndView<HeaderController, HBox> header,
+            FxControllerAndView<SideBarController, VBox> sidebar,
+            FxControllerAndView<TracklistController, AnchorPane> tracklist
+    ) throws IOException {
         this.collection               = collection;
         this.bus                      = bus;
         this.header                   = header;
@@ -59,9 +61,9 @@ public class MainController {
 
 
         collection.collectionCategoryProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue == Category.PLAYLIST && container.getChildren().size() < 2) container.getChildren()
-                                                                                              .add(0, playlistDetail);
-            if (newValue == Category.HEAD && container.getChildren().size() > 1) container.getChildren().remove(0);
+            if (newValue==Category.PLAYLIST && container.getChildren().size() < 2) container.getChildren().add(0,
+                                                                                                               playlistDetail);
+            if (newValue==Category.HEAD && container.getChildren().size() > 1) container.getChildren().remove(0);
         });
     }
 }

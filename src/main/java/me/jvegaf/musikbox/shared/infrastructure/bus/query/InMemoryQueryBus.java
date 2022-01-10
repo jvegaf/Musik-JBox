@@ -23,7 +23,8 @@ public final class InMemoryQueryBus implements QueryBus {
             QueryHandler handler = context.getBean(queryHandlerClass);
 
             return handler.handle(query);
-        } catch (Throwable error) {
+        }
+        catch (Throwable error) {
             throw new QueryHandlerExecutionError(error);
         }
     }

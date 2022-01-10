@@ -25,22 +25,22 @@ public final class TrackCreatedDomainEvent extends DomainEvent {
         this.location = location;
     }
 
-    public TrackCreatedDomainEvent(String aggregateId,
-                                   String eventId,
-                                   String occurredOn,
-                                   String name,
-                                   String location) {
+    public TrackCreatedDomainEvent(
+            String aggregateId, String eventId, String occurredOn, String name, String location
+    ) {
         super(aggregateId, eventId, occurredOn);
 
         this.name     = name;
         this.location = location;
     }
 
-    @Override public String eventName() {
+    @Override
+    public String eventName() {
         return "track.created";
     }
 
-    @Override public HashMap<String, Serializable> toPrimitives() {
+    @Override
+    public HashMap<String, Serializable> toPrimitives() {
         return new HashMap<String, Serializable>() {{
             put("name", name);
             put("location", location);
@@ -48,10 +48,9 @@ public final class TrackCreatedDomainEvent extends DomainEvent {
     }
 
     @Override
-    public TrackCreatedDomainEvent fromPrimitives(String aggregateId,
-                                                  HashMap<String, Serializable> body,
-                                                  String eventId,
-                                                  String occurredOn) {
+    public TrackCreatedDomainEvent fromPrimitives(
+            String aggregateId, HashMap<String, Serializable> body, String eventId, String occurredOn
+    ) {
         return new TrackCreatedDomainEvent(aggregateId,
                                            eventId,
                                            occurredOn,
@@ -67,15 +66,17 @@ public final class TrackCreatedDomainEvent extends DomainEvent {
         return location;
     }
 
-    @Override public int hashCode() {
+    @Override
+    public int hashCode() {
         return Objects.hash(name, location);
     }
 
-    @Override public boolean equals(Object o) {
-        if (this == o) {
+    @Override
+    public boolean equals(Object o) {
+        if (this==o) {
             return true;
         }
-        if (o == null || getClass() != o.getClass()) {
+        if (o==null || getClass()!=o.getClass()) {
             return false;
         }
         TrackCreatedDomainEvent that = (TrackCreatedDomainEvent) o;

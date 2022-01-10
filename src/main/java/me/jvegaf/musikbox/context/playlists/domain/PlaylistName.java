@@ -8,5 +8,5 @@ public class PlaylistName extends StringValueObject {
         super(value);
     }
 
-    public PlaylistName() { super("");}
+    public PlaylistName() {super("");}
 }

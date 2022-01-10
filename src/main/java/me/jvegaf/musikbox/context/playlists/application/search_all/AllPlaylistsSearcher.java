@@ -16,9 +16,12 @@ public final class AllPlaylistsSearcher {
     private final PlaylistRepository repository;
 
 
-    public AllPlaylistsSearcher(PlaylistRepository repository) { this.repository = repository; }
+    public AllPlaylistsSearcher(PlaylistRepository repository) {this.repository = repository;}
 
     public PlaylistsResponse search() {
-        return new PlaylistsResponse(repository.matching(new Criteria(Filters.none(), Order.asc("name"))).stream().map(PlaylistResponse::fromAggregate).collect(Collectors.toList()));
+        return new PlaylistsResponse(repository.matching(new Criteria(Filters.none(), Order.asc("name")))
+                                               .stream()
+                                               .map(PlaylistResponse::fromAggregate)
+                                               .collect(Collectors.toList()));
     }
 }

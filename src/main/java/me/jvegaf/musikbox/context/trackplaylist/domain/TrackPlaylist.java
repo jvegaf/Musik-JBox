@@ -31,14 +31,6 @@ public final class TrackPlaylist extends AggregateRoot {
         return t;
     }
 
-    public TrackPlaylistId id() { return id; }
-
-    public String playlistId() { return playlistId; }
-
-    public String trackId() { return trackId; }
-
-    public Integer position() { return position; }
-
     @Override
     public int hashCode() {
         return super.hashCode();
@@ -46,11 +38,19 @@ public final class TrackPlaylist extends AggregateRoot {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
+        if (this==obj) return true;
 
-        if (obj == null || getClass() != obj.getClass()) return false;
+        if (obj==null || getClass()!=obj.getClass()) return false;
         TrackPlaylist p = (TrackPlaylist) obj;
         return id.equals(p.id()) && trackId.equals(p.trackId()) && playlistId.equals(p.playlistId()) && position.equals(
                 p.position());
     }
+
+    public TrackPlaylistId id() {return id;}
+
+    public String trackId() {return trackId;}
+
+    public String playlistId() {return playlistId;}
+
+    public Integer position() {return position;}
 }

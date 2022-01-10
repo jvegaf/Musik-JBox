@@ -40,6 +40,10 @@ public final class MusicCollection {
         this.collectionTracksCount = new SimpleIntegerProperty(tracks.size());
     }
 
+    private TracksResponse libraryTracksRequest() {
+        return (TracksResponse) bus.ask(new SearchAllTracksQuery());
+    }
+
     @EventListener
     public void on(DomainEvent event) {
         if (event instanceof TrackCreatedDomainEvent && collectionCategory.get()==Category.HEAD) {
@@ -88,26 +92,22 @@ public final class MusicCollection {
         collectionTracksCount.set(response.tracks().size());
     }
 
-    private TracksResponse libraryTracksRequest() {
-        return (TracksResponse) bus.ask(new SearchAllTracksQuery());
-    }
-
     private TracksResponse tracksOfPlaylistRequest(String selectedId) {
         return (TracksResponse) bus.ask(new SearchAllTracksInPlaylistQuery(selectedId));
+    }
+
+    public String playListName(String selectedId) {
+        var response = (PlaylistResponse) bus.ask(new FindPlaylistQuery(selectedId));
+        return response.name();
     }
 
     public ObservableList<TrackResponse> tracksProperty() {
         return tracks;
     }
 
-    public ObjectProperty<Category> collectionCategoryProperty() { return collectionCategory; }
+    public ObjectProperty<Category> collectionCategoryProperty() {return collectionCategory;}
 
-    public StringProperty playListNameProperty() { return playListName; }
+    public StringProperty playListNameProperty() {return playListName;}
 
-    public IntegerProperty collectionTracksCountProperty() { return collectionTracksCount; }
-
-    public String playListName(String selectedId) {
-        var response = (PlaylistResponse) bus.ask(new FindPlaylistQuery(selectedId));
-        return response.name();
-    }
+    public IntegerProperty collectionTracksCountProperty() {return collectionTracksCount;}
 }

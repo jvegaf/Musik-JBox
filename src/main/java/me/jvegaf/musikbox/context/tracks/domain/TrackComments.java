@@ -8,5 +8,5 @@ public class TrackComments extends StringValueObject {
         super(value);
     }
 
-    public TrackComments() { super(""); }
+    public TrackComments() {super("");}
 }

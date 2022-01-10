@@ -7,7 +7,7 @@ import java.io.File;
 public final class CollectFilesCommand implements Command {
     private final File path;
 
-    public CollectFilesCommand(File path) { this.path = path; }
+    public CollectFilesCommand(File path) {this.path = path;}
 
-    public File path() { return path; }
+    public File path() {return path;}
 }

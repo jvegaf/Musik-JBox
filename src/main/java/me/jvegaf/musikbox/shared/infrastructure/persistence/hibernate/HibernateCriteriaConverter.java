@@ -11,14 +11,16 @@ import java.util.function.BiFunction;
 
 public final class HibernateCriteriaConverter<T> {
     private final CriteriaBuilder                                                 builder;
-    private final HashMap<FilterOperator, BiFunction<Filter, Root<T>, Predicate>> predicateTransformers = new HashMap<FilterOperator, BiFunction<Filter, Root<T>, Predicate>>() {{
-        put(FilterOperator.EQUAL, HibernateCriteriaConverter.this::equalsPredicateTransformer);
-        put(FilterOperator.NOT_EQUAL, HibernateCriteriaConverter.this::notEqualsPredicateTransformer);
-        put(FilterOperator.GT, HibernateCriteriaConverter.this::greaterThanPredicateTransformer);
-        put(FilterOperator.LT, HibernateCriteriaConverter.this::lowerThanPredicateTransformer);
-        put(FilterOperator.CONTAINS, HibernateCriteriaConverter.this::containsPredicateTransformer);
-        put(FilterOperator.NOT_CONTAINS, HibernateCriteriaConverter.this::notContainsPredicateTransformer);
-    }};
+    private final HashMap<FilterOperator, BiFunction<Filter, Root<T>, Predicate>>
+                                                                                  predicateTransformers =
+            new HashMap<FilterOperator, BiFunction<Filter, Root<T>, Predicate>>() {{
+                put(FilterOperator.EQUAL, HibernateCriteriaConverter.this::equalsPredicateTransformer);
+                put(FilterOperator.NOT_EQUAL, HibernateCriteriaConverter.this::notEqualsPredicateTransformer);
+                put(FilterOperator.GT, HibernateCriteriaConverter.this::greaterThanPredicateTransformer);
+                put(FilterOperator.LT, HibernateCriteriaConverter.this::lowerThanPredicateTransformer);
+                put(FilterOperator.CONTAINS, HibernateCriteriaConverter.this::containsPredicateTransformer);
+                put(FilterOperator.NOT_CONTAINS, HibernateCriteriaConverter.this::notContainsPredicateTransformer);
+            }};
 
     public HibernateCriteriaConverter(CriteriaBuilder builder) {
         this.builder = builder;
@@ -32,7 +34,7 @@ public final class HibernateCriteriaConverter<T> {
 
         if (criteria.order().hasOrder()) {
             Path<Object> orderBy = root.get(criteria.order().orderBy().value());
-            Order        order   = criteria.order().orderType().isAsc() ? builder.asc(orderBy) : builder.desc(orderBy);
+            Order        order   = criteria.order().orderType().isAsc() ? builder.asc(orderBy):builder.desc(orderBy);
 
             hibernateCriteria.orderBy(order);
         }
