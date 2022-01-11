@@ -7,7 +7,8 @@
     -fx-accent: #2274d8;
     -fx-base: #24292B;
     -alt-bg-col: #29303a;
-    -txt-color: #cccccc;
+    -txt-color: #EEEEEE;
+    -highlight: #FFFFFF;
     -txt-color-alt: #a7a6a6;
     -brd-color: #0a0a0a;
     -headr-bg: #313638;
@@ -40,7 +41,7 @@
 
 .label{
     -fx-alignment: center-left;
-    -fx-text-fill: -txt-color;
+    -fx-text-fill: -txt-color-alt;
     -fx-wrap-text: true;
 }
 
@@ -49,8 +50,8 @@
 }
 
 .text-field {
-    -fx-prompt-text-fill: -txt-color;
-    -fx-region-background-color: -input-bg;
+    -fx-text-fill: -input-col;
+    -fx-background-color: -input-bg;
     -fx-font-size: 1.2em;
 
 }
@@ -129,7 +130,18 @@
 .context-menu .menu-item {
     -fx-padding: 10 20 10 20;
     -fx-text-fill: -txt-color;
-  }
+    -fx-background-color: -headr-bg;
+}
+
+.menu-item:filled:hover {
+    -fx-text-fill: -highlight;
+    -fx-background-color: -input-bg;
+    
+}
+
+.separator {
+    -fx-background-color: -brd-color;
+}
 
 .play-btn {
     -fx-content-display: graphic-only;
@@ -250,15 +262,21 @@
     -fx-background-color: -scrollbar-thumb;
 }
 
-.detail-label{
+.detail-view { 
+    -fx-background-color: -headr-bg;
+}
+
+.detail-view .text-area .content{
+    -fx-background-color: -input-bg;
+}
+
+.detail-view .label{
     -fx-alignment: center-right;
-    -fx-text-fill: -txt-color;
     -fx-wrap-text: true;
 }
 
-.comments-label {
+.label .comments-label{
     -fx-alignment: top-right;
-    -fx-text-fill: -txt-color;
     -fx-wrap-text: true;
 }
 

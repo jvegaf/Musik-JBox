@@ -1,6 +1,7 @@
 package me.jvegaf.musikbox.app;
 
 
+import fr.brouillard.oss.cssfx.CSSFX;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Parent;
@@ -36,6 +37,7 @@ public final class MusikBoxApp extends Application {
 
     @Override
     public void start(Stage stage) {
+        CSSFX.start();
         Parent root = fxWeaver.loadView(MainController.class);
         mainScene = new Scene(root, 1440, 800);
         mainScene.getStylesheets()
