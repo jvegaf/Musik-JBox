@@ -2,14 +2,14 @@
 
 <?import javafx.scene.layout.*?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" minHeight="-Infinity" styleClass="main-window" minWidth="-Infinity"
-      prefHeight="800.0" prefWidth="1440.0"
+      prefHeight="800.0" prefWidth="1440.0" stylesheets="@../../../../../styles/dark.css"
       xmlns="http://javafx.com/javafx/17" fx:controller="me.jvegaf.musikbox.app.controller.MainController">
     <fx:include fx:id="header" source="HeaderController.fxml"/>
     <HBox VBox.vgrow="ALWAYS">
         <fx:include fx:id="sidebar" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="200.0"
                     source="SideBarController.fxml"/>
-        <VBox fx:id="container" HBox.hgrow="ALWAYS">
-            <fx:include fx:id="tracklist" source="TracklistController.fxml" VBox.vgrow="ALWAYS"/>
+        <VBox fx:id="container" HBox.hgrow="ALWAYS" alignment="CENTER">
+            <!--            <fx:include fx:id="tracklist" source="TracklistController.fxml" VBox.vgrow="ALWAYS"/>-->
         </VBox>
     </HBox>
 </VBox>

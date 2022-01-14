@@ -365,3 +365,16 @@
     -fx-border-radius: 10;
 }
 
+.music-folder-drop-container {
+    -fx-border-color: -txt-color;
+    -fx-border-style: dashed;
+    -fx-border-radius: 10px;
+    -fx-border-width: 4px;
+}
+
+.music-folder-drop-container .label {
+    -fx-alignment: center;
+    -fx-text-fill: -txt-color;
+    -fx-font-size: 1.5em;
+}
+

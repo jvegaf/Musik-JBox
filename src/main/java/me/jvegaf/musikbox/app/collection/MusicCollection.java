@@ -69,9 +69,6 @@ public final class MusicCollection {
     }
 
     public void onSelectionChange(Category type, String selectedId) {
-
-        TracksResponse response = null;
-
         switch (type) {
             case HEAD -> requestTracksOnLibrary();
             case PLAYLIST -> requestTracksOnPlaylist(selectedId);
@@ -114,4 +111,12 @@ public final class MusicCollection {
     public StringProperty playListNameProperty() {return playListName;}
 
     public IntegerProperty collectionTracksCountProperty() {return collectionTracksCount;}
+
+    public int getSize() {
+        return tracks.size();
+    }
+
+    public Category getCategory() {
+        return collectionCategory.get();
+    }
 }
