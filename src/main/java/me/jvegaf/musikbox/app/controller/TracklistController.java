@@ -23,6 +23,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static me.jvegaf.musikbox.app.items.Category.PLAYLIST;
+
 @Log4j2
 @Component
 @FxmlView
@@ -73,6 +75,7 @@ public class TracklistController {
         collection.tracksProperty()
                   .addListener((ListChangeListener<? super TrackResponse>) c -> songsTableView.refresh());
 
+
         selectionModel = this.songsTableView.getSelectionModel();
         selectionModel.setSelectionMode(SelectionMode.MULTIPLE);
         positionColumn.setCellValueFactory(cellData -> {
@@ -82,28 +85,49 @@ public class TracklistController {
             }
             return new SimpleStringProperty("");
         });
-        titleColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().title()));
-        artistColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().artist().isPresent()
-                                                                              ? cellData.getValue().artist().get()
+
+        positionColumn.setVisible(collection.getCategory()==PLAYLIST);
+
+        collection.collectionCategoryProperty()
+                  .addListener((observable, oldValue, newValue) -> positionColumn.setVisible(newValue.equals(PLAYLIST)));
+
+        titleColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue()
+                                                                                     .title()));
+        artistColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue()
+                                                                                      .artist()
+                                                                                      .isPresent()
+                                                                              ? cellData.getValue()
+                                                                                        .artist()
+                                                                                        .get()
                                                                               :""));
-        albumColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().album().isPresent()
-                                                                             ? cellData.getValue().album().get()
-                                                                             :""));
-        genreColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().genre().isPresent()
-                                                                             ? cellData.getValue().genre().get()
-                                                                             :""));
-        durationColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().duration()));
-        bpmColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().bpm().isPresent()
-                                                                           ? String.valueOf(cellData.getValue()
-                                                                                                    .bpm()
-                                                                                                    .get())
-                                                                           :""));
-        yearColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().year().isPresent()
-                                                                            ? cellData.getValue().year().get()
-                                                                            :""));
-        keyColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().key().isPresent()
-                                                                           ? cellData.getValue().key().get()
-                                                                           :""));
+        albumColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue()
+                                                                                     .album()
+                                                                                     .isPresent() ? cellData.getValue()
+                                                                                                            .album()
+                                                                                                            .get():""));
+        genreColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue()
+                                                                                     .genre()
+                                                                                     .isPresent() ? cellData.getValue()
+                                                                                                            .genre()
+                                                                                                            .get():""));
+        durationColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue()
+                                                                                        .duration()));
+        bpmColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue()
+                                                                                   .bpm()
+                                                                                   .isPresent() ? String.valueOf(
+                cellData.getValue()
+                        .bpm()
+                        .get()):""));
+        yearColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue()
+                                                                                    .year()
+                                                                                    .isPresent() ? cellData.getValue()
+                                                                                                           .year()
+                                                                                                           .get():""));
+        keyColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue()
+                                                                                   .key()
+                                                                                   .isPresent() ? cellData.getValue()
+                                                                                                          .key()
+                                                                                                          .get():""));
 
         songsTableView.setRowFactory(tv -> {
             TableRow<TrackResponse> row  = new TableRow<>();
@@ -115,7 +139,8 @@ public class TracklistController {
                 }
                 if (event.getButton()==MouseButton.PRIMARY && event.getClickCount()==2) {
                     musicPlayer.playTrack(selectionModel.getSelectedItem());
-                    songsTableView.getSelectionModel().clearSelection();
+                    songsTableView.getSelectionModel()
+                                  .clearSelection();
                 }
             });
             row.setOnDragDetected(ev -> {
@@ -123,13 +148,18 @@ public class TracklistController {
 
                 ArrayList<String>
                         tracksIds =
-                        (ArrayList<String>) songsTableView.getSelectionModel().getSelectedItems().stream().map(
-                                TrackResponse::id).collect(Collectors.toList());
+                        (ArrayList<String>) songsTableView.getSelectionModel()
+                                                          .getSelectedItems()
+                                                          .stream()
+                                                          .map(TrackResponse::id)
+                                                          .collect(Collectors.toList());
 
                 ClipboardContent content = new ClipboardContent();
                 content.put(SERIALIZED_MIME_TYPE, tracksIds);
                 db.setContent(content);
-                log.info("Dragging: " + db.getContent(SERIALIZED_MIME_TYPE).toString());
+                log.info("Dragging: " +
+                         db.getContent(SERIALIZED_MIME_TYPE)
+                           .toString());
                 ev.consume();
             });
             return row;
@@ -139,35 +169,48 @@ public class TracklistController {
     private ContextMenu getContextMenu() {
         ContextMenu menu       = new ContextMenu();
         MenuItem    fixallItem = new MenuItem();
-        selectionModel.getSelectedItems().addListener((ListChangeListener<TrackResponse>) c -> {
-            if (selectionModel.getSelectedItems().size() > 1) {
-                fixallItem.setText("Fix " + selectionModel.getSelectedItems().size() + " tracks");
-            }
-            if (selectionModel.getSelectedItems().size()==1) {
-                fixallItem.setText("Fix Track");
-            }
-        });
+        selectionModel.getSelectedItems()
+                      .addListener((ListChangeListener<TrackResponse>) c -> {
+                          if (selectionModel.getSelectedItems()
+                                            .size() > 1) {
+                              fixallItem.setText("Fix " +
+                                                 selectionModel.getSelectedItems()
+                                                               .size() +
+                                                 " tracks");
+                          }
+                          if (selectionModel.getSelectedItems()
+                                            .size()==1) {
+                              fixallItem.setText("Fix Track");
+                          }
+                      });
         fixallItem.setOnAction(actionEvent -> {
-            fixAllTags(selectionModel.getSelectedItems().stream().toList());
+            fixAllTags(selectionModel.getSelectedItems()
+                                     .stream()
+                                     .toList());
             //            selectionModel.clearSelection();
         });
         MenuItem detailItem = new MenuItem("View Detail");
-        detailItem.disableProperty().bind(Bindings.createBooleanBinding(() -> this.selectionModel.getSelectedItems()
-                                                                                                 .size()!=1,
-                                                                        selectionModel.getSelectedItems()));
+        detailItem.disableProperty()
+                  .bind(Bindings.createBooleanBinding(() -> this.selectionModel.getSelectedItems()
+                                                                               .size()!=1,
+                                                      selectionModel.getSelectedItems()));
         detailItem.setOnAction(actionEvent -> {
             DetailController detailController = fxWeaver.loadController(DetailController.class);
-            detailController.setDetails(selectionModel.getSelectedItem(), songsTableView.getScene().getWindow());
+            detailController.setDetails(selectionModel.getSelectedItem(),
+                                        songsTableView.getScene()
+                                                      .getWindow());
             detailController.show();
         });
         MenuItem playItem = new MenuItem("Play Song");
-        playItem.disableProperty().bind(Bindings.createBooleanBinding(() -> this.selectionModel.getSelectedItems()
-                                                                                               .size()!=1,
-                                                                      selectionModel.getSelectedItems()));
+        playItem.disableProperty()
+                .bind(Bindings.createBooleanBinding(() -> this.selectionModel.getSelectedItems()
+                                                                             .size()!=1,
+                                                    selectionModel.getSelectedItems()));
 
         playItem.setOnAction(actionEvent -> musicPlayer.playTrack(selectionModel.getSelectedItem()));
 
-        menu.getItems().addAll(fixallItem, new SeparatorMenuItem(), detailItem, playItem);
+        menu.getItems()
+            .addAll(fixallItem, new SeparatorMenuItem(), detailItem, playItem);
         return menu;
     }
 
@@ -180,7 +223,8 @@ public class TracklistController {
     private void addEventHandler(final Node keyNode) {
         keyNode.addEventHandler(KeyEvent.KEY_PRESSED, event -> {
             if (event.getCode()==KeyCode.SPACE) {
-                if (selectionModel.getSelectedItems().size()==1) return;
+                if (selectionModel.getSelectedItems()
+                                  .size()==1) return;
                 musicPlayer.playTrack(selectionModel.getSelectedItem());
             }
         });
