@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@../../../../../styles/dark.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.jvegaf.musikbox.app.controller.OnBoarding">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="155.0" layoutX="260.0" layoutY="205.0" stroke="white" strokeType="OUTSIDE" width="293.0" />
+      <Label layoutX="296.0" layoutY="275.0" prefWidth="222.0" textAlignment="CENTER" alignment="CENTER" text="Paste your music folder" />
+   </children>
+</AnchorPane>
