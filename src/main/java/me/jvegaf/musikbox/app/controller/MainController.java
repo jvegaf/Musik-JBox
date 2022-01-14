@@ -80,13 +80,11 @@ public class MainController {
                      .add(0, anchorPane);
             VBox.setVgrow(anchorPane, Priority.ALWAYS);
         });
+        setPlaylistDetail();
         log.info("Library Initialized");
     }
 
-    @FXML
-    public void initialize() {
-        checkFirstInit();
-
+    private void setPlaylistDetail() {
         collection.collectionCategoryProperty()
                   .addListener((observable, oldValue, newValue) -> {
                       if (newValue==Category.PLAYLIST &&
@@ -94,15 +92,14 @@ public class MainController {
                                    .size() < 2) container.getChildren()
                                                          .add(0, playlistDetail);
                       if (newValue==Category.HEAD &&
-                          collection.getSize() > 0 &&
                           container.getChildren()
                                    .size() > 1) container.getChildren()
                                                          .remove(0);
                   });
-
     }
 
-    private void checkFirstInit() {
+    @FXML
+    public void initialize() {
 
         if (collection.getCategory()==Category.HEAD && collection.getSize() > 0) {
             var tracklistView = tracklist.getView();
@@ -111,12 +108,15 @@ public class MainController {
                          .add(0, anchorPane);
                 VBox.setVgrow(anchorPane, Priority.ALWAYS);
             });
+            setPlaylistDetail();
             return;
         }
 
         var onBoardPane = onBoarding.getView();
         onBoardPane.ifPresent(anchorPane -> container.getChildren()
                                                      .add(0, anchorPane));
+
+
     }
 }
 
