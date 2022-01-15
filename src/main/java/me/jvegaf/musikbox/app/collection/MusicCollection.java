@@ -30,6 +30,7 @@ public final class MusicCollection {
     private final ObjectProperty<Category>      collectionCategory;
     private final StringProperty                playListName;
     private final IntegerProperty               collectionTracksCount;
+    private String playlistID = null;
 
 
     public MusicCollection(QueryBus bus) {
@@ -52,14 +53,11 @@ public final class MusicCollection {
         }
 
         if (event instanceof TrackUpdatedDomainEvent) {
-            if (tracks.stream()
-                      .anyMatch(track -> track.id()
-                                              .equals(event.aggregateId()))) {
-                tracks.removeIf(track -> track.id()
-                                              .equals(event.aggregateId()));
-                tracks.add((TrackResponse) bus.ask(new FindTrackQuery(event.aggregateId())));
-                log.info("updated in collection: " + event.aggregateId());
+            if (playlistID != null){
+                requestTracksOnPlaylist(playlistID);
+                return;
             }
+            requestTracksOnLibrary();
         }
     }
 
@@ -76,6 +74,7 @@ public final class MusicCollection {
     }
 
     private void requestTracksOnLibrary() {
+        playlistID = null;
         var response = libraryTracksRequest();
         collectionCategory.set(Category.HEAD);
         playListName.set("");
@@ -85,6 +84,7 @@ public final class MusicCollection {
     }
 
     private void requestTracksOnPlaylist(String playlistId) {
+        playlistID = playlistId;
         var response = tracksOfPlaylistRequest(playlistId);
         collectionCategory.set(Category.PLAYLIST);
         playListName.set(playListName(playlistId));

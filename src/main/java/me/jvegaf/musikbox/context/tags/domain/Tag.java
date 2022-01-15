@@ -73,6 +73,7 @@ public final class Tag implements Response {
     }
 
     public Integer duration() {
+        if (duration == null) return 0;
         return duration;
     }
 

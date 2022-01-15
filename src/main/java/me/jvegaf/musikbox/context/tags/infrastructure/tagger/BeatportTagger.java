@@ -66,7 +66,10 @@ public class BeatportTagger implements Tagger {
 
         List<Tag> tags = createTagsFromResponse(response);
 
-        if (tags.size() < 1) return new TagResponse();
+        if (tags.size() < 1) {
+            log.info("No tags founded");
+            return new TagResponse();
+        }
 
         return new TagResponse(matchTags(tags, duration));
 
