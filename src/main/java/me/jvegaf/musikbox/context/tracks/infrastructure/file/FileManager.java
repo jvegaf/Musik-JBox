@@ -44,7 +44,8 @@ public final class FileManager {
                 AbstractID3v2Tag tag   = f.getID3v2Tag();
                 String           title = tag.getFirst(FieldKey.TITLE);
                 if (title==null || title.isEmpty()) {
-                    title = file.getName().replaceAll(".mp3", "");
+                    title = file.getName().replaceAll(".mp3", "").replaceAll("_", " ")
+                                .trim();
                 }
 
                 bus.dispatch(new CreateTrackCommand(title,
