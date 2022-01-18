@@ -3,6 +3,7 @@ package me.jvegaf.musikbox.app.controller;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ListChangeListener;
+import javafx.css.PseudoClass;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -21,6 +22,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import static me.jvegaf.musikbox.app.items.Category.PLAYLIST;
@@ -57,6 +59,8 @@ public class TracklistController {
     private             TableView.TableViewSelectionModel<TrackResponse> selectionModel;
     @FXML
     private             TableColumn<TrackResponse, String>               keyColumn;
+
+    private String playingId;
 
     @Autowired
     public TracklistController(
@@ -130,8 +134,22 @@ public class TracklistController {
                                                                                                           .get():""));
 
         songsTableView.setRowFactory(tv -> {
-            TableRow<TrackResponse> row  = new TableRow<>();
+            TableRow<TrackResponse> row  = new TableRow<>() {
+                @Override
+                protected void updateItem(TrackResponse item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (empty || item==null) return;
+                    if (Objects.equals(item.id(), playingId)) {
+                        setStyle("-fx-background-color: -selected-focus-lost;");
+                    }
+                    else {
+                        setStyle("");
+                    }
+                }
+            };
+
             ContextMenu             menu = getContextMenu();
+
             row.setContextMenu(menu);
             row.setOnMouseClicked(event -> {
                 if (row.isEmpty()) {
@@ -139,8 +157,10 @@ public class TracklistController {
                 }
                 if (event.getButton()==MouseButton.PRIMARY && event.getClickCount()==2) {
                     musicPlayer.playTrack(selectionModel.getSelectedItem());
+                    playingId = selectionModel.getSelectedItem().id();
                     songsTableView.getSelectionModel()
                                   .clearSelection();
+                    songsTableView.refresh();
                 }
             });
             row.setOnDragDetected(ev -> {

@@ -101,7 +101,7 @@
     -fx-background-color: transparent;
 }
 
-.table-row-cell .cell{
+.table-row-cell .table-cell{
     -fx-padding: 4 0 6 10;
     -fx-font-size: 1.05em;
     -fx-text-fill: -tcell-text;
@@ -115,15 +115,15 @@
     -fx-background-color: -odd-color;
 }
 
-.table-view .table-row-cell:hover .cell {
+.table-view .table-row-cell:hover .table-cell {
     -fx-text-fill: -fx-accent;
 }
 
-.table-view .table-row-cell:selected .cell {
+.table-view .table-row-cell:selected .table-cell {
     -fx-background-color: -fx-accent;
 }
 
-.table-view .table-row-cell:selected:hover .cell {
+.table-view .table-row-cell:selected:hover .table-cell {
     -fx-text-fill: -txt-color;
 }
 
@@ -136,7 +136,7 @@
 .menu-item:filled:hover {
     -fx-text-fill: -highlight;
     -fx-background-color: -input-bg;
-    
+
 }
 
 .separator {
@@ -262,7 +262,7 @@
     -fx-background-color: -scrollbar-thumb;
 }
 
-.detail-view { 
+.detail-view {
     -fx-background-color: -headr-bg;
 }
 
