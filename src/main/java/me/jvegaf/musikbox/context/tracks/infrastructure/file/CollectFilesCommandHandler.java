@@ -17,6 +17,6 @@ public class CollectFilesCommandHandler implements CommandHandler<CollectFilesCo
     @Override
     public void handle(CollectFilesCommand command) {
         log.info("Collecting files from {}", command.path().getAbsolutePath());
-        manager.dispatchFiles(command.path());
+        new Thread(() -> manager.dispatchFiles(command.path())).start();
     }
 }
