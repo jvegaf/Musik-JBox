@@ -15,6 +15,7 @@ import org.jaudiotagger.audio.exceptions.ReadOnlyFileException;
 import org.jaudiotagger.audio.mp3.MP3File;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.TagException;
+import org.jaudiotagger.tag.datatype.Artwork;
 import org.jaudiotagger.tag.id3.AbstractID3v2Tag;
 
 import java.io.File;
@@ -48,6 +49,18 @@ public final class FileManager {
                                 .trim();
                 }
 
+
+                byte[] artworkData = new byte[0];
+                String artworkMimeType = "";
+                Integer pictureType = null;
+
+                List<Artwork> artworkList = tag.getArtworkList();
+
+                if (!artworkList.isEmpty()) {
+                    artworkData = artworkList.get(0).getBinaryData();
+                    artworkMimeType = artworkList.get(0).getMimeType();
+                    pictureType = artworkList.get(0).getPictureType();
+                }
 
 
                 bus.dispatch(new CreateTrackCommand(title,
