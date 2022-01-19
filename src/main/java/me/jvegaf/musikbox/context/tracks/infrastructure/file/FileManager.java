@@ -48,6 +48,8 @@ public final class FileManager {
                                 .trim();
                 }
 
+
+
                 bus.dispatch(new CreateTrackCommand(title,
                                                     file.getAbsolutePath(),
                                                     f.getAudioHeader().getTrackLength(),
@@ -57,7 +59,10 @@ public final class FileManager {
                                                     tag.getFirst(FieldKey.YEAR),
                                                     tag.getFirst(FieldKey.COMMENT),
                                                     tag.getFirst(FieldKey.BPM),
-                                                    tag.getFirst(FieldKey.KEY)));
+                                                    tag.getFirst(FieldKey.KEY),
+                                                    artworkData,
+                                                    artworkMimeType,
+                                                    pictureType));
 
             }
             catch (CannotReadException | TagException | IOException | ReadOnlyFileException | InvalidAudioFrameException e) {

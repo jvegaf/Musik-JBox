@@ -4,16 +4,19 @@ import me.jvegaf.musikbox.shared.domain.bus.command.Command;
 
 public class CreateTrackCommand implements Command {
 
-    private final String title;
-    private final String location;
-    private final int    duration;
-    private final String artist;
-    private final String album;
-    private final String genre;
-    private final String year;
-    private final String comments;
-    private final String bpm;
-    private final String key;
+    private final String  title;
+    private final String  location;
+    private final int     duration;
+    private final String  artist;
+    private final String  album;
+    private final String  genre;
+    private final String  year;
+    private final String  comments;
+    private final String  bpm;
+    private final String  key;
+    private final byte[]  artworkData;
+    private final String  artworkMimeType;
+    private final Integer pictureType;
 
     public CreateTrackCommand(
             String title,
@@ -25,18 +28,24 @@ public class CreateTrackCommand implements Command {
             String year,
             String comments,
             String bpm,
-            String key
+            String key,
+            byte[] artworkData,
+            String artworkMimeType,
+            Integer pictureType
     ) {
-        this.title    = title;
-        this.location = location;
-        this.duration = duration;
-        this.artist   = artist;
-        this.album    = album;
-        this.genre    = genre;
-        this.year     = year;
-        this.comments = comments;
-        this.bpm      = bpm;
-        this.key      = key;
+        this.title           = title;
+        this.location        = location;
+        this.duration        = duration;
+        this.artist          = artist;
+        this.album           = album;
+        this.genre           = genre;
+        this.year            = year;
+        this.comments        = comments;
+        this.bpm             = bpm;
+        this.key             = key;
+        this.artworkData     = artworkData;
+        this.artworkMimeType = artworkMimeType;
+        this.pictureType     = pictureType;
     }
 
     public String title() {return title;}
@@ -58,4 +67,10 @@ public class CreateTrackCommand implements Command {
     public String bpm() {return bpm;}
 
     public String key() {return key;}
+
+    public byte[] artworkData() { return artworkData; }
+
+    public String artworkMimeType() { return artworkMimeType; }
+
+    public Integer pictureType() { return pictureType; }
 }
