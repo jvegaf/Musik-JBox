@@ -50,19 +50,6 @@ public final class FileManager {
                 }
 
 
-                byte[] artworkData = new byte[0];
-                String artworkMimeType = "";
-                Integer pictureType = null;
-
-                List<Artwork> artworkList = tag.getArtworkList();
-
-                if (!artworkList.isEmpty()) {
-                    artworkData = artworkList.get(0).getBinaryData();
-                    artworkMimeType = artworkList.get(0).getMimeType();
-                    pictureType = artworkList.get(0).getPictureType();
-                }
-
-
                 bus.dispatch(new CreateTrackCommand(title,
                                                     file.getAbsolutePath(),
                                                     f.getAudioHeader().getTrackLength(),
@@ -72,10 +59,7 @@ public final class FileManager {
                                                     tag.getFirst(FieldKey.YEAR),
                                                     tag.getFirst(FieldKey.COMMENT),
                                                     tag.getFirst(FieldKey.BPM),
-                                                    tag.getFirst(FieldKey.KEY),
-                                                    artworkData,
-                                                    artworkMimeType,
-                                                    pictureType));
+                                                    tag.getFirst(FieldKey.KEY)));
 
             }
             catch (CannotReadException | TagException | IOException | ReadOnlyFileException | InvalidAudioFrameException e) {

@@ -14,9 +14,6 @@ public class CreateTrackCommand implements Command {
     private final String  comments;
     private final String  bpm;
     private final String  key;
-    private final byte[]  artworkData;
-    private final String  artworkMimeType;
-    private final Integer pictureType;
 
     public CreateTrackCommand(
             String title,
@@ -28,10 +25,7 @@ public class CreateTrackCommand implements Command {
             String year,
             String comments,
             String bpm,
-            String key,
-            byte[] artworkData,
-            String artworkMimeType,
-            Integer pictureType
+            String key
     ) {
         this.title           = title;
         this.location        = location;
@@ -43,9 +37,6 @@ public class CreateTrackCommand implements Command {
         this.comments        = comments;
         this.bpm             = bpm;
         this.key             = key;
-        this.artworkData     = artworkData;
-        this.artworkMimeType = artworkMimeType;
-        this.pictureType     = pictureType;
     }
 
     public String title() {return title;}
@@ -67,10 +58,4 @@ public class CreateTrackCommand implements Command {
     public String bpm() {return bpm;}
 
     public String key() {return key;}
-
-    public byte[] artworkData() { return artworkData; }
-
-    public String artworkMimeType() { return artworkMimeType; }
-
-    public Integer pictureType() { return pictureType; }
 }
