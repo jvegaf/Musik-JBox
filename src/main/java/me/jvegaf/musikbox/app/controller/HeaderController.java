@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.ImageView;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -28,6 +29,8 @@ public final class HeaderController {
     public        Button      minimizeBtn;
     @FXML
     public        Button      maximizeBtn;
+    @FXML
+    private       ImageView   artView;
     @FXML
     private       Label       artistLabel;
     @FXML
@@ -69,6 +72,7 @@ public final class HeaderController {
         titleLabel.textProperty()
                   .bind(player.titleProperty);
         player.statusProperty.addListener((observable, oldValue, newValue) -> playerStatusHandler(newValue));
+        player.artworkProperty.addListener((observable, oldValue, newValue) -> artView.setImage(newValue));
     }
 
     private void disablePlayerControls(boolean value) {
@@ -78,7 +82,8 @@ public final class HeaderController {
     }
 
     private boolean winMaximized() {
-        return !((Stage) (maximizeBtn.getScene().getWindow())).isMaximized();
+        return !((Stage) (maximizeBtn.getScene()
+                                     .getWindow())).isMaximized();
     }
 
     private void playerStatusHandler(MediaPlayer.Status status) {
@@ -105,7 +110,6 @@ public final class HeaderController {
     }
 
 
-
     private void initDisplayControls() {
 
         initProgressBar();
@@ -121,45 +125,47 @@ public final class HeaderController {
                                                                                                                            .toMillis())));
 
         progressBar.setOnMouseClicked(evt -> {
-            double   dx           = evt.getX();
-            double   dwidth       = progressBar.getWidth();
-            double   progression  = (dx / dwidth);
+            double dx          = evt.getX();
+            double dwidth      = progressBar.getWidth();
+            double progression = (dx / dwidth);
             var
-                     milliseconds =
+                    milliseconds =
                     (progression *
                      player.getMediaPlayer()
                            .getTotalDuration()
                            .toMillis());
-            Duration duration     = new Duration(milliseconds);
+            Duration duration = new Duration(milliseconds);
             player.seekTo(duration);
         });
     }
 
     private void initDisplayLabels() {
-        currentTimeLabel.textProperty().bind(Bindings.createStringBinding(() -> String.format("%.0f:%02.0f",
-                                                                                              player.getMediaPlayer()
-                                                                                                    .getCurrentTime()
-                                                                                                    .toMinutes(),
-                                                                                              player.getMediaPlayer()
-                                                                                                    .getCurrentTime()
-                                                                                                    .toSeconds() % 60),
-                                                                          player.getMediaPlayer()
-                                                                                .currentTimeProperty()));
+        currentTimeLabel.textProperty()
+                        .bind(Bindings.createStringBinding(() -> String.format("%.0f:%02.0f",
+                                                                               player.getMediaPlayer()
+                                                                                     .getCurrentTime()
+                                                                                     .toMinutes(),
+                                                                               player.getMediaPlayer()
+                                                                                     .getCurrentTime()
+                                                                                     .toSeconds() % 60),
+                                                           player.getMediaPlayer()
+                                                                 .currentTimeProperty()));
 
-        remainTimeLabel.textProperty().bind(Bindings.createStringBinding(() -> String.format("%.0f:%02.0f",
-                                                                                             player.getMediaPlayer()
-                                                                                                   .getCurrentTime()
-                                                                                                   .toMinutes() -
-                                                                                             player.getMediaPlayer()
-                                                                                                   .getTotalDuration()
-                                                                                                   .toMinutes(),
-                                                                                             (player.getMediaPlayer()
-                                                                                                    .getTotalDuration()
-                                                                                                    .toSeconds() -
-                                                                                              player.getMediaPlayer()
-                                                                                                    .getCurrentTime()
-                                                                                                    .toSeconds()) % 60),
-                                                                         player.getMediaPlayer()
-                                                                               .currentTimeProperty()));
+        remainTimeLabel.textProperty()
+                       .bind(Bindings.createStringBinding(() -> String.format("%.0f:%02.0f",
+                                                                              player.getMediaPlayer()
+                                                                                    .getCurrentTime()
+                                                                                    .toMinutes() -
+                                                                              player.getMediaPlayer()
+                                                                                    .getTotalDuration()
+                                                                                    .toMinutes(),
+                                                                              (player.getMediaPlayer()
+                                                                                     .getTotalDuration()
+                                                                                     .toSeconds() -
+                                                                               player.getMediaPlayer()
+                                                                                     .getCurrentTime()
+                                                                                     .toSeconds()) % 60),
+                                                          player.getMediaPlayer()
+                                                                .currentTimeProperty()));
     }
 }

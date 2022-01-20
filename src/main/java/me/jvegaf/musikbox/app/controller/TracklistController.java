@@ -230,7 +230,7 @@ public class TracklistController {
         playItem.setOnAction(actionEvent -> musicPlayer.playTrack(selectionModel.getSelectedItem()));
 
         menu.getItems()
-            .addAll(fixallItem, new SeparatorMenuItem(), detailItem, playItem);
+            .addAll(detailItem, new SeparatorMenuItem(), playItem, new SeparatorMenuItem(),  fixallItem);
         return menu;
     }
 
