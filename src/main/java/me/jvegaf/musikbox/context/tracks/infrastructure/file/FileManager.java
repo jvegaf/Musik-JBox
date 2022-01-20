@@ -15,6 +15,7 @@ import org.jaudiotagger.audio.exceptions.ReadOnlyFileException;
 import org.jaudiotagger.audio.mp3.MP3File;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.TagException;
+import org.jaudiotagger.tag.datatype.Artwork;
 import org.jaudiotagger.tag.id3.AbstractID3v2Tag;
 
 import java.io.File;
@@ -47,6 +48,7 @@ public final class FileManager {
                     title = file.getName().replaceAll(".mp3", "").replaceAll("_", " ")
                                 .trim();
                 }
+
 
                 bus.dispatch(new CreateTrackCommand(title,
                                                     file.getAbsolutePath(),

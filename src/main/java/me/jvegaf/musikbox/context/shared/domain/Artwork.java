@@ -1,15 +1,17 @@
-package me.jvegaf.musikbox.context.tracks.domain;
+package me.jvegaf.musikbox.context.shared.domain;
 
-public final class TrackCoverArt {
+import me.jvegaf.musikbox.shared.domain.bus.query.Response;
 
-    private final byte[]  data;
-    private final String  description;
+public final class Artwork implements Response {
+
+    private final byte[] data;
+    private final String description;
     private final String  imageUrl;
     private final boolean linked;
     private final String  mimeType;
     private final Integer pictureType;
 
-    public TrackCoverArt(
+    public Artwork(
             byte[] data, String description, String imageUrl, boolean linked, String mimeType, Integer pictureType
     ) {
         this.data        = data;
@@ -20,15 +22,24 @@ public final class TrackCoverArt {
         this.pictureType = pictureType;
     }
 
-    public byte[] getData() {
+    public Artwork() {
+        this.data        = new byte[0];
+        this.description = null;
+        this.imageUrl    = null;
+        this.linked      = false;
+        this.mimeType    = null;
+        this.pictureType = null;
+    }
+
+    public byte[] data() {
         return this.data;
     }
 
-    public String getDescription() {
+    public String description() {
         return this.description;
     }
 
-    public String getImageUrl() {
+    public String imageUrl() {
         return this.imageUrl;
     }
 
@@ -36,11 +47,11 @@ public final class TrackCoverArt {
         return this.linked;
     }
 
-    public String getMimeType() {
+    public String mimeType() {
         return this.mimeType;
     }
 
-    public Integer getPictureType() {
+    public Integer pictureType() {
         return this.pictureType;
     }
 }
