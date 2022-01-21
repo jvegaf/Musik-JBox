@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane xmlns="http://javafx.com/javafx/17"
+            fx:controller="me.jvegaf.musikbox.app.controller.TracklistController"
+            xmlns:fx="http://javafx.com/fxml/1">
+    <TableView fx:id="songsTableView" AnchorPane.bottomAnchor="0.0"
+               AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columns>
+            <TableColumn fx:id="positionColumn" prefWidth="60.0" text="#"/>
+            <TableColumn fx:id="titleColumn" prefWidth="352.0" text="Title"/>
+            <TableColumn fx:id="artistColumn" prefWidth="310.0" text="Artist"/>
+            <TableColumn fx:id="albumColumn" prefWidth="294.0" text="Album"/>
+            <TableColumn fx:id="durationColumn" prefWidth="82.0" text="Time"/>
+            <TableColumn fx:id="genreColumn" prefWidth="142.0" text="Genre"/>
+            <TableColumn fx:id="bpmColumn" prefWidth="76.0" text="BPM"/>
+            <TableColumn fx:id="yearColumn" prefWidth="88.0" text="Year"/>
+            <TableColumn fx:id="keyColumn" prefWidth="88.0" text="Key"/>
+        </columns>
+    </TableView>
+</AnchorPane>

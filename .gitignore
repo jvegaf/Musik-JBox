@@ -245,3 +245,4 @@ gradle/wrapper/gradle-wrapper.properties
 gradlew
 
 gradlew.bat
+/db/musikbox.db

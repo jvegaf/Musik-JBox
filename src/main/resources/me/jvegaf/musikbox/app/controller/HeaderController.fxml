@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox alignment="CENTER" maxHeight="1.7976931348623157E308" minHeight="-Infinity" prefHeight="70.0" styleClass="header" stylesheets="@../../../../../styles/dark.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.jvegaf.musikbox.app.controller.HeaderController">
+    <padding>
+        <Insets left="20.0" right="20.0" />
+    </padding>
+    <AnchorPane minWidth="450.0" prefWidth="450.0" HBox.hgrow="SOMETIMES">
+        <Button fx:id="prevBtn" layoutX="26.0" layoutY="23.0" mnemonicParsing="false" styleClass="prev-btn" />
+        <Button fx:id="playBtn" layoutX="79.0" layoutY="18.0" mnemonicParsing="false" styleClass="play-btn" />
+        <Button fx:id="pauseBtn" layoutX="75.0" layoutY="18.0" mnemonicParsing="false" styleClass="pause-btn" visible="false" />
+        <Button fx:id="nextBtn" layoutX="130.0" layoutY="23.0" mnemonicParsing="false" styleClass="next-btn" />
+    </AnchorPane>
+    <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefWidth="500.0" styleClass="player" HBox.hgrow="NEVER">
+        <ImageView fx:id="artView" fitHeight="69.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+        <Label id="trackArtistLabel" fx:id="artistLabel" alignment="CENTER" layoutX="10.0" textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="10.0" />
+        <Label id="trackTitleLabel" fx:id="titleLabel" alignment="CENTER" layoutX="10.0" layoutY="25.0" maxHeight="-Infinity" prefHeight="28.0" wrapText="true" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="7.0" />
+        <ProgressBar fx:id="progressBar" layoutX="10.0" layoutY="30.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="5.0" progress="0.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="5.0" />
+        <Label fx:id="currentTimeLabel" layoutX="5.0" layoutY="45.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="75.0" />
+        <Label fx:id="remainTimeLabel" layoutX="15.0" layoutY="55.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="5.0" />
+    </AnchorPane>
+    <AnchorPane minWidth="-Infinity" prefWidth="450.0" HBox.hgrow="SOMETIMES">
+        <AnchorPane layoutX="93.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="8.0">
+            <Button id="btn-close" fx:id="closeBtn" layoutX="34.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="12.0" prefWidth="12.0" />
+            <Button id="btn-maximize" fx:id="maximizeBtn" layoutX="17.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="12.0" prefWidth="12.0" />
+            <Button id="btn-minimize" fx:id="minimizeBtn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="12.0" prefWidth="12.0" />
+        </AnchorPane>
+    </AnchorPane>
+</HBox>

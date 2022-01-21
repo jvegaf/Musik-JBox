@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity"
+            minHeight="-Infinity" minWidth="-Infinity" prefHeight="29.0" prefWidth="177.0"
+            xmlns="http://javafx.com/javafx/11.0.2">
+    <HBox alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0"
+          AnchorPane.topAnchor="0.0">
+        <Pane fx:id="iconPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+              prefHeight="16.0" prefWidth="16.0"/>
+        <StackPane HBox.hgrow="ALWAYS">
+            <AnchorPane StackPane.alignment="CENTER_LEFT">
+                <Label fx:id="titleLbl" text="Label" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0"
+                       AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+            </AnchorPane>
+            <AnchorPane StackPane.alignment="CENTER_LEFT">
+                <TextField fx:id="titleTF" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0"
+                           AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+            </AnchorPane>
+        </StackPane>
+    </HBox>
+</AnchorPane>
