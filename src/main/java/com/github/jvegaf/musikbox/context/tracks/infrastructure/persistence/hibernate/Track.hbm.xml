@@ -1,0 +1,55 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.github.jvegaf.musikbox.context.tracks.domain.Track" table="tracks">
+        <composite-id name="id" class="com.github.jvegaf.musikbox.context.tracks.domain.TrackId" access="field">
+            <key-property column="id" name="value" length="36" access="field"/>
+        </composite-id>
+
+        <component name="title" class="com.github.jvegaf.musikbox.context.tracks.domain.TrackTitle" access="field">
+            <property name="value" column="title" type="string" access="field"/>
+        </component>
+
+        <component name="location" class="com.github.jvegaf.musikbox.context.tracks.domain.TrackLocation"
+                   access="field">
+            <property name="value" column="location" type="string" access="field"/>
+        </component>
+
+        <component name="duration" class="com.github.jvegaf.musikbox.context.tracks.domain.TrackDuration"
+                   access="field">
+            <property name="value" column="duration" type="int" access="field"/>
+        </component>
+
+        <component name="artist" class="com.github.jvegaf.musikbox.context.tracks.domain.TrackArtist" access="field">
+            <property name="value" column="artist" type="string" access="field"/>
+        </component>
+
+        <component name="album" class="com.github.jvegaf.musikbox.context.tracks.domain.TrackAlbum" access="field">
+            <property name="value" column="album" type="string" access="field"/>
+        </component>
+
+        <component name="genre" class="com.github.jvegaf.musikbox.context.tracks.domain.TrackGenre" access="field">
+            <property name="value" column="genre" type="string" access="field"/>
+        </component>
+
+        <component name="year" class="com.github.jvegaf.musikbox.context.tracks.domain.TrackYear" access="field">
+            <property name="value" column="year" type="string" access="field"/>
+        </component>
+
+        <component name="bpm" class="com.github.jvegaf.musikbox.context.tracks.domain.TrackBpm" access="field">
+            <property name="value" column="bpm" type="int" access="field"/>
+        </component>
+
+        <component name="key" class="com.github.jvegaf.musikbox.context.tracks.domain.TrackInitKey" access="field">
+            <property name="value" column="key" type="string" access="field"/>
+        </component>
+
+        <component name="comments" class="com.github.jvegaf.musikbox.context.tracks.domain.TrackComments"
+                   access="field">
+            <property name="value" column="comments" type="string" access="field"/>
+        </component>
+    </class>
+</hibernate-mapping>

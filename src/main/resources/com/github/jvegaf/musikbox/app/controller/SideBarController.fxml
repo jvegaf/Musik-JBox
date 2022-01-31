@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" styleClass="sidebar" xmlns="http://javafx.com/javafx/16"
+      fx:controller="com.github.jvegaf.musikbox.app.controller.SideBarController">
+    <AnchorPane layoutX="10.0" layoutY="126.0">
+        <Label styleClass="side-label" text="Library" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+               AnchorPane.topAnchor="0.0">
+            <font>
+                <Font size="13.0"/>
+            </font>
+        </Label>
+    </AnchorPane>
+    <AnchorPane prefHeight="90.0">
+        <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" onMouseClicked="#onClickCollection" spacing="10.0"
+              styleClass="list-cell" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0"
+              AnchorPane.topAnchor="0.0">
+            <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                  prefHeight="16.0" prefWidth="16.0" styleClass="icon-library">
+                <HBox.margin>
+                    <Insets/>
+                </HBox.margin>
+            </Pane>
+            <Label maxHeight="-Infinity" minHeight="-Infinity" prefHeight="29.0" text="Music"
+                   AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0"
+                   AnchorPane.topAnchor="0.0" HBox.hgrow="ALWAYS"/>
+        </HBox>
+    </AnchorPane>
+    <AnchorPane VBox.vgrow="NEVER">
+        <Label styleClass="side-label" text="Playlists" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+               AnchorPane.topAnchor="0.0">
+            <font>
+                <Font size="13.0"/>
+            </font>
+        </Label>
+        <Button fx:id="addBtn" alignment="CENTER" mnemonicParsing="false" styleClass="add-playlist-btn"
+                AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0"/>
+    </AnchorPane>
+    <ListView fx:id="playlistListView" VBox.vgrow="ALWAYS"/>
+</VBox>
