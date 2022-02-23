@@ -246,3 +246,4 @@ gradlew
 
 gradlew.bat
 /db/musikbox.db
+target/
