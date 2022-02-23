@@ -72,7 +72,7 @@ public final class HibernateConfigurationFactory {
     }
 
     private String hbm2ddlOption() {
-        File dbFile = new File("./db/musikbox.db");
+        File dbFile = new File(String.valueOf(getClass().getClassLoader().getResource("database/musikbox.db")));
         return dbFile.exists() ? "none":"create";
     }
 
@@ -108,7 +108,7 @@ public final class HibernateConfigurationFactory {
     ) {
         final DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.sqlite.JDBC");
-        dataSource.setUrl(String.format("jdbc:sqlite:db/musikbox.db?", databaseName));
+        dataSource.setUrl("jdbc:sqlite::resource:database/musikbox.db");
         dataSource.setUsername(username);
         dataSource.setPassword(password);
 
