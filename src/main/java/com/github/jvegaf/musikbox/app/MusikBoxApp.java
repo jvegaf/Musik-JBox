@@ -33,8 +33,10 @@ public final class MusikBoxApp extends Application {
     @Override
     public void init() {
 
-        if (MusikBoxApp.class
-                .getResource("db/musikbox.db")==null) {
+        var datab = MusikBoxApp.class
+                .getResource("/db/musikbox.db");
+
+        if (datab==null) {
             Platform.runLater(() -> {
                 try {
                     SQLiteHelper.createDatabases();
