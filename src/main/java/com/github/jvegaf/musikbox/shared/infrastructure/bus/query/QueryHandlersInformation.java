@@ -22,7 +22,6 @@ public final class QueryHandlersInformation {
 
         indexedQueryHandlers = formatHandlers(classes);
 
-        classes.forEach(handler -> log.info("Registered query handler: {}", handler.getName()));
     }
 
     private HashMap<Class<? extends Query>, Class<? extends QueryHandler>> formatHandlers(

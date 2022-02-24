@@ -44,7 +44,7 @@ public final class HibernateConfigurationFactory {
 
     private Properties hibernateProperties() {
         Properties hibernateProperties = new Properties();
-        hibernateProperties.put(AvailableSettings.HBM2DDL_AUTO, hbm2ddlOption());
+        hibernateProperties.put(AvailableSettings.HBM2DDL_AUTO, "none");
 
         hibernateProperties.put(AvailableSettings.SHOW_SQL, "true");
         hibernateProperties.put(AvailableSettings.DIALECT,
@@ -69,11 +69,6 @@ public final class HibernateConfigurationFactory {
         return goodPaths.stream()
                         .map(FileSystemResource::new)
                         .collect(Collectors.toList());
-    }
-
-    private String hbm2ddlOption() {
-        File dbFile = new File(String.valueOf(getClass().getClassLoader().getResource("database/musikbox.db")));
-        return dbFile.exists() ? "none":"create";
     }
 
     private List<String> subdirectoriesFor(String contextName) {
@@ -108,7 +103,7 @@ public final class HibernateConfigurationFactory {
     ) {
         final DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.sqlite.JDBC");
-        dataSource.setUrl("jdbc:sqlite::resource:database/musikbox.db");
+        dataSource.setUrl("jdbc:sqlite:src/main/resources/db/musikbox.db");
         dataSource.setUsername(username);
         dataSource.setPassword(password);
 

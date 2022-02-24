@@ -3,6 +3,7 @@ package com.github.jvegaf.musikbox.app;
 
 import com.github.jvegaf.musikbox.app.controller.MainController;
 import com.github.jvegaf.musikbox.shared.infrastructure.util.ResizeHelper;
+import com.github.jvegaf.musikbox.shared.infrastructure.util.SQLiteHelper;
 import fr.brouillard.oss.cssfx.CSSFX;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -11,11 +12,15 @@ import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import lombok.extern.log4j.Log4j2;
 import net.rgielen.fxweaver.core.FxWeaver;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import java.io.IOException;
+import java.sql.SQLException;
 
+@Log4j2
 public final class MusikBoxApp extends Application {
 
     private ConfigurableApplicationContext applicationContext;
@@ -27,6 +32,21 @@ public final class MusikBoxApp extends Application {
 
     @Override
     public void init() {
+
+        if (MusikBoxApp.class
+                .getResource("db/musikbox.db")==null) {
+            Platform.runLater(() -> {
+                try {
+                    SQLiteHelper.createDatabases();
+                    log.info("Successful database creation!");
+
+                }
+                catch (SQLException | IOException e) {
+                    e.printStackTrace();
+                }
+            });
+        }
+
         applicationContext =
                 new SpringApplicationBuilder().sources(Main.class)
                                               .run(getParameters().getRaw()

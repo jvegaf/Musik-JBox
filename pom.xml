@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.jvegaf</groupId>
     <artifactId>MusikBox</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.1</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
@@ -30,7 +30,6 @@
          -->
         <windows.upgrade.uuid>2cb916c4-0000-4a7d-ae14-c3cedede32fd</windows.upgrade.uuid>
         <!-- This is used to set many user-visible fields in the Windows Installer. See windows-jpackage.txt -->
-        <windows.vendor>Jose Vega</windows.vendor>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -242,7 +241,7 @@
                 <!-- Plugin to make working with JavaFX nicer. See https://github.com/openjfx/javafx-maven-plugin -->
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
-                <version>0.0.6</version>
+                <version>0.0.8</version>
                 <configuration>
                     <mainClass>${main-class}</mainClass>
                 </configuration>
@@ -267,6 +266,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.6.3</version>
                 <configuration>
                     <excludes>
                         <exclude>

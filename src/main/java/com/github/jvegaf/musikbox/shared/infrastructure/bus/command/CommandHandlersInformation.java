@@ -21,9 +21,7 @@ public final class CommandHandlersInformation {
         Set<Class<? extends CommandHandler>> classes     = reflections.getSubTypesOf(CommandHandler.class);
 
         indexedCommandHandlers = formatHandlers(classes);
-        for (Class<? extends CommandHandler> commandHandlerClass : classes) {
-            log.info("Registered command handler: {}", commandHandlerClass.getName());
-        }
+
     }
 
     private HashMap<Class<? extends Command>, Class<? extends CommandHandler>> formatHandlers(
