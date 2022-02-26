@@ -12,7 +12,7 @@ public final class DomainEventJsonSerializer {
         HashMap<String, Serializable> attributes = domainEvent.toPrimitives();
         attributes.put("id", domainEvent.aggregateId());
 
-        return Utils.jsonEncode(new HashMap<String, Serializable>() {{
+        return Utils.jsonEncode(new HashMap<>() {{
             put("data", new HashMap<String, Serializable>() {{
                 put("id", domainEvent.eventId());
                 put("type", domainEvent.eventName());

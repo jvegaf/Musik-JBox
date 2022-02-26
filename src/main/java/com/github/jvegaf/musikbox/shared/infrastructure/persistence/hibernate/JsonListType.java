@@ -122,7 +122,7 @@ public class JsonListType implements UserType, DynamicParameterizedType {
         if (valueType==null) {
             throw new HibernateException("Value type not set.");
         }
-        if (value!=null && !value.equals("")) {
+        if (!value.equals("")) {
             try {
                 result = OBJECT_MAPPER.readValue(value, valueType);
             }

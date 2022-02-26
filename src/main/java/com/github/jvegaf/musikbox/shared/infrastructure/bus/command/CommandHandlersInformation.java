@@ -14,7 +14,7 @@ import java.util.Set;
 @Log4j2
 @Service
 public final class CommandHandlersInformation {
-    HashMap<Class<? extends Command>, Class<? extends CommandHandler>> indexedCommandHandlers;
+    final HashMap<Class<? extends Command>, Class<? extends CommandHandler>> indexedCommandHandlers;
 
     public CommandHandlersInformation() {
         Reflections                          reflections = new Reflections("com.github.jvegaf");

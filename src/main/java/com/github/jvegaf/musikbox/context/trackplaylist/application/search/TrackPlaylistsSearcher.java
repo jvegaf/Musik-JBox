@@ -29,13 +29,14 @@ public final class TrackPlaylistsSearcher {
 
         if (trackPlaylists.isEmpty()) return new TracksResponse(new ArrayList<>());
 
-        List<TrackResponse>
-                trackResponses =
-                trackPlaylists.stream()
-                              .map(tp -> TrackPlaylistResponse.fromAggregate(trackRepository.search(new TrackId(tp.trackId()))
-                                                                                            .orElseThrow(),
-                                                                             tp.position()))
-                              .toList();
+        List<TrackResponse> trackResponses = new ArrayList<>();
+        for (TrackPlaylist tp : trackPlaylists) {
+            TrackResponse
+                    trackResponse =
+                    TrackPlaylistResponse.fromAggregate(trackRepository.search(new TrackId(tp.trackId()))
+                                                                       .orElseThrow(), tp.position());
+            trackResponses.add(trackResponse);
+        }
 
         return new TracksResponse(trackResponses);
     }

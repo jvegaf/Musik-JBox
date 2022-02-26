@@ -11,7 +11,7 @@ import java.util.Optional;
 public abstract class HibernateRepository<T> {
     protected final SessionFactory             sessionFactory;
     protected final Class<T>                   aggregateClass;
-    protected final HibernateCriteriaConverter criteriaConverter;
+    protected final HibernateCriteriaConverter<T> criteriaConverter;
 
     public HibernateRepository(SessionFactory sessionFactory, Class<T> aggregateClass) {
         this.sessionFactory    = sessionFactory;

@@ -48,7 +48,7 @@ public final class TrackPlaylistCreatedDomainEvent extends DomainEvent {
 
     @Override
     public HashMap<String, Serializable> toPrimitives() {
-        return new HashMap<String, Serializable>() {{
+        return new HashMap<>() {{
             put("aggregateId", aggregateId());
             put("eventId", eventId());
             put("ocurredOn", occurredOn());

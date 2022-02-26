@@ -14,7 +14,7 @@ import java.util.Set;
 @Log4j2
 @Service
 public final class QueryHandlersInformation {
-    HashMap<Class<? extends Query>, Class<? extends QueryHandler>> indexedQueryHandlers;
+    final HashMap<Class<? extends Query>, Class<? extends QueryHandler>> indexedQueryHandlers;
 
     public QueryHandlersInformation() {
         Reflections                        reflections = new Reflections("com.github.jvegaf");

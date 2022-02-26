@@ -87,10 +87,8 @@ public final class HibernateConfigurationFactory {
             return Collections.emptyList();
         }
 
-        String finalPath = path;
-
         return Arrays.stream(files)
-                     .map(file -> finalPath + file)
+                     .map(file -> path + file)
                      .collect(Collectors.toList());
     }
 
@@ -110,14 +108,7 @@ public final class HibernateConfigurationFactory {
     ) {
         final DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.sqlite.JDBC");
-<<<<<<< HEAD
-        dataSource.setUrl(String.format("jdbc:sqlite:db/musikbox.db?", databaseName));
-        dataSource.setUsername(username);
-        dataSource.setPassword(password);
-=======
         dataSource.setUrl(url);
-//        dataSource.setUrl(String.format("jdbc:sqlite:db/musikbox.db?", databaseName));
->>>>>>> 2c6dddb... init db on app context init
 
         return dataSource;
     }

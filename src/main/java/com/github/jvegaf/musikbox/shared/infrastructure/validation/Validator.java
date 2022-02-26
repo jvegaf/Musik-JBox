@@ -10,7 +10,7 @@ import java.util.Map;
 
 public final class Validator {
 
-    private static final HashMap<String, FieldValidator> validators = new HashMap<String, FieldValidator>() {{
+    private static final HashMap<String, FieldValidator> validators = new HashMap<>() {{
         put("required", new RequiredValidator());
         put("string", new StringValidator());
         put("not_empty", new NotEmptyValidator());

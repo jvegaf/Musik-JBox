@@ -10,28 +10,26 @@ public abstract class StringValueObject {
         this.value = value;
     }
 
-    @Override
-    public int hashCode() {
+    public String value() {
+        return value;
+    }
+
+    @Override public int hashCode() {
         return Objects.hash(value);
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this==o) {
+    @Override public boolean equals(Object o) {
+        if (this == o) {
             return true;
         }
-        if (!(o instanceof StringValueObject that)) {
+        if (!(o instanceof StringValueObject)) {
             return false;
         }
+        StringValueObject that = (StringValueObject) o;
         return Objects.equals(value, that.value);
     }
 
-    @Override
-    public String toString() {
+    @Override public String toString() {
         return this.value();
-    }
-
-    public String value() {
-        return value;
     }
 }

@@ -20,7 +20,6 @@ import java.util.*;
 @Service
 public class BeatportTagger implements Tagger {
 
-    private final String   URI_BASE = "https://api.beatport.com/v4/catalog/search/?q=";
     private       OAuthDTO token;
 
 
@@ -55,6 +54,7 @@ public class BeatportTagger implements Tagger {
 
         SearchQu searchQu = new SearchQu(title, artist);
 
+        String URI_BASE  = "https://api.beatport.com/v4/catalog/search/?q=";
         String urlString = URI_BASE + searchQu.query();
 
         HttpClient client = HttpClient.newHttpClient();

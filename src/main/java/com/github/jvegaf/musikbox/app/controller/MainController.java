@@ -28,8 +28,6 @@ import java.io.IOException;
 public class MainController {
 
     private final MusicCollection                                      collection;
-    private final FxWeaver                                             fxWeaver;
-    private final CommandBus                                           bus;
     @FXML
     private final FxControllerAndView<HeaderController, HBox>          header;
     @FXML
@@ -39,10 +37,7 @@ public class MainController {
     @FXML
     private final FxControllerAndView<OnBoarding, HBox>                onBoarding;
 
-    private final FXMLLoader fxmlLoader;
-
     private final AnchorPane     playlistDetail;
-    private final PlaylistDetail playlistDetailController;
     @FXML
     private       VBox           container;
 
@@ -57,17 +52,15 @@ public class MainController {
             FxControllerAndView<OnBoarding, HBox> onBoarding
     ) throws IOException {
         this.collection               = collection;
-        this.fxWeaver                 = fxWeaver;
-        this.bus                      = bus;
         this.header                   = header;
         this.sidebar                  = sidebar;
         this.tracklist                = tracklist;
         this.onBoarding               = onBoarding;
-        this.fxmlLoader               = new FXMLLoader(getClass().getResource("PlaylistDetail.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PlaylistDetail.fxml"));
         this.playlistDetail           = fxmlLoader.load();
-        this.playlistDetailController = fxmlLoader.getController();
-        this.playlistDetailController.setCollection(this.collection);
-        this.playlistDetailController.initBindings();
+        PlaylistDetail playlistDetailController = fxmlLoader.getController();
+        playlistDetailController.setCollection(this.collection);
+        playlistDetailController.initBindings();
     }
 
     @EventListener

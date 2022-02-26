@@ -43,7 +43,9 @@ public final class Playlist extends AggregateRoot {
 
         if (obj==null || getClass()!=obj.getClass()) return false;
         Playlist p = (Playlist) obj;
-        return id.equals(p.id()) && name.equals(p.name());
+        if (!id.equals(p.id())) return false;
+        assert name!=null;
+        return name.equals(p.name());
     }
 
     public PlaylistId id() {return id;}
@@ -52,6 +54,7 @@ public final class Playlist extends AggregateRoot {
 
     public Playlist update(PlaylistName newName) {
         Playlist p = new Playlist(this.id(), newName);
+        assert this.id!=null;
         p.record(new PlaylistUpdatedDomainEvent(this.id.value(), newName.value()));
         return p;
     }

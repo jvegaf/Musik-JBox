@@ -21,8 +21,8 @@ ext {
     junitVersion = '5.8.1'
 }
 
-sourceCompatibility = '17'
-targetCompatibility = '17'
+sourceCompatibility = '11'
+targetCompatibility = '11'
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
@@ -51,7 +51,7 @@ dependencies {
     implementation 'org.springframework:spring-context-support:5.3.15'
     implementation 'io.github.cdimascio:dotenv-java:2.2.3'
     implementation 'org.jsoup:jsoup:1.14.3'
-    implementation 'org:jaudiotagger:2.0.3'
+    implementation 'net.jthink:jaudiotagger:3.0.1'
     implementation 'com.google.code.gson:gson:2.8.9'
     implementation 'org.reflections:reflections:0.10.2'
     implementation 'fr.brouillard.oss:cssfx:11.5.0'

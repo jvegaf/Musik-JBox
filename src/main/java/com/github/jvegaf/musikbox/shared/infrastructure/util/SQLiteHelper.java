@@ -77,7 +77,7 @@ public class SQLiteHelper {
             "  constraint playlist_position unique (playlist_id, position) " +
             ");";
 
-    public static void checkDatabase(String dbPath) throws SQLException, IOException {
+    public static void checkDatabase(String dbPath) throws SQLException {
         Connection connection = getConnection(dbPath);
         Statement  statement  = connection.createStatement();
         statement.execute(DB_TRACK);

@@ -24,6 +24,7 @@ public final class DomainEventJsonDeserializer {
                                                 NoSuchMethodException,
                                                 InstantiationException {
         HashMap<String, Serializable> eventData        = Utils.jsonDecode(body);
+        assert eventData!=null;
         HashMap<String, Serializable> data             = (HashMap<String, Serializable>) eventData.get("data");
         HashMap<String, Serializable> attributes       = (HashMap<String, Serializable>) data.get("attributes");
         Class<? extends DomainEvent>  domainEventClass = information.forName((String) data.get("type"));

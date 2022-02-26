@@ -11,14 +11,12 @@ import com.github.jvegaf.musikbox.shared.domain.bus.event.EventBus;
 public final class TrackUpdater {
 
     private final TrackRepository repository;
-    private final FilePersistor   persistor;
     private final EventBus        eventBus;
 
     public TrackUpdater(
             TrackRepository repository, FilePersistor persistor, EventBus eventBus
     ) {
         this.repository = repository;
-        this.persistor  = persistor;
         this.eventBus   = eventBus;
     }
 

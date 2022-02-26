@@ -5,6 +5,7 @@ import com.github.jvegaf.musikbox.shared.domain.criteria.Filter;
 import com.github.jvegaf.musikbox.shared.domain.criteria.FilterOperator;
 
 import javax.persistence.criteria.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.function.BiFunction;
@@ -13,7 +14,7 @@ public final class HibernateCriteriaConverter<T> {
     private final CriteriaBuilder                                                 builder;
     private final HashMap<FilterOperator, BiFunction<Filter, Root<T>, Predicate>>
                                                                                   predicateTransformers =
-            new HashMap<FilterOperator, BiFunction<Filter, Root<T>, Predicate>>() {{
+            new HashMap<>() {{
                 put(FilterOperator.EQUAL, HibernateCriteriaConverter.this::equalsPredicateTransformer);
                 put(FilterOperator.NOT_EQUAL, HibernateCriteriaConverter.this::notEqualsPredicateTransformer);
                 put(FilterOperator.GT, HibernateCriteriaConverter.this::greaterThanPredicateTransformer);
@@ -51,11 +52,11 @@ public final class HibernateCriteriaConverter<T> {
     }
 
     private Predicate[] formatPredicates(List<Filter> filters, Root<T> root) {
-        List<Predicate>
-                predicates =
-                filters.stream()
-                       .map(filter -> formatPredicate(filter, root))
-                       .toList();
+        List<Predicate> predicates = new ArrayList<>();
+        for (Filter filter : filters) {
+            Predicate predicate = formatPredicate(filter, root);
+            predicates.add(predicate);
+        }
 
         Predicate[] predicatesArray = new Predicate[predicates.size()];
         predicatesArray = predicates.toArray(predicatesArray);

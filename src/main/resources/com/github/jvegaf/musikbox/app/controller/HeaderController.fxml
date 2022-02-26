@@ -5,7 +5,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <HBox xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" maxHeight="1.7976931348623157E308" minHeight="-Infinity"
-      prefHeight="70.0" styleClass="header" stylesheets="@../../../../../styles/dark.css"
+      prefHeight="70.0" styleClass="header"
       xmlns="http://javafx.com/javafx/16" fx:controller="com.github.jvegaf.musikbox.app.controller.HeaderController">
     <padding>
         <Insets left="20.0" right="20.0"/>

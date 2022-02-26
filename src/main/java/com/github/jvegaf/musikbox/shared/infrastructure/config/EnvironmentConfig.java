@@ -8,7 +8,7 @@ import org.springframework.core.io.ResourceLoader;
 
 @Configuration
 public class EnvironmentConfig {
-    ResourceLoader resourceLoader;
+    final ResourceLoader resourceLoader;
 
     public EnvironmentConfig(ResourceLoader resourceLoader) {
         this.resourceLoader = resourceLoader;

@@ -84,19 +84,21 @@ public final class FileManager {
 
     private List<File> searchMusicFiles(File path) {
 
-        var filesinPath =
-                Arrays.stream(Objects.requireNonNull(path.listFiles()))
-                      .filter(file -> file.getName()
-                                          .endsWith(".mp3"))
-                      .toList();
+        List<File> files = new ArrayList<>();
+        for (File file1 : Objects.requireNonNull(path.listFiles())) {
+            if (file1.getName()
+                     .endsWith(".mp3")) {
+                files.add(file1);
+            }
+        }
 
-        List<File> files = new ArrayList<>(filesinPath);
-
-        List<File> filesRecurs = FileUtils.listFiles(path, new RegexFileFilter("^(.*?)"), DirectoryFileFilter.DIRECTORY)
-                                    .stream()
-                                    .filter(file -> file.getName()
-                                                        .endsWith(".mp3"))
-                                    .toList();
+        List<File> filesRecurs = new ArrayList<>();
+        for (File file : FileUtils.listFiles(path, new RegexFileFilter("^(.*?)"), DirectoryFileFilter.DIRECTORY)) {
+            if (file.getName()
+                    .endsWith(".mp3")) {
+                filesRecurs.add(file);
+            }
+        }
 
         files.addAll(filesRecurs);
 

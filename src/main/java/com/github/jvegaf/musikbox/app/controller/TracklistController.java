@@ -3,7 +3,6 @@ package com.github.jvegaf.musikbox.app.controller;
 import com.github.jvegaf.musikbox.app.collection.MusicCollection;
 import com.github.jvegaf.musikbox.app.player.MusicPlayer;
 import com.github.jvegaf.musikbox.context.shared.application.FixTagsCommand;
-import com.github.jvegaf.musikbox.context.trackplaylist.application.TrackPlaylistResponse;
 import com.github.jvegaf.musikbox.shared.domain.TrackResponse;
 import com.github.jvegaf.musikbox.shared.domain.bus.command.CommandBus;
 import javafx.beans.binding.Bindings;
@@ -81,13 +80,16 @@ public class TracklistController {
 
         selectionModel = this.songsTableView.getSelectionModel();
         selectionModel.setSelectionMode(SelectionMode.MULTIPLE);
-        positionColumn.setCellValueFactory(cellData -> {
-            if (cellData.getValue() instanceof TrackPlaylistResponse r) {
 
-                return new SimpleStringProperty(r.positionStr());
-            }
-            return new SimpleStringProperty("");
-        });
+        //TODO: Fixme
+
+//        positionColumn.setCellValueFactory(cellData -> {
+//            if (cellData.getValue() instanceof TrackPlaylistResponse r) {
+//
+//                return new SimpleStringProperty(r.positionStr());
+//            }
+//            return new SimpleStringProperty("");
+//        });
 
         positionColumn.setVisible(collection.getCategory()==PLAYLIST);
 
@@ -205,9 +207,8 @@ public class TracklistController {
                           }
                       });
         fixallItem.setOnAction(actionEvent -> {
-            fixAllTags(selectionModel.getSelectedItems()
-                                     .stream()
-                                     .toList());
+            List<TrackResponse> list = new ArrayList<>(selectionModel.getSelectedItems());
+            fixAllTags(list);
             //            selectionModel.clearSelection();
         });
         MenuItem detailItem = new MenuItem("View Detail");

@@ -37,7 +37,7 @@ public class AppContextInitializer implements ApplicationContextInitializer<Conf
                 SQLiteHelper.checkDatabase(url);
 
             }
-            catch (SQLException | IOException e) {
+            catch (SQLException e) {
                 e.printStackTrace();
             }
         });

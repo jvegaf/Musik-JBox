@@ -18,14 +18,12 @@ import java.io.IOException;
 public class MusikBOXHibernateConfiguration {
 
     private final HibernateConfigurationFactory factory;
-    private final Parameter                     config;
 
     @Autowired
     private Environment env;
 
     public MusikBOXHibernateConfiguration(HibernateConfigurationFactory factory, Parameter config) {
         this.factory = factory;
-        this.config  = config;
     }
 
     @Bean("musikbox-transaction_manager")
@@ -40,7 +38,7 @@ public class MusikBOXHibernateConfiguration {
     }
 
     @Bean("musikbox-data_source")
-    public DataSource dataSource() throws IOException, ParameterNotExist {
+    public DataSource dataSource() {
         return factory.dataSource(env.getProperty("database.url"));
     }
 }

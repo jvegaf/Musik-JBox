@@ -11,7 +11,7 @@ import java.util.Set;
 
 @Service
 public final class DomainEventSubscribersInformation {
-    HashMap<Class<?>, DomainEventSubscriberInformation> information;
+    final HashMap<Class<?>, DomainEventSubscriberInformation> information;
 
     public DomainEventSubscribersInformation() {
         this(scanDomainEventSubscribers());

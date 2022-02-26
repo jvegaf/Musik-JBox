@@ -69,8 +69,12 @@ public final class MusicCollection {
 
     public void onSelectionChange(Category type, String selectedId) {
         switch (type) {
-            case HEAD -> requestTracksOnLibrary();
-            case PLAYLIST -> requestTracksOnPlaylist(selectedId);
+            case HEAD:
+                requestTracksOnLibrary();
+                break;
+            case PLAYLIST:
+                requestTracksOnPlaylist(selectedId);
+                break;
         }
     }
 

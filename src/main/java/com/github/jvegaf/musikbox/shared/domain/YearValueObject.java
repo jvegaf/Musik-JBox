@@ -15,19 +15,16 @@ public abstract class YearValueObject {
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(value);
+    public boolean equals(Object o) {
+        if (this==o) return true;
+        if (o==null || getClass()!=o.getClass()) return false;
+        YearValueObject that = (YearValueObject) o;
+        return value.equals(that.value);
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this==o) {
-            return true;
-        }
-        if (!(o instanceof YearValueObject that)) {
-            return false;
-        }
-        return Objects.equals(value, that.value);
+    public int hashCode() {
+        return Objects.hash(value);
     }
 
     @Override

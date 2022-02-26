@@ -35,7 +35,7 @@ public final class PlaylistUpdatedDomainEvent extends DomainEvent {
 
     @Override
     public HashMap<String, Serializable> toPrimitives() {
-        return new HashMap<String, Serializable>() {{
+        return new HashMap<>() {{
             put("name", name);
         }};
     }

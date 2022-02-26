@@ -41,7 +41,7 @@ public final class TrackCreatedDomainEvent extends DomainEvent {
 
     @Override
     public HashMap<String, Serializable> toPrimitives() {
-        return new HashMap<String, Serializable>() {{
+        return new HashMap<>() {{
             put("name", name);
             put("location", location);
         }};

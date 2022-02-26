@@ -52,7 +52,6 @@ public class ResizeHelper {
     static class ResizeListener implements EventHandler<MouseEvent> {
 
         private final Stage  stage;
-        private final int    border      = 4;
         private       Cursor cursorEvent = Cursor.DEFAULT;
         private       double startX      = 0;
         private       double startY      = 0;
@@ -70,6 +69,7 @@ public class ResizeHelper {
                     sceneWidth =
                             scene.getWidth(), sceneHeight = scene.getHeight();
 
+            int border = 4;
             if (MouseEvent.MOUSE_MOVED.equals(mouseEventType)) {
                 if (mouseEventX < border && mouseEventY < border) {
                     cursorEvent = Cursor.NW_RESIZE;

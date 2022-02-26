@@ -88,24 +88,26 @@ public final class HeaderController {
 
     private void playerStatusHandler(MediaPlayer.Status status) {
         switch (status) {
-            case UNKNOWN -> {
+            case UNKNOWN:
                 System.out.println("UNKNOWN STATE");
                 disablePlayerControls(true);
-            }
-            case READY -> {
+                break;
+
+            case READY :
                 disablePlayerControls(false);
                 initDisplayControls();
-            }
-            case PAUSED, STOPPED -> {
+                break;
+
+            case PAUSED:
+            case STOPPED:
                 playBtn.setVisible(true);
                 pauseBtn.setVisible(false);
-            }
-            case PLAYING -> {
+                break;
+
+            case PLAYING:
                 playBtn.setVisible(false);
                 pauseBtn.setVisible(true);
-            }
-            default -> {
-            }
+                break;
         }
     }
 
