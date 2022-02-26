@@ -2,6 +2,7 @@ package com.github.jvegaf.musikbox.app;
 
 
 import com.github.jvegaf.musikbox.app.controller.MainController;
+import com.github.jvegaf.musikbox.shared.infrastructure.util.ConfigHelper;
 import com.github.jvegaf.musikbox.shared.infrastructure.util.ResizeHelper;
 import com.github.jvegaf.musikbox.shared.infrastructure.util.SQLiteHelper;
 import fr.brouillard.oss.cssfx.CSSFX;
@@ -17,8 +18,11 @@ import net.rgielen.fxweaver.core.FxWeaver;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.Objects;
 
 @Log4j2
 public final class MusikBoxApp extends Application {
@@ -33,24 +37,9 @@ public final class MusikBoxApp extends Application {
     @Override
     public void init() {
 
-        var datab = MusikBoxApp.class
-                .getResource("/db/musikbox.db");
-
-        if (datab==null) {
-            Platform.runLater(() -> {
-                try {
-                    SQLiteHelper.createDatabases();
-                    log.info("Successful database creation!");
-
-                }
-                catch (SQLException | IOException e) {
-                    e.printStackTrace();
-                }
-            });
-        }
-
         applicationContext =
                 new SpringApplicationBuilder().sources(Main.class)
+                                              .initializers(new AppContextInitializer())
                                               .run(getParameters().getRaw()
                                                                   .toArray(new String[0]));
 
@@ -59,11 +48,10 @@ public final class MusikBoxApp extends Application {
 
     @Override
     public void start(Stage stage) {
-        CSSFX.start();
         Parent root = fxWeaver.loadView(MainController.class);
         mainScene = new Scene(root, 1440, 800);
         mainScene.getStylesheets()
-                 .add("/styles/dark.css");
+                 .add("styles/dark.css");
         mainScene.setFill(Color.TRANSPARENT);
         stage.setScene(mainScene);
         stage.initStyle(StageStyle.TRANSPARENT);
@@ -85,6 +73,7 @@ public final class MusikBoxApp extends Application {
         ResizeHelper.addResizeListener(stage);
 
         stage.show();
+
 
     }
 

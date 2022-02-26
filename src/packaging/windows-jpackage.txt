@@ -1,5 +1,5 @@
 --type msi
---name "MusikBOX "
+--name "MusikBOX"
 --win-menu
 --win-menu-group "Jose Vega"
 --vendor "Jose Vega"

@@ -19,6 +19,8 @@ import java.util.stream.Collectors;
 public final class HibernateConfigurationFactory {
     private final ResourcePatternResolver resourceResolver;
 
+
+
     public HibernateConfigurationFactory(ResourcePatternResolver resourceResolver) {
         this.resourceResolver = resourceResolver;
     }
@@ -99,13 +101,12 @@ public final class HibernateConfigurationFactory {
     }
 
     public DataSource dataSource(
-            String databaseName, String username, String password
+            String url
     ) {
         final DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.sqlite.JDBC");
-        dataSource.setUrl("jdbc:sqlite:src/main/resources/db/musikbox.db");
-        dataSource.setUsername(username);
-        dataSource.setPassword(password);
+        dataSource.setUrl(url);
+//        dataSource.setUrl(String.format("jdbc:sqlite:db/musikbox.db?", databaseName));
 
         return dataSource;
     }

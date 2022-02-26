@@ -1,6 +1,6 @@
 package com.github.jvegaf.musikbox.context.shared.infrastructure;
 
-import com.github.jvegaf.musikbox.context.shared.domain.Artwork;
+import com.github.jvegaf.musikbox.context.shared.domain.Art;
 import com.github.jvegaf.musikbox.shared.domain.Service;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.audio.exceptions.CannotReadException;
@@ -16,7 +16,7 @@ import java.io.IOException;
 @Service
 public class ArtworkRetriever {
 
-    public Artwork retrieve(String location) throws
+    public Art retrieve(String location) throws
                                              CannotReadException,
                                              TagException,
                                              InvalidAudioFrameException,
@@ -26,9 +26,9 @@ public class ArtworkRetriever {
         MP3File          f    = (MP3File) AudioFileIO.read(file);
         AbstractID3v2Tag tag  = f.getID3v2Tag();
 
-        if (tag.getFirstArtwork()==null) return new Artwork();
+        if (tag.getFirstArtwork()==null) return new Art();
 
-        return new Artwork(tag.getFirstArtwork()
+        return new Art(tag.getFirstArtwork()
                               .getBinaryData(),
                            tag.getFirstArtwork()
                               .getDescription(),

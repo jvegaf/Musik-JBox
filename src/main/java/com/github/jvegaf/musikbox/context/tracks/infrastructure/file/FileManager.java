@@ -19,7 +19,10 @@ import org.jaudiotagger.tag.id3.AbstractID3v2Tag;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -81,10 +84,22 @@ public final class FileManager {
 
     private List<File> searchMusicFiles(File path) {
 
-        return FileUtils.listFiles(path, new RegexFileFilter("^(.*?)"), DirectoryFileFilter.DIRECTORY)
-                        .stream()
-                        .filter(file -> file.getName()
-                                            .endsWith(".mp3"))
-                        .toList();
+        var filesinPath =
+                Arrays.stream(Objects.requireNonNull(path.listFiles()))
+                      .filter(file -> file.getName()
+                                          .endsWith(".mp3"))
+                      .toList();
+
+        List<File> files = new ArrayList<>(filesinPath);
+
+        List<File> filesRecurs = FileUtils.listFiles(path, new RegexFileFilter("^(.*?)"), DirectoryFileFilter.DIRECTORY)
+                                    .stream()
+                                    .filter(file -> file.getName()
+                                                        .endsWith(".mp3"))
+                                    .toList();
+
+        files.addAll(filesRecurs);
+
+        return files;
     }
 }

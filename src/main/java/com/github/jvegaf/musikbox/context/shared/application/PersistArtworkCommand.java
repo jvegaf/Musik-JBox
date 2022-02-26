@@ -1,18 +1,18 @@
 package com.github.jvegaf.musikbox.context.shared.application;
 
-import com.github.jvegaf.musikbox.context.shared.domain.Artwork;
+import com.github.jvegaf.musikbox.context.shared.domain.Art;
 import com.github.jvegaf.musikbox.shared.domain.bus.command.Command;
 
 public class PersistArtworkCommand implements Command {
-    private final Artwork artwork;
-    private final String  trackLocation;
+    private final Art    art;
+    private final String trackLocation;
 
-    public PersistArtworkCommand(Artwork artwork, String trackLocation) {
-        this.artwork       = artwork;
+    public PersistArtworkCommand(Art art, String trackLocation) {
+        this.art           = art;
         this.trackLocation = trackLocation;
     }
 
-    public Artwork artwork() {return artwork;}
+    public Art artwork() {return art;}
 
     public String trackLocation() {return trackLocation;}
 }
