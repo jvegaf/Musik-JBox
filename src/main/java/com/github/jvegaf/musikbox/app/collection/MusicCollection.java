@@ -42,10 +42,6 @@ public final class MusicCollection {
         this.collectionTracksCount = new SimpleIntegerProperty(tracks.size());
     }
 
-    private TracksResponse libraryTracksRequest() {
-        return (TracksResponse) bus.ask(new SearchAllTracksQuery());
-    }
-
     @EventListener
     public void on(DomainEvent event) {
         if (event instanceof TrackCreatedDomainEvent && collectionCategory.get()==Category.HEAD) {
@@ -60,6 +56,10 @@ public final class MusicCollection {
             }
             requestTracksOnLibrary();
         }
+    }
+
+    private TracksResponse libraryTracksRequest() {
+        return (TracksResponse) bus.ask(new SearchAllTracksQuery());
     }
 
     private void getNewTrack(String aggregateId) {

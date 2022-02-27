@@ -2,7 +2,7 @@ package com.github.jvegaf.musikbox.app.player;
 
 import com.github.jvegaf.musikbox.app.collection.MusicCollection;
 import com.github.jvegaf.musikbox.context.shared.application.RetrieveArtworkQuery;
-import com.github.jvegaf.musikbox.context.shared.domain.Artwork;
+import com.github.jvegaf.musikbox.context.shared.domain.Art;
 import com.github.jvegaf.musikbox.shared.domain.Service;
 import com.github.jvegaf.musikbox.shared.domain.TrackResponse;
 import com.github.jvegaf.musikbox.shared.domain.bus.query.QueryBus;
@@ -113,11 +113,11 @@ public final class MusicPlayer {
     }
 
     private void setArtwork(String trackLocation) {
-        Artwork artwork = (Artwork) queryBus.ask(new RetrieveArtworkQuery(trackLocation));
-        if (artwork.data().length < 1) {
+        Art art = (Art) queryBus.ask(new RetrieveArtworkQuery(trackLocation));
+        if (art.data().length < 1) {
             artworkProperty.set(new Image("/assets/album-art-placeholder.png"));
             return;
         }
-        artworkProperty.set(new Image(new ByteArrayInputStream(artwork.data())));
+        artworkProperty.set(new Image(new ByteArrayInputStream(art.data())));
     }
 }

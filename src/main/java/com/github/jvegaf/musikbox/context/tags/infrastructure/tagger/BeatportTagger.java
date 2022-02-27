@@ -8,6 +8,7 @@ import com.github.jvegaf.musikbox.shared.domain.Service;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import lombok.extern.log4j.Log4j2;
+import org.apache.logging.log4j.Marker;
 
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -104,6 +105,8 @@ public class BeatportTagger implements Tagger {
     private Tag matchTags(List<Tag> tags, Integer duration) {
         tags.sort(Comparator.comparing(t -> t.duration()
                                              .compareTo(duration)));
+        var dif = tags.get(0).duration() - duration;
+        log.debug("difference: " + dif);
         return tags.get(0);
     }
 

@@ -1,7 +1,7 @@
 package com.github.jvegaf.musikbox.app.controller;
 
 import com.github.jvegaf.musikbox.context.shared.application.RetrieveArtworkQuery;
-import com.github.jvegaf.musikbox.context.shared.domain.Artwork;
+import com.github.jvegaf.musikbox.context.shared.domain.Art;
 import com.github.jvegaf.musikbox.context.tracks.application.update.UpdateTrackCommand;
 import com.github.jvegaf.musikbox.shared.domain.TrackResponse;
 import com.github.jvegaf.musikbox.shared.domain.bus.command.CommandBus;
@@ -82,7 +82,7 @@ public class DetailController {
     }
 
     public void setDetails(TrackResponse track, Window owner) {
-        Artwork art = (Artwork) queryBus.ask(new RetrieveArtworkQuery(track.location()));
+        Art art = (Art) queryBus.ask(new RetrieveArtworkQuery(track.location()));
         stage.initOwner(owner);
         stage.initModality(Modality.WINDOW_MODAL);
         this.cancelBtn.setOnMouseClicked(event -> closeActionListener());

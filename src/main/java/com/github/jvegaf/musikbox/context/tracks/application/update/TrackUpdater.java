@@ -37,7 +37,8 @@ public final class TrackUpdater {
                                                   c.key(),
                                                   c.comments());
         repository.save(updatedTrack);
-        persistor.persist(updatedTrack);
+        // TODO: commented for debugging
+//        persistor.persist(updatedTrack);
         eventBus.publish(updatedTrack.pullDomainEvents());
     }
 }

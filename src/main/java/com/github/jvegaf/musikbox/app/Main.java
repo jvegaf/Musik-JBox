@@ -15,6 +15,7 @@ import org.springframework.context.annotation.FilterType;
 public class Main {
 
     public static void main(String[] args) {
+        System.out.println("prelaunch");
         Application.launch(MusikBoxApp.class, args);
     }
 

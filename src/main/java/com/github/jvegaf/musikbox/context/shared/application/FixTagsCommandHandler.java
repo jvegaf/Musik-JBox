@@ -1,6 +1,6 @@
 package com.github.jvegaf.musikbox.context.shared.application;
 
-import com.github.jvegaf.musikbox.context.shared.domain.Artwork;
+import com.github.jvegaf.musikbox.context.shared.domain.Art;
 import com.github.jvegaf.musikbox.context.tags.application.TagResponse;
 import com.github.jvegaf.musikbox.context.tags.application.search.SearchTagsQuery;
 import com.github.jvegaf.musikbox.context.tracks.application.update.UpdateTrackCommand;
@@ -50,7 +50,7 @@ public class FixTagsCommandHandler implements CommandHandler<FixTagsCommand> {
                 String mimetype = picFetcher.getMimeType(r.tag()
                                                           .artworkURL());
                 Integer pictureType = PictureTypes.DEFAULT_ID;
-                Artwork art = new Artwork(coverData,
+                Art art = new Art(coverData,
                                           "",
                                           r.tag()
                                            .artworkURL(),
