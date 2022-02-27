@@ -46,7 +46,7 @@ public class SQLiteHelper {
             "create table if not exists tracks (" +
             "  id text(36) not null," +
             "  title text(255) not null," +
-            "  location text(255) not null," +
+            "  location text(255) not null unique," +
             "  duration integer not null," +
             "  artist text(255)," +
             "  album text(255)," +
@@ -77,12 +77,16 @@ public class SQLiteHelper {
             "  constraint playlist_position unique (playlist_id, position) " +
             ");";
 
+    private static final String TRUNCATE_TRACK = "delete from tracks;";
+
     public static void checkDatabase(String dbPath) throws SQLException, IOException {
         Connection connection = getConnection(dbPath);
         Statement  statement  = connection.createStatement();
         statement.execute(DB_TRACK);
         statement.execute(DB_PLAYLIST);
         statement.execute(DB_TRACK_PL);
+        // TODO: DEBUG
+        statement.execute(TRUNCATE_TRACK);
         close();
     }
 }

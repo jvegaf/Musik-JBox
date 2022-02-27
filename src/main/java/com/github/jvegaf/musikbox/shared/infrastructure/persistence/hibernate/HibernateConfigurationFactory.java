@@ -9,6 +9,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.sqlite.hibernate.dialect.SQLiteDialect;
 
 import javax.sql.DataSource;
 import java.io.File;
@@ -49,9 +50,10 @@ public final class HibernateConfigurationFactory {
         hibernateProperties.put(AvailableSettings.HBM2DDL_AUTO, "none");
 
         hibernateProperties.put(AvailableSettings.SHOW_SQL, "true");
-        hibernateProperties.put(AvailableSettings.DIALECT,
-                                "com.github.jvegaf.musikbox.shared.infrastructure.persistence.hibernate.dialect" +
-                                ".SQLiteDialect");
+        hibernateProperties.put(AvailableSettings.DIALECT, SQLiteDialect.class);
+//        hibernateProperties.put(AvailableSettings.DIALECT,
+//                                "com.github.jvegaf.musikbox.shared.infrastructure.persistence.hibernate.dialect" +
+//                                ".SQLiteDialect");
 
         return hibernateProperties;
     }
