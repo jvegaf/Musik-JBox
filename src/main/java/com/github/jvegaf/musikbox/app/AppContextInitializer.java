@@ -9,7 +9,6 @@ import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.MapPropertySource;
 
 import java.io.File;
-import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
@@ -27,21 +26,19 @@ public class AppContextInitializer implements ApplicationContextInitializer<Conf
         String databaseUrl = "jdbc:sqlite:";
         databaseUrl += workingDir + File.separator + "musikbox.db";
         myProperties.put("workdir", workingDir);
-        myProperties.put("database.url", databaseUrl );
+        myProperties.put("database.url", databaseUrl);
         myProperties.put("database.file", workingDir + File.separator + "musikbox.db");
         environment.getPropertySources()
-                   .addFirst(new MapPropertySource("my-props", myProperties));
+                .addFirst(new MapPropertySource("my-props", myProperties));
         String url = databaseUrl;
         Platform.runLater(() -> {
             try {
                 SQLiteHelper.checkDatabase(url);
 
-            }
-            catch (SQLException e) {
+            } catch (SQLException e) {
                 e.printStackTrace();
             }
         });
     }
-
 
 }

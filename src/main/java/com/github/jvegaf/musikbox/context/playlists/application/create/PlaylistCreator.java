@@ -1,5 +1,7 @@
 package com.github.jvegaf.musikbox.context.playlists.application.create;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.github.jvegaf.musikbox.context.playlists.domain.Playlist;
 import com.github.jvegaf.musikbox.context.playlists.domain.PlaylistName;
 import com.github.jvegaf.musikbox.context.playlists.domain.PlaylistRepository;
@@ -10,11 +12,12 @@ import com.github.jvegaf.musikbox.shared.domain.bus.event.EventBus;
 public final class PlaylistCreator {
 
     private final PlaylistRepository repository;
-    private final EventBus           eventBus;
+    private final EventBus eventBus;
 
+    @Autowired
     public PlaylistCreator(PlaylistRepository repository, EventBus eventBus) {
         this.repository = repository;
-        this.eventBus   = eventBus;
+        this.eventBus = eventBus;
     }
 
     public void create(PlaylistName name) {

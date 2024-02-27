@@ -246,3 +246,6 @@ gradlew
 
 gradlew.bat
 /db/musikbox.db
+.settings
+.factorypath
+bin
